@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>427</x>
+      <y>105</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:BarraRoom_
+bg=orange
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>546</x>
+      <y>105</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:SolicitudBarraDTO_
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>455</x>
+      <y>147</y>
+      <w>14</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>581</x>
+      <y>161</y>
+      <w>14</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>119</y>
+      <w>21</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>581</x>
+      <y>119</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>154</y>
+      <w>133</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Create
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>917</x>
+      <y>105</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:IRebarLosa_
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>945</x>
+      <y>343</y>
+      <w>14</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>945</x>
+      <y>119</y>
+      <w>21</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>259</x>
+      <y>105</y>
+      <w>154</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:ManejadorRebarLosaInclinada_
+bg=green
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>343</x>
+      <y>140</y>
+      <w>14</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>
+bg=green
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>343</x>
+      <y>119</y>
+      <w>21</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>175</x>
+      <y>161</y>
+      <w>14</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>147</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:O2_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>175</x>
+      <y>56</y>
+      <w>14</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>175</x>
+      <y>14</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>175</x>
+      <y>91</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>259</x>
+      <y>644</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:f1_ab_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>287</x>
+      <y>700</y>
+      <w>14</w>
+      <h>854</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>658</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>448</x>
+      <y>644</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:BuscarLosaIncilnada_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>511</x>
+      <y>700</y>
+      <w>14</w>
+      <h>539</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>511</x>
+      <y>658</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>238</y>
+      <w>105</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Load_fx()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;70.0;40.0;70.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>672</x>
+      <y>105</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:BarraRoomGeometria_
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>707</x>
+      <y>161</y>
+      <w>14</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>119</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>203</y>
+      <w>252</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Asigna : IsBuscarTipoBarra ,IsLosaINclinada
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>798</x>
+      <y>105</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:FactoryIRebarLosa_
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>833</x>
+      <y>161</y>
+      <w>14</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>
+bg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>833</x>
+      <y>119</y>
+      <w>21</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>329</y>
+      <w>497</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Create
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;690.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>154</y>
+      <w>112</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Create
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>952</x>
+      <y>357</y>
+      <w>154</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M1A_IsTodoOK()
+M2A_GenerarBarra()</panel_attributes>
+    <additional_attributes>10.0;70.0;70.0;70.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>21</y>
+      <w>882</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>ruta general</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>833</x>
+      <y>343</y>
+      <w>126</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+Create(RebarInferiorDTO)
+layer=2</panel_attributes>
+    <additional_attributes>20.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>280</y>
+      <w>217</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ObtenerGEometria()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;160.0;40.0;160.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>483</x>
+      <y>308</y>
+      <w>91</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>RebarInferiorDTO
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>777</x>
+      <y>644</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>_:ARebarLosa_
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>805</x>
+      <y>861</y>
+      <w>14</w>
+      <h>665</h>
+    </coordinates>
+    <panel_attributes>
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>658</y>
+      <w>21</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>700</y>
+      <w>203</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M1A_IsTodoOK()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;260.0;160.0;260.0;160.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>728</y>
+      <w>231</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+M0_ObtenerPendienteLosaContigua()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>714</y>
+      <w>273</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+*M0_ObtenerPendienteLosaContigua()*
+layer=2</panel_attributes>
+    <additional_attributes>10.0;210.0;120.0;210.0;130.0;30.0;120.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>287</x>
+      <y>847</y>
+      <w>231</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+*VectorDireccionLosaExternaInclinada*
+layer=2</panel_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>728</y>
+      <w>231</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ObtenerPtoAnalizado1cmExteriroRoom(xyz)
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>770</y>
+      <w>217</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+OBtenerRefrenciaLosa(3d,xyz,xyz,bool)
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>812</y>
+      <w>231</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+BuscaNormalPlanarFaceNOhorizontal(floor)
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>882</y>
+      <w>196</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M1_1_1_ConfiguracionIzqInfer()
+o
+M1_1_1_ConfiguracionDereSup()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;50.0;40.0;50.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>875</y>
+      <w>203</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+*M1_1_DatosBarra3d()*
+layer=2</panel_attributes>
+    <additional_attributes>10.0;200.0;120.0;200.0;130.0;180.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>931</y>
+      <w>301</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+CopiandoParametrosLado()
+layer=2</panel_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>945</y>
+      <w>224</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+AnalizarLado(Line, NombreParametros )
+layer=2</panel_attributes>
+    <additional_attributes>10.0;30.0;50.0;30.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>959</y>
+      <w>301</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+bool
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>1029</y>
+      <w>203</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+*M1_2_DatosBarra2d()*
+layer=2</panel_attributes>
+    <additional_attributes>10.0;200.0;120.0;200.0;130.0;180.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>1036</y>
+      <w>203</w>
+      <h>574</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M1_2_1_PAthSymbolFalsoDereSup()
+o
+M1_2_3_PAthSymbolFalsoIzqInfer();
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;50.0;40.0;50.0;40.0;20.0;10.0;20.0;10.0;800.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>1078</y>
+      <w>161</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ ObtenerNuevoptoCirculo(2)
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>1113</y>
+      <w>196</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M1_2_4_ObtenerPAthSymbolTAG()
+layer=2</panel_attributes>
+    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>518</x>
+      <y>1183</y>
+      <w>189</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+*M1_3_Recorrido()*
+layer=2</panel_attributes>
+    <additional_attributes>10.0;50.0;130.0;50.0;130.0;10.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>1260</y>
+      <w>189</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+M2A_GenerarBarra
+layer=2</panel_attributes>
+    <additional_attributes>10.0;350.0;130.0;350.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>1295</y>
+      <w>525</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+M1_ConfigurarDatosIniciales();
+M3_DibujarBarraCurve();//en ibarra
+M3A_1_CopiarParametrosCOmpartidos();
+M5_ConfiguraEspaciamiento_SetLayoutAsNumberWithSpacing();
+M6_visualizar();
+M8_CrearPatSymbolFalso();
+M9_CreaTAg();
+M10_CreaDimension();
+M11_CreaCirculo();
+M11_CrearGrupo();
+
+MOverHaciaBajo();
+
+lt=&lt;-
+layer=2</panel_attributes>
+    <additional_attributes>730.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>1456</y>
+      <w>525</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+void
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;730.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>861</x>
+      <y>714</y>
+      <w>196</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Note..
+solo selecciona planar face inclinado , si es horizontal
+returna false y para ejecucion+
+*REVISAR: PUEDE QUE SEA BUENO
+CONSIDERAR TODAS TIPO DE LOSA*
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>735</y>
+      <w>140</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;140.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>63</x>
+      <y>728</y>
+      <w>196</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Note..
+*VALOR IMPORTANTE*
+VECTOR xyz en losa inclinada, 
+direccion  de la barra
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>777</y>
+      <w>112</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>140.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>854</x>
+      <y>861</y>
+      <w>196</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Note..
+SE tiene las lineas con la forma de la barra
+
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>889</y>
+      <w>175</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>560</y>
+      <w>1134</w>
+      <h>1036</h>
+    </coordinates>
+    <panel_attributes>ruta general</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

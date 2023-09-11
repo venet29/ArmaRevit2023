@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="ArmaduraLosaRevit.Model.BarraV.WPFb.OpcionesHorizontal"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:ArmaduraLosaRevit.Model.BarraV.WPFb"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="250" d:DesignWidth="230">
+	<Grid Background="White">
+
+		<GroupBox Header="Traslapo" Height="180" Width="190">
+			<Grid Margin="5">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="20" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+					<RowDefinition Height="30" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="20" />
+				</Grid.ColumnDefinitions>
+			  
+				<Label Content="Inicio" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+				<ComboBox Name="cbx_traslapo_inicio"  Grid.Row="1"  Grid.Column="2" Height="20" Width="60">
+					<ComboBoxItem>1</ComboBoxItem>
+					<ComboBoxItem IsSelected="True">2</ComboBoxItem>
+					<ComboBoxItem>3</ComboBoxItem>
+				</ComboBox>
+				
+				<Label Content="Traslapo" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" />
+				<ComboBox Name="cbx_traslapo_recorrido" Grid.Row="2"  Grid.Column="2" Height="20" Width="60">
+					<ComboBoxItem>1</ComboBoxItem>
+					<ComboBoxItem IsSelected="True">2</ComboBoxItem>
+					<ComboBoxItem>3</ComboBoxItem>
+				</ComboBox>
+
+				<Label   Content="Intercalar" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" />
+				<ComboBox Name="cbx_traslapo_intercalar"  Grid.Row="3"  Grid.Column="2" Height="20" Width="60">
+					<ComboBoxItem IsSelected="True">Si</ComboBoxItem>
+					<ComboBoxItem>NO</ComboBoxItem>
+					
+				</ComboBox>
+			</Grid>
+
+		</GroupBox>
+		
+	</Grid>
+</UserControl>

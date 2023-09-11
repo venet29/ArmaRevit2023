@@ -1,0 +1,53 @@
+﻿         using (Transaction tr = new Transaction(_doc, "Regenerate_nh"))
+                        {
+
+                            tr.Start();
+                            _doc.Regenerate();
+                            _uiapp.ActiveUIDocument.RefreshActiveView();
+                            tr.Commit();
+                        }
+
+        public bool ObtenerLista()
+        {
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Util.ErrorMsg($"Error en ObtenerLista");
+
+                return false;
+            }
+            return true;
+        }
+
+
+//*****************
+
+  ElementTransformUtils.MoveElement
+
+Round(1.4): 1
+Round(1.58): 2
+Round(50.9): 51
+Round(15.1): 15
+Floor(1.4): 1
+Floor(1.58): 1
+Floor(50.9): 50
+Floor(15.1): 15
+Ceiling(1.4): 2
+Ceiling(1.58): 2
+Ceiling(50.9): 51
+Ceiling(15.1): 16
+//*
+
+
+double a = 14.48;
+
+  double b = (a % 1);  // b:0.48
+
+  if(b < 0.5)
+     MessageBox.Show("Se aproxima hacia abajo:" + Math.Round(a).ToString());
+  else if(b >= 0.5)
+     MessageBox.Show("Se aproxima hacia arriba:" + Math.Ceiling(a).ToString());

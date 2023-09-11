@@ -1,0 +1,76 @@
+﻿using Autodesk.Revit.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
+
+//using planta_aux_C.Elemento_Losa;
+using System.Diagnostics;
+using ArmaduraLosaRevit;
+using Autodesk.Revit.UI.Selection;
+using ArmaduraLosaRevit.Model.AnalisisRoom;
+using ArmaduraLosaRevit.Model;
+using Autodesk.Revit.DB.Structure;
+using ArmaduraLosaRevit.Model.Armadura;
+using ArmaduraLosaRevit.Model.Enumeraciones;
+using ArmaduraLosaRevit.Model.Elemento_Losa;
+using ArmaduraLosaRevit.Model.Elementos_viga;
+using ArmaduraLosaRevit.Model.Seleccionar;
+using Autodesk.Windows;
+using ArmaduraLosaRevit.Model.LosaEstructural.WPFp;
+//using ArmaduraLosaRevit.Model.AnalisisRoom;
+namespace ArmaduraLosaRevit.Model.BarraV.Automatico.WPFAuto
+{
+
+  //  [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+  //  [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
+    public class CMD_Ui_AutoElev : IExternalCommand
+    {
+        //double angle = 16.3;
+        //angle = 16.3;
+        //angulo -9.22 indica pelota de losa esta girada -9.22grados, despues se hace la conversion grado radian
+
+
+        /// <summary>
+        /// Implement this method as an external command for Revit.
+        /// </summary>
+        /// <param name="commandData">An object that is passed to the external application 
+        /// which contains data related to the command, 
+        /// such as the application object and active view.</param>
+        /// <param name="message">A message that can be set by the external application 
+        /// which will be displayed if a failure or cancellation is returned by 
+        /// the external command.</param>
+        /// <param name="elements">A set of elements to which the external application 
+        /// can add elements that are to be highlighted in case of failure or cancellation.</param>
+        /// <returns>Return the status of the external command. 
+        /// A result of Succeeded means that the API external method functioned as expected. 
+        /// Cancelled can be used to signify that the user cancelled the external operation 
+        /// at some point. Failure should be returned if the application is unable to proceed with 
+        /// the operation.</returns>
+        public Autodesk.Revit.UI.Result Execute(ExternalCommandData commandData, ref string message, Autodesk.Revit.DB.ElementSet elements)
+        {
+            //CreardorPelotaLosaEstructural CrearPelotaLosaEstructural = new CreardorPelotaLosaEstructural(commandData.Application);
+            // CrearPelotaLosaEstructural.Ejecutar();
+            //return Result.Succeeded;
+            Debug.Print("probando debug");
+
+            ManejadorWPF_AutoElev manejadorWPF_AutoElev = new ManejadorWPF_AutoElev(commandData);
+            return manejadorWPF_AutoElev.Execute();
+         
+        }
+
+
+    }
+
+
+
+
+
+
+}

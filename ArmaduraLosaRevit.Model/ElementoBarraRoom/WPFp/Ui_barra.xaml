@@ -1,0 +1,290 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="ArmaduraLosaRevit.Model.ElementoBarraRoom.WPFp.Ui_barra"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Editor PathReinforment" Height="600" Width="310" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+
+    Background="White"
+    Foreground="Gray" FontSize="12"
+    Name="DebugUtility" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico" ResizeMode="NoResize" Topmost="True">
+
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Diametro_">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:DiamtrosBarras_"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="TipoBarra">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:TipoBarraTraslapoDereArriba"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Ubicacion">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:UbicacionLosa"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+
+    <!--Closing="Window_Closing"-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+
+        </Grid.RowDefinitions>
+
+
+        <!-- MAIN TAB CONTROLS-->
+        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" />
+
+
+        <TabControl HorizontalAlignment="Left"  BorderBrush="{x:Null}" Background="{x:Null}"
+                   Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
+
+            <!-- inlcinadas-->
+            <TabItem x:Name="EditPAth"     >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="Inclinado" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid Width="285"  >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <GroupBox  x:Name="BarraIncliona" Grid.Row="0" Height="285" VerticalAlignment="Top"  Grid.RowSpan="2" Grid.Column="1" Header="Datos espesor fijo"  Margin="10,5,10,5"  >
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="61" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="5" />
+
+                            </Grid.ColumnDefinitions>
+
+
+                            <Image x:Name="f1_LosaInclinadaIzq_b" Grid.Row="1" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfIzqDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f1_LosaInclinadaDer_b" Grid.Row="1" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfDereDOWN.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image  x:Name="f1_LosaInclinadaInf_b" Grid.Row="1" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfInfDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image  x:Name="f1_LosaInclinadaSup_b" Grid.Row="1" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfSupDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+
+                            <Image x:Name="f1_LosaInclinadaIzq_b_ahorro" Grid.Row="3" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfIzqDOWN_ahorro.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f1_LosaInclinadaDer_b_ahorro" Grid.Row="3" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfDereDOWN_ahorro.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image  x:Name="f1_LosaInclinadaInf_b_ahorro" Grid.Row="3" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfInfDOWN_ahorro.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image  x:Name="f1_LosaInclinadaSup_b_ahorro" Grid.Row="3" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfSupDOWN_ahorro.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+
+                            <Image x:Name="f3_LosaInclinadaDer_b" Grid.Row="5" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscInfDerUP.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_LosaInclinadaInf_b" Grid.Row="5" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscInfInfUP.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f3_LosaInclinadaH_b_ahorro" Grid.Row="5" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscInfDerUPAhorro.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_LosaInclinadaV_b_ahorro" Grid.Row="5" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscInfInfUPAhorro.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f4_LosaInclinadaH_b" Grid.Row="7" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF4_Incli.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f4_LosaInclinadaV_b" Grid.Row="7" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF4_IncliV.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox  x:Name="BarraIncliona2" Grid.Row="1" Height="210" VerticalAlignment="Top"  Grid.RowSpan="2" Grid.Column="1" Header="Recorrido variable"  Margin="10,5,10,5"  >
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="15" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="f3_LosaInclinadaH_multiple_Sup" Grid.Row="1" Grid.ColumnSpan="2"  Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscIncli_H_continuo_Sup.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_LosaInclinadaH_multiple_inf" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1"  Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscIncli_H_continuo_Inf.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f3_LosaInclinadaV_multiple_sup" Grid.Row="1" Grid.RowSpan="5"  Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscIncli_V_continuo_Sup.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_LosaInclinadaV_multiple_Inf" Grid.Row="1" Grid.RowSpan="5" Grid.Column="5"  Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF3_EscIncli_V_continuo_Inf.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+
+                            <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="7" Orientation="Horizontal" VerticalAlignment="Center" >
+                                <Label  Grid.Column="1" Margin="0,0,5,0">Caso:</Label>
+                                <RadioButton Name="rbt_caso_manual" Margin="0,0,2,0" ToolTip="Seleccion punto mouse" VerticalAlignment="Center">Mouse</RadioButton>
+                                <RadioButton  Name="rbt_caso_intervalo" Margin="4,0,2,0"  IsChecked="True"  ToolTip="Ingresar intervalos" VerticalAlignment="Center">Intervalos</RadioButton>
+                            </StackPanel>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+            <!-- escalera-->
+            <TabItem x:Name="TbTest"   Margin="0,-2,-4,-2"  Padding="5,0,5,0">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Height="14" />
+                        <Label Content="Escalera" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid HorizontalAlignment="Left" Width="285" >
+                    <GroupBox  x:Name="edittipo"  Height="285" VerticalAlignment="Top"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos espesor fijo"  Margin="10,5,10,5"  >
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="10" />
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+
+                            </Grid.ColumnDefinitions>
+
+
+                            <Image x:Name="f1_EscInfIzq" Grid.Row="1" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/EscSupIzq2.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f1_EscInfDer" Grid.Row="1" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/EscSupDer2.png"  Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image  x:Name="f1_EscInfInf" Grid.Row="1" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/EscSupInf3.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image  x:Name="f1_EscInfSup" Grid.Row="1" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/EscSupSup.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f1_EscSupIzq" Grid.Row="2" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/EscInfIzq.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f1_EscSupDer" Grid.Row="2" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/EscInfDer2.png"  Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f1_EscSupInf" Grid.Row="2" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/EscInfInf.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f1_EscSupSup" Grid.Row="2" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/EscInfSup.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f3_EscSupIzq" Grid.Row="3" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfIzq.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_EscSupDer" Grid.Row="3" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfDer.png"  Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_EscSupInf" Grid.Row="3" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfInf.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_EscSUpSup"  Grid.Row="3" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfSup.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f3_EscInfIzq"  Grid.Row="4" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfIzqUP.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f3_EscInfDer"  Grid.Row="4" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfDerUP.png"  Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f3_EscInfInf"  Grid.Row="4" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfInfDown.png" Margin="1"  VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f3_EscInfSup"  Grid.Row="4" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/f3pata/f1_EscInfSupDown.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+            <!-- inlcinadas-->
+            <TabItem x:Name="LvbnosaVar">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="Espesor Var" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid Width="285"  >
+                    <GroupBox  x:Name="losaVare"  Height="285" VerticalAlignment="Top"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos espesor fijo"  Margin="10,5,10,5"  >
+
+                        <Grid Height="220">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="15" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="15" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image x:Name="f1_LosaInclinadaIzq_b2" Grid.Row="1" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfIzqDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="f1_LosaInclinadaDer_b2" Grid.Row="1" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfDereDOWN.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image  x:Name="f1_LosaInclinadaInf_b2" Grid.Row="1" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfInfDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image  x:Name="f1_LosaInclinadaSup_b2" Grid.Row="1" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF1_InfSupDOWN.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="s4_InclinadaIzq" Grid.Row="2" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/S4Inclinada/S4InfIzq.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                            <Image x:Name="s4_InclinadaDere" Grid.Row="2" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/S4Inclinada/S4InfDer.png"  Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="s4_InclinadaInf" Grid.Row="2" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/S4Inclinada/S4InfInf.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="s4_InclinadaSup" Grid.Row="2" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/S4Inclinada/S4InfSup.png" Margin="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                            <Image x:Name="f4_LosaEspesorVarH" Grid.Row="3" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF4_Incli.png"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+                            <Image x:Name="f4_LosaEspesorVarV" Grid.Row="3" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/FXinclinada/InclF4_IncliV.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp"  />
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+            <Label Content="Label" Height="100" Width="100"/>
+
+
+
+        </TabControl>
+
+
+
+    </Grid>
+</Window>

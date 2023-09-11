@@ -1,0 +1,276 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="ArmaduraLosaRevit.Model.EstadoDesarrollo.WPF.UI_EstadoDesarrollo"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Formato entrega" Height="800" Width="600" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+
+    Background="White"
+    Foreground="Gray" FontSize="12"
+    Name="Formato" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico">
+
+
+
+    <!-- https://stackoverflow.com/questions/6488408/wpf-check-list-box-->
+    <!--Closing="Window_Closing"-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="30" />
+            
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <!-- MAIN TAB CONTROLS-->
+        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" />
+
+       
+        <TabControl x:Name="tabnh"  BorderBrush="{x:Null}" Background="{x:Null}"  Grid.Column="0" Grid.Row="0"  >
+
+
+            <TabItem x:Name="tbDatos" IsSelected="True" BorderBrush="Black"  Margin="0,-2,-4,-2"  Padding="5,0,5,0">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Width="120" ToolTip="Elementos seleccionados que contengas parametro. TIPO DE ESTRUCTURA (VISTA)= '02_PLANTAS DE ESTRUCTURAS'  --> (ESTRUCTURA) " >
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Height="14" />
+                        <Label Content="{Binding Path=StringEstructuraView, Mode=TwoWay}"   BorderBrush="#FFACACAC" />
+                    </StackPanel>
+                </TabItem.Header>
+             
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="439*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox  x:Name="Datos" Grid.Row="0" Header="Datos"  Margin="10,5,10,5" Grid.ColumnSpan="2"  >
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="95" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition  Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="6">
+                                <Label  VerticalAlignment="Center">Parametro</Label>
+                                <TextBox Name="_nombreParametro_estruc" ToolTip="Busca las view que contengan este texto en su parametro ' TIPO DE ESTRUCTURA (VISTA)'" VerticalAlignment="Center" Width="300"  >ESTRUCTURA</TextBox>
+                                <Button Click="RecargarView" Margin="10,0,0,0" Height="25" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"> Actualizar</Button>
+                            </StackPanel>
+
+                            <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  VerticalContentAlignment="Bottom" ToolTip="Con ticket significa que vista esta terminada">Estado desarrollo Vista</Label>
+                            <CheckBox Name="SeleccionTodos" Grid.Row="2" Grid.Column="5"  VerticalAlignment="Bottom" Checked="SeleccionTodos_Checked" Unchecked="SeleccionTodos_Unchecked"  >Todos</CheckBox>
+                            <Button Name="GuardarInfo_estru" Grid.Row="4" Grid.Column="2"   Height="25" Click="BExternalMethod1_Click" Width="90"  HorizontalAlignment="Center" Content="Guardar Info"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                            <Button Name="Cerrar_estru" Grid.Row="4" Grid.Column="4"   Height="25"  Width="90"  HorizontalAlignment="Center" Content="Cerrar" Click="Cerrar_estruc_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                            <ListBox x:Name="listBox"  Grid.Column="1"  Grid.Row="3"  Grid.ColumnSpan="5" ItemsSource="{Binding ListaEstructura}" >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding IsTerminado,  Mode=TwoWay}" Content="{Binding NombreVista}" />
+                                            <!--  <TextBox Text="{Binding TextBoxValue}" /> -->
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+
+                            </ListBox>
+                         
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+                
+            </TabItem>
+
+            <TabItem x:Name="Editconfig"   BorderBrush="Black" Margin="0,-2,-4,-2"    Padding="5,0,5,0">
+             
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Width="120" ToolTip="Elementos seleccionados que contengas parametro. TIPO DE ESTRUCTURA (VISTA)= '03_PLANTAS ARMADURAS DE LOSAS'  --> (ARMADURAS) ">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="{Binding Path=StringLosaView, Mode=TwoWay}"  BorderBrush="#FFACACAC" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <GroupBox  x:Name="Datos_planta" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos"  Margin="10,5,10,5"  >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="95" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition  Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="6">
+                            <Label  VerticalAlignment="Center">Parametro</Label>
+                            <TextBox Name="_nombreParametro_armadu" ToolTip="Busca las view que contengan este texto en su parametro ' TIPO DE ESTRUCTURA (VISTA)'" VerticalAlignment="Center" Width="300"  >ARMADURAS</TextBox>
+                            <Button Click="RecargarView" Margin="10,0,0,0" Height="25"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Actualizar</Button>
+                        </StackPanel>
+
+                        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  VerticalContentAlignment="Bottom" ToolTip="Con ticket significa que vista esta terminada">Estado desarrollo Vista</Label>
+                        <CheckBox Name="SeleccionTodos_planta" Grid.Row="2" Grid.Column="5"  VerticalAlignment="Bottom" Checked="SeleccionTodos_planta_Checked" Unchecked="SeleccionTodos_planta_Unchecked" >Todos</CheckBox>
+                        <Button Name="GuardarInfo_losa" Grid.Row="4" Grid.Column="2"   Height="25" Click="BExternalMethod1_Click" Width="90"  HorizontalAlignment="Center" Content="Guardar Info"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <Button Name="Cerrar_losa" Grid.Row="4" Grid.Column="4"   Height="25"  Width="90"  HorizontalAlignment="Center" Content="Cerrar" Click="Cerrar_estruc_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <ListBox x:Name="listBox_planta" Grid.Row="3" Grid.Column="1"    Grid.ColumnSpan="5" ItemsSource="{Binding ListaLosa}" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsTerminado,  Mode=TwoWay}" Content="{Binding NombreVista}" />
+                                        <!--  <TextBox Text="{Binding TextBoxValue}" /> -->
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+
+            </TabItem>
+
+
+            <TabItem x:Name="EditPAth"   BorderBrush="Black" Margin="0,-2,-4,-2"    Padding="5,0,5,0">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Width="120" ToolTip="Elementos seleccionados que contengas parametro. TIPO DE ESTRUCTURA (VISTA)= '05_ARMADURA DE ELEVACION'  --> (ELEV) ">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="{Binding Path=StringElevView, Mode=TwoWay}"  BorderBrush="#FFACACAC" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <GroupBox  x:Name="Datos_elev" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos"  Margin="10,5,10,5"  >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="95" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition  Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="6">
+                            <Label  VerticalAlignment="Center">Parametro</Label>
+                            <TextBox Name="_nombreParametro_elev" ToolTip="Busca las view que contengan este texto en su parametro ' TIPO DE ESTRUCTURA (VISTA)'" VerticalAlignment="Center" Width="300"  >ELEV</TextBox>
+                            <Button Click="RecargarView" Margin="10,0,0,0" Height="25"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Actualizar</Button>
+                        </StackPanel>
+
+                        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  VerticalContentAlignment="Bottom" ToolTip="Con ticket significa que vista esta terminada">Estado desarrollo Vista</Label>
+                        <CheckBox Name="SeleccionTodos_elev" Grid.Row="2" Grid.Column="5"  VerticalAlignment="Bottom" Checked="SeleccionTodos_elev_Checked" Unchecked="SeleccionTodos_elev_Unchecked" >Todos</CheckBox>
+                        <Button Name="GuardarInfo_elev" Grid.Row="4" Grid.Column="2"   Height="25" Click="BExternalMethod1_Click" Width="90"  HorizontalAlignment="Center" Content="Guardar Info"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <Button Name="Cerrar_elev" Grid.Row="4" Grid.Column="4"   Height="25"  Width="90"  HorizontalAlignment="Center" Content="Cerrar" Click="Cerrar_estruc_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <ListBox x:Name="listBox_elev"  Grid.Row="3"   Grid.Column="1"  Grid.ColumnSpan="5" ItemsSource="{Binding ListaElev}" >
+                            <ListBox.ItemTemplate>
+                                <HierarchicalDataTemplate>
+                                    <CheckBox Content="{Binding NombreVista}" IsChecked="{Binding IsTerminado ,  Mode=TwoWay}"/>
+                                </HierarchicalDataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+
+            </TabItem>
+
+            <TabItem x:Name="casoSheet"   BorderBrush="Black" Margin="0,-2,-4,-2"    Padding="5,0,5,0">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Width="120" ToolTip="Elementos seleccionados que contengas parametro. TIPO DE ESTRUCTURA (VISTA)= '05_ARMADURA DE ELEVACION'  --> (ELEV) ">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="{Binding Path=StringSheetView, Mode=TwoWay}"   BorderBrush="#FFACACAC" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <GroupBox  x:Name="Datos_sheet" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos"  Margin="10,5,10,5"  >
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="5" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="95" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition  Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"  VerticalContentAlignment="Bottom" ToolTip="Con ticket significa que vista esta terminada">Estado desarrollo Vista</Label>
+                        <CheckBox Name="SeleccionTodos_sheet" Grid.Row="2" Grid.Column="5"  VerticalAlignment="Bottom" Checked="SeleccionTodos_Sheet_Checked" Unchecked="SeleccionTodos_sheet_Unchecked" >Todos</CheckBox>
+                        
+                        <Button Name="GuardarInfo_sheet" Grid.Row="4" Grid.Column="2"   Height="25" Click="BExternalMethod1_Click" Width="90"  HorizontalAlignment="Center" Content="Guardar Info"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <Button Name="Cerrar_sheet" Grid.Row="4" Grid.Column="4"   Height="25"  Width="90"  HorizontalAlignment="Center" Content="Cerrar" Click="Cerrar_estruc_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
+                        <ListBox x:Name="listBox_sheet"  Grid.Row="3"   Grid.Column="1"  Grid.ColumnSpan="5" ItemsSource="{Binding ListaSheet}" >
+                            <ListBox.ItemTemplate>
+                                <HierarchicalDataTemplate>
+                                    <CheckBox Content="{Binding NombreVista}" IsChecked="{Binding IsTerminado ,  Mode=TwoWay}"/>
+                                </HierarchicalDataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+
+            </TabItem>
+
+
+
+        </TabControl>
+        <Label  Grid.Row="1" Margin="20,0,0,0" Grid.Column="0" Grid.ColumnSpan="4" Content="{Binding Path=EstadoAvance, Mode=TwoWay}" ></Label>
+        <Label  Grid.Row="2" Margin="20,0,0,0" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding Path=StringTotalView, Mode=TwoWay}" ></Label>
+
+    </Grid>
+</Window>
+    

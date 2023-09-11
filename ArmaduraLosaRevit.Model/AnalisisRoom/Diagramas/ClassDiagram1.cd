@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.Utiles.RoomFuncionesPuntos">
+    <Position X="5.75" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAIAAEAAAAAAAEAAAAAAAAACAAAA=</HashCode>
+      <FileName>AnalisisRoom\Utiles\RoomFuncionesPuntos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.RoomsObj">
+    <Position X="1.25" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIKAAMoAAIgIAIEABQABQAARCAAACAAAAAAAIAAFEAA=</HashCode>
+      <FileName>AnalisisRoom\RoomsObj.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.Utiles.RoomFuncionesLine">
+    <Position X="13.25" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAEAAAAAABEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnalisisRoom\Utiles\RoomFuncionesLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoomHandler">
+    <Position X="0.75" Y="0.5" Width="4" />
+    <AssociationLine Name="ReferenciaRoomListas" Type="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoomListas">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.421" Y="0.99" Height="0.182" Width="1.653" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQIAAAEABAAKAAAAAAAAAAAAIAAECEAAAABCAAQAAAA=</HashCode>
+      <FileName>AnalisisRoom\ReferenciaRoomHandler.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ReferenciaRoomListas" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoomListas">
+    <Position X="5.25" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAABAAKAAAAAAAEAAIIAAAAAEAAAAACAAAQAEA=</HashCode>
+      <FileName>AnalisisRoom\ReferenciaRoomListas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoom">
+    <Position X="9.75" Y="0.5" Width="4.75" />
+    <AssociationLine Name="RefereciaRoomDatos" Type="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoomDatos">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.327" Y="-0.23" Height="0.182" Width="1.693" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAABAABAADACAgAEgAAAIICAQADwEAAAQEAECBAAA=</HashCode>
+      <FileName>AnalisisRoom\ReferenciaRoom.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RefereciaRoomDatos" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.ReferenciaRoomDatos">
+    <Position X="16.25" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AwIQBAAABQIgCBAAhMCRQDfgCAEABQAAhAEEgkAQAAA=</HashCode>
+      <FileName>AnalisisRoom\ReferenciaRoomDatos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.RoomFunciones">
+    <Position X="9.5" Y="6.75" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="ArmaduraLosaRevit.Model.AnalisisRoom.RoomFunciones.DepartmentInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AnalisisRoom\RoomFunciones.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AnalisisRoom\RoomFunciones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.AnalisisRoom.Tag.AgregarTagRoom">
+    <Position X="5" Y="5" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAEAAAAAAAAAACAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>AnalisisRoom\Tag\AgregarTagRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

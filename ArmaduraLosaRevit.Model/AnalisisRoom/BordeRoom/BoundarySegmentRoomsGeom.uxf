@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>868</x>
+      <y>511</y>
+      <w>287</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>BoundarySegmentRoomsGeom
+--
++Floor floor
++IList&lt;BoundarySegment&gt;
+     ListaBoundarySegmentInicial
++List&lt;WrapperBoundarySegment&gt;
+     ListaWrapperBoundarySegment 
++List&lt;XYZ&gt; ListaVerticesRoomActualizados
+--
+#List&lt;XYZ&gt;: Reordendar()
+
+--
+Responsibilities
+-- crear Lista WrapperBoundarySegment
+-- ordenar config
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>560</y>
+      <w>203</w>
+      <h>322</h>
+    </coordinates>
+    <panel_attributes>WrapperBoundarySegment
+--
++ObtenerRefereciasCercanas
+     obtenerRefereciasCercanas
++BoundarySegmentCoordenadas
+     coordenadasBorde
+
++Floor floor 
++Curve curveBoundarySegment
++string nameRoom
++BoundarySegment boundarySegment 
++double anguloGrado
++bool IsValid 
+
+Room rom1_crearSuple
+Room rom2_crearSuple
+
+--
+- cargando()
+- buscarVecinos()
+
++DibujarBarraRefuerzoBordeLibres()
++DibujarBarraRefuerzoTipoVigas()
+
++CrearPtosSuple()-&gt; para diseño auto
+
+--
+Responsibilities
+-- representan un borde de room
+-- obtniene geometria y vecinos
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1176</x>
+      <y>504</y>
+      <w>231</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Note..  los WrapperBoundarySegment se crean en 
+BoundarySegmentRoomsGeom y se almacenan en
+ListaWrapperBoundarySegment
+bg=yellow
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>749</y>
+      <w>105</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.
+bg=red
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>994</x>
+      <y>875</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Note.. metodos importa para 
+el diseño de barras,
+obtiene la configuracion y vecinos
+bg=yellow
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1141</x>
+      <y>756</y>
+      <w>63</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=1</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1435</x>
+      <y>371</y>
+      <w>455</w>
+      <h>371</h>
+    </coordinates>
+    <panel_attributes>ObtenerRefereciasCercanas
+--
+ -WrapperBoundarySegment boundarySegmentNH
+ + double espesorElemContiguo 
+ + ElementoContiguo elementoContiguo 
+ + Element neighbour
+ + Room roomNeighbour 
+ + bool IsSoloLineaSinVecinos
+
++ List&lt;BarraRefuerzoBordeLibre&gt; barraRefuerzoBordeLibres
++ BarraRefuerzoCabezaMuro barraRefuerzoCabezaMuros
++ List&lt;BarraRefuerzoEstribo&gt; barraRefuerzoTipoVigas
+--
++double GetElementIntersectingBordeRoom
+         (Element LineaSeparacion)
++double GetBordeRoom(Element LineaSeparacion)
++bool OBtenerRefrenciaMuroPerpendicularALinea
+    (View3D elem3d, XYZ ptoCentralBordeRoom, XYZ vectorPerpenBordeRoom)
++bool OBtenerRefrenciaAViga
+    (View3D elem3d, XYZ PtoCentralBordeRoom, XYZ VectorPerpenBordeRoom)
++bool OBtenerRefrenciaOpening
+    (View3D elem3d, XYZ PtoCentralBordeRoom, XYZ VectorPerpenBordeRoom, ref double espesor) 
++bool OBtenerRoomSeparationLines
+    (View3D elem3d, XYZ PtoCentralBordeRoom, XYZ VectorPerpenBordeRoom, ref double espesor)
++bool OBtenerRoomContiguoAmbosLados()
++ElementoContiguo OBtenerRoomContiguoExtRoom()
++bool OBtenerRoomContiguo
+    (View3D elem3d, XYZ PtoCentralBordeRoom, XYZ VectorPerpenBordeRoom)
++bool OBtenerRefrenciaMuro
+    (View3D elem3d, XYZ PtoCentralBordeRoom, XYZ VectorPerpenBordeRoom)
+--
+Responsibilities
+-- crear Lista WrapperBoundarySegment
+-- ordenar config
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1386</x>
+      <y>490</y>
+      <w>63</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;150.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1148</x>
+      <y>574</y>
+      <w>56</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>301</y>
+      <w>287</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>BoundarySegmentHandler
+--
++BoundarySegmentRoomsGeom newlistaBS 
+
++IList&lt;IList&lt;BoundarySegment&gt;&gt; boundaries 
+
+--
+
+--
+Responsibilities
+-- Manejar los datos de 1 room
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1190</x>
+      <y>259</y>
+      <w>462</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Note..
+se carga en:
+
+List&lt;BoundarySegmentHandler&gt; ListaRoomDatosGenerales(UIDocument uidoc, string tipoSelecion)
+
+en la clase class RoomFunciones. Se analiza los room y se genera la lista 
+ List&lt;BoundarySegmentHandler&gt; listaRoom = new List&lt;BoundarySegmentHandler&gt;();
+bg=yellow
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1141</x>
+      <y>294</y>
+      <w>63</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;60.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>987</x>
+      <y>476</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1435</x>
+      <y>749</y>
+      <w>252</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>ObtenerRefereciasCercanas
+--
++ XYZ startPont_offsetIntRoom
++ XYZ EndPoint_offseIntRoom 
++ XYZ pointIntersccion
++ XYZ StartPoint
++ XYZ EndPoint
+
++ XYZ StartPointSuples
++ XYZ EndPointSuples
+
++ double offSuperiorhaciaBajoLosa
++ double offInferiorHaciaArribaLos
+--
++void GetOffset(double offsetMoverbarra)
+--
+Responsibilities
+-- almacenar los datos del WrapperBoundarySegment
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1386</x>
+      <y>602</y>
+      <w>63</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>847</x>
+      <y>168</y>
+      <w>1064</w>
+      <h>812</h>
+    </coordinates>
+    <panel_attributes>BordeRoom
+--
+bg=orange
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>497</x>
+      <y>301</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>ReferenciaRoomHandler
+--
+-id: Long
+_-ClassAttribute: Long_
+--
++ void CrearBarrasInferiores()
++ void CrearSuples()
++ void LeerArchivoJson()
+
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>105</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>ManejadorBarraV
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>161</y>
+      <w>287</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>SeleccionarElementos
+--
+double _espesorMuro
+XYZ _PtoInicioSobrePLanodelMuro 
+--
+M1_1_CrearWorkPLane()
+M1_2_SeleccionarBordeMuro()
+M1_3_SeleccionarMuroElement()
+M1_4_BuscarPtoInicioBase()
+
+M2_OBtenerElementoREferencia() :MuroSeleccionadoDTO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>266</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>MuroSeleccionadoDTO
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>679</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>FactoryGenerarIntervalos
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>329</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>SelecionarPtoSup
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>574</y>
+      <w>273</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>IGenerarIntervalos
+--
+--
+List&lt;IntervaloBarrasDTO&gt; M1_ObtenerIntervaloBarrasDTO()
+List&lt;IbarraVertical&gt; M2_GenerarListaBarraVertical();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>658</y>
+      <w>161</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalosVariosNivel
+--
+List&lt;IntervaloBarrasDTO&gt; 
+M1_ObtenerIntervaloBarrasDTO()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>371</x>
+      <y>658</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalos2Nivel
+--
+List&lt;IntervaloBarrasDTO&gt; 
+M1_ObtenerIntervaloBarrasDTO()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>273</x>
+      <y>714</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalos3Nivel
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>448</x>
+      <y>714</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalos1Nivel
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>154</x>
+      <y>539</y>
+      <w>777</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>Note..
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>658</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalosSINNivel
+--
+List&lt;IntervaloBarrasDTO&gt; 
+M1_ObtenerIntervaloBarrasDTO()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>714</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>GenerarIntervalosSINNivel
+--
+id: Long="36548"
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>518</x>
+      <y>546</y>
+      <w>301</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>ABarrasV
+--
+--
+CalculosIniciales()
+DibujarBarraCurve()
+M5_ConfiguraEspaciamiento_SetLayoutAsNumberWithSpacing()
+M6_visualizar()
+DibujarTags()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1071</x>
+      <y>546</y>
+      <w>154</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>IIniciarConXTraslapo
+--
+List&lt;CoordenadasBarra&gt;
+      listaCoordenadasBarra
+--
+CalcularIntervalo();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1001</x>
+      <y>637</y>
+      <w>154</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>IniciarCon1Traslapo
+--
+List&lt;CoordenadasBarra&gt;
+      listaCoordenadasBarra
+--
+CalcularIntervalo();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>588</y>
+      <w>273</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>370.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1169</x>
+      <y>630</y>
+      <w>154</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>IniciarCon2Traslapo
+--
+List&lt;CoordenadasBarra&gt;
+      listaCoordenadasBarra
+--
+CalcularIntervalo();</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

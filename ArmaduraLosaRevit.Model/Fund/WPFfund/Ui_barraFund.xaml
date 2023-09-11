@@ -1,0 +1,351 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="ArmaduraLosaRevit.Model.Fund.WPFfund.Ui_barraFund"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Barra Fundaciones" Height="400" Width="300" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+
+    Background="White"
+    Foreground="Gray" FontSize="12"
+    Name="DebugUtility" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico"
+    ResizeMode="NoResize" Topmost="True" Loaded="DebugUtility_Loaded">
+
+    <!--<Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Diametro_">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:DiamtrosBarras_"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="TipoBarra">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:TipoBarraTraslapoDereArriba"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Ubicacion">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:UbicacionLosa"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>-->
+
+
+    <!--Closing="Window_Closing"-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="62*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+
+        </Grid.RowDefinitions>
+
+        <!-- MAIN TAB CONTROLS-->
+        <!--<Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" Grid.ColumnSpan="2" />-->
+
+
+        <!-- MAIN TAB CONTROLS-->
+        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Grid.ColumnSpan="3" />
+
+        <TabControl HorizontalAlignment="Left"  BorderBrush="{x:Null}" Background="{x:Null}"
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4">
+
+            <TabItem x:Name="EditPAth"     >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="Estandar" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid Width="285"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="49*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox  x:Name="BarraIncliona" Grid.Row="0" Header="Datos barra estandar"  Margin="10,5,10,5" Grid.ColumnSpan="2"  >
+
+                        <Grid Height="290">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="2*" />
+
+                                <ColumnDefinition Width="15" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" Content="Diamtro"/>
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="2" Content="Espacimiento"/>
+
+                            <ComboBox x:Name="dtDiaLong"  Text="8"  Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Height="20"  HorizontalContentAlignment="Left" IsEditable="True"  ItemsSource="{Binding ListaDiam}" Margin="0,2,46,2" DropDownClosed="dtDiaLong_DropDownClosed"    />
+
+                            <WrapPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
+                                <TextBox x:Name="espalong"  Margin="0,2,0,2"  Height="20" Width="40" TextAlignment="Center" Text="20" />
+                                <Label Content="cm"/>
+                            </WrapPanel>
+
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2" Content="Seleccion" />
+                            <ComboBox x:Name="checkBox_selec"  Text="Mouse"  Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Height="20" Width="80" HorizontalAlignment="Left"   >
+                                <ComboBoxItem IsSelected="True" Content="Mouse"/>
+                                <ComboBoxItem Content="Intervalo"  />
+                            </ComboBox>
+
+                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2" Content="Elemento" />
+                            <ComboBox x:Name="checkBox_Elemento"  Text="Fundacion"  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Height="20" Width="80" HorizontalAlignment="Left"   >
+                                <ComboBoxItem IsSelected="True" Content="Fundacion"/>
+                                <ComboBoxItem Content="Losa"  />
+                            </ComboBox>
+
+                            <TextBox x:Name="LargoPAtaIzq" Visibility="{Binding VisibilidalargoPAtaIzq, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Width="28" Text="25"   Height="23" VerticalAlignment="Top" ToolTip="NOTA: Largo de pata es el mayor de indicado en el recuadro y el correspondiente a su diametro" />
+                            <TextBox x:Name="LargoPAtaDere" Visibility="{Binding VisibilidalargoPAtaDere, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right" Width="28" TextAlignment="Center" Text="25" ToolTip="NOTA: Largo de pata es el mayor de indicado en el recuadro y el correspondiente a su diametro" />
+                            <Image x:Name="s1" Grid.Row="7"  Grid.RowSpan="4" Grid.Column="1"  Grid.ColumnSpan="3" Width="80" Height="80" VerticalAlignment="Top" 
+                                   Source="{Binding Imagen_barra, UpdateSourceTrigger=PropertyChanged}"    />
+
+
+                            <StackPanel Margin="5" Grid.Row="6" Grid.Column="5"   Grid.ColumnSpan="2"   Grid.RowSpan="5" >
+                                <RadioButton x:Name="check_sup" Height="20" Content="Superior" Click="check_sup_Click"/>
+                                <RadioButton x:Name="check_inf"  Height="20" IsChecked="True" Content="Inferior" Click="check_inf_Click" />
+
+                            </StackPanel>
+
+                            <Label Content="Tipo Seleccion" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="5" Grid.Row="8" Grid.ColumnSpan="3"/>
+                            <ComboBox x:Name="cbx_tiposeleccion"  Grid.Row="9"  Grid.Column="5" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Height="20" Width="77" DropDownClosed="cbx_tiposeleccion_DropDownClosed" >
+                                <ComboBoxItem IsSelected="True" Content="Auto"/>
+                                <ComboBoxItem Content="Izquierda" />
+                                <ComboBoxItem Content="Derecha"/>
+                                <ComboBoxItem Content="Ambos"/>
+                                <ComboBoxItem Content="Sin"/>
+                            </ComboBox>
+                            <StackPanel Visibility="{Binding VisibilidaBorde, UpdateSourceTrigger=PropertyChanged}"  Orientation="Vertical" Grid.Row="10"  Grid.Column="5">
+                                <Label ToolTip="Como definir la direccion de la barra">Dire Barras</Label>
+                                <ComboBox Name="comboboxborde" >
+                                    <ComboBoxItem Name="selecBorde" IsSelected="True"  ToolTip="Seleccionar el borde de algun elemento, para definir la direccion de la barra.NOTA: oprima F1 para ver video Ayuda" Content="Borde" KeyUp="ComboBoxItem_KeyUp"   />
+                                    <ComboBoxItem Name="selecPunto"  ToolTip="Con los puntos de selecion. Se recomienda usar una linea de referencia para obtener direccion de barra.NOTA: oprima F1 para ver video Ayuda " Content="Punto" KeyUp="ComboBoxItem_KeyUp" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="6" Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button x:Name="btnAceptar_Manual"  Click="BExternalMethod1_Click" Height="20" Width="65" Margin="15,0,5,0" Content="Crear" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"/>
+                                <Button x:Name="btnEditar_Manual"  Click="BExternalMethod1_Click" Height="20" Width="65" Margin="5,0,5,0" Content="Editar" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"/>
+                                <Button x:Name="btnBorrar_Manual"    Click="BExternalMethod1_Click" Height="20" Width="65" Margin="5,0,5,0" Content="Borrar" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem x:Name="EditAuto"     >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Height="13" />
+                        <Label Content="Rectangular" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid Width="285"  >
+                    <GroupBox  x:Name="FundAutomatico" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos barra estandar"  Margin="10,5,10,5"  >
+
+                        <Grid Height="250">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5" />
+
+                                <RowDefinition Height="18" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="15" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="23" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="20" />
+
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="92*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="91*" />
+
+                                <ColumnDefinition Width="Auto" />
+
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <StackPanel Orientation="Horizontal" Margin="1" Grid.Row="1" Grid.Column="2"   Grid.ColumnSpan="4"    
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                <RadioButton x:Name="check_supAuto" Height="20" Content="Superior" Margin="0,0,45,0" Click="check_supAuto_Click"/>
+                                <RadioButton x:Name="check_infAuto"  Height="20" IsChecked="True" Content="Inferior"  Click="check_supAuto_Click"/>
+
+                            </StackPanel>
+
+
+
+
+
+
+
+                            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,1,0">
+                                <TextBlock Text="Horizontal"/>
+                                <CheckBox Name="chbox_H_cuadra" IsChecked="True"  />
+                                <Image x:Name="rectaH" Grid.Row="7"   Width="20" Height="20" Margin="5,0,0,0"
+                                   Source="{Binding Imagen_barra_rectH, UpdateSourceTrigger=PropertyChanged}"    />
+                            </StackPanel>
+
+                            <Label Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="2" Content="Diamtro H"/>
+                            <Label Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2" Content="Espacimiento H"/>
+
+                            <ComboBox x:Name="dtDiaLong_HAUto"  Text="8"  Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Height="19"  HorizontalContentAlignment="Left" IsEditable="True"  ItemsSource="{Binding ListaDiam}" Margin="0,2,46,2"    />
+
+                            <WrapPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2">
+                                <TextBox x:Name="espalong_HAUto"  Margin="0,2,0,2"  Height="20" Width="40" TextAlignment="Center" Text="20" />
+                                <Label Content="cm"/>
+                            </WrapPanel>
+
+                            <!--swd-->
+
+
+                            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,1,0">
+                                <TextBlock Text="Vertical" />
+                                <CheckBox Name="chbox_V_cuadra" IsChecked="True"  />
+                                <Image x:Name="rectaV" Grid.Row="7"   Width="20" Height="20" Margin="5,0,0,0"
+                                   Source="{Binding Imagen_barra_rectV, UpdateSourceTrigger=PropertyChanged}"    />
+                            </StackPanel>
+                            <Label Grid.Row="7" Grid.ColumnSpan="2" Grid.Column="2" Content="Diamtro V"/>
+                            <Label Grid.Row="8" Grid.ColumnSpan="2" Grid.Column="2" Content="Espacimiento V"/>
+
+                            <ComboBox x:Name="dtDiaLong_VAUto"  Text="8"  Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" Height="19"  HorizontalContentAlignment="Left" IsEditable="True"  ItemsSource="{Binding ListaDiam}" Margin="0,2,46,2"    />
+
+                            <WrapPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="5" Grid.ColumnSpan="2">
+                                <TextBox x:Name="espalong_VAUto"  Margin="0,2,0,2"  Height="20" Width="40" TextAlignment="Center" Text="20" />
+                                <Label Content="cm"/>
+                            </WrapPanel>
+
+                            <Image x:Name="Cuad" Grid.Row="10"  Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="2"  Source="{Binding RutaImage}"  Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                            <Button x:Name="btnCreaRebar_Reactangular" Grid.Column="1"  Height="20" Grid.Row="11" ToolTip="Comando para fundaciones 'Muro'" Width="86" Grid.ColumnSpan="3" Content="Crear Rebar" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1"  Click="BExternalMethod1_Click" />
+                            <Button x:Name="btnCrearPath_Reactangular" Grid.Row="11" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" ToolTip="Comando para fundaciones 'Foundations Slab'" Height="20" Width="86" Content="Crear Path" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1" Click="BExternalMethod1_Click" ></Button>
+
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem x:Name="TbOpciones"   Margin="0,-2,-4,-2"  Padding="5,0,5,0">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Height="14" />
+                        <Label Content="Opcion" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid HorizontalAlignment="Left" Width="285" >
+                    <GroupBox  x:Name="edittipo" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="Datos espesor fijo"  Margin="10,5,10,5"  >
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="10" />
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <!--'boton para crear barra con rebar-->
+
+                            <StackPanel Orientation="Vertical"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3">
+                                <StackPanel Orientation="Horizontal"   Height="25" Margin="0,2,0,2" >
+                                    <Label>A</Label>
+                                    <TextBox Name="paraA_cm" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"   Height="25" Margin="0,2,0,2">
+                                    <Label ToolTip="Escribir 'mouse' para definir largo 'B' segun seleccion de mouse" >B</Label>
+                                    <TextBox Name="paraB_cm" Width="50" ToolTip="Escribir 'mouse' para definir largo 'B' segun seleccion de mouse" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"   Height="25" Margin="0,2,0,2">
+                                    <Label>C</Label>
+                                    <TextBox Name="paraC_cm" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Image Grid.Column="5"  Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="3" Source="/ArmaduraLosaRevit.Model;component/Resources/fundaciones/leader1.png" ></Image>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+
+            <!--<Label Content="Label" Height="100" Width="100"/>-->
+
+
+
+        </TabControl>
+
+    </Grid>
+</Window>

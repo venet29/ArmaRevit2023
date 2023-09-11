@@ -1,0 +1,942 @@
+1) --   Part Tags
+2) --   MEP Fabrication Hangers
+3) --   Pipe Insulation Tags
+4) --   Model Groups
+5) --   Analytical Floors
+  ---  --   Local Coordinate System
+6) --   Mechanical Equipment Tags
+7) --   Ramps
+  ---  --   Stringers
+  ---  --   Up Arrow
+  ---  --   Stringers Beyond Cut Line
+  ---  --   UP text
+  ---  --   Ramps Beyond Cut Line
+  ---  --   DOWN text
+  ---  --   Hidden Lines
+  ---  --   Down Arrow
+8) --   Cable Tray Fittings
+  ---  --   Center line
+9) --   Bridge Piers
+10) --   Foundation Span Direction Symbol
+11) --   Communication Device Tags
+12) --   Air Systems
+13) --   Analytical Wall Tags
+14) --   Structural Connections
+  ---  --   Shear Studs
+  ---  --   Anchors
+  ---  --   Symbol
+  ---  --   Bolts
+  ---  --   Reference
+  ---  --   Profiles
+  ---  --   Welds
+  ---  --   Plates
+  ---  --   Others
+  ---  --   Holes
+  ---  --   Hidden Lines
+  ---  --   Modifiers
+15) --   Planting
+  ---  --   Hidden Lines
+16) --   Ceiling Tags
+17) --   Annotation Crop Boundary
+18) --   Analytical Wall Foundations
+19) --   Furniture Tags
+20) --   Mass
+  ---  --   Pattern Lines
+  ---  --   Mass Interior Wall
+  ---  --   Mass Zone
+  ---  --   Pattern Fill
+  ---  --   Mass Roof
+  ---  --   Mass Exterior Wall
+  ---  --   Mass Floor
+  ---  --   Mass Glazing
+  ---  --   Mass Skylight
+  ---  --   Nodes
+  ---  --   Mass Opening
+  ---  --   Gridlines
+  ---  --   Hidden Lines
+  ---  --   Form
+  ---  --   Mass Shade
+21) --   Air Terminals
+22) --   Pipe Accessory Tags
+23) --   Security Device Tags
+24) --   Window Tags
+25) --   Stair Tread/Riser Numbers
+26) --   MEP Fabrication Ductwork Tags
+27) --   Communication Devices
+28) --   Piping Systems
+  ---  --   Reference Lines
+29) --   Panel Schedule Graphics
+30) --   Detail Item Tags
+31) --   Reference Lines
+32) --   MEP Fabrication Containment
+  ---  --   Center Line
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Symbology
+33) --   Analytical Spaces
+34) --   Plumbing Fixtures
+  ---  --   Hidden Lines
+35) --   Structural Framing Tags
+  ---  --   LINEA NUMERO VIGA
+36) --   System-Zones
+37) --   Ceilings
+  ---  --   Substrate [2]
+  ---  --   Finish 2 [5]
+  ---  --   Finish 1 [4]
+  ---  --   Common Edges
+  ---  --   Surface Pattern
+  ---  --   Cut Pattern
+  ---  --   Membrane Layer
+  ---  --   Thermal/Air Layer [3]
+  ---  --   Hidden Lines
+  ---  --   Structure [1]
+38) --   Section Boxes
+39) --   MEP Fabrication Ductwork
+  ---  --   Center Line
+  ---  --   Lining
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Symbology
+  ---  --   Insulation
+40) --   Bolt Tags
+41) --   Elevation Marks
+42) --   Data Device Tags
+43) --   Pipe Segments
+44) --   Anchor Tags
+45) --   Crop Boundaries
+46) --   Conduit Fittings
+  ---  --   Center line
+47) --   Sprinklers
+48) --   Doors
+  ---  --   Panel
+  ---  --   Architrave
+  ---  --   Frame/Mullion
+  ---  --   Glass
+  ---  --   Opening
+  ---  --   Overhead
+  ---  --   Elevation Swing
+  ---  --   Moulding/Architrave
+  ---  --   Opening Elevation
+  ---  --   Structural Opening
+  ---  --   Ironmongery
+  ---  --   Hidden Lines
+  ---  --   Plan Swing
+49) --   Lighting Fixture Tags
+50) --   Lighting Devices
+51) --   Assembly Tags
+52) --   Duct Tags
+53) --   RVT Links
+54) --   Curtain Systems
+  ---  --   Curtain System Grids
+  ---  --   Hidden Lines
+55) --   Mechanical Equipment Set Boundary Lines
+56) --   Structural Rebar Tags
+57) --   Parking
+  ---  --   Hidden Lines
+58) --   Ducts
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Center line
+59) --   Bridge Towers
+60) --   Door Tags
+  ---  --   Medium Line
+  ---  --   Thin Line
+  ---  --   North Line
+61) --   System-Zone Tags
+62) --   Internal Area Load Tags
+63) --   Revision Clouds
+64) --   Bridge Cables
+65) --   MEP Fabrication Hanger Tags
+66) --   Imports in Families
+  ---  --   TEXTOS
+  ---  --   VIGAS
+  ---  --   BARRAS
+  ---  --   CRUCES
+  ---  --   VENTANA
+  ---  --   rev1
+  ---  --   0
+  ---  --   EJES
+  ---  --   TEXTO
+  ---  --   COTAS
+  ---  --   DEFPOINTS
+  ---  --   CAJA
+  ---  --   CAJAP
+  ---  --   SECCION
+  ---  --   DIRECTRIZ
+67) --   Conduits
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Center line
+68) --   Multi-Category Tags
+69) --   Analytical Isolated Foundations
+70) --   Flex Pipes
+  ---  --   Center Line
+  ---  --   Pattern
+71) --   Property Line Segment Tags
+72) --   Curtain Panel Tags
+73) --   Analytical Links
+74) --   Structural Trusses
+  ---  --   Stick Symbols
+75) --   HVAC Zones
+  ---  --   Color Fill
+  ---  --   Boundary
+  ---  --   Reference Lines
+  ---  --   Interior Fill
+76) --   Schedules
+77) --   Mass Floor Tags
+78) --   Electrical Spare/Space Circuits
+79) --   Hole Tags
+80) --   Site
+  ---  --   Pads
+  ---  --   Survey Point
+  ---  --   Property Lines
+  ---  --   Internal Origin
+  ---  --   Project Base Point
+  ---  --   Property Line Segments
+  ---  --   Hidden Lines
+81) --   Analytical Columns
+  ---  --   Local Coordinate System
+  ---  --   Base Segment
+  ---  --   Top Segment
+82) --   Duct Systems
+  ---  --   Reference Lines
+83) --   Zone Tags
+84) --   Duct Placeholders
+85) --   Reference Planes
+86) --   Cable Tray Tags
+87) --   Multi-Rebar Annotations
+88) --   Matchline
+89) --   Specialty Equipment Tags
+90) --   Duct Accessories
+91) --   Duct Fitting Tags
+92) --   Furniture System Tags
+93) --   Callout Heads
+94) --   Furniture Systems
+  ---  --   Hidden Lines
+95) --   Telephone Devices
+96) --   Lines
+  ---  --   LINEA TABLA DE REVISIONES
+  ---  --   <Demolished>
+  ---  --   <Beyond>
+  ---  --   <Centerline>
+  ---  --   <Space Separation>
+  ---  --   LINEA DE CORTE
+  ---  --   Wide Lines
+  ---  --   <Area Boundary>
+  ---  --   PROYECCION FUNDACIONES
+  ---  --   DUDAS
+  ---  --   Lines
+  ---  --   BLANCO
+  ---  --   MAGENTA
+  ---  --   <Fabric Sheets>
+  ---  --   Path of Travel Lines
+  ---  --   ROJO
+  ---  --   PROYECCION ESCALONES
+  ---  --   LINEA VACIOS
+  ---  --   <Sketch>
+  ---  --   Barra
+  ---  --   Thin Lines
+  ---  --   PERIMETRO ESCALERA
+  ---  --   Insulation Batting Lines
+  ---  --   <Room Separation>
+  ---  --   <Hidden>
+  ---  --   <Overhead>
+  ---  --   <Fabric Envelope>
+  ---  --   Axis of Rotation
+  ---  --   Medium Lines
+  ---  --   Hidden Lines
+  ---  --   AMARILLO
+97) --   Wires
+  ---  --   Home Run Arrows
+  ---  --   Wire Tick Marks
+98) --   Pipes
+  ---  --   Center Line
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Hydraulic Separation Symbols
+99) --   Profile Tags
+100) --   Structural Stiffener Tags
+101) --   Topography
+  ---  --   Topography Links
+  ---  --   Boundary Point
+  ---  --   Triangulation Edges
+  ---  --   Interior Point
+  ---  --   Primary Contours
+  ---  --   Secondary Contours
+  ---  --   Hidden Lines
+102) --   Casework Tags
+103) --   Project Information
+104) --   Wall Tags
+105) --   Cable Tray Fitting Tags
+106) --   Structural Internal Loads
+  ---  --   Internal Line Loads
+  ---  --   Internal Point Loads
+  ---  --   Internal Area Loads
+107) --   Electrical Circuits
+108) --   Analysis Display Style
+109) --   Pipe Insulations
+110) --   Flex Ducts
+  ---  --   Center line
+  ---  --   Pattern
+111) --   Duct Insulation Tags
+112) --   Plate Tags
+113) --   Rebar Cover References
+114) --   Assemblies
+115) --   Structural Load Cases
+  ---  --   Snow Loads
+  ---  --   Roof Live Loads
+  ---  --   Wind Loads
+  ---  --   Dead Loads
+  ---  --   Accidental Loads
+  ---  --   Live Loads
+  ---  --   Seismic Loads
+  ---  --   Temperature Loads
+116) --   Stair Support Tags
+117) --   Structural Area Reinforcement
+  ---  --   Boundary
+118) --   Structural Truss Tags
+119) --   Analytical Slab Foundation Tags
+120) --   Plan Region
+121) --   Structural Framing
+  ---  --   Horizontal Bracing
+  ---  --   Kicker Bracing
+  ---  --   Rigid Links
+  ---  --   Web
+  ---  --   Girder
+  ---  --   Símbolos de barras
+  ---  --   Stick Symbols
+  ---  --   Other
+  ---  --   Joist
+  ---  --   Vertical Bracing
+  ---  --   Caras ocultas
+  ---  --   Chord
+  ---  --   Hidden Lines
+  ---  --   Location Lines
+  ---  --   Purlin
+  ---  --   Hidden Faces
+122) --   Mechanical Equipment Set Tags
+123) --   Electrical Fixtures
+  ---  --   Hidden Lines
+124) --   Air Terminal Tags
+125) --   Data Devices
+126) --   Structural Annotations
+127) --   Lighting Fixtures
+  ---  --   Light Source
+  ---  --   Hidden Lines
+128) --   Duct Insulations
+129) --   Span Direction Symbol
+130) --   Section Line
+  ---  --   Broken Section Line
+131) --   Cable Tray Runs
+132) --   Section Marks
+  ---  --   SEC. ROJO
+  ---  --   Wide Lines
+  ---  --   Thin Lines
+  ---  --   Medium Lines
+133) --   Pipe Color Fill
+134) --   Generic Models
+  ---  --   Overhead
+  ---  --   Opening Elevation
+  ---  --   Hidden Lines
+135) --   Lighting Device Tags
+136) --   Floor Tags
+  ---  --   CIRCULO PELOTA DE LOSAS
+  ---  --   LINEA PELOTA DE LOSAS
+137) --   Sprinkler Tags
+138) --   Analysis Results
+139) --   Scope Boxes
+140) --   Line Load Tags
+141) --   Render Regions
+142) --   Structural Path Reinforcement Symbols
+  ---  --   Rebar
+  ---  --   Barra
+143) --   Electrical Equipment
+  ---  --   Hidden Lines
+144) --   Stair Landing Tags
+145) --   MEP Fabrication Containment Tags
+146) --   Curtain Panels
+  ---  --   Glass
+  ---  --   Hidden Lines
+147) --   Fire Alarm Devices
+148) --   Analytical Braces
+  ---  --   Local Coordinate System
+  ---  --   Start Segment
+  ---  --   End Segment
+149) --   Bridge Arches
+150) --   Displacement Path
+151) --   Roads
+  ---  --   Hidden Lines
+152) --   Duct Lining Tags
+153) --   Floors
+  ---  --   Interior Edges
+  ---  --   Substrate [2]
+  ---  --   Finish 2 [5]
+  ---  --   Finish 1 [4]
+  ---  --   Common Edges
+  ---  --   Surface Pattern
+  ---  --   Slab Edges
+  ---  --   Cut Pattern
+  ---  --   Membrane Layer
+  ---  --   Thermal/Air Layer [3]
+  ---  --   Hidden Lines
+  ---  --   Structure [1]
+154) --   Flex Duct Tags
+155) --   Point Clouds
+156) --   Analytical Wall Foundation Tags
+157) --   Analytical Foundation Slabs
+  ---  --   Local Coordinate System
+158) --   Windows
+  ---  --   Frame/Mullion
+  ---  --   Glass
+  ---  --   Opening
+  ---  --   Overhead
+  ---  --   Elevation Swing
+  ---  --   Opening Elevation
+  ---  --   Sill/Head
+  ---  --   Hidden Lines
+  ---  --   Plan Swing
+159) --   Structural Area Reinforcement Tags
+160) --   Structural Path Reinforcement
+  ---  --   Boundary
+161) --   Stair Run Tags
+162) --   Rebar Shape
+163) --   Parts
+  ---  --   Hidden Lines
+164) --   Nurse Call Device Tags
+165) --   Columns
+  ---  --   Hidden Lines
+166) --   Area Load Tags
+167) --   Routing Preferences
+168) --   Generic Annotations
+  ---  --   LINEA VERDE
+  ---  --   NIVEL LOSA VAR.
+  ---  --   Centerline
+  ---  --   CIRCULO PELOTA LOSA
+  ---  --   AZUL C. CARGAS
+  ---  --   LINEA VACIOS
+  ---  --   LINEA PELOTA LOSA
+  ---  --   MAGENTA C. CARGAS
+169) --   Bridge Decks
+170) --   Area Tags
+171) --   Analytical Pipe Connections
+  ---  --   Connection Line Symbol
+172) --   View Reference
+173) --   VIGAS CUBIERTA.dwg
+  ---  --   a_COTA
+  ---  --   HS_Papira
+  ---  --   BL-VEX
+  ---  --   BL-REVESTIMIENTO
+  ---  --   1-PROYECCIONES
+  ---  --   BL-WIPEOUT
+  ---  --   BL-TABIQUE
+  ---  --   BL-CUBIERTA
+  ---  --   BL-MUEBLES
+  ---  --   BL-MURO
+  ---  --   HS_ALOCACIA
+  ---  --   BL-AUX
+  ---  --   BL-INSTALACIÓN
+  ---  --   BL-PUERTA
+  ---  --   1-MUEBLES
+  ---  --   BL-VEGETACIÓN
+  ---  --   BL-SIMBOLOGÍA BLOQUES
+  ---  --   BL-SUPERFICIE MUNICIPAL
+  ---  --   1-TABIQUES
+  ---  --   BL-SIMBOLOGÍA
+  ---  --   0
+  ---  --   BL-VENTANA
+  ---  --   BL-ARTEFACTOS
+  ---  --   Capa 1
+  ---  --   BL-FONDO
+  ---  --   Defpoints
+  ---  --   BL-TEXTO
+  ---  --   HS_Cyperus
+  ---  --   BL-PROYECCIÓN
+  ---  --   BL-COTA
+  ---  --   HS_WOODWARDIA RADICIANS
+  ---  --   HS_Helecho_paraguas
+  ---  --   BL-MURO BAJO
+  ---  --   elev-3
+  ---  --   BL-PISO
+  ---  --   BL-PAVIMENTO
+  ---  --   HS_Aralia_elata
+  ---  --   BL-HATCH
+174) --   Bridge Abutments
+175) --   Bridge Girders
+176) --   Filled region
+177) --   Analytical Column Tags
+178) --   Structural Fabric Reinforcement
+  ---  --   Boundary
+  ---  --   Fabric Wire
+179) --   Connection Symbols
+180) --   Conduit Fitting Tags
+181) --   Raster Images
+182) --   Structural Column Tags
+183) --   Analytical Beam Tags
+184) --   Adaptive Points
+  ---  --   Lines
+  ---  --   Planes
+  ---  --   Points
+185) --   Grid Heads
+  ---  --   CIRCULO EJE
+186) --   Sections
+187) --   Mechanical Equipment Sets
+188) --   Room Tags
+  ---  --   LineaCircunferencia
+  ---  --   lineaConFlecha
+  ---  --   LineaCentral
+189) --   Curtain Wall Mullions
+  ---  --   Hidden Lines
+190) --   Stair Tags
+191) --   Structural Loads
+  ---  --   Area Loads
+  ---  --   Point Loads
+  ---  --   Line Loads
+192) --   Revision Cloud Tags
+193) --   Walls
+  ---  --   Substrate [2]
+  ---  --   Finish 2 [5]
+  ---  --   Wall Sweep - Cornice
+  ---  --   Wall Sweep - Trim
+  ---  --   Finish 1 [4]
+  ---  --   Common Edges
+  ---  --   Surface Pattern
+  ---  --   Curtain Wall Grids
+  ---  --   Wall Sweeps
+  ---  --   Cut Pattern
+  ---  --   Membrane Layer
+  ---  --   Thermal/Air Layer [3]
+  ---  --   Hidden Lines
+  ---  --   Structure [1]
+194) --   Conduit Runs
+195) --   Duct Accessory Tags
+196) --   Spot Slopes
+197) --   Keynote Tags
+198) --   Space Tags
+199) --   Rebar Set Toggle
+200) --   Pipe Color Fill Legends
+201) --   Pipe Fittings
+  ---  --   Center line
+202) --   Structural Columns
+  ---  --   Rigid Links
+  ---  --   Stick Symbols
+  ---  --   Hidden Lines
+  ---  --   Location Lines
+  ---  --   Hidden Faces
+203) --   Pipe Placeholders
+204) --   Guide Grid
+205) --   Grids
+  ---  --   Multi-segmented Grid
+206) --   Fire Alarm Device Tags
+207) --   Planting Tags
+208) --   Callouts
+209) --   Schedule Graphics
+210) --   Electrical Fixture Tags
+211) --   Telephone Device Tags
+212) --   Structural Rebar Couplers
+  ---  --   Hidden Lines
+213) --   Cable Trays
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Center line
+214) --   Curtain System Tags
+215) --   Bridge Foundations
+216) --   Structural Stiffeners
+  ---  --   Hidden Lines
+217) --   Entourage
+  ---  --   Hidden Lines
+218) --   MEP Fabrication Pipework
+  ---  --   Center Line
+  ---  --   Drop
+  ---  --   Rise
+  ---  --   Symbology
+  ---  --   Insulation
+219) --   Bridge Bearings
+220) --   Internal Line Load Tags
+221) --   Structural Fabric Reinforcement Symbols
+  ---  --   Major Direction
+  ---  --   Minor Direction
+222) --   Mass Tags
+223) --   Zone Equipment
+224) --   Analytical Node Tags
+225) --   Property Tags
+226) --   Structural Path Reinforcement Tags
+227) --   Water Loops
+228) --   ARQ - Planta Nivel 1.dwg
+  ---  --   Techos
+  ---  --   ASCENSOR_dwg
+  ---  --   Rejillas
+  ---  --   MALLA
+  ---  --   HS_Papira
+  ---  --   Muros
+  ---  --   Ottoman
+  ---  --   Flechas arriba
+  ---  --   CMALLA
+  ---  --   TEXTOS
+  ---  --   Secciones
+  ---  --   Panel
+  ---  --   BL - PROYECCION MEDIA
+  ---  --   _Proyección_ líneas de contrahuella
+  ---  --   Etiquetas de nube de revisión
+  ---  --   Etiquetas de habitación
+  ---  --   Linea Segmentada Proyecciones
+  ---  --   ESTRIBO
+  ---  --   CMALLA_V
+  ---  --   VESTRIBO_E
+  ---  --   1-PROYECCIONES
+  ---  --   Pilares
+  ---  --   Llamadas
+  ---  --   Mobiliario
+  ---  --   Pilares estructurales
+  ---  --   Cotas de pendiente
+  ---  --   RANGOS
+  ---  --   VIGAS
+  ---  --   BARRAS
+  ---  --   _Proyección_ líneas de mamperlán
+  ---  --   BL-TABIQUE
+  ---  --   CRUCES
+  ---  --   LOTEO
+  ---  --   VIÑETA 3
+  ---  --   Marco_montante
+  ---  --   Barandillas
+  ---  --   Emplazamiento
+  ---  --   Topografía
+  ---  --   HS_ALOCACIA
+  ---  --   Centerline-100
+  ---  --   RELLENO
+  ---  --   Bordes comunes
+  ---  --   REFUERZOS
+  ---  --   Cotas-100
+  ---  --   1_PUERTA
+  ---  --   Nubes de revisión
+  ---  --   Montantes de muro cortina
+  ---  --   Cotas
+  ---  --   Muebles de obra
+  ---  --   salvaescalera_dwg
+  ---  --   Contornos
+  ---  --   BL - LINEA EDIFICACION
+  ---  --   Líneas de contrahuella
+  ---  --   BL-VEGETACIÓN
+  ---  --   ARRANQUES
+  ---  --   PENDIENTES
+  ---  --   INVERTIDO
+  ---  --   Cotas de elevación
+  ---  --   VIÑETA 1
+  ---  --   1-TABIQUES
+  ---  --   Etiquetas de ventana
+  ---  --   0
+  ---  --   Títulos de vista
+  ---  --   Elementos de detalle
+  ---  --   Líneas anchas
+  ---  --   Aparatos sanitarios
+  ---  --   Patrón de corte
+  ---  --   EJES
+  ---  --   Modelos genéricos
+  ---  --   Ventanas
+  ---  --   Notas de texto
+  ---  --   Armazón estructural
+  ---  --   Marcas de corte
+  ---  --   Hueco
+  ---  --   teñido
+  ---  --   Etiquetas de puerta
+  ---  --   Cuadros de rotulación
+  ---  --   25
+  ---  --   TEXTO
+  ---  --   Líneas de mamperlán
+  ---  --   ALBAÑILERIA
+  ---  --   Patrón de superficie
+  ---  --   Steelcase Furniture
+  ---  --   Defpoints
+  ---  --   HS_Cyperus
+  ---  --   SHAFT
+  ---  --   Ironmongery
+  ---  --   Líneas finas
+  ---  --   TITULO
+  ---  --   AUXILIAR
+  ---  --   BIBLIOTECA
+  ---  --   CLOSET ECOLÓGICO_dwg
+  ---  --   Suelos
+  ---  --   Líneas ocultas
+  ---  --   Puertas
+  ---  --   Plataformas
+  ---  --   Drawing1_dwg
+  ---  --   Alzados
+  ---  --   Chair
+  ---  --   _Proyección_ contornos
+  ---  --   CAJA
+  ---  --   HS_WOODWARDIA RADICIANS
+  ---  --   PROYECCION ESCALERA
+  ---  --   VIÑETA 2
+  ---  --   FUNDACIONES
+  ---  --   Bar Stool Frame 2D
+  ---  --   Entorno
+  ---  --   Equipos especializados
+  ---  --   HS_Helecho_paraguas
+  ---  --   CAJAP
+  ---  --   BL-PISO
+  ---  --   CMALLA_H
+  ---  --   Números de huella_contrahuella de escalera
+  ---  --   Vegetación
+  ---  --   REF LOSA
+  ---  --   HS_Aralia_elata
+  ---  --   ARTF
+  ---  --   Gráficos de tabla de planificación
+  ---  --   SECCION
+  ---  --   VESTRIBO
+  ---  --   Plan Swing
+  ---  --   Curvas de nivel principales
+229) --   Callout Boundary
+  ---  --   Callout Leader Line
+230) --   Structural Area Reinforcement Symbols
+  ---  --   Rebar
+231) --   Contour Labels
+232) --   Nurse Call Devices
+233) --   Areas
+  ---  --   Color Fill
+  ---  --   Reference
+  ---  --   Interior Fill
+234) --   Materials
+235) --   Roofs
+  ---  --   Interior Edges
+  ---  --   Substrate [2]
+  ---  --   Roof Soffits
+  ---  --   Finish 2 [5]
+  ---  --   Curtain Roof Grids
+  ---  --   Finish 1 [4]
+  ---  --   Common Edges
+  ---  --   Surface Pattern
+  ---  --   Fascias
+  ---  --   Cut Pattern
+  ---  --   Gutters
+  ---  --   Membrane Layer
+  ---  --   Thermal/Air Layer [3]
+  ---  --   Hidden Lines
+  ---  --   Structure [1]
+236) --   Structural Fabric Areas
+  ---  --   Boundary
+237) --   Structural Rebar
+  ---  --   Hidden Lines
+238) --   Reference Points
+  ---  --   Lines
+  ---  --   Planes
+  ---  --   Points
+239) --   Shaft Openings
+  ---  --   Hidden Lines
+240) --   Spot Elevation Symbols
+  ---  --   NIVEL LOSA
+241) --   Internal Point Load Tags
+242) --   Analytical Isolated Foundation Tags
+243) --   Flex Pipe Tags
+244) --   Duct Fittings
+  ---  --   Center line
+245) --   Cameras
+246) --   Elevations
+247) --   Specialty Equipment
+  ---  --   Hidden Lines
+248) --   Analytical Floor Tags
+249) --   Pipe Accessories
+250) --   Structural Connection Tags
+251) --   Masking Region
+252) --   Structural Rebar Coupler Tags
+253) --   Structural Foundations
+  ---  --   Hidden Lines
+254) --   Level Heads
+255) --   Duct Color Fill Legends
+256) --   Analytical Beams
+  ---  --   Local Coordinate System
+  ---  --   Start Segment
+  ---  --   End Segment
+257) --   Curtain Grids
+258) --   Path of Travel Tags
+259) --   Levels
+260) --   Brace in Plan View Symbols
+261) --   Railing Tags
+262) --   Structural Foundation Tags
+263) --   Wire Tags
+264) --   Security Devices
+265) --   Site Tags
+266) --   Pipe Tags
+267) --   Weld Tags
+268) --   TOPOGRAFIA.dwg
+  ---  --   a_COTA
+  ---  --   HS_Papira
+  ---  --   BL-BARANDA
+  ---  --   TEXTOS
+  ---  --   BL-REVESTIMIENTO
+  ---  --   Muros edificio
+  ---  --   1-PROYECCIONES
+  ---  --   BL-MUEBLE
+  ---  --   BL-WIPEOUT
+  ---  --   ORIGINAL-SOLERA
+  ---  --   BL-ARTEFACTOS SANITARIOS
+  ---  --   BL-TABIQUE
+  ---  --   BL-MUEBLES
+  ---  --   BL-EJE CALLE
+  ---  --   BL-MURO
+  ---  --   HS_ALOCACIA
+  ---  --   BL-AUX
+  ---  --   SOLERA
+  ---  --   BL-INSTALACIÓN
+  ---  --   1-MUROS
+  ---  --   ne_grid
+  ---  --   1-PUERTAS
+  ---  --   LINEA OFICIAL
+  ---  --   BL-EJE
+  ---  --   cerco existente
+  ---  --   COTA-DESLINDE
+  ---  --   BL-PUERTA
+  ---  --   1-MUEBLES
+  ---  --   BL-VEGETACIÓN
+  ---  --   BL-SOLERAS
+  ---  --   BL-SIMBOLOGÍA BLOQUES
+  ---  --   1-TABIQUES
+  ---  --   BL-SIMBOLOGÍA
+  ---  --   0
+  ---  --   G
+  ---  --   R
+  ---  --   BL-VENTANA
+  ---  --   BL-CORTE
+  ---  --   BL-ARTEFACTOS
+  ---  --   aguas s
+  ---  --   BL textos
+  ---  --   MUEBLE
+  ---  --   1-ARTEFACTOS
+  ---  --   veredas
+  ---  --   TEXTO
+  ---  --   BL-FONDO
+  ---  --   FR-Sitios
+  ---  --   rotulo
+  ---  --   Defpoints
+  ---  --   BL-TEXTO
+  ---  --   COTAS
+  ---  --   HS_Cyperus
+  ---  --   CONT-MNR
+  ---  --   CONT-MJR
+  ---  --   BL-PROYECCIÓN
+  ---  --   BL-COTA
+  ---  --   HS_WOODWARDIA RADICIANS
+  ---  --   HS_Helecho_paraguas
+  ---  --   BL-MURO BAJO
+  ---  --   BL-PISO
+  ---  --   BL-PAVIMENTO
+  ---  --   HS_Aralia_elata
+  ---  --   BL-HATCH
+269) --   Analytical Link Tags
+270) --   Spot Coordinates
+271) --   Railings
+  ---  --   Terminations
+  ---  --   <Above> Handrails
+  ---  --   Balusters
+  ---  --   Top Rails
+  ---  --   <Above> Railings Cut Line
+  ---  --   <Above> Top Rails
+  ---  --   Rails
+  ---  --   Supports
+  ---  --   Handrails
+  ---  --   Hidden Lines
+272) --   Viewports
+273) --   Title Blocks
+  ---  --   FORMATO ROJO
+  ---  --   FORMATO MAGENTA
+  ---  --   Wide Lines
+  ---  --   FORMATO GRIS
+  ---  --   Thin Lines
+  ---  --   Medium Lines
+274) --   Shear Stud Tags
+275) --   Plumbing Fixture Tags
+276) --   Pipe Fitting Tags
+277) --   Duct Color Fill
+278) --   Stair Paths
+  ---  --   UP Text
+  ---  --   DOWN Text
+  ---  --   Down Arrows
+  ---  --   <Above> Up Arrows
+  ---  --   Up Arrows
+279) --   MEP Fabrication Pipework Tags
+280) --   Duct Linings
+281) --   Structural Beam Systems
+282) --   Roof Tags
+283) --   Views
+284) --   Sheets
+285) --   Casework
+  ---  --   Hidden Lines
+286) --   Conduit Tags
+287) --   Point Load Tags
+288) --   Analytical Surfaces
+  ---  --   Operable Skylights
+  ---  --   Operable Windows
+  ---  --   Underground Walls
+  ---  --   Ceilings
+  ---  --   Exterior Walls
+  ---  --   Sliding Doors
+  ---  --   Underground Ceilings
+  ---  --   Underground Slabs
+  ---  --   Interior Floors
+  ---  --   Fixed Windows
+  ---  --   Air Openings
+  ---  --   Roofs
+  ---  --   Raised Floors
+  ---  --   Fixed Skylights
+  ---  --   Slabs on Grade
+  ---  --   Shades
+  ---  --   Air Surfaces
+  ---  --   Interior Walls
+  ---  --   Non-sliding Doors
+289) --   Structural Fabric Reinforcement Tags
+290) --   Material Tags
+291) --   View Titles
+  ---  --   LINEA NIVEL TITULO VISTA
+  ---  --   LINEA MAGENTA
+  ---  --   TITULO MAGENTA
+292) --   Mechanical Equipment
+  ---  --   Hidden Lines
+293) --   Parking Tags
+294) --   Structural Beam System Tags
+295) --   Analytical Brace Tags
+296) --   Electrical Equipment Tags
+297) --   Generic Model Tags
+298) --   Switch System
+299) --   Furniture
+  ---  --   Overhead Lines
+  ---  --   Hidden Lines
+300) --   Rooms
+  ---  --   Color Fill
+  ---  --   Reference
+  ---  --   Interior Fill
+301) --   Coordination Model
+302) --   Analytical Walls
+  ---  --   Local Coordinate System
+303) --   Stairs
+  ---  --   Outlines
+  ---  --   Cut Marks
+  ---  --   <Above> Outlines
+  ---  --   Nosing Lines
+  ---  --   Riser Lines
+  ---  --   Treads/Risers
+  ---  --   Supports
+  ---  --   Landings
+  ---  --   <Above> Nosing Lines
+  ---  --   Runs
+  ---  --   <Above> Supports
+  ---  --   <Above> Cut Marks
+  ---  --   <Above> Riser Lines
+  ---  --   Hidden Lines
+304) --   Text Notes
+305) --   Detail Items
+  ---  --   GRIS
+  ---  --   LINEA VERDE
+  ---  --   LINEA CORTE ESC.
+  ---  --   Heavy Lines
+  ---  --   LINEA CORTE ESC. SEGMENT.
+  ---  --   Medium Lines
+  ---  --   Hidden Lines
+  ---  --   Light Lines
+306) --   Spot Elevations
+307) --   Analytical Nodes
+308) --   Boundary Conditions
+309) --   Color Fill Legends
+310) --   Spaces
+  ---  --   Color Fill
+  ---  --   Reference
+  ---  --   Interior
+311) --   Dimensions
+  ---  --   Automatic Sketch Dimensions

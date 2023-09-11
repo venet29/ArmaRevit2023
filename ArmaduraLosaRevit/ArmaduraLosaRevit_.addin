@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Appform</Name>
+    <Assembly>J:\_revit\PROYECTOS_REVIT\REVITArmaduraLosaRevit\ArmaduraLosaRevit_2020\ArmaduraLosaRevit\bin\Debug\ArmaduraLosaRevit1.0000.dll</Assembly>
+    <ClientId>4dbfbbbf-ab2a-46df-89aa-e96e2601723a</ClientId>
+    <FullClassName>ArmaduraLosaRevit.WpfIni.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

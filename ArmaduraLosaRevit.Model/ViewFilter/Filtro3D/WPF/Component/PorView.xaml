@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="ArmaduraLosaRevit.Model.ViewFilter.Filtro3D.WPF.Component.PorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArmaduraLosaRevit.Model.ViewFilter.Filtro3D.WPF.Component"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="NombrePorView">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" ></ColumnDefinition>
+            <ColumnDefinition Width="1.5*" ></ColumnDefinition>
+            <!--<ColumnDefinition Width="1*" ></ColumnDefinition>-->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="5" />
+
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" >
+            <StackPanel >
+                <Label Name="lblElev" FontWeight="Bold" MouseDown="Cambiar">Elevacion:</Label>
+
+                <ListBox ItemsSource="{Binding ListaTipoElev}"  BorderThickness="0" Height="300" 
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="14">
+                                <CheckBox  IsChecked="{Binding Path=IsVisible, Mode=TwoWay}"></CheckBox>
+                                <TextBlock Width="150" Text= "{Binding Path=Nombre}" Margin="5,0,0,0"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+
+        </GroupBox>
+
+
+        <GroupBox Grid.Row="1" Grid.Column="1" >
+            <StackPanel >
+                <Label Name="lblLosa"  FontWeight="Bold"  MouseDown="Cambiar">Losa :</Label>
+
+                <ListBox ItemsSource="{Binding ListaTipoLosa}"  BorderThickness="0" Height="300"  
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="14">
+                                <CheckBox  IsChecked="{Binding Path=IsVisible, Mode=TwoWay}"></CheckBox>
+                                <TextBlock   Width="2000" Text= "{Binding Path=Nombre}" Margin="5,0,0,0"></TextBlock>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+
+        </GroupBox>
+
+        <!--<GroupBox Grid.Row="1" Grid.Column="2" >
+            <StackPanel >
+                <Label Name="lblFund"  FontWeight="Bold"  MouseDown="Cambiar">Fundacion :</Label>
+
+                <ListBox ItemsSource="{Binding ListaTipoFund}"  BorderThickness="0" Height="300" 
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"   ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="14">
+                                <CheckBox  IsChecked="{Binding Path=IsVisible, Mode=TwoWay}" ></CheckBox>
+                                <TextBlock Width="150" Text= "{Binding Path=Nombre}" Margin="5,0,0,0"></TextBlock>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+
+        </GroupBox>-->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" >
+            <Button Name="btn_TipoView_" Width="50" Height="30" Click="Btn_Tipo_Click" Margin="0,0,5,0"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Aplicar</Button>
+            <Button Name="btn_BorrarTipoView_" Width="50"  Height="30" Click="Btn_Tipo_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Borrar</Button>
+            <!--<Button Name="btn_Borrar2TipoView_" Width="50"  Height="30" Click="msje">Borrar</Button>
+            <TextBox Text="{Binding myGridSize, ElementName=NombrePorView}"  Width="50"> </TextBox>-->
+        </StackPanel>
+    </Grid>
+
+</UserControl>

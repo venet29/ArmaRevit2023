@@ -1,0 +1,2 @@
+﻿formula para peso en revit
+(Bar Diameter / 1.273 cm) ^ 2 * Bar Length / 100 cm * Quantity

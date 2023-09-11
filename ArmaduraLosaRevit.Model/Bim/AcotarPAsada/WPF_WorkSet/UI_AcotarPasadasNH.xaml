@@ -1,0 +1,113 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="ArmaduraLosaRevit.Model.Bim.AcotarPAsada.WPF_Pasada.UI_AcotarPasadasNH"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Acotar Pasadas" Height="400" Width="400" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+    ResizeMode="NoResize"
+    Background="White"
+    Foreground="Gray" FontSize="12"
+    Name="DebugUtility" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico">
+
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Diametro_">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:DiamtrosBarras_"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="TipoBarra">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:TipoBarraTraslapoDereArriba"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Ubicacion">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:UbicacionLosa"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+
+
+    <GroupBox Margin="5">
+        <!--Closing="Window_Closing"-->
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="1*" />
+
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!-- MAIN TAB CONTROLS-->
+            <!--<Border BorderBrush="#FFACACAC"  Grid.ColumnSpan="5"  BorderThickness="1" Height="1" VerticalAlignment="Top" Margin="0,0,0,0" />-->
+            <Button Name="btn_CrearIndividual" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Height="30"  BorderBrush="#FFB2B2B2" Background="#FFE1E1E1" Click="BExternalMethod1_Click" >Crear Individual</Button>
+            <Button Name="btn_CrearMultiples" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Height="30"  BorderBrush="#FFB2B2B2" Background="#FFE1E1E1" Click="BExternalMethod1_Click" >Crear Multiples</Button>
+
+            <ComboBox Name="cbx_CrearMultiplo" Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="9"  Height="30" Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <ComboBoxItem IsSelected="True" ToolTip="Las dimensiones las dibuja segun las configuraciones de las pasadas vecinas">Automatico</ComboBoxItem>
+                <ComboBoxItem ToolTip="Selecciona la configuracion segun usuario">Segun Usuario</ComboBoxItem>
+            </ComboBox>
+                
+            <Button Name="btn_CrearBorrar" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" Height="30"  BorderBrush="#FFB2B2B2" Background="#FFE1E1E1" Click="BExternalMethod1_Click" FontWeight="Bold">Borrar</Button>
+
+            <Button Name="btn_Cerrar" Grid.Row="11" Grid.Column="7" Grid.ColumnSpan="3" Height="30" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1"  Click="BExternalMethod1_Click" FontWeight="Bold" Margin="0,0,3,0">Cerrar</Button>
+
+
+            <!--Arriba-->
+
+            <Button Name="Arriba_DereSup" Grid.Column="9"  Grid.Row="2"  Content="*" Height="25" Width="25"  HorizontalAlignment="Center"  Foreground="Red" Click="Arriba_DereSup_Click"  />
+            <Button Name="Arriba_central" Grid.Column="7"  Grid.Row="2"  Grid.ColumnSpan="2"  Content="-" Height="25" Width="50"  HorizontalAlignment="Center"   Foreground="Red" />
+            <Button Name="Arriba_izqInf" Grid.Column="6" Grid.Row="2" Content="*" Height="25" Width="25"  HorizontalAlignment="Center" Foreground="Red" Click="Arriba_izqInf_Click"  />
+            <!--IZq-->
+            <Button Name="Izq_DereSup"  Grid.Column="5" Grid.Row="3" Height="25" Width="25"  HorizontalAlignment="Center"  Content="*" Foreground="Red" Click="Izq_DereSup_Click"  />
+            <Button Name="Izq_central" Grid.Column="5"  Grid.Row="4"  Grid.RowSpan="2"  Content="|" Height="50" Width="25"  HorizontalAlignment="Center"  Foreground="Red"  />
+            <Button Name="Izq_izqInf" Grid.Column="5"  Grid.Row="6"  Content="*" Height="25" Width="25"  HorizontalAlignment="Center"  Foreground="Red" Click="Izq_izqInf_Click_1"/>
+
+            <!--inferior-->
+            <Button Name="Bajo_DereSup" Grid.Column="9"  Grid.Row="7"  Content="*" Height="25" Width="25"  HorizontalAlignment="Center"  Foreground="Red" Click="Bajo_DereSup_Click"  />
+            <Button Name="Bajo_central" Grid.Column="7"  Grid.Row="7"  Grid.ColumnSpan="2"  Content="-" Height="25" Width="50"  HorizontalAlignment="Center"   Foreground="Red" />
+            <Button Name="Bajo_izqInf" Grid.Column="6" Grid.Row="7" Content="*" Height="25" Width="25"  HorizontalAlignment="Center"  Foreground="Red" Click="Bajo_izqInf_Click"  />
+
+
+            <!--derecho-->
+            <Button Name="Dere_DereSup"  Grid.Column="10" Grid.Row="3" Height="25" Width="25"  HorizontalAlignment="Center"  Content="*"  Foreground="Red" Click="Dere_DereSup_Click" />
+            <Button Name="Dere_central" Grid.Column="10"  Grid.Row="4"  Grid.RowSpan="2"  Content="|" Height="50" Width="25"  HorizontalAlignment="Center"   Foreground="Red" />
+            <Button Name="Dere_izqInf" Grid.Column="10"  Grid.Row="6"  Content="*" Height="25" Width="25"  HorizontalAlignment="Center"  Foreground="Red" Click="Dere_izqInf_Click"  />
+
+            <Image x:Name="f3_LosaInclinadaDer_b" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="4"  Grid.RowSpan="4"   Source="/ArmaduraLosaRevit.Model;component/Resources/Pasada/pasada.png"  Margin="15" VerticalAlignment="Center" HorizontalAlignment="Center"   />
+        </Grid>
+    </GroupBox>
+
+</Window>
+    

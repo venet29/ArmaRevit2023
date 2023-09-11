@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ArmaduraLosaRevit.Model.Visibilidad.ManejadorVisibilidad">
+    <Position X="0.5" Y="0.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAEAEAAQAAAACAQAAACAKCAAAAACAA=</HashCode>
+      <FileName>Visibilidad\ManejadorVisibilidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.Visibilidad.VisibilidadElement">
+    <Position X="6.25" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAgACAAAAAAAAAYgBAAAgAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Visibilidad\VisibilidadElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ArmaduraLosaRevit.Model.Seleccionar.SeleccionarPathReinfomentRectangulo">
+    <Position X="6.25" Y="3.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEABAAAAAEAAgAAAAAAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Seleccionar\SeleccionarPathReinfomentRectangulo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

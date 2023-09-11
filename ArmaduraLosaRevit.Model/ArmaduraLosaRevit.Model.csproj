@@ -1,0 +1,2556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2624D226-C056-42E4-A55F-655A0DBE49DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArmaduraLosaRevit.Model</RootNamespace>
+    <AssemblyName>ArmaduraLosaRevit.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>..\Libreria\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.18.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\Libreria\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libreria\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\_Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAddInUtility">
+      <HintPath>..\Libreria\RevitAddInUtility.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>..\Libreria\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\Libreria\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UtilApiRevit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ApiRevit\bin\Debug\UtilApiRevit.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acotar\calculos\CalcularDistanciaRebar.cs" />
+    <Compile Include="Acotar\cmd_ManejadorAcotarBarrasLosas.cs" />
+    <Compile Include="Acotar\ManejadorAcotarRebarBarrasLosas.cs" />
+    <Compile Include="Acotar\ManejadorAcotarPathBarrasLosas.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\ObtenerRefereciasCercanasLosa.cs" />
+    <Compile Include="AnalisisRoom\Json\RefereciaRoom_jsonExportar.cs" />
+    <Compile Include="AnalisisRoom\Servicios\ModificarParametrosRoom.cs" />
+    <Compile Include="AnalisisRoom\ReferenciaRoomDatos.cs" />
+    <Compile Include="AnalisisRoom\ReferenciaRoomListas.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\WrapperBoundarySegment.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\BoundarySegmentCoordenadas.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\BoundarySegmentHandler.cs" />
+    <Compile Include="AnalisisRoom\Servicios\ServicioaCambiarLargoMinV2.cs" />
+    <Compile Include="AnalisisRoom\Servicios\ServicioModificarCoordenadas.cs" />
+    <Compile Include="AnalisisRoom\Tag\AgregarTagRoom.cs" />
+    <Compile Include="AnalisisRoom\UpDate\Cmd_cargarUpDateRecalcularLargoMin.cs" />
+    <Compile Include="AnalisisRoom\UpDate\ManejadorUpDateRecalcularLargoMin.cs" />
+    <Compile Include="AnalisisRoom\UpDate\UpDateRecalcularLargoMin.cs" />
+    <Compile Include="AnalisisRoom\Utiles\RoomFuncionesLine.cs" />
+    <Compile Include="AnalisisRoom\Utiles\RoomFuncionesPuntos.cs" />
+    <Compile Include="AnalisisRoom\Utiles\RoomFuncionesSeleccionarLosa.cs" />
+    <Compile Include="AnalisisRoom\RoomsObj.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\ObtenerRefereciasCercanas.cs" />
+    <Compile Include="AnalisisRoom\RoomFunciones.cs" />
+    <Compile Include="AnalisisRoom\BordeRoom\BoundarySegmentRoomsGeom.cs" />
+    <Compile Include="AnalisisRoom\Utiles\RoomSeleccionar.cs" />
+    <Compile Include="Armadura\ABuscarTipo.cs" />
+    <Compile Include="Armadura\AreaReinData.cs" />
+    <Compile Include="Armadura\CMD\CMD_familias.cs" />
+    <Compile Include="Armadura\Dimensiones\dimensiones.cs" />
+    <Compile Include="Armadura\InfoProject.cs" />
+    <Compile Include="Armadura\LimpiandoListas.cs" />
+    <Compile Include="Armadura\TipoBarra\Form_tipoBarra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Armadura\TipoBarra\Form_tipoBarra.Designer.cs">
+      <DependentUpon>Form_tipoBarra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Armadura\TipoDiametrosBarrasDTO.cs" />
+    <Compile Include="BarraEstribo\Editar\ManejadorEditarDiamtroEspacimiento.cs" />
+    <Compile Include="BarraV\Horquilla\Creador\CreadorBarrasV_HorqH.cs" />
+    <Compile Include="Extension\ExtensionPathReinSpanSymbol.cs" />
+    <Compile Include="Extension\ExtensionIndependentTag.cs" />
+    <Compile Include="Extension\ExtensionRebarBarType.cs" />
+    <Compile Include="FILTROS\FiltroVIga_Muro_Column_Floor_Rebar.cs" />
+    <Compile Include="FILTROS\FiltroVIga_Muro_Column_Floor.cs" />
+    <Compile Include="FILTROS\PathReinSymbolSelection_RebarInsystemFilter.cs" />
+    <Compile Include="Fund\DTO\DatosRebarFundDTO.cs" />
+    <Compile Include="Fund\EditarRebar.cs" />
+    <Compile Include="Fund\EditarRebar\ManejadorEditarFundacionesRebar.cs" />
+    <Compile Include="Fund\Servicios\REcalcularPuntosLeaderRebar.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagFundRebarSinPata.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagFundRebarDerePata.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagFundRebarIzqPata.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagFundRebarAmbasPata_auto.cs" />
+    <Compile Include="GRIDS\CambiarNombre\ManejadorCambiarNombreGrid.cs" />
+    <Compile Include="GRIDS\CambiarNombre\Model\EnvoltorioGrid_view.cs" />
+    <Compile Include="GRIDS\CambiarNombre\Model\EnvoltorioViewAsosciadoGrid.cs" />
+    <Compile Include="GRIDS\CambiarNombre\Servicio\ServicioBuscarViewContendioEnGrid.cs" />
+    <Compile Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\ManejadorWPF_CambiarNombreGrid.cs" />
+    <Compile Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\MethodsWrapped.cs" />
+    <Compile Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\Methods_CambiarNombreGrid.cs" />
+    <Compile Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\UI_CambiarNombreGrid.xaml.cs">
+      <DependentUpon>UI_CambiarNombreGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\Util\DoubleToSingleDecimalConverter.cs" />
+    <Compile Include="GruposNh\ManejadorGrupos.cs" />
+    <Compile Include="GruposNh\Model\ListaMOdelGroupNH_JSON.cs" />
+    <Compile Include="GruposNh\Model\MOdelGroupNH_JSON.cs" />
+    <Compile Include="GruposNh\Servicio\BuscarGroup.cs" />
+    <Compile Include="Armadura\TipoPhases_.cs" />
+    <Compile Include="Armadura\TiposFiltros.cs" />
+    <Compile Include="Armadura\TiposGenericFamilySymbol.cs" />
+    <Compile Include="Armadura\TiposPatternType.cs" />
+    <Compile Include="Armadura\TiposTagPorBuilInCategory.cs" />
+    <Compile Include="Armadura\TiposRebarTagsEnView.cs" />
+    <Compile Include="Armadura\TiposGrid.cs" />
+    <Compile Include="Armadura\TiposViewSheet.cs" />
+    <Compile Include="Armadura\TiposViewportType.cs" />
+    <Compile Include="Armadura\TiposWorkSet.cs" />
+    <Compile Include="Armadura\TiposView3D.cs" />
+    <Compile Include="Armadura\TiposViewSchedule.cs" />
+    <Compile Include="Armadura\TiposView.cs" />
+    <Compile Include="Armadura\TiposWallTagsEnView.cs" />
+    <Compile Include="Armadura\Tipos_LinkDOcumento.cs" />
+    <Compile Include="Armadura\Tipos_InternalDefinition.cs" />
+    <Compile Include="Armadura\Tipos_FiilRegion.cs" />
+    <Compile Include="Armadura\Tipos_ProjectInformation.cs" />
+    <Compile Include="Armadura\TipoTagVIga.cs" />
+    <Compile Include="Armadura\Tipo_ProjectInformation.cs" />
+    <Compile Include="BarraEstriboV\Editar\EditarUbicacionEstribo.cs" />
+    <Compile Include="BarraEstriboV\Editar\ManejarEditar.cs" />
+    <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamientoViga.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboMuroGeom.cs" />
+    <Compile Include="BarraEstribo\Seleccion\Vigas\SeleccionPtosEstriboViga_sinSeleccionBarras.cs" />
+    <Compile Include="BarraEstribo\Servicios\CambiarLargoVigas.cs" />
+    <Compile Include="BarraMallaRebar\DibujarBarraMalla_sinTrans.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaVPataAmbos.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaVSinPatas.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaVPataFinal.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaVPataInicial.cs" />
+    <Compile Include="BarraV\Agrupar\Model\AdministradorIndividual.cs" />
+    <Compile Include="BarraV\Agrupar\ServicioAgrupar\DesAgrupadorBarrasManual.cs" />
+    <Compile Include="BarraV\AppState\AppManejadorBarraHState.cs" />
+    <Compile Include="BarraV\AppState\EnfierraAutomaticoState.cs" />
+    <Compile Include="BarraV\Automatico\Ayuda\AyudaTraslapoIguales.cs" />
+    <Compile Include="BarraV\Automatico\Ayuda\ObtenerListaElevacionVAriosDto.cs" />
+    <Compile Include="BarraV\Automatico\Ayuda\ObtenerPuntoIntermedio.cs" />
+    <Compile Include="BarraV\Automatico\Data\Modelo\Tabla01_Info_Barras_Flexion.cs" />
+    <Compile Include="BarraV\Automatico\Data\Modelo\Tabla02_Info_Barras_Corte.cs" />
+    <Compile Include="BarraV\Automatico\Data\Modelo\Tabla03_Info_Traslapos_Vigas.cs" />
+    <Compile Include="BarraV\Automatico\Data\Modelo\Tabla04_Info_Geometria_Vigas.cs" />
+    <Compile Include="BarraV\Automatico\Data\Modelo\Tabla05_Objeto_con_todas_las_Tablas.cs" />
+    <Compile Include="BarraV\Automatico\Data\Servicio\ServicioConfigurarBarraRefuerzo.cs" />
+    <Compile Include="BarraV\Automatico\Data\Servicio\ServicioModificarCoordinaBArrasPorTraslapo.cs" />
+    <Compile Include="BarraV\Automatico\Data\Servicio\ServicioOrdenTraslapo.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\BarraCorteTramos.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\CasosTraslapoDTO.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\EnumVIgaAuto.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\RebarTraslapoDTO.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\TraslapoNH.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\TraslapoVigaAuto.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\VigaGeometriaDTO.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\VigaAutomatico.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\BarraFlexion.cs" />
+    <Compile Include="BarraV\Automatico\Data\IRepositoryDataAccess.cs" />
+    <Compile Include="BarraV\Automatico\Data\RepositoryAceroElecacionVigas.cs" />
+    <Compile Include="BarraV\Automatico\Data\RepositoryDataAccess.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\VigasPosicion.cs" />
+    <Compile Include="BarraV\Automatico\model\ElevacionVAriosDto.cs" />
+    <Compile Include="BarraV\Automatico\model\BarraVMallaAutoDTO.cs" />
+    <Compile Include="BarraV\Automatico\ModelViga\BarraFlexionTramosDTO.cs" />
+    <Compile Include="BarraV\Automatico\Servicios\BarrasVigaAutomaticoServicio.cs" />
+    <Compile Include="BarraV\Automatico\Servicios\ListaTraslapoAll.cs" />
+    <Compile Include="BarraV\Automatico\Vigas\ManejadorVigasAuto.cs" />
+    <Compile Include="BarraV\Automatico\WPF\ManejadorWPF_VariasElevAuto .cs" />
+    <Compile Include="BarraV\Automatico\WPF\MethodsWrapped_VariasElevAuto .cs" />
+    <Compile Include="BarraV\Automatico\WPF\Methods_VariasElevAuto .cs" />
+    <Compile Include="BarraV\Automatico\WPF\UI_VariasElevAuto.xaml.cs">
+      <DependentUpon>UI_VariasElevAuto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\Ayuda\Obtener_ConfiguracionTAgBarraDTo.cs" />
+    <Compile Include="BarraV\Buscar\Model\ObjetosEncontrado.cs" />
+    <Compile Include="BarraV\Buscar\Servicio\BuscadorCaraVisible.cs" />
+    <Compile Include="BarraV\Contener\MAnejadorCOntenedores.cs" />
+    <Compile Include="BarraV\Copiar\Helper\EnumCopiar.cs" />
+    <Compile Include="BarraV\Copiar\Servicion\Servicio_CopiarTextoIdem.cs" />
+    <Compile Include="BarraV\Copiar\WPF\ManejadorWPF_CopiarRebar.cs" />
+    <Compile Include="BarraV\Copiar\WPF\MethodsWrapped_CopiarRebar.cs" />
+    <Compile Include="BarraV\Copiar\WPF\Methods_CopiarRebar.cs" />
+    <Compile Include="BarraV\Copiar\WPF\UI_CopiarRebar.xaml.cs">
+      <DependentUpon>UI_CopiarRebar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosSINNivel_vigaAuto.cs" />
+    <Compile Include="BarraV\ManejadorBarraHVigaAuto.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosHAuto_vigas.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosV.Auto.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosV.Manual.cs" />
+    <Compile Include="BarraV\TipoBarra\Ayuda\ServicioRedondearBarras.cs" />
+    <Compile Include="BarraV\TipoTagH\Ayuda\AyudaGeomtria.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagPataAmbosV_Horquilla.cs" />
+    <Compile Include="BarraV\Traslapos\ManejadorRemplazarTraslapo.cs" />
+    <Compile Include="BarraV\Traslapos\servicio\ObtenerTraslaposView.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\Modelo\DimensionParaUbicDimensiones.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\Modelo\PlanoParaUbicDimensiones.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\Modelo\PasadasParaUbicDimensiones.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\ServicioBuscardorBase.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\ServicioBuscardorHorizontal.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\ServicioBuscardorVertical.cs" />
+    <Compile Include="Bim\AcotarPAsada\BuscarUbicacion\ServicioBuscardoUbicacion.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarBajoDere.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarBajoIzq.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarArribaIzq.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarDereInf.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarIzqInf.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarDereSup.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\BaseAcotar.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarArribaDere.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\AcotarIzqSup.cs" />
+    <Compile Include="Bim\AcotarPAsada\Casos\IAcotarCasos.cs" />
+    <Compile Include="Bim\AcotarPAsada\ManejadorAcotarPAsada.cs" />
+    <Compile Include="Bim\AcotarPAsada\ManejadorAcotarPAsada_shaft.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnumPasadas.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnvoltorioElementoIntersectar.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnvoltorioGridPasada.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnvoltorioMuro.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnvoltoriosPlanos.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\EnvoltoriPasada.cs" />
+    <Compile Include="Bim\AcotarPAsada\Modelo\ParBordeParalelo.cs" />
+    <Compile Include="Bim\AcotarPAsada\Ayuda\AyudaBuscarInterseccionPlanosPasadasConGrid.cs" />
+    <Compile Include="Bim\AcotarPAsada\Servicios\ServicioBuscarGrilla.cs" />
+    <Compile Include="Bim\AcotarPAsada\Servicios\ServicioBuscarMuro.cs" />
+    <Compile Include="Bim\AcotarPAsada\Servicios\ServicionACotarPAsada.cs" />
+    <Compile Include="Bim\AcotarPAsada\Ayuda\AyudaSeleccionDireccon.cs" />
+    <Compile Include="Bim\AcotarPAsada\WPF_WorkSet\ManejadorWPF_AcotarPasada.cs" />
+    <Compile Include="Bim\AcotarPAsada\WPF_WorkSet\MethodsWrapped_AcotarPasada.cs" />
+    <Compile Include="Bim\AcotarPAsada\WPF_WorkSet\Methods_AcotarPasada.cs" />
+    <Compile Include="Bim\AcotarPAsada\WPF_WorkSet\UI_AcotarPasadasNH.xaml.cs">
+      <DependentUpon>UI_AcotarPasadasNH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bim\AgruparConductos\AgrupadorConduct.cs" />
+    <Compile Include="Bim\BimWorkSet\Factory\FactorEspecialidades.cs" />
+    <Compile Include="Bim\BimWorkSet\ManajeadorWorkSet.cs" />
+    <Compile Include="Bim\BimWorkSet\WPF_WorkSet\ManejadorWPF_WorkSetNH.cs" />
+    <Compile Include="Bim\BimWorkSet\WPF_WorkSet\MethodsWrapped_WorkSetNH.cs" />
+    <Compile Include="Bim\BimWorkSet\WPF_WorkSet\Methods_WorkSetNH.cs" />
+    <Compile Include="Bim\BimWorkSet\WPF_WorkSet\UI_WorkSetNH.xaml.cs">
+      <DependentUpon>UI_WorkSetNH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bim\Config\WPF_BIM\ManejadorWPF_ConfBIM.cs" />
+    <Compile Include="Bim\Config\WPF_BIM\MethodsWrapped_ConfBIM.cs" />
+    <Compile Include="Bim\Config\WPF_BIM\Methods_ConfBIM.cs" />
+    <Compile Include="Bim\Config\WPF_BIM\UI_ConfBIM.xaml.cs">
+      <DependentUpon>UI_ConfBIM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Bim\SumarLargo\AgrupadorPipes.cs" />
+    <Compile Include="Bim\SumarLargo\Ayuda\AyudaObtenerTipoLetra.cs" />
+    <Compile Include="Bim\SumarLargo\Model\DuctosPipe.cs" />
+    <Compile Include="ConfiGeneral\CambioEstado\OBtenerRevisones.cs" />
+    <Compile Include="ConfiGeneral\CambioEstado\CambioEstadoProyecto.cs" />
+    <Compile Include="ConfiGeneral\CambioEstado\FactoryEstados.cs" />
+    <Compile Include="ConfiguracionInicial\Elemento\AnalisisMuros.cs" />
+    <Compile Include="ConfiguracionInicial\Elemento\ManejadorPreAnalisisELemento.cs" />
+    <Compile Include="ConfiguracionInicial\model\EnvoltorioMuro.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagS4_incli.cs" />
+    <Compile Include="Enumeraciones\ConstBim.cs" />
+    <Compile Include="Bim\AgruparConductos\DTO\ConfiguracionTagDTO.cs" />
+    <Compile Include="Bim\AgruparConductos\Model\DuctosDatos.cs" />
+    <Compile Include="Bim\AgruparConductos\ManejadorAgruparConductos.cs" />
+    <Compile Include="Bim\AgruparConductos\Model\TagBAseBim.cs" />
+    <Compile Include="Bim\SumarLargo\ManejadorSumarLArgo.cs" />
+    <Compile Include="Conector\ManejadorCoupler.cs" />
+    <Compile Include="ConfiguracionInicial\WPF\Manejador_Ui_Elevaciones.cs" />
+    <Compile Include="CopiaLocal\BuscadorRutasLocal.cs" />
+    <Compile Include="BarraV\Buscar\Ayuda\AyudaFiltrarEstructural.cs" />
+    <Compile Include="BarraV\Buscar\BuscarFundacionLosaV2.cs" />
+    <Compile Include="BarraV\ColorRebar\ColorRebar.cs" />
+    <Compile Include="BarraV\Desglose\Geometria\EstribosRectagularesOrtogonales_H.cs" />
+    <Compile Include="BarraV\Desglose\Geometria\Traba3ladosOrientadaOrtogonal_H.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagEstriboViga.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagTrabaViga.cs" />
+    <Compile Include="BarraV\Dimensiones\DibujarDimensiones.cs" />
+    <Compile Include="BarraV\DTO\CoordenadasElementoDTO.cs" />
+    <Compile Include="BarraV\Intervalos\AyudaMoverBarras.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosSINNivel_RefuerzoVIga.cs" />
+    <Compile Include="BarraV\ManejadorBarraHVigaAutoEstribo.cs" />
+    <Compile Include="BarraV\RefuerzoViga\ManejadoRefuerzoVigaBorde.cs" />
+    <Compile Include="BarraV\RefuerzoViga\ManejadoRefuerzoEntreVigas.cs" />
+    <Compile Include="BarraV\RefuerzoViga\ManejadoRefuerzoVigaCentral80.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementos_RefuerzoBorde.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementos2_Refuerzo2vigas.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosHAuto.cs" />
+    <Compile Include="BarraV\ServicioManejadorBarraH\AsignarTipoTraslapo.cs" />
+    <Compile Include="BarraV\ServicioManejadorBarraH\ListaPtoTramo.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagConTagHconPata.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagConTagH_RefuerzoViga.cs" />
+    <Compile Include="BarraV\Traslapos\ayuda\AyudaManejadorTraslapo.cs" />
+    <Compile Include="BarraV\Traslapos\ManejadorTraslapo.cs" />
+    <Compile Include="BarraV\Traslapos\model\Traslapo.cs" />
+    <Compile Include="ConfiguracionInicial\WPF\Ui_Elevaciones.xaml.cs">
+      <DependentUpon>Ui_Elevaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CopiaLocal\WPF\ManejadorWPF_CopiaLocal.cs" />
+    <Compile Include="CopiaLocal\WPF\MethodsWrapped_CopiaLocal.cs" />
+    <Compile Include="CopiaLocal\WPF\Methods_CopiaLocal.cs" />
+    <Compile Include="CopiaLocal\WPF\UI_CopiaLocal.xaml.cs">
+      <DependentUpon>UI_CopiaLocal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cubicacion\Ayuda\AyudaObtenerNombreEjeElev.cs" />
+    <Compile Include="Cubicacion\Ayuda\NombreDefinidoUsuario.cs" />
+    <Compile Include="Cubicacion\model\LevelDTO.cs" />
+    <Compile Include="Cubicacion\model\ElevCubDto.cs" />
+    <Compile Include="Cubicacion\model\LosaCubDto.cs" />
+    <Compile Include="Cubicacion\Repetir\EntreElev.cs" />
+    <Compile Include="Cubicacion\Repetir\EntreLosas.cs" />
+    <Compile Include="Cubicacion\WPF\ManejadorWPF_Cub.cs" />
+    <Compile Include="Cubicacion\WPF\Methods_Cub.cs" />
+    <Compile Include="Cubicacion\WPF\MethodsWrapped_Cub.cs" />
+    <Compile Include="Cubicacion\WPF\UI_Cub.xaml.cs">
+      <DependentUpon>UI_Cub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dimensiones\DimensionInRebar.cs" />
+    <Compile Include="DocumentNH\GuardarDocumento.cs" />
+    <Compile Include="DocumentosNh\ManejadorSaveArchivos.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF17B.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF17A.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF16B.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF16A.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF18.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF19.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF16.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF20B.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF21A.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF21B.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF22B.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF22A.cs" />
+    <Compile Include="EditarPath\Calculos\TipoBarras\EditBarraF20A.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf17B.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf22.cs" />
+    <Compile Include="EditarPath\CAmbiosPAth\CambiarSoloDiametroEspaciamieto.cs" />
+    <Compile Include="EditarTipoPath\Ayuda\ManejadorEditarREbarShapYPAthSymbol.cs" />
+    <Compile Include="EditarTipoPath\Ayuda\TipoCasoAlternativo.cs" />
+    <Compile Include="EditarTipoPath\WPF\Ayuda\EstadoCambioTIpoBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\AyudaREdondearRecorrdioPath.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\AyudaREdondearPath.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\ObtenerCasoAoBDeAhorro.cs" />
+    <Compile Include="ElementoBarraRoom\BarraRoom_AreaRefuerzo.cs" />
+    <Compile Include="ElementoBarraRoom\Configuracion\ManejadorConfigLosa.cs" />
+    <Compile Include="ElementoBarraRoom\CopiarEntreLosa\Servicios\CopiarParametrosBarrasCopiadas.cs" />
+    <Compile Include="ElementoBarraRoom\DatosParaBarra\DatosNuevaBarraDTO.cs" />
+    <Compile Include="ElementoBarraRoom\DTO\Ui_pathSymbolDTO.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\NewFolder1\TiposRebarShape_largoAhorroRedondeo1.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\NewFolder1\TiposRebarShape_largoAhorroRedondeo5_Alt.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\NewFolder1\TiposRebarShape_largoAhorroRedondeo5.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\Renombrar\ManejadorReNombrarFamPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\Geometria\Geometriafx.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\ObtenerZPara4ptosRuledFace.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\FactoryPathSymbol_REbarshape_FxxDTO.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\DTO\ParametroNewTipoPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\FactoryPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\IPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF3.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF11B.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF11A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF12.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF11.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF17.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF18.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF19.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF17A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF17B.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF21B.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF22B.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF22A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF16B.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF16A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF16.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF21A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF20A.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\DTO\PathSymbolF20DTO.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\DTO\PathSymbol_REbarshape_FXXDTO.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolNull.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolF20B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Ayuda\AyudaObtenerLargoAhorroF16.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Ayuda\AyudaLargoPath.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\DTO\RebarShapeNhFxxDTO.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\EditarRebarShape.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\FactoryConfiguracionDespla.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\FactoryRebarShapeNh.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\IRebarShapeNh.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\RebarShapeNhBase.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF17B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF17A.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF18.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF19.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF21B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF21A.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF22A.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF22B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF16B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF16A.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF20A.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\RebarShapeNhF20B.cs" />
+    <Compile Include="ElementoBarraRoom\RebarShapeNh\Tipos\REbarShapeNhNull.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\ManejadorResetText.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\ManejadorIntercambiar_F_L.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\WPF_EText\ManejadorWPF_EditarTExtoPath.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\WPF_EText\MethodsWrapped_EditarTExtoPath.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\WPF_EText\Methods_EditarTExtoPath.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Servicio\WPF_EText\Ui_EditarTExtoPath.xaml.cs">
+      <DependentUpon>Ui_EditarTExtoPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\Ayuda_deltaFacto_GeomeTag.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagBase.Mover.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF16Inv.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF22bInv.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF22b.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF22aInv.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF22a.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF20Inv.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\Barra16B.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF20b.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF20a.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF21b.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF21a.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF22.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Casos\UpDate_EditPathRein.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Manejador_UpDateEditPathReinf.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Manejador_UpDateMoverTagPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Tag\ManejarEditTagUpdate_MoverInterCAmbiar_F_L.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Tag\ManejarEditTagUpdate_MoverMantenerSOLOExtremos.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Tag\ManejarEditTagUpdate_MoverBase.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Tag\ManejarEditTagUpdate_MoverMantenerTODO.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Calculo\ObtenerDesplazaminetoEnSentidoBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Casos\UpDate_MoverPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\Ayuda\AyudaObtenerParametros.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\EntryCommand_Ui_pathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\ManejadorWPF_Ui_pathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\MethodsWrapped_Ui_pathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\Methods_Ui_pathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\Ui_pathSymbol.xaml.cs">
+      <DependentUpon>Ui_pathSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\WPF_pathSymbol\UtilWPF.cs" />
+    <Compile Include="EstadoDesarrollo\JsonNh\ContenedorProyectosJson.cs" />
+    <Compile Include="EstadoDesarrollo\JsonNh\CreadoJsonNh.cs" />
+    <Compile Include="EstadoDesarrollo\ManejadorEstadoDesarrollo.cs" />
+    <Compile Include="EstadoDesarrollo\Modelo\ContenedorProyectos.cs" />
+    <Compile Include="EstadoDesarrollo\Modelo\EstadoTipoView.cs" />
+    <Compile Include="EstadoDesarrollo\Modelo\Proyectos.cs" />
+    <Compile Include="EstadoDesarrollo\Modelo\viewNH.cs" />
+    <Compile Include="EstadoDesarrollo\WPF\ManejadorWPF_UI_EstadoDesarrollo.cs" />
+    <Compile Include="EstadoDesarrollo\WPF\Methods.cs" />
+    <Compile Include="EstadoDesarrollo\WPF\MethodsWrapped.cs" />
+    <Compile Include="EstadoDesarrollo\WPF\UI_EstadoDesarrollo.xaml.cs">
+      <DependentUpon>UI_EstadoDesarrollo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Estructuras\CrearVigasConSacados.cs" />
+    <Compile Include="Estructuras\ManejadorCreadorEstructuras.cs" />
+    <Compile Include="Extension\Extension3DElement.cs" />
+    <Compile Include="Extension\ExtensionElement.Referencia.cs" />
+    <Compile Include="Extension\ExtensionPathReinformentFund.cs" />
+    <Compile Include="Extension\ExtensionFace.cs" />
+    <Compile Include="Extension\ExtensionShafOpening.cs" />
+    <Compile Include="Extension\ExtensionRoom.cs" />
+    <Compile Include="Extension\ExtensionRuledFace.cs" />
+    <Compile Include="Extension\ExtensionViewSheet.cs" />
+    <Compile Include="Extension\modelo\HoookPAthRein.cs" />
+    <Compile Include="ExtStore\Ayuda\AyudaCasosUnidades_2021Arriba.cs" />
+    <Compile Include="ExtStore\model\EnumPasadas.cs" />
+    <Compile Include="ExtStore\Tipos\CreadorExtStoreComplejo.cs" />
+    <Compile Include="ExtStore\Tipos\CreadorExtStore_2020Abajo.cs" />
+    <Compile Include="ExtStore\model\DatosExtStoreDTO_2020Abajo.cs" />
+    <Compile Include="ExtStore\model\DatosExtStoreDTO.cs" />
+    <Compile Include="ExtStore\Factory\FactoryExtStore_2020Abajo.cs" />
+    <Compile Include="ExtStore\Factory\FactoryExtStore.cs" />
+    <Compile Include="FAMILIA\MAnejadorCambiarLetraArial.cs" />
+    <Compile Include="FAMILIA\Varios\AgregarVErsion.cs" />
+    <Compile Include="FAMILIA\Varios\ExportarFamilias.cs" />
+    <Compile Include="FILTROS\Ayuda\QueFiltroSePuedeUSar.cs" />
+    <Compile Include="FILTROS\FiltroColumns.cs" />
+    <Compile Include="FILTROS\FiltroElement.cs" />
+    <Compile Include="FILTROS\FiltroDimension.cs" />
+    <Compile Include="FILTROS\FiltroRebarTagHorizontalAgrupar.cs" />
+    <Compile Include="FILTROS\FiltroShaftOpening.cs" />
+    <Compile Include="FILTROS\FiltroPipes.cs" />
+    <Compile Include="FILTROS\FiltroFloorOrFund.cs" />
+    <Compile Include="FILTROS\FiltroPasadaRectagular.cs" />
+    <Compile Include="FILTROS\FiltroConduit.cs" />
+    <Compile Include="FILTROS\FiltroTextNote.cs" />
+    <Compile Include="FILTROS\RebarDimenionesSelectionFilter.cs" />
+    <Compile Include="Fund\AyudaOBtenerHookYLargo.cs" />
+    <Compile Include="Fund\FundManejador.Automatico.cs" />
+    <Compile Include="Fund\FundManejador.Rebar.cs" />
+    <Compile Include="Fund\FundManejadorCambiarHook.cs" />
+    <Compile Include="Fund\Servicios\REcalcularPuntosLeaderPathRein.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagF3Fund.cs" />
+    <Compile Include="Fund\Tipos\CalculosSeccionCuadrada.cs" />
+    <Compile Include="Fund\WPFfund\DTO\FactoresLargoLeader.cs" />
+    <Compile Include="GEOM\Casos\GeometriaParaReferecias.cs" />
+    <Compile Include="GRIDS\AgregarEje\ManejadorAgregarEjes.cs" />
+    <Compile Include="GRIDS\model\EnvoltorioGrid.cs" />
+    <Compile Include="GRIDS\AgregarEje\Servicios\ServicioObtenerGridDeVIew.cs" />
+    <Compile Include="GRIDS\AgregarEje\Servicios\ServicioObtenerInterseccionEntreGrid.cs" />
+    <Compile Include="GRIDS\AgregarEje\WPF_AgregraEJE\ManejadorWPF_AgregarEje.cs" />
+    <Compile Include="GRIDS\AgregarEje\WPF_AgregraEJE\MethodsWrapped_AgregarEje.cs" />
+    <Compile Include="GRIDS\AgregarEje\WPF_AgregraEJE\Methods_AgregarEje.cs" />
+    <Compile Include="GRIDS\AgregarEje\WPF_AgregraEJE\UI_AgergarEjes.xaml.cs">
+      <DependentUpon>UI_AgergarEjes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GruposNh\Model\MOdelGroupNH.cs" />
+    <Compile Include="GruposNh\Servicio\CreadoJsonNh.cs" />
+    <Compile Include="LevelNh\ExtenderLevel.cs" />
+    <Compile Include="LinkNh\ManejadorVisibilidadLink.cs" />
+    <Compile Include="LosaEstructural\ManejadorDuplicarLosas.cs" />
+    <Compile Include="Niveles\ManejadorCrearTextoEntreNIvel.cs" />
+    <Compile Include="Niveles\WPF\ManejadorWPF_Ui_Nivel.cs" />
+    <Compile Include="Niveles\WPF\MethodsWrapped_Ui_Nivel.cs" />
+    <Compile Include="Niveles\WPF\Methods_Ui_Nivel.cs" />
+    <Compile Include="Niveles\WPF\Ui_UIGrid.xaml.cs">
+      <DependentUpon>Ui_UIGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ParametrosShare\Actualizar\Model\CambirSOLOTipoBarraDTO.cs" />
+    <Compile Include="ParametrosShare\Actualizar\TipoBArra\ManejadorActualizarTIpoBarraPorOtro.cs" />
+    <Compile Include="ParametrosShare\Actualizar\Trabas\Actualizar_formatoPArametroTrabas.cs" />
+    <Compile Include="ParametrosShare\Actualizar\Trabas\WPF\Manejador_CambiarTag.cs" />
+    <Compile Include="ParametrosShare\Actualizar\Trabas\WPF\Ui_Elevaciones.xaml.cs">
+      <DependentUpon>Ui_Elevaciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ParametrosShare\Actualizar\ViewTemplateInclude.cs" />
+    <Compile Include="ParametrosShare\CONST_PARAMETER.cs" />
+    <Compile Include="ParametrosShare\ConversorVersione\AyudaConversor.cs" />
+    <Compile Include="ParametrosShare\FactoryEntidadDefinition21Down.cs" />
+    <Compile Include="ParametrosShare\FactoryNombreEntidadDefinition.cs" />
+    <Compile Include="ParametrosShare\Servicio\AyudaCreaarDefinition.cs" />
+    <Compile Include="Pasadas\Ayuda\AyudaObtenerPasadas.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioConduit.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioDucts.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioPasadas.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioPipesFittings.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioActivarFamiliaPasada.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioBuscarPasadas.cs" />
+    <Compile Include="Pasadas\MAnejadorCrearRegionConPAsada.cs" />
+    <Compile Include="Pasadas\Model\Enum.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioCableTray.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioDuct.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioBase.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioPipesAntigua.cs" />
+    <Compile Include="Pasadas\Model\EnvoltorioShaft.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioCambiarPasada.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioCrearPAsadas.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioCrearOpenin.cs" />
+    <Compile Include="Pasadas\Servicio\ServicioSiYaExiste_Yes_Igual.cs" />
+    <Compile Include="Pasadas\WPFPasada\ManejadorWPF_UI_BalncoNegro.cs" />
+    <Compile Include="Pasadas\WPFPasada\Methods_WPFPasada.cs" />
+    <Compile Include="Pasadas\WPFPasada\MethodsWrapped.cs" />
+    <Compile Include="Pasadas\WPFPasada\UI_Pasadas.xaml.cs">
+      <DependentUpon>UI_Pasadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pasadas\WPF\Manejador_Ui_Elevaciones.cs" />
+    <Compile Include="Pasadas\WPF\Ui_ElevacionesPasadaRegion.xaml.cs">
+      <DependentUpon>Ui_ElevacionesPasadaRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PathReinf\Ayuda\ObtenerCasoBarraSimple.cs" />
+    <Compile Include="PathReinf\Servicios\FactoryPathSymbolV2.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba\BuscarRefenenciaBarras.cs" />
+    <Compile Include="Prueba\ErrorNh\ManejoError.cs" />
+    <Compile Include="Prueba\User\AyudaUser.cs" />
+    <Compile Include="Prueba\User\RepositorioUsuarios.cs" />
+    <Compile Include="Prueba\User\RepositoryDataMysql.cs" />
+    <Compile Include="RebarCopia\ElementoConBarras.cs" />
+    <Compile Include="RebarCopia\Entidades\RebarCopiarDTo.cs" />
+    <Compile Include="RebarCopia\Entidades\ResulSelecionCopiaCOlumnaDto.cs" />
+    <Compile Include="RebarCopia\ManejadorCopiaFundaciones.cs" />
+    <Compile Include="RebarFundaciones\Geom\GenerarGeometriaFund.cs" />
+    <Compile Include="RebarFundaciones\ManejadorRebarFundaciones.cs" />
+    <Compile Include="Fund\TipoBarraFund\f10B_fund.cs" />
+    <Compile Include="Fund\TipoBarraFund\f10A_fund.cs" />
+    <Compile Include="Fund\TipoBarraFund\f10_fund.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f10.cs" />
+    <Compile Include="Fund\TipoBarraFund\f11B_fund.cs" />
+    <Compile Include="Fund\TipoBarraFund\f11A_fund.cs" />
+    <Compile Include="Fund\TipoBarraFund\f11_fund.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f11.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f3_fund.cs" />
+    <Compile Include="RebarLosa\ManejadorRebarBase.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\s4_incli.cs" />
+    <Compile Include="RebarLosa\ManejadorRebarFund.cs" />
+    <Compile Include="RebarLosa\TipoTag\GeomeTagF11_rebar.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\Ayuda\AyudaCalculo.cs" />
+    <Compile Include="Seleccionar\Ayuda\SelecPto.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathReinfomentVisibilidadStatic.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathSymbol.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebaroRebarInSystem.cs" />
+    <Compile Include="Seleccionar\SeleccionarPasadasConMouse.cs" />
+    <Compile Include="Seleccionar\SeleccionarPipes.cs" />
+    <Compile Include="Seleccionar\SeleccionarPipes_borrar.cs" />
+    <Compile Include="Seleccionar\SeleccionarConduct.cs" />
+    <Compile Include="Seleccionar\SeleccionarTextNote.cs" />
+    <Compile Include="Seleccionar\SeleccionarLosa.cs" />
+    <Compile Include="Seleccionar\SeleccionarViga.cs" />
+    <Compile Include="Shaft\Buscar\BuscarCaraMAScercanaView.cs" />
+    <Compile Include="TablasSchedule\Dto\ListaPlanosDTO.cs" />
+    <Compile Include="TablasSchedule\Dto\ScheduleFiltrosDTO.cs" />
+    <Compile Include="TablasSchedule\Dto\ScheduleFormatoDTO_2021Arriba.cs" />
+    <Compile Include="TablasSchedule\Factory\FactoryScheduleFormato_generalDTO_2021Arriba.cs" />
+    <Compile Include="TablasSchedule\Factory\FactoryScheFormato_ResumenDTO_2021Arriba.cs" />
+    <Compile Include="TablasSchedule\Factory\Factory_ScheduleFiltrosDTO.cs" />
+    <Compile Include="TablasSchedule\FormCub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TablasSchedule\FormCub.Designer.cs">
+      <DependentUpon>FormCub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TablasSchedule\ScheduleFormato_2021Arriba.cs" />
+    <Compile Include="TablasSchedule\Tipos\CubicacionBarrasResumen.cs" />
+    <Compile Include="TablasSchedule\Tipos\ScheduleNHBase.cs" />
+    <Compile Include="TablasSchedule\Tipos\CubicacionBarras.cs" />
+    <Compile Include="TablasSchedule\Wpf\Ui_Sch.xaml.cs">
+      <DependentUpon>Ui_Sch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traslapo\Calculos\CalcularLargoPAth.cs" />
+    <Compile Include="Traslapo\WPF\EntryCommand.cs" />
+    <Compile Include="Traslapo\WPF\ManejadorWPF_Traslapo.cs" />
+    <Compile Include="Traslapo\WPF\Methods_Traslapo.cs" />
+    <Compile Include="Traslapo\WPF\MethodsWrapped.cs" />
+    <Compile Include="Traslapo\WPF\Ui_traslapo.xaml.cs">
+      <DependentUpon>Ui_traslapo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Traslapo\WPF\UtilWPF.cs" />
+    <Compile Include="UpdateGenerar\UpdateGeneral_respaldo.cs" />
+    <Compile Include="UTILES\AdministrarFile.cs" />
+    <Compile Include="UTILES\Buscar\ObtenerListaParametros.cs" />
+    <Compile Include="UTILES\Buscar\ObtenerLineaPorTipo.cs" />
+    <Compile Include="UTILES\CreadorCirculo.cs" />
+    <Compile Include="UTILES\CrearDetailLineAyuda.cs" />
+    <Compile Include="UTILES\CrearSketchPlane.cs" />
+    <Compile Include="UTILES\CrearWorkPLane.cs" />
+    <Compile Include="UTILES\DTO\ObjetosPuntosDTO.cs" />
+    <Compile Include="UTILES\DTO\TipoTextoDTO.cs" />
+    <Compile Include="UTILES\EmbeberNH.cs" />
+    <Compile Include="UTILES\IsInterseccion.cs" />
+    <Compile Include="UTILES\ParaBarras\AyudaObtenerNormarPlanoVisisible.cs" />
+    <Compile Include="UTILES\ParaBarras\AyudaObtenerPesoBArras.cs" />
+    <Compile Include="UTILES\ParaBarras\AyudaObtenerPtoEnRebar.cs" />
+    <Compile Include="UTILES\ParaBarras\Borrar\BorrarPathRepetidos.cs" />
+    <Compile Include="UTILES\ParaBarras\DTO\TipoTextoDTO_.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\RebarParametros.cs" />
+    <Compile Include="UTILES\ParaBarras\ObtenerBarras.cs" />
+    <Compile Include="UTILES\ParaBarras\Visualizacion\VisualizacionRebar.cs" />
+    <Compile Include="UTILES\FormularioFallasDialogos\UtilitarioFallasDialogosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UTILES\FormularioFallasDialogos\UtilitarioFallasDialogosForm.Designer.cs">
+      <DependentUpon>UtilitarioFallasDialogosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\UbicacionVentana.cs" />
+    <Compile Include="UTILES\UtilitarioFallasDialogosCarga.cs" />
+    <Compile Include="UTILES\UtilitarioFallasDialogos_static.cs" />
+    <Compile Include="UTILES\UtilVersionesRevit.cs" />
+    <Compile Include="UTILES\VerVideoAyudas.cs" />
+    <Compile Include="ViewFilter\Analisis\BuscarBorrarRemoverFiltro.cs" />
+    <Compile Include="ViewFilter\Analisis\ListaFiltro.cs" />
+    <Compile Include="ViewFilter\BorrarTodosFiltrosNot.cs" />
+    <Compile Include="ViewFilter\CreadorViewFilter_Borrar.cs" />
+    <Compile Include="ViewFilter\CreadorViewFilter_Base.cs" />
+    <Compile Include="ViewFilter\CreadorViewFilter_DejarBarrasNoDeVista.cs" />
+    <Compile Include="ViewFilter\Filtro3D\CreadorViewFilter_3DColorDiam.cs" />
+    <Compile Include="ViewFilter\Filtro3D\CreadorViewFilter_3DPorTipo.cs" />
+    <Compile Include="ViewFilter\Filtro3D\CreadorViewFilter_3DRevisarCub.cs" />
+    <Compile Include="ViewFilter\Filtro3D\model\PorTiposNh.cs" />
+    <Compile Include="ViewFilter\Filtro3D\model\PorViewDTO.cs" />
+    <Compile Include="ViewFilter\Filtro3D\model\TiposDiametrosNh.cs" />
+    <Compile Include="ViewFilter\Filtro3D\model\VisibilizacionFilterDTO.cs" />
+    <Compile Include="ViewFilter\Filtro3D\ServiciosNH\ServiciosSeleccion.cs" />
+    <Compile Include="ViewFilter\Filtro3D\WPF\Component\Diametros.xaml.cs">
+      <DependentUpon>Diametros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFilter\Filtro3D\WPF\Component\PorTipo.xaml.cs">
+      <DependentUpon>PorTipo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFilter\Filtro3D\WPF\Component\PorView.xaml.cs">
+      <DependentUpon>PorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFilter\Filtro3D\WPF\ManejadorWPF_Filtro3D.cs" />
+    <Compile Include="ViewFilter\Filtro3D\WPF\MethodsWrapped_Filtro3D.cs" />
+    <Compile Include="ViewFilter\Filtro3D\WPF\Methods_Filtro3D.cs" />
+    <Compile Include="ViewFilter\Filtro3D\WPF\Ui_Filtro3D.xaml.cs">
+      <DependentUpon>Ui_Filtro3D.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFilter\Model\ParametrosFiltro.cs" />
+    <Compile Include="ViewFilter\Rules\CambiarEstado.cs" />
+    <Compile Include="ViewFilter\Rules\CreadorFilter3DRevison.cs" />
+    <Compile Include="ViewFilter\Rules\CreadorFilter.cs" />
+    <Compile Include="ViewFilter\Servicios\CargarParametros.cs" />
+    <Compile Include="Viewnh\posicion\PosicionView.cs" />
+    <Compile Include="ViewportnNH\ManejadorCreadorSheetV2.cs" />
+    <Compile Include="ViewportnNH\ManejadorCreadorSheet.cs" />
+    <Compile Include="ConfiGeneral\CambioEstado\model\ViewSheetNH.cs" />
+    <Compile Include="ViewportnNH\model\EstadosViewDTO.cs" />
+    <Compile Include="ViewportnNH\model\ViewportNH.cs" />
+    <Compile Include="ViewportnNH\model\_ViewGeom.cs" />
+    <Compile Include="ViewportnNH\Servicios\ServicioGenerarGoemtria.cs" />
+    <Compile Include="ViewportnNH\WPF\ManejadorWPF_ViewPortNH.cs" />
+    <Compile Include="ViewportnNH\WPF\Methods_ViewPortNH.cs" />
+    <Compile Include="ViewportnNH\WPF\MethodsWrapped.cs" />
+    <Compile Include="ViewportnNH\WPF\UI_ViewPOrtNH.xaml.cs">
+      <DependentUpon>UI_ViewPOrtNH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vigas\DIbujarTAgVIgasView.cs" />
+    <Compile Include="Visibilidad\Ayuda\Creador_OverrideGraphicSettings.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Ayuda\AyudaComprobar_tipoCategoria_EstaEnUi_EntregaLosa.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Ayuda\AyudaComprobar_tipoCategoria_EstaEnUi_EntregaElev.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Ayuda\AyudaListaCategoriasDTO.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Ayuda\TiposPorBuiltInCategory.cs" />
+    <Compile Include="Armadura\TiposViewFamily.cs" />
+    <Compile Include="Armadura\TiposTextNote.cs" />
+    <Compile Include="Armadura\TiposLinea.cs" />
+    <Compile Include="Armadura\TiposPathReinformentSymbolElement.cs" />
+    <Compile Include="Armadura\TiposGenericAnnotation.cs" />
+    <Compile Include="Armadura\TiposAreaReinTags.cs" />
+    <Compile Include="Armadura\TiposRoomTagEnView.cs" />
+    <Compile Include="Armadura\TiposPathReinTagsEnView.cs" />
+    <Compile Include="Armadura\TiposRebarTag.cs" />
+    <Compile Include="Armadura\TiposRebarShapeFamilia.cs" />
+    <Compile Include="Armadura\TiposPathReinTagsFamilia.cs" />
+    <Compile Include="Armadura\TiposPathReinTags.cs" />
+    <Compile Include="Armadura\TipoRebarHookType.cs" />
+    <Compile Include="Armadura\TiposFormasRebarShape.cs" />
+    <Compile Include="Armadura\Tipos_Barras.cs" />
+    <Compile Include="Armadura\Tipos_ArrowFamily.cs" />
+    <Compile Include="ASSERT\Extension\cmd_ExtensionPuntoXYZ.cs" />
+    <Compile Include="BarraAreaPath\BarraAreasPathBase.cs" />
+    <Compile Include="BarraAreaPath\BarraAreasPath.cs" />
+    <Compile Include="BarraAreaPath\Borrar\BorrarAreaPAthRectangulo.cs" />
+    <Compile Include="BarraAreaPath\Busqueda\BuscandoFundaciones.cs" />
+    <Compile Include="BarraAreaPath\DTO\BuscarFundacionesDTO.cs" />
+    <Compile Include="BarraAreaPath\DTO\BuscarFundLosaDTO.cs" />
+    <Compile Include="BarraAreaPath\DTO\DatosMallasAutoDTO.cs" />
+    <Compile Include="BarraAreaPath\DTO\IntervalosMallaDTOAuto.cs" />
+    <Compile Include="BarraAreaPath\DTO\SeleccionMuroAreaPathDTO.cs" />
+    <Compile Include="BarraAreaPath\DTO\IntervalosMallaDTO.cs" />
+    <Compile Include="BarraAreaPath\Intervalo\InterrvalosPtosPathRebar.cs" />
+    <Compile Include="BarraAreaPath\Intervalo\InterrvalosPtosPathRebarAuto.cs" />
+    <Compile Include="BarraAreaPath\Intervalo\InterrvalosPtosPathAreaAuto.cs" />
+    <Compile Include="BarraAreaPath\ManejadorMallaMuroAuto.cs" />
+    <Compile Include="BarraAreaPath\ManejadorMallaMuro.cs" />
+    <Compile Include="BarraAreaPath\Intervalo\InterrvalosPtosPathArea.cs" />
+    <Compile Include="BarraAreaPath\Seleccion\SeleccionMuroAreaPathAuto.cs" />
+    <Compile Include="BarraAreaPath\Seleccion\SeleccionMuroAreaPath.cs" />
+    <Compile Include="BarraAreaPath\WPFm\cmd_Ui_Malla.cs" />
+    <Compile Include="BarraAreaPath\WPFm\ManejadorWPF_Malla.cs" />
+    <Compile Include="BarraAreaPath\WPFm\MethodsWrapped_Malla.cs" />
+    <Compile Include="BarraAreaPath\WPFm\Methods_Malla.cs" />
+    <Compile Include="BarraAreaPath\WPFm\Ui_Malla.xaml.cs">
+      <DependentUpon>Ui_Malla.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraAuto\FormularioAUTOSUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarraAuto\FormularioAUTOSUP.Designer.cs">
+      <DependentUpon>FormularioAUTOSUP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarraEstriboP\DTO\DatosEstriboAutoDTO.cs" />
+    <Compile Include="BarraEstriboP\WPFp\cmd_Ui_BarraP.cs" />
+    <Compile Include="BarraEstriboP\WPFp\ManejadorWPF_EstriboP.cs" />
+    <Compile Include="BarraEstriboP\WPFp\MethodsWrapped_EstriboP.cs" />
+    <Compile Include="BarraEstriboP\WPFp\Methods_EstriboP.cs" />
+    <Compile Include="BarraEstriboP\WPFp\Ui_EstriboP.xaml.cs">
+      <DependentUpon>Ui_EstriboP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraEstriboV\WPFv\cmd_Ui_BarraV.cs" />
+    <Compile Include="BarraEstriboV\WPFv\ManejadorWPF_EstriboV.cs" />
+    <Compile Include="BarraEstriboV\WPFv\MethodsWrapped_EstriboV.cs" />
+    <Compile Include="BarraEstriboV\WPFv\Methods_EstriboV.cs" />
+    <Compile Include="BarraEstriboV\WPFv\Ui_EstriboV.xaml.cs">
+      <DependentUpon>Ui_EstriboV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraEstribo\ASSERT\Cmd_ManejadorEstriboCOnfinamiento.cs" />
+    <Compile Include="BarraEstribo\Barras\BarraLaterales.cs" />
+    <Compile Include="BarraEstribo\Barras\BarraRefuerzoEstriboMuroSinTras.cs" />
+    <Compile Include="BarraEstribo\Barras\BarraRefuerzoEstriboMuro.cs" />
+    <Compile Include="BarraEstribo\DTO\BarraTrabaDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\ConfiguracionBarraTrabaDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\DatosConfinamientoDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\ConfiguracionTAgEstriboDTo.cs" />
+    <Compile Include="BarraEstribo\DTO\DatosConfinamientoAutoDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\EstriboMuroDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\IntervalosConfinaDTOAuto.cs" />
+    <Compile Include="BarraEstribo\IbarraEstribo.cs" />
+    <Compile Include="BarraEstribo\AManejadorEstriboCOnfinamiento.cs" />
+    <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamientoAuto.cs" />
+    <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamiento.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboConfinamientoAuto.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboMuro.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboViga.cs" />
+    <Compile Include="BarraEstribo\Servicios\CambiarColorBarras_Service.cs" />
+    <Compile Include="BarraEstribo\Servicios\GenerarDatosIniciales_Service.cs" />
+    <Compile Include="BarraEstribo\Servicios\ObtenerConfiguracionEnfierrado_Service.cs" />
+    <Compile Include="BarraEstribo\Servicios\ObtenerIntervalosTrabaMuro_Service.cs" />
+    <Compile Include="BarraEstribo\Servicios\ObtenerIntervalosLateralesMuro_Service.cs" />
+    <Compile Include="BarraEstribo\Servicios\ObtenerIntervalosLateralesViga_Service.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagEstriboViga.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagEstriboMuro.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagLateralesMuro.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagTrabaMuro.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagTrabaViga.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagLateralesViga.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagEstriboBase.cs" />
+    <Compile Include="BarraEstribo\TAG\GeomeTagEstriboConfinamiento.cs" />
+    <Compile Include="BarraEstribo\TAG\Helper\TagConfigEscala.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\ATrabaBase.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\FactoryTipoTrabas.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\ITipoTraba.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\Servicios\ObtenerIntervalos.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\Tipos\TrabaMuroEspesor30.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\Tipos\TrabaMuroEspesor15_20_25.cs" />
+    <Compile Include="BarraEstribo\TipoTrabas\Tipos\TrabaMuroNull.cs" />
+    <Compile Include="BarraEstribo\WPFc\cmd_Ui_BarraC.cs" />
+    <Compile Include="BarraEstribo\WPFc\ManejadorWPF_EstriboC.cs" />
+    <Compile Include="BarraEstribo\WPFc\MethodsWrapped_EstriboC.cs" />
+    <Compile Include="BarraEstribo\WPFc\Methods_EstriboC.cs" />
+    <Compile Include="BarraEstribo\WPFc\Ui_EstriboC.xaml.cs">
+      <DependentUpon>Ui_EstriboC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraMallaRebar\Ayuda\AyudaMallaAUTO.cs" />
+    <Compile Include="BarraMallaRebar\DibujarBarraMalla.cs" />
+    <Compile Include="BarraMallaRebar\ManejadorBarraVMalla.cs" />
+    <Compile Include="BarraMallaRebar\ManejadorBarraVMalla_BASE.cs" />
+    <Compile Include="BarraMallaRebar\ManejadorBarraVMallaAuto.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaHPataAmbos.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaHPataFinal.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaHPataInicial.cs" />
+    <Compile Include="BarraMallaRebar\TIpoBarra\MallaHSinPatas.cs" />
+    <Compile Include="BarraV\AgregarEspMuro\Cmd_CreadorAgregarEspesor.cs" />
+    <Compile Include="BarraV\AgregarEspMuro\CreadorAgregarEspesor.cs" />
+    <Compile Include="BarraV\AgregarEspMuro\ManejadorAgregarEspesor.cs" />
+    <Compile Include="BarraV\AgregarTAg\CreardorTagEspesor.cs" />
+    <Compile Include="BarraV\Agrupar\Ayuda\AyudaGruposBarrasIguaoP2.cs" />
+    <Compile Include="BarraV\Agrupar\ServicioAgrupar\AgrupadorBarrasAuto.cs" />
+    <Compile Include="BarraV\Agrupar\ServicioAgrupar\AgrupadorBarrasManual.cs" />
+    <Compile Include="BarraV\Agrupar\ServicioAgrupar\AgrupadorBarras.cs" />
+    <Compile Include="BarraV\Agrupar\Ayuda\AlmacenerNiveles.cs" />
+    <Compile Include="BarraV\Agrupar\DTO\GenerarNuevaDirectizDTO.cs" />
+    <Compile Include="BarraV\Agrupar\ManejadorDesAgrupar.cs" />
+    <Compile Include="BarraV\Agrupar\Model\BarraIng.cs" />
+    <Compile Include="BarraV\Agrupar\Model\AdministradorGrupos.cs" />
+    <Compile Include="BarraV\Agrupar\ManejadorAgrupar.cs" />
+    <Compile Include="BarraV\Anotacion\AnotacionM.cs" />
+    <Compile Include="BarraV\ASSERT\Cmd_cargarUpdate.cs" />
+    <Compile Include="BarraV\ASSERT\Cmd_GenerarTAg.cs" />
+    <Compile Include="BarraV\ASSERT\Cmd_GenerarBarras.cs" />
+    <Compile Include="BarraV\ASSERT\cmd_ManejadorBarraV.cs" />
+    <Compile Include="BarraV\ASSERT\cmd_ManejadorBarraH.cs" />
+    <Compile Include="BarraV\ASSERT\Cmd_SeleccionarElemtos.cs" />
+    <Compile Include="BarraV\ASSERT\Cmd_ListaElevacionLEvel.cs" />
+    <Compile Include="BarraV\Automatico\ArmaduraTrasformada.cs" />
+    <Compile Include="BarraV\Automatico\Ayuda\AyudaObtenerDeltaElevacion.cs" />
+    <Compile Include="BarraV\Automatico\CreadorListaIntervalosBarraAutoDto.cs" />
+    <Compile Include="BarraV\Automatico\ManejadorBarrasAutomaticas.cs" />
+    <Compile Include="BarraV\Automatico\WPFAuto\CMD_Ui_AutoElev.cs" />
+    <Compile Include="BarraV\Automatico\WPFAuto\ManejadorWPF_AutoElev .cs" />
+    <Compile Include="BarraV\Automatico\WPFAuto\MethodsWrapped_AutoElev.cs" />
+    <Compile Include="BarraV\Automatico\WPFAuto\Methods_AutoElev.cs" />
+    <Compile Include="BarraV\Automatico\WPFAuto\Ui_AutoElev.xaml.cs">
+      <DependentUpon>Ui_AutoElev.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\ParaBarras\AyudaCurveRebar.cs" />
+    <Compile Include="BarraV\Ayuda\AyudaRebarVertical.cs" />
+    <Compile Include="BarraV\Ayuda\XYZnh.cs" />
+    <Compile Include="BarraV\Borrar\BorrarRebarRectangulo.cs" />
+    <Compile Include="BarraV\Buscar\BuscarBarrarCabezaMuro\Buscar_elementoEncontradoMuroDTO.cs" />
+    <Compile Include="BarraV\Buscar\BuscarBarrarCabezaMuro\rebarVerticalEncontrada.cs" />
+    <Compile Include="BarraV\Buscar\BuscarElementosHorizontal.cs" />
+    <Compile Include="BarraV\Buscar\BuscarElementosArriba.cs" />
+    <Compile Include="BarraV\Buscar\BuscarElementosBajo.cs" />
+    <Compile Include="BarraV\Buscar\BuscarFundacionLosa.cs" />
+    <Compile Include="BarraV\Buscar\BuscarMurosoViga.cs" />
+    <Compile Include="BarraV\Buscar\BuscarColumna.cs" />
+    <Compile Include="BarraV\Buscar\BuscarViga.cs" />
+    <Compile Include="BarraV\Buscar\BuscarMuros.cs" />
+    <Compile Include="BarraEstribo\DTO\BarraLateralesDTO.cs" />
+    <Compile Include="BarraV\CargadorBarraV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarraV\CargadorBarraV.Designer.cs">
+      <DependentUpon>CargadorBarraV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\Cmd_CargadorBarraV.cs" />
+    <Compile Include="BarraV\ColorRebar\TipoRebarPorColor.cs" />
+    <Compile Include="BarraV\Contener\ContendorRebar.cs" />
+    <Compile Include="BarraV\Copiar\CArgar_CopiarElev.cs" />
+    <Compile Include="BarraV\Copiar\CopiaBarrasElev.cs" />
+    <Compile Include="BarraV\Copiar\Helper\_CalculoValorZ.cs" />
+    <Compile Include="BarraV\Copiar\ManejadorCopiaElevBarra.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoRebar_Elev.cs" />
+    <Compile Include="BarraV\Copiar\model\WrapperFormatoRebar.cs" />
+    <Compile Include="BarraV\Copiar\SeleccionarBarrasCopiar.cs" />
+    <Compile Include="BarraV\Copiar\wpf_form\CopiarRebarWpf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarraV\Copiar\wpf_form\CopiarRebarWpf.Designer.cs">
+      <DependentUpon>CopiarRebarWpf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\Creador\CreadorBarrasV_malla.cs" />
+    <Compile Include="BarraV\Creador\CreadorBarrasV_Auto.cs" />
+    <Compile Include="BarraV\Creador\CreadorBarrasV.cs" />
+    <Compile Include="BarraV\Buscar\BuscarBarrarCabezaMuro\BuscardorBarrasCabezaVertical.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaAumentarLetra.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaCreartexto.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaGenerarBoundingBoxXYZ.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaObtenerDireccionTAgCorte.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaObtenerListaDesglosada.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\AyudaObtenerPtosTransformada.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\CrearTrasformadaSobreVectorDesg.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\enumDesglose.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\PtosCurvaAuxDTO.cs" />
+    <Compile Include="BarraV\Desglose\Ayuda\UtilDesglose.cs" />
+    <Compile Include="BarraV\Desglose\Barras\ARebarLosa.cs" />
+    <Compile Include="BarraV\Desglose\Barras\FactoryIRebarLosa.cs" />
+    <Compile Include="BarraV\Desglose\Barras\IRebarLosa.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaPlanta\BarraEstriboTrans_Plata.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaPlanta\BarraEstriboTransConCurva_Plata.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaPlanta\BarraTrabaEstribo_Plata.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaPlanta\BarraTrabaEstriboConCurva_Plata.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaElev\BarraEstriboTransConCurva_Elev.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaElev\BarraTrabaEstribo.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaElev\BarraTrabaEstriboConCurva_Elev.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\ParaElev\BarraEstriboTrans.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\BarraPataSuperior.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\BarraPataInicial.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\BarraSinPatas.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\BarraPataAmbos.cs" />
+    <Compile Include="BarraV\Desglose\Barras\Tipo\fx_null.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\CalcularREferenciasCaraPilar.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasEstribo_H.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasTraslapoIguales_H.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasTraslapo_H.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Barra_BASE.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Barra_Corte_TAg_H.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Barra_elevacion_H.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Estribos_Corte_H.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Estribos_Corte_V.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Estribos_elevacion_H.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Estribos_elevacion_V.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Barra_elevacion_V.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasEstribo_V.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasTraslapoIguales_V.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GruposListasTraslapo_V.cs" />
+    <Compile Include="BarraV\Desglose\Calculos\GeneradorListaTrasfomardas.cs" />
+    <Compile Include="BarraV\Desglose\ManejadorConfiguracionDesglose.cs" />
+    <Compile Include="BarraV\Desglose\Dibujar2D\Dibujar2D_Barra_Corte_TAg_V.cs" />
+    <Compile Include="BarraV\Desglose\DTO\Config_EspecialElev.cs" />
+    <Compile Include="BarraV\Desglose\DTO\Config_EspecialCorte.cs" />
+    <Compile Include="BarraV\Desglose\DTO\ParametroShareNhDTO.cs" />
+    <Compile Include="BarraV\Desglose\DTO\RebarElevDTO.cs" />
+    <Compile Include="BarraV\Desglose\Geometria\Traba3ladosOrientadaOrtogonal_V.cs" />
+    <Compile Include="BarraV\Desglose\Geometria\EstribosRectagularesOrtogonales_V.cs" />
+    <Compile Include="BarraV\Desglose\ManejadorDesgloseH.cs" />
+    <Compile Include="BarraV\Desglose\ManejadorDesgloseV.cs" />
+    <Compile Include="BarraV\Desglose\Model\DatosHost.cs" />
+    <Compile Include="BarraV\Desglose\Model\DatosTransformada.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose_Barras_H.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose_Barras_V.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose_GrupoBarras_H.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose_GrupoEstribo_V.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarDesglose_GrupoBarras_V.cs" />
+    <Compile Include="BarraV\Desglose\Model\RebarLine.cs" />
+    <Compile Include="BarraV\Desglose\Tag\FactoryGeomTagRebarDesglose.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagBaseV.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagBarrarElev.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagEstribo.cs" />
+    <Compile Include="BarraV\Desglose\Tag\GeomeTagTraba.cs" />
+    <Compile Include="BarraV\Desglose\WPF\ManejadorWPFDesglose.cs" />
+    <Compile Include="BarraV\Desglose\WPF\Methods.cs" />
+    <Compile Include="BarraV\Desglose\WPF\MethodsWrapped.cs" />
+    <Compile Include="BarraV\Desglose\WPF\UI_desglose.xaml.cs">
+      <DependentUpon>UI_desglose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\DTO\BuscarMurosDTO.cs" />
+    <Compile Include="BarraV\DTO\ConfiguracionInicialBarraHorizontalDTO.cs" />
+    <Compile Include="BarraV\DTO\ConfiguracionInicialBarraVerticalDTO.cs" />
+    <Compile Include="BarraV\DTO\ConfiguracionTAgBarraDTo.cs" />
+    <Compile Include="BarraV\DTO\CoordenadasBarra.cs" />
+    <Compile Include="BarraV\DTO\CoordenadasBarraIMPORTAR.cs" />
+    <Compile Include="BarraV\DTO\DatosBarraAutoDTO.cs" />
+    <Compile Include="BarraV\DTO\EditarBarraDTO.cs" />
+    <Compile Include="BarraV\DTO\EmpotramientoPatasDTO.cs" />
+    <Compile Include="BarraV\DTO\IbarraBaseResultDTO.cs" />
+    <Compile Include="BarraV\DTO\IntervaloBarraAutoDto.cs" />
+    <Compile Include="BarraV\DTO\IntervaloBarraAutoDtoIMPORTAR.cs" />
+    <Compile Include="BarraV\DTO\IntervaloBarrasHorizontalDTO.cs" />
+    <Compile Include="BarraV\DTO\IntervaloBarrasDTO.cs" />
+    <Compile Include="BarraV\DTO\ElementoSeleccionadoDTO.cs" />
+    <Compile Include="BarraV\Horquilla\Creador\Creador_TypoLine.cs" />
+    <Compile Include="BarraV\Horquilla\DTO\ConfiguracionInicialBarraVerticalHorqDTO.cs" />
+    <Compile Include="BarraV\Horquilla\Intervalos\IntervaloBarras_HorqDTO.cs" />
+    <Compile Include="BarraV\DTO\ObjetosEncontradosDTO.cs" />
+    <Compile Include="BarraV\DTO\ParametrosInternoRebarDTO.cs" />
+    <Compile Include="BarraV\DTO\PtoDimesionesTraslapoDTO.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\cmd\cmd_editarBarra.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\CreadorListaWraperRebarLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\DTO\EditarBarraLargoDTO.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\EditarBarraVLargos.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\ManejadorBarraV_LargoBarra.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\Entidades\WraperRebarLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\Entidades\parametrosRebar.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\WPFEdB\cmd_Ui_EditarBarraLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\WPFEdB\ManejadorWPF_EditarBarraLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\WPFEdB\MethodsWrapped_EditarBarraLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\WPFEdB\Methods_EditarBarraLargo.cs" />
+    <Compile Include="BarraV\EditarBarraLargo\WPFEdB\Ui_EditarBarraLargo.xaml.cs">
+      <DependentUpon>Ui_EditarBarraLargo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\EditarBarra\EditarRebarShape\EditarBarraRebarShape.cs" />
+    <Compile Include="BarraV\EditarBarra\EditarBarraV.cs" />
+    <Compile Include="BarraV\EditarBarra\EditarRebarShape\ObtenesCorrectoRebarShape.cs" />
+    <Compile Include="BarraV\Empotramiento\EmpotramientoVertical.cs" />
+    <Compile Include="BarraV\Horquilla\Calculos\RecalcularPtosYEspaciamieto_Horqu.cs" />
+    <Compile Include="BarraV\Horquilla\Creador\CreadorBarrasV_Horq.cs" />
+    <Compile Include="BarraV\Horquilla\DTO\IntervaloBarrasHorqDTO.cs" />
+    <Compile Include="BarraV\Horquilla\Tag\GeomeTagPataInicialHOrquilla.cs" />
+    <Compile Include="BarraV\Horquilla\TipoBarra\ABarrasHorq_SinTrans.cs" />
+    <Compile Include="BarraV\Horquilla\TipoBarra\HorquillaPataFinal.cs" />
+    <Compile Include="BarraV\Horquilla\TipoBarra\HorquillaPataInicial.cs" />
+    <Compile Include="BarraV\Horquilla\WPF\ManejadorWPF_Horquilla.cs" />
+    <Compile Include="BarraV\Horquilla\WPF\Methods_Horquilla.cs" />
+    <Compile Include="BarraV\Horquilla\WPF\MethodsWrapped_Horquilla.cs" />
+    <Compile Include="BarraV\Horquilla\WPF\UI_Horquilla.xaml.cs">
+      <DependentUpon>UI_Horquilla.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\InsertarImage\InsertarImagen.cs" />
+    <Compile Include="BarraV\Intersecciones\TiposDeBarraPorInterseccionHorizontal.cs" />
+    <Compile Include="BarraV\Intersecciones\TiposDeBarraPorInterseccionVertical.cs" />
+    <Compile Include="BarraV\Intervalos\AGenerarIntervalosH.cs" />
+    <Compile Include="BarraV\Horquilla\Intervalos\GenerarIntervalos1Nivel_Muro_Horq.cs" />
+    <Compile Include="BarraV\Horquilla\Intervalos\GenerarIntervalos1Nivel_Cabeza_Horq.cs" />
+    <Compile Include="BarraMallaRebar\Intervalos\GenerarIntervalos1Nivel_MuroV.cs" />
+    <Compile Include="BarraMallaRebar\Intervalos\GenerarIntervalos1Nivel_MuroH.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosNULL.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosSINNivel.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosAuto.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalosVariosNivel.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalos3Nivel.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalos2Nivel.cs" />
+    <Compile Include="BarraV\Intervalos\GenerarIntervalos1Nivel.cs" />
+    <Compile Include="BarraV\Intervalos\FactoryGenerarIntervalos.cs" />
+    <Compile Include="BarraV\Intervalos\IGenerarIntervalosH.cs" />
+    <Compile Include="BarraV\Intervalos\IGenerarIntervalosV.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IIniciarConXTraslapo.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarConAuto.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarSinTraslapoV_Horq.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarSinTraslapoV.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarSinTraslapoH.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarCon1Traslapo.cs" />
+    <Compile Include="BarraV\Intervalos\SegunInicio\IniciarCon2Traslapo.cs" />
+    <Compile Include="BarraV\ManejadorBarraH.cs" />
+    <Compile Include="BarraV\ManejadorBarraH_CambiarBarra.cs" />
+    <Compile Include="BarraV\Horquilla\ManejadorBarraH_Horq.cs" />
+    <Compile Include="BarraV\ManejadorBarra_CambiarBarraRebarShape.cs" />
+    <Compile Include="BarraV\ManejadorBarraV_CambiarBarra.cs" />
+    <Compile Include="BarraV\ManejadorBarraV_auto.cs" />
+    <Compile Include="BarraV\ManejadorBarraV.cs" />
+    <Compile Include="BarraV\Seleccion\DireccionRecorrido.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosH.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarRebar.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarTagRebar.cs" />
+    <Compile Include="BarraV\Seleccion\SelecionarPtoHorizontal.cs" />
+    <Compile Include="BarraV\Seleccion\SelecionarPtoSup.cs" />
+    <Compile Include="BarraV\TipoBarra\ABarrasBaseElev_SinTrans.cs" />
+    <Compile Include="BarraV\TipoBarra\ABarrasBaseElev_ConTrans.cs" />
+    <Compile Include="BarraV\TipoBarra\ARebarsSinTrans.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataAmbos_Horquilla.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataFinalYGancho.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataInicialYGancho.cs" />
+    <Compile Include="ConfiguracionInicial\model\ElementoParametro.cs" />
+    <Compile Include="Dimensiones\CreadorAligneDimensiones.cs" />
+    <Compile Include="Dimensiones\DTo\DimensionesDatosTextoDTO.cs" />
+    <Compile Include="Dimensiones\TestBar.cs" />
+    <Compile Include="Extension\ExtensionDouble.cs" />
+    <Compile Include="Extension\ExtensionDictionary.cs" />
+    <Compile Include="FILTROS\FiltroVIga_Muro_Column.cs" />
+    <Compile Include="Fund\DTO\DatosEditarFundacionesDTO.cs" />
+    <Compile Include="Fund\DTO\DatosIntervalosFundDTO.cs" />
+    <Compile Include="Fund\Editar\CambiarDatosFund.cs" />
+    <Compile Include="Fund\Editar\CargarEditFundaciones.cs" />
+    <Compile Include="Fund\Editar\ManejadorEditarFundaciones.cs" />
+    <Compile Include="Fund\Editar\WPF\EntryCommand.cs" />
+    <Compile Include="Fund\Editar\WPF\ManejadorWPF_EditFund.cs" />
+    <Compile Include="Fund\Editar\WPF\Methods_EditFund.cs" />
+    <Compile Include="Fund\Editar\WPF\MethodsWrapped.cs" />
+    <Compile Include="Fund\Editar\WPF\UI_FundEditar.xaml.cs">
+      <DependentUpon>UI_FundEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fund\Editar\WPF\UtilWPF.cs" />
+    <Compile Include="Fund\Intervalos\GenerarListaIntervalosFund.cs" />
+    <Compile Include="Fund\Traslapo\CArgarTraslapoManejadorFund.cs" />
+    <Compile Include="Fund\Traslapo\PathReinformeTraslapoManejadorFund.cs" />
+    <Compile Include="GEOM\GemetrieLIne.cs" />
+    <Compile Include="ParametrosShare\Actualizar\ActualizarLargoBarras.cs" />
+    <Compile Include="Prueba\ManejadorDatos.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\CalculoBarraRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\DatosBordeLosaDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\Intervalos\GenerarListaIntervalosBordeLosa.cs" />
+    <Compile Include="REFUERZOLOSAS\Seleccionar\SeleccionarLosaConMouse_Intervalos.cs" />
+    <Compile Include="REFUERZOLOSAS\Seleccionar\SeleccionarLosaOFunda.cs" />
+    <Compile Include="RefuerzoSupleMuro\Seleccionar\PuntosSeleccionMouseRefuerzo.cs" />
+    <Compile Include="Seleccionar\Ayuda\ASeleccionarElementos.cs" />
+    <Compile Include="TablasSchedule\Dto\DatosTablasDTO.cs" />
+    <Compile Include="TablasSchedule\ScheduleLeer.cs" />
+    <Compile Include="TablasSchedule\Usos\CreadorTablasDinamicas.cs" />
+    <Compile Include="TablasSchedule\Usos\TablasHormigoYModaje.cs" />
+    <Compile Include="TextoNoteNH\FActoryTipoTextNOte.cs" />
+    <Compile Include="UTILES\CrearTrasformadaSobreVector.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Ayuda\AyudaAyudaComprobar_tipoCategoria_EstaEnUi_BlancoNegro.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\Casos\ManejadorVisibilidadPorTipo.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\FactoryGraphicSettings\FactoryBlancoNegro.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\FactoryGraphicSettings\FactoryGraphicSetting_ViewLOSAEntrega_VV.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\FactoryGraphicSettings\FactoryGraphicSetting_ViewELEVEntrega_VV.cs" />
+    <Compile Include="Visibilidad\Ayuda\GraphicSettingDTO.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\DTO\CategoriasDTO.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\DTO\ColorPatternDTO.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\DTO\ViewDTO.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\FactoryGraphicSettings\FActoryGraphicSettingsBarrasElevLosa.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\FactoryGraphicSettings\FActoryGraphicSettingsBarrasElevEntrega.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadGraphicSettings_Reset.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\ManejadorVisibilidadBlancoNegro.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadGraphicSettings_View_EntregaLosa.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadGraphicSettings_View_EntregaElevacion.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadGraphicSettings_View_BlancoNegro.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadTipoBarra\VisibilidadElemenGraphicV2.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadTipoBarra\VisibilidadElemenGraphic.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadTipoBarra\VisibilidadTipoBarraLosas.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\VisibilidadTipoBarra\VisibilidadTipoBarraElev.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\WPF\ManejadorWPF_FormatoEntrega.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\WPF\Methods_FormatoEntrega.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\WPF\MethodsWrapped.cs" />
+    <Compile Include="Visibilidad\BlancoNegro\WPF\UI_FormatoEntrega.xaml.cs">
+      <DependentUpon>UI_FormatoEntrega.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Visibilidad\Servicio\ListaVisibility_Graphics.cs" />
+    <Compile Include="Visibilidad\Servicio\ResetearColorCategoria.cs" />
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\DiferenciaNombrePara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\DiferenciaNombrePara.Designer.cs">
+      <DependentUpon>DiferenciaNombrePara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visibilidad\Visualizacion\CambiarVisibilidadViewSection.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementOrientacion_conPathSYm.cs" />
+    <Compile Include="WorksetNH\CreadorWorkset.cs" />
+    <Compile Include="Cubicacion\model\EnumCubBarra.cs" />
+    <Compile Include="DatosExcel\ExportarExcelDatos.cs" />
+    <Compile Include="ElementoBarraRoom\Actualizar\ActualizarRebarInSystem.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TipoLetraCambiar.cs" />
+    <Compile Include="ElementoBarraRoom\Lvar\AsignarLVar.cs" />
+    <Compile Include="Extension\ExtensionFloorAyuda.cs" />
+    <Compile Include="Extension\ExtensionRebarInSystem.cs" />
+    <Compile Include="FILTROS\FiltroFloor.cs" />
+    <Compile Include="FILTROS\FiltroVIga_Muro_Rebar_Columna.cs" />
+    <Compile Include="FILTROS\FiltroVIga_Muro.cs" />
+    <Compile Include="ParametrosShare\Actualizar\ActualizarNUmeroTraba7_5.cs" />
+    <Compile Include="ParametrosShare\Seleccionar\ManejadorSeleccionar.cs" />
+    <Compile Include="Prueba\BuscarEspesorLosaVar.cs" />
+    <Compile Include="RebarLosa\TipoTag\GeomeTagBaseRebar.cs" />
+    <Compile Include="RebarLosa\UpDate\ManejadorUpdaterRebarPath.cs" />
+    <Compile Include="RebarLosa\UpDate\UpdaterRebarPath.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoBarraRefuerzoV2.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculosRefuerzoCabezaMuroV2.cs" />
+    <Compile Include="REFUERZOLOSAS\Varios\AyudaAgregarEspesorLosa.cs" />
+    <Compile Include="Seleccionar\SeleccionarGroup.cs" />
+    <Compile Include="TablasSchedule\ManejadorSchedule.cs" />
+    <Compile Include="TablasSchedule\ScheduleFiltros.cs" />
+    <Compile Include="TablasSchedule\ScheduleNH.cs" />
+    <Compile Include="UpdateGenerar\UpdateGeneral.cs" />
+    <Compile Include="UTILES\ActualizarNombreView\ActualizarNombreViewFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UTILES\ActualizarNombreView\ActualizarNombreViewFrm.Designer.cs">
+      <DependentUpon>ActualizarNombreViewFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\ActualizarNombreView\ManejadoCambiarNOmbreView.cs" />
+    <Compile Include="UTILES\AyudasView\NivelLosa.cs" />
+    <Compile Include="UTILES\AyudasView\ObtenerNivelPorOrigenBarra.cs" />
+    <Compile Include="UTILES\Cambiar\CambiarUnobscuredInView_path_rebar.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoNoNe.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoPathRebarInSystem.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\EntidadBarras.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\FactoryEntidadBarras.cs" />
+    <Compile Include="UTILES\ParaBarras\DatosPathRinforment.cs" />
+    <Compile Include="UTILES\ParaBarras\ObtenerDatosRebarInsystem.cs" />
+    <Compile Include="UTILES\ParaBarras\ObtenerTipoBarra.cs" />
+    <Compile Include="BarraV\UpDate\Casos\UpdateRebarLosaInclinadas.cs" />
+    <Compile Include="BarraV\UpDate\Casos\UpdateRebarLosa.cs" />
+    <Compile Include="BarraV\UpDate\Casos\UpdateRebarLosaEscalera.cs" />
+    <Compile Include="BarraV\UpDate\Casos\UpdateRebarElevaciones.cs" />
+    <Compile Include="BarraV\WPFb\cmd_Ui_BarraV.cs" />
+    <Compile Include="Cubicacion\model\CubBarra.cs" />
+    <Compile Include="Cubicacion\ManejadorCub.cs" />
+    <Compile Include="Cubicacion\Seleccionar\SeleccionarRebar_PathReinforment.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\AyudaAsignarTipoBarra.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\BuscarIsNombreViewActualizado.cs" />
+    <Compile Include="ElementoBarraRoom\CopiarEntreLosa\CopiaBarrasEntreLosa.cs" />
+    <Compile Include="ElementoBarraRoom\CopiarEntreLosa\ManejadorCopiaBarraLosa.cs" />
+    <Compile Include="ElementoBarraRoom\CopiarEntreLosa\wpf\CopiarRebarEntreLosas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\CopiarEntreLosa\wpf\CopiarRebarEntreLosas.Designer.cs">
+      <DependentUpon>CopiarRebarEntreLosas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\CoordenadasLetra.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1_SUPV2.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3_refuerzoSuple.cs" />
+    <Compile Include="Elementos_viga\GeometriaViga.cs" />
+    <Compile Include="Elemento_Losa\Ayuda\GeometriaLosa.cs" />
+    <Compile Include="Extension\ExtensionView.cs" />
+    <Compile Include="ExtStore\Tipos\CreadorExtStore.cs" />
+    <Compile Include="ExtStore\Prueba\ManejadotExtStore_wall.cs" />
+    <Compile Include="FILTROS\FiltroGrids.cs" />
+    <Compile Include="FILTROS\FiltroRebar.cs" />
+    <Compile Include="GRIDS\NombreEje\MAnejadorCrearTextoEje.cs" />
+    <Compile Include="GRIDS\NombreEje\SeleccionarGrid.cs" />
+    <Compile Include="GRIDS\NombreEje\WPFGrid\ManejadorWPF_Ui_UIGrid.cs" />
+    <Compile Include="GRIDS\NombreEje\WPFGrid\MethodsWrapped_EstriboV.cs" />
+    <Compile Include="GRIDS\NombreEje\WPFGrid\Methods_Ui_UIGrid.cs" />
+    <Compile Include="GRIDS\NombreEje\WPFGrid\Ui_UIGrid.xaml.cs">
+      <DependentUpon>Ui_UIGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ParametrosShare\Actualizar\ActualizarnNumeroBarra.cs" />
+    <Compile Include="ParametrosShare\Actualizar\ActualizarBarraTipo.cs" />
+    <Compile Include="ParametrosShare\Actualizar\ManejadorActualizar.cs" />
+    <Compile Include="ParametrosShare\Actualizar\ManejadorActualizarBarraTipo.cs" />
+    <Compile Include="ParametrosShare\Buscar\AyudaBuscaParametrerShared.cs" />
+    <Compile Include="Pin\MannejadorPin.cs" />
+    <Compile Include="Pin\WPF_pin\ManejadorWPF_Pin.cs" />
+    <Compile Include="Pin\WPF_pin\MethodsWrapped_pin.cs" />
+    <Compile Include="Pin\WPF_pin\Methods_pin.cs" />
+    <Compile Include="Pin\Ayuda\enumeracion.cs" />
+    <Compile Include="Pin\WPF_pin\Ui_pin.xaml.cs">
+      <DependentUpon>Ui_pin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba\ClasseAssemblyInstance\AssemblyInstancenh.cs" />
+    <Compile Include="RebarLosa\AyudaObtenerLetraNH.cs" />
+    <Compile Include="RebarLosa\Barras\Ayuda\ayudaPuntosDeCurva.cs" />
+    <Compile Include="RebarLosa\DTO\GenerarGeometriaAhorroDTO.cs" />
+    <Compile Include="RebarLosa\DTO\ObtenerGEometriaDTO.cs" />
+    <Compile Include="RebarLosa\Geom\FActoryGenerarGeometriaAhorro.cs" />
+    <Compile Include="RebarLosa\ListaPtos\ObtenerListaPtos.cs" />
+    <Compile Include="RebarLosa\PathFalso\GenerarPtos.cs" />
+    <Compile Include="RebarLosa\PathFalso\ManejadorPathFalso.cs" />
+    <Compile Include="RebarLosa\Servicio\GenerarListaIntervalos.cs" />
+    <Compile Include="RebarLosa\Geom\GenerarGeometriaAhorroMultiples.cs" />
+    <Compile Include="RebarLosa\Geom\GenerarGeometriaAhorro.cs" />
+    <Compile Include="RebarLosa\Geom\GenerarGeometriaSimple.cs" />
+    <Compile Include="RebarLosa\Viewrebar\AgregarIntervalos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RebarLosa\Viewrebar\AgregarIntervalos.Designer.cs">
+      <DependentUpon>AgregarIntervalos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REFUERZOLOSAS\DTO\DtoCrearBarraRefuerzoBordeLibre.cs" />
+    <Compile Include="REFUERZOLOSAS\Varios\ObtenerEspesorLosaVariable.cs" />
+    <Compile Include="RefuerzoSupleMuro\cmd_RefuerzoSupleMuroManejador.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoGeometriaRectangulo2ptos.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoBarra\BarraVPataAmbosRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoBarra\BarraVPataFinalRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoBarra\BarraVPataInicialRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoBarra\BarraVSinPatasRefuerzo.cs" />
+    <Compile Include="BarraV\TipoBarra\IbarraBaseV.cs" />
+    <Compile Include="BarraV\TipoBarra\IbarraBase.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\ABarrasElevV_SinTrans.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagMalla.cs" />
+    <Compile Include="BarraV\UpDate\Cmd_rebarUpdater.cs" />
+    <Compile Include="BarraV\UpDate\ManejadorUpdateRebar.cs" />
+    <Compile Include="BarraV\UpDate\UpdaterBarrasRebar.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\ABarrasElevV_ConTrans.cs" />
+    <Compile Include="BarraV\Intervalos\AGenerarIntervalosV.cs" />
+    <Compile Include="BarraV\Seleccion\SeleccionarElementosV.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataAmbos.cs" />
+    <Compile Include="BarraV\TipoBarra\BarraVNULL.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataFinal.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVPataInicial.cs" />
+    <Compile Include="BarraV\TipoBarra\Verticales\BarraVSinPatas.cs" />
+    <Compile Include="BarraV\TipoBarra\FactoryBarraHorizontal.cs" />
+    <Compile Include="BarraV\TipoBarra\FactoryBarraVertical.cs" />
+    <Compile Include="BarraV\TipoBarra\Horizontal\ABarrasElevH_SinTrans.cs" />
+    <Compile Include="BarraV\TipoBarra\Horizontal\BarraVPataAmbosH.cs" />
+    <Compile Include="BarraV\TipoBarra\Horizontal\BarraVPataFinalH.cs" />
+    <Compile Include="BarraV\TipoBarra\Horizontal\BarraVPataInicialH.cs" />
+    <Compile Include="BarraV\TipoBarra\Horizontal\BarraVSinPatasH.cs" />
+    <Compile Include="BarraV\TipoTagH\FactoryGeomTagRebarH.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagPataAmbosH.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagPataFinalH.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagPataInicialH.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagSinPataH.cs" />
+    <Compile Include="BarraV\TipoTag\FactoryGeomTagRebarV.cs" />
+    <Compile Include="BarraV\TipoTagH\GeomeTagBaseH.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagBaseV.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagPataAmbosV.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagPataFinalV.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagPataInicialV.cs" />
+    <Compile Include="BarraV\TipoTag\GeomeTagSinPata.cs" />
+    <Compile Include="BarraV\WPFb\ManejadorWPF_BarraV .cs" />
+    <Compile Include="BarraV\WPFb\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="BarraV\WPFb\Methods_CrearBarra.cs" />
+    <Compile Include="BarraV\WPFb\OpcionesHorizontal.xaml.cs">
+      <DependentUpon>OpcionesHorizontal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BarraV\WPFb\Ui_BarraV.xaml.cs">
+      <DependentUpon>Ui_BarraV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BorrarSeleccion\BorrarElemento.cs" />
+    <Compile Include="BorrarSeleccion\BorrarPath\cmd_BorrarPathReinfRectangulo.cs" />
+    <Compile Include="BorrarSeleccion\SharePArameter\BorrarShareParameter.cs" />
+    <Compile Include="BorrarSeleccion\SharePArameter\BorrarShareParameterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BorrarSeleccion\SharePArameter\BorrarShareParameterForm.Designer.cs">
+      <DependentUpon>BorrarShareParameterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BorrarSeleccion\SharePArameter\Cmd_BorrarElementos.cs" />
+    <Compile Include="Cambiar\CambiarEspesor\CambiarEspesorLosa_CambiaPAthYRoom.cs" />
+    <Compile Include="Cambiar\cmd\CmdCambiarEspesorARoomTest.cs" />
+    <Compile Include="Cambiar\CambiarEspesor\ManejadorRoomCambioEspesor.cs" />
+    <Compile Include="Cambiar\CambiarEspesor\ManejadorPathCambioEspesor.cs" />
+    <Compile Include="Cambiar\CambiarEspesor\PathCambioEspesorDTO.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CambiarCuantia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cambiar\CuantiasRoom\CambiarCuantia.Designer.cs">
+      <DependentUpon>CambiarCuantia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cambiar\CuantiasRoom\CambiarDatosRoomConSelec.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CambiarDatosRoomBase.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CambiarDatosRoomMANEJADOR.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CambiarDatosRoomSinSelec.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CambiarDatosRoom.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\CmdCambiarDatosRoom.cs" />
+    <Compile Include="Cambiar\CuantiasRoom\RoomDto.cs" />
+    <Compile Include="Conector\WrapperRebarCoupler.cs" />
+    <Compile Include="ConfiguracionInicial\Cmd_ConfiguracionInicial.cs" />
+    <Compile Include="ConfiguracionInicial\ConfiguracionInicialParametros.cs" />
+    <Compile Include="ConfiguracionInicial\ListaExclusion.cs" />
+    <Compile Include="ConfiguracionInicial\ManejadorConfiguracionInicialElevacion.cs" />
+    <Compile Include="ConfiguracionInicial\ManejadorConfiguracionInicialEscalera.cs" />
+    <Compile Include="ConfiguracionInicial\ManejadorConfiguracionInicialGeneral.cs" />
+    <Compile Include="ConfiguracionInicial\ManejadorConfiguracionInicialLosa.cs" />
+    <Compile Include="Dimensiones\cmdDImensones.cs" />
+    <Compile Include="Dimensiones\CreadorDimensiones.cs" />
+    <Compile Include="EditarPath\Ayuda\ComprobarDireccionPathPath.cs" />
+    <Compile Include="EditarPath\CambiarLetras\ILetraCambiar.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf21.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf19.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf18.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf17A.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarNULL.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarf16.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiarSimple.cs" />
+    <Compile Include="EditarPath\CambiarLetras\FactoryLetraCambiar.cs" />
+    <Compile Include="EditarPath\CambiarLetras\LetraCambiar_base.cs" />
+    <Compile Include="EditarPath\model\LetraCambiarDTO.cs" />
+    <Compile Include="EditarPath\model\TagPathReinProcesado.cs" />
+    <Compile Include="EditarPath\Seleccion\SelecionarPath_IzqDereParaBorrar.cs" />
+    <Compile Include="EditarPath\Seleccion\SelecionarPathSeleccionadoParteSuperior.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Tag\ManejarEditTagUpdate_MoverConfiguracionInicial.cs" />
+    <Compile Include="EditarPath\TiposSeleccion\EditarPathReinMouse_ExtederPathA2punto.cs" />
+    <Compile Include="EditarPath\TiposSeleccion\EditarPathReinMouse_ExtederPathApunto.cs" />
+    <Compile Include="EditarTipoPath\CargarCambiarPathReinfomenConPto_Wpf.cs" />
+    <Compile Include="EditarTipoPath\CargarEditPathReinforme.cs" />
+    <Compile Include="EditarTipoPath\cmd\Cmd_ActualizarPathReinSeleccionado_Wpf.cs" />
+    <Compile Include="EditarTipoPath\cmd\cmd_EditarTipoPath.cs" />
+    <Compile Include="EditarTipoPath\PathReinformeCambioManejador.cs" />
+    <Compile Include="EditarTipoPath\Verificar\VerificarTiposEncambiosDeBarra.cs" />
+    <Compile Include="EditarTipoPath\WPF\EntryCommand.cs" />
+    <Compile Include="EditarTipoPath\WPF\ManejadorWPF.cs" />
+    <Compile Include="EditarTipoPath\WPF\Methods.cs" />
+    <Compile Include="EditarTipoPath\WPF\MethodsWrapped.cs" />
+    <Compile Include="EditarTipoPath\WPF\UI.xaml.cs">
+      <DependentUpon>UI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarTipoPath\WPF\UtilWPF.cs" />
+    <Compile Include="ElementoBarraRoom\Ahorro\FactoryAhorro.cs" />
+    <Compile Include="ElementoBarraRoom\Automatico\BarraRoom_ocultar_view.cs" />
+    <Compile Include="ElementoBarraRoom\Ahorro\ConfiguracionAhorro.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\AyudaMjeError.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\AyudaSuples.cs" />
+    <Compile Include="ElementoBarraRoom\DTO\DatosDiseñoDto.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagS4.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp_suple\ManejadorWPF.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp_suple\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp_suple\Methods_barraSuple.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp_suple\Ui_barraSuple.xaml.cs">
+      <DependentUpon>Ui_barraSuple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\ExtensionPlanarFace.cs" />
+    <Compile Include="Extension\ExtensionFundacion.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\Ayuda\CalculoIntervalos.cs" />
+    <Compile Include="REFUERZOLOSAS\Varios\OcultarBarras.cs" />
+    <Compile Include="RefuerzoSupleMuro\Obtener4ptosMuro.cs" />
+    <Compile Include="RefuerzoSupleMuro\RefuerzoSupleMuroManejador.cs" />
+    <Compile Include="RefuerzoSupleMuro\WPFp\ManejadorWPF_RefuerzoSupleMuro.cs" />
+    <Compile Include="RefuerzoSupleMuro\WPFp\MethodsWrapped_RefuerzoSupleMuro.cs" />
+    <Compile Include="RefuerzoSupleMuro\WPFp\Methods_RefuerzoSupleMuro.cs" />
+    <Compile Include="RefuerzoSupleMuro\WPFp\Ui_RefuerzoSupleMuro.xaml.cs">
+      <DependentUpon>Ui_RefuerzoSupleMuro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\ParaBarras\AyudaObtenerParametros.cs" />
+    <Compile Include="UTILES\ParaBarras\AyudaSeleccionRebar_PathRein.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathReinforment_InfoCompleta.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarVisibilidad.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarOPathRein.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarRectanguloWrapperRebar.cs" />
+    <Compile Include="Seleccionar\SeleccionarTagPilar.cs" />
+    <Compile Include="UTILES\AyudasView\CrearViewNH.cs" />
+    <Compile Include="UTILES\CargarVarios\Cmd_ManejadorFormVariosAyudas.cs" />
+    <Compile Include="UTILES\CargarVarios\FormVariosAyuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UTILES\CargarVarios\FormVariosAyuda.Designer.cs">
+      <DependentUpon>FormVariosAyuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\CargarVarios\ManejadorFormVariosAyudas.cs" />
+    <Compile Include="Dimensiones\CrearTipoDimension.cs" />
+    <Compile Include="UTILES\CrearListaPtos.cs" />
+    <Compile Include="UTILES\ParaBarras\ObtenerNombreTipoBarra.cs" />
+    <Compile Include="UTILES\ParaBarras\RedonderLargoBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Configuracion\ConfiLosa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\Configuracion\ConfiLosa.Designer.cs">
+      <DependentUpon>ConfiLosa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ElementoBarraRoom\Geometria\GeometriaS4.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\Ayuda\AnalisasSentido.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\Ayuda\CalculosPtos.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\cmd_Mirror.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\DireccionMirror\MirrorPerpendicularBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\DireccionMirror\MirrorParaleloBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Mirror\ManejadorMirrorPathReinformen.cs" />
+    <Compile Include="ElementoBarraRoom\DTO\BarraRoomDTO.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\ITiposPathReinformentSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\ITiposRebarShape.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposFamilia3D.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposPathReinformentSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposPathReinformentSymbol_Fund.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposRebarShapeFund.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\Cmd_ObtenerZPara4ptosPath.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\FactoryObtenerZPara4ptosPath.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\IObtenerZPara4ptosPath.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\AObtenerZPara4ptosPath.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\ObtenerZPara4ptosPathInclinadaInf.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\ObtenerZPara4ptosPathNULL.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\ObtenerZPara4ptosPathHorizontal.cs" />
+    <Compile Include="ElementoBarraRoom\ObtenerZLosa\ObtenerZPara4ptosPathInclinada.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\SeleccionarLosaBarraRoom.cs" />
+    <Compile Include="ElementoBarraRoom\BarraRoomF1_Sup.cs" />
+    <Compile Include="ElementoBarraRoom\Ocultar\OcultarBarras.cs" />
+    <Compile Include="ElementoBarraRoom\Seleccionar\cmd_SeleccionarPathReinfomentREsaltar.cs" />
+    <Compile Include="ElementoBarraRoom\Suples\Cmd_ManejadorUnirSuples.cs" />
+    <Compile Include="ElementoBarraRoom\Suples\ManejadorUnirSuples.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\FactoryITagF_.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\ITagF.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\TagF_F21.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\TagF_F17.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\ATagF_Base.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\TagF_simetrica.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\TagF_simple.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagF\TagF_NULL.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagArgs.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF11AAlterna.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1Alterna.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF10.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF11A.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1_a.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1pata.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1Esc.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3Alterna.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3BEsc.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3Esc.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3pata.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF10A.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF9A.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF9.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraBase1.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF3.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF11.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\FactoryICasoBarra.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Cmd_cargarUpdate.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Manejador_UpDateMoverPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Casos\UpDate_MoverTagPathSymbol.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp\Cmd_CrearBarraInclinadaEscalera.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp\ManejadorWPF.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp\Methods_barra.cs" />
+    <Compile Include="ElementoBarraRoom\WPFp\Ui_barra.xaml.cs">
+      <DependentUpon>Ui_barra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Elemento_Losa\Ayuda\AyudaLosa.cs" />
+    <Compile Include="Enumeraciones\DatosDiseño.cs" />
+    <Compile Include="Enumeraciones\Enume_errores.cs" />
+    <Compile Include="Enumeraciones\VariablesSistemas.cs" />
+    <Compile Include="Enumeraciones\VariablesSistemasDTO.cs" />
+    <Compile Include="Extension\ExtensionElement.cs" />
+    <Compile Include="Extension\ExtensionLinq.cs" />
+    <Compile Include="Extension\ExtensionRebar.cs" />
+    <Compile Include="Extension\ExtensionViga.cs" />
+    <Compile Include="Extension\ExtensionFloor.cs" />
+    <Compile Include="Extension\ExtensionFamilyInstanceViga.cs" />
+    <Compile Include="Extension\ExtensionWall.cs" />
+    <Compile Include="Extension\ExtensionStringBuilder.cs" />
+    <Compile Include="FAMILIA\Borrar\BorrarFamilia.cs" />
+    <Compile Include="FAMILIA\FactoryCargarFamilias.cs" />
+    <Compile Include="FAMILIA\ManejadorCargarFamilias.cs" />
+    <Compile Include="Armadura\DTO\DiametrosBarrasDTO.cs" />
+    <Compile Include="FAMILIA\Varios\PelotaDedirectriz.cs" />
+    <Compile Include="FILTROS\FiltroFundaciones.cs" />
+    <Compile Include="FILTROS\FiltroRebarTag.cs" />
+    <Compile Include="FILTROS\FiltroRebarTagAgrupar.cs" />
+    <Compile Include="FILTROS\FiltroViga.cs" />
+    <Compile Include="FILTROS\FiltroRebar_PathRein.cs" />
+    <Compile Include="FILTROS\FiltroMuro.cs" />
+    <Compile Include="FILTROS\AreaPathSelectionFilter.cs" />
+    <Compile Include="FILTROS\LineSelectionFilte.cs" />
+    <Compile Include="FILTROS\ModelLineSelectionFilte.cs" />
+    <Compile Include="Fund\DTO\CasosFundDTO.cs" />
+    <Compile Include="Fund\DTO\FundGeoDTO.cs" />
+    <Compile Include="Fund\Servicios\PuntosSeleccionMouse.cs" />
+    <Compile Include="Fund\Entidad\FundIndividual.cs" />
+    <Compile Include="Fund\Entidad\FundConjunto.cs" />
+    <Compile Include="Fund\FundManejador.cs" />
+    <Compile Include="Fund\Servicios\Obtener4ptosFund.cs" />
+    <Compile Include="Fund\TAG\FactoryGeomTag.cs" />
+    <Compile Include="Fund\TAG\GeomeTagBaseFund.cs" />
+    <Compile Include="Fund\TAG\Tipo\GeomeTagF12Fund.cs" />
+    <Compile Include="Fund\WPFfund\ManejadorWPFfund.cs" />
+    <Compile Include="Fund\WPFfund\MethodsWrapped_fund.cs" />
+    <Compile Include="Fund\WPFfund\Methods_fund.cs" />
+    <Compile Include="Fund\WPFfund\Ui_barraFund.xaml.cs">
+      <DependentUpon>Ui_barraFund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GEOM\GeometriaBase.cs" />
+    <Compile Include="GEOM\Servicios\ObtenerCaraNormalInvertidaView.cs" />
+    <Compile Include="UTILES\ProyectadoEnPlano.cs" />
+    <Compile Include="LosaArmadura\CMD\Cmd_CreardorSeparateRoomDeMuro.cs" />
+    <Compile Include="LosaArmadura\CMD\Cmd_RoomConPelotaLosa_Individual.cs" />
+    <Compile Include="LosaArmadura\CreardorSeparateRoomDeMuro.cs" />
+    <Compile Include="LosaArmadura\CreardorCrearRoomConPelotaLosaIndividual.cs" />
+    <Compile Include="LosaArmadura\Geometria\AnalisisBordeLosa.cs" />
+    <Compile Include="LosaArmadura\Geometria\Cmd_LosaGeometrias.cs" />
+    <Compile Include="LosaArmadura\Entidades\LosaBorde.cs" />
+    <Compile Include="LosaArmadura\Geometria\MuroGeometrias.cs" />
+    <Compile Include="LosaArmadura\Geometria\LosaGeometrias.cs" />
+    <Compile Include="FormularioAUTO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAUTO.Designer.cs">
+      <DependentUpon>FormularioAUTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LosaEstructural\WPFp\ManejadorWPF_pelotaLosa.cs" />
+    <Compile Include="LosaEstructural\WPFp\Methods_pelotaLosa.cs" />
+    <Compile Include="LosaEstructural\WPFp\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="LosaEstructural\WPFp\Ui_pelotaLosa.xaml.cs">
+      <DependentUpon>Ui_pelotaLosa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Niveles\Vigas\NivelVigaInvertida.cs" />
+    <Compile Include="ParametrosShare\AddSharedParams.cs" />
+    <Compile Include="ParametrosShare\Cambiar\CambiarPArametro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParametrosShare\Cambiar\CambiarPArametro.Designer.cs">
+      <DependentUpon>CambiarPArametro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParametrosShare\cmd_DefinicionManejador.cs" />
+    <Compile Include="ParametrosShare\DefinicionBorrarManejador.cs" />
+    <Compile Include="ParametrosShare\ManejadorCrearParametrosShare.cs" />
+    <Compile Include="ParametrosShare\DefinirArchivoShare.cs" />
+    <Compile Include="ParametrosShare\EntidadDefinition.cs" />
+    <Compile Include="ParametrosShare\FactoryEntidadDefinition22Up.cs" />
+    <Compile Include="PathReinf\Barras\PathReinf_nh.cs" />
+    <Compile Include="PathReinf\CargadorPAthReinf.cs" />
+    <Compile Include="PathReinf\DTO\PathReinfSeleccionDTO.cs" />
+    <Compile Include="PathReinf\ManejadorPathReinf.cs" />
+    <Compile Include="PathReinf\Servicios\ObtenerHookYDiamtro.cs" />
+    <Compile Include="PathReinf\Servicios\PathReinfVerificacion.cs" />
+    <Compile Include="Prueba\CargarBarraRoom2.cs" />
+    <Compile Include="ElementoBarraRoom\CargarBarraRoom.cs" />
+    <Compile Include="EditarPath\Calculos\EditarPathReinSuperior.cs" />
+    <Compile Include="EditarPath\Calculos\EditarPathReinInferior.cs" />
+    <Compile Include="EditarPath\Calculos\EditarPathRein_Base.cs" />
+    <Compile Include="EditarPath\Calculos\EditarPathReinIzquierdo.cs" />
+    <Compile Include="EditarPath\Calculos\EditarPathReinDerecha.cs" />
+    <Compile Include="ElementoBarraRoom\Ayudas\UtilPathReinforment.cs" />
+    <Compile Include="EditarPath\cmd\cmd_seleccionar.cs" />
+    <Compile Include="EditarPath\cmd\cmd_EditarPathRein.cs" />
+    <Compile Include="EditarPath\EditarPathReinMouse.cs" />
+    <Compile Include="EditarPath\EditarPathRein.cs" />
+    <Compile Include="EditarPath\EditarPathReinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarPath\EditarPathReinForm.Designer.cs">
+      <DependentUpon>EditarPathReinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarPath\EditarPathReinManejador.cs" />
+    <Compile Include="EditarPath\Seleccion\SeleccionPath.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TipoHook.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposPathReinformentSymbol_X.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\TiposRebarShape.cs" />
+    <Compile Include="ElementoBarraRoom\Familias\CrearFamilySymbolTagRein.cs" />
+    <Compile Include="ElementoBarraRoom\Fauto\AnalisisFauto.cs" />
+    <Compile Include="ElementoBarraRoom\Fauto\FactoryFautoDTO.cs" />
+    <Compile Include="ElementoBarraRoom\SolicitudBarraDTO.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Cmd_GeometriaTagTest.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\FactoryGeomTag.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagBaseSX.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1_SUP.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF11.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagBaseAhorro.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF16_Dere.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF16_Izq.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF17B_Tras.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF17A_Tras.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF20_Izq.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF20_Dere.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF19_Dere.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF19_Izq.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF20.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF21.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF17.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF18.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF19.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF3.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF16.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagS3.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagS2.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagS1.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF7.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagNull.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\TagBarra.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagBase.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF1.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\GeomeTagF4.cs" />
+    <Compile Include="ElementoBarraRoom\Tag\Tipos\IGeometriaTag.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraBase.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\Barra16.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF21.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF20.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF19.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF18.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\BarraF17.cs" />
+    <Compile Include="ElementoBarraRoom\DatosParaBarra\DatosNuevaBarraDTO.Fund.cs" />
+    <Compile Include="ElementoBarraRoom\TipoBarra\ICasoBarra.cs" />
+    <Compile Include="Enumeraciones\ConstNH.cs" />
+    <Compile Include="Enumeraciones\EnumeracionBuscador.cs" />
+    <Compile Include="Enumeraciones\EnumeracionTipoBarras.cs" />
+    <Compile Include="EVENTO\cmd_Evento.cs" />
+    <Compile Include="Extension\ExtensionLine.cs" />
+    <Compile Include="Extension\ExtensionPathReinforment.cs" />
+    <Compile Include="Extension\ExtensionPuntoXYZ.cs" />
+    <Compile Include="FILTROS\RebarSelectionFilter.cs" />
+    <Compile Include="FILTROS\PelotaLosaSelectionFilter.cs" />
+    <Compile Include="FILTROS\PathReinSymbolSelectionFilter.cs" />
+    <Compile Include="LosaArmadura\Ayuda\BuscarCaraLosa.cs" />
+    <Compile Include="LosaArmadura\Ayuda\cmd_CrearRoomSeparatorPorOpening.cs" />
+    <Compile Include="LosaArmadura\Ayuda\cmd_CrearRoomSeparatorPorVigaEnNivel.cs" />
+    <Compile Include="LosaArmadura\CMD\Cmd_RoomConPelotaLosa.cs" />
+    <Compile Include="Prueba\PRUEBAS_VARIAS.cs" />
+    <Compile Include="Prueba\SeleccionarPAth.cs" />
+    <Compile Include="RebarLosa\ManejadorRebarLosaInclinada.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f1_incliInf.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f4_incliInf.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f4_incli.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f3_esc135.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f3_esc45.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f4_incli_esc.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f3_incli_esc.cs" />
+    <Compile Include="RebarLosa\DTO\VectorDireccionLosaExternaInclinadaDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\ACalculosRefuerzoV2.cs" />
+    <Compile Include="REFUERZOLOSAS\EditarBarra\EditarBarraLosa.cs" />
+    <Compile Include="RebarLosa\Servicio\BuscarFaceSuperiorConPto.cs" />
+    <Compile Include="RebarLosa\Servicio\BuscarLosaIncilnada.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f1_ab.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f3_incli.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f1_esc45_conpata.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\fx_null.cs" />
+    <Compile Include="RebarLosa\Barras\FactoryIRebarLosa.cs" />
+    <Compile Include="RebarLosa\Geom\BarraRoomGeometriaSX.cs" />
+    <Compile Include="RebarLosa\Geom\BarraRoomGeometriaFX.cs" />
+    <Compile Include="RebarLosa\ParametrosCompartidos\BarraParametrosCompartidos.cs" />
+    <Compile Include="RebarLosa\Barras\ARebarLosa.cs" />
+    <Compile Include="RebarLosa\Barras\Tipo\f1_esc135_sinpata.cs" />
+    <Compile Include="RebarLosa\DTO\RebarInferiorDTO.cs" />
+    <Compile Include="RebarLosa\Barras\IRebarLosa.cs" />
+    <Compile Include="RebarLosa\ParametrosCompartidos\ParametroBarra.cs" />
+    <Compile Include="RebarLosa\Servicio\BuscarPtoProyeccionEnLosaInclinada.cs" />
+    <Compile Include="RebarLosa\Servicio\BuscarPtoProyectadoDentroEscalera.cs" />
+    <Compile Include="RebarLosa\TipoTag\GeomeTagF3_incli.cs" />
+    <Compile Include="RebarLosa\TipoTag\GeomeTagF1_incliInf.cs" />
+    <Compile Include="RebarLosa\TipoTag\GeomeTagF4_incli.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzoCreador\CreadorRefuerzoCabezaMuro.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzo\BarraRefuerzoBordeLibreSOLOTag.cs" />
+    <Compile Include="REFUERZOLOSAS\Buscar\BuscarLosaShaft.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoBarraRefuerzoSOLOTag.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoGeometriaRectangulo2LineasViga.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoGeometriaRectanguloBordeLosa.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculosRefuerzoCabezaMuro.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\ACalculosRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculosRefuerzoTipoBorde.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\ICalculosRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzo\S1Refuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\BarrasRefSoloTagDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\BuscarShaftLosaDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\DatosRefuerzoTipoBorde.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\DatosRefuerzoTipoVigaDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\DatosRefuerzoCabezaMuroDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\EmpotramientoPatasLosaDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\EditarBarra\ManejadorBarraRefuerzo_CambiarBarra.cs" />
+    <Compile Include="REFUERZOLOSAS\Interseccion\IntersecionLosa.cs" />
+    <Compile Include="REFUERZOLOSAS\ManejadorRefuerzoTipoBorde.cs" />
+    <Compile Include="REFUERZOLOSAS\ManejadorModificarTag.cs" />
+    <Compile Include="REFUERZOLOSAS\ManejadorRefuerzoTipoViga.cs" />
+    <Compile Include="REFUERZOLOSAS\ManejadorRefuerzoCabezaMuro .cs" />
+    <Compile Include="REFUERZOLOSAS\Seleccionar\SeleccionarBordeLosa.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoTag\FactoryGeomTagRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoTag\GeomeTagBaseRef.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoTag\GeomeTagEstriboRef.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoTag\GeomeTagConPataRef.cs" />
+    <Compile Include="REFUERZOLOSAS\TipoTag\GeomeTagSinPataRef.cs" />
+    <Compile Include="REFUERZOLOSAS\UtilRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\WPFref\ManejadorWPFref.cs" />
+    <Compile Include="REFUERZOLOSAS\WPFref\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="REFUERZOLOSAS\WPFref\Methods_barraRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\WPFref\Ui_barraRefuerzoLosa.xaml.cs">
+      <DependentUpon>Ui_barraRefuerzoLosa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Seleccionar\cmd\CMD_SeleccionarRebarCoverType.cs" />
+    <Compile Include="Seleccionar\IEqualityComparer\LevelComparer.cs" />
+    <Compile Include="ElementoBarraRoom\Seleccionar\Model\WrapperBarrasLosa.cs" />
+    <Compile Include="Seleccionar\Modelo\WrapperPathReinTag.cs" />
+    <Compile Include="Seleccionar\SeleccionarAreaPath.cs" />
+    <Compile Include="ElementoBarraRoom\Seleccionar\SeleccionarPathReinfomentREsaltar.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarCoverType.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarElemento.cs" />
+    <Compile Include="Seleccionar\SeleccionarTagLosa.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarTagRebarVerticales.cs" />
+    <Compile Include="Seleccionar\SeleccionarEjeMirror.cs" />
+    <Compile Include="Stairsnh\BarraEscaleraManejador.cs" />
+    <Compile Include="Stairsnh\CMD\CMD_ManejadorLosaREbarEscalera.cs" />
+    <Compile Include="Stairsnh\DTO\DatosFormularios.cs" />
+    <Compile Include="Stairsnh\Servicio\BuscarEscaleraHorizontalmente.cs" />
+    <Compile Include="Stairsnh\Servicio\BuscarPtoProyeccionEnEscalera.cs" />
+    <Compile Include="RebarLosa\Servicio\ComprobarListaPtoPoligono.cs" />
+    <Compile Include="Revisar\ManjadorRevisar.cs" />
+    <Compile Include="Revisar\Revisar.cs" />
+    <Compile Include="Seleccionar\HelperSeleccinarMuroRefuerzo.cs" />
+    <Compile Include="Seleccionar\SeleccionarEscalera.cs" />
+    <Compile Include="Seleccionar\SeleccionarFundConMouse.cs" />
+    <Compile Include="Seleccionar\SeleccionElement.cs" />
+    <Compile Include="Seleccionar\SeleccionarOpening.cs" />
+    <Compile Include="Seleccionar\SeleccionarWalls.cs" />
+    <Compile Include="Seleccionar\SeleccionAnotationPelotaLosa.cs" />
+    <Compile Include="Seleccionar\SeleccionarView.cs" />
+    <Compile Include="Shaft\ShaftManejador.cs" />
+    <Compile Include="Stairsnh\CMD\cmd_stairsCrear.cs" />
+    <Compile Include="Stairsnh\Entidades\CreadorStair.cs" />
+    <Compile Include="Stairsnh\Entidades\GeometrisStairAreaMax.cs" />
+    <Compile Include="Stairsnh\Entidades\GeometrisStairBase.cs" />
+    <Compile Include="Stairsnh\Entidades\GeometrisStair.cs" />
+    <Compile Include="Stairsnh\Entidades\ComponentStairs.cs" />
+    <Compile Include="Stairsnh\Servicio\ServicioModificarCoordenadasEscalera.cs" />
+    <Compile Include="Stairsnh\CMD\CMD_WPFcrearBarraEscalera.cs" />
+    <Compile Include="Stairsnh\WPFesc\ManejadorWPFesc.cs" />
+    <Compile Include="Stairsnh\WPFesc\MethodsWrapped_pelotaLosa.cs" />
+    <Compile Include="Stairsnh\WPFesc\Methods_barra.cs" />
+    <Compile Include="Stairsnh\WPFesc\Ui_barraEscaleras.xaml.cs">
+      <DependentUpon>Ui_barraEscaleras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\CrearTrasformadaSobreEjeZ.cs" />
+    <Compile Include="UTILES\CreaLine\cmd_crearLineaAuxiliar.cs" />
+    <Compile Include="UTILES\CreaLine\CrearLIneaAux.cs" />
+    <Compile Include="UTILES\CreaLine\FormularioAuxLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UTILES\CreaLine\FormularioAuxLine.Designer.cs">
+      <DependentUpon>FormularioAuxLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UTILES\CreaLine\ptosLinea.cs" />
+    <Compile Include="UTILES\CrearLineStyle.cs" />
+    <Compile Include="LosaEstructural\CreardorPelotaLosaEstructural.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LosaArmadura\CMD\Cmd_CrearRoomPtoSelecionado.cs" />
+    <Compile Include="Prueba\CMD_DibujarLargoMin.cs" />
+    <Compile Include="Prueba\CambiarDireccion.cs" />
+    <Compile Include="Prueba\GraficarPtos.xaml.cs">
+      <DependentUpon>GraficarPtos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba\probar_fx_sx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba\probar_fx_sx.Designer.cs">
+      <DependentUpon>probar_fx_sx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnalisisRoom\Utiles\AuxiliarBarraRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzoAuto\BarraRefuerzoDibujar.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzoCreador\CreadorRefuerzoTipoViga.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzo\ARebarRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzo\BarraRefuerzoBordeLibre.cs" />
+    <Compile Include="REFUERZOLOSAS\BarraRefuerzo\BarraRefuerzoEstribo.cs" />
+    <Compile Include="AnalisisRoom\DTO\BarraViga.cs" />
+    <Compile Include="COMUNES\InfoSystema.cs" />
+    <Compile Include="ElementoBarraRoom\BarraRoom.cs" />
+    <Compile Include="ElementoBarraRoom\BarraRoomGeometria.cs" />
+    <Compile Include="Armadura\Dimensiones\DimensionesBarras.cs" />
+    <Compile Include="Armadura\TiposFamilyRebar.cs" />
+    <Compile Include="Armadura\Tipos_Arrow.cs" />
+    <Compile Include="CreadoJson.cs" />
+    <Compile Include="Elemento_Losa\INH_Referecia.cs" />
+    <Compile Include="Elemento_Losa\NH_ListaOpening.cs" />
+    <Compile Include="Elemento_Losa\ProfileOpening.cs" />
+    <Compile Include="FAMILIA\ChangeFamilyRebar.cs" />
+    <Compile Include="ElementoBarraRoom\PathReinformentSymbol\Tipos\PathSymbolBase.cs" />
+    <Compile Include="FAMILIA\Filtro\FiltroGetFamilySymbolByName.cs" />
+    <Compile Include="FILTROS\RoomSelectionFilte.cs" />
+    <Compile Include="GEOM\GeometrySupport.cs" />
+    <Compile Include="GEOM\GeomUtil.cs" />
+    <Compile Include="Prueba\probrarExtenderlinea.cs" />
+    <Compile Include="Prueba\CopiarFamlia.cs" />
+    <Compile Include="LosaArmadura\CreardorCrearRoomConPelotaLosa.cs" />
+    <Compile Include="LosaArmadura\CMD\Cmd_DibujarLineasSeparacicionRoomOpening.cs" />
+    <Compile Include="LosaArmadura\CMD\Cmd_DibujarLineasSeparacicionRoom.cs" />
+    <Compile Include="Prueba\Formulario_exportarDatosLosa_Prueba.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculosRefuerzoTipoViga.cs" />
+    <Compile Include="REFUERZOLOSAS\DTO\EstriboRefuerzoDTO.cs" />
+    <Compile Include="REFUERZOLOSAS\Calculos\CalculoBarraRefuerzo.cs" />
+    <Compile Include="REFUERZOLOSAS\CMD\CMD_CrearRoomRefuerzoLosa.cs" />
+    <Compile Include="Prueba\pruebar_fx_sx_.cs" />
+    <Compile Include="Armadura\TipoSegmentsDimensions.cs" />
+    <Compile Include="Armadura\TiposAreaReinSpanSymbol.cs" />
+    <Compile Include="Armadura\TiposPathReinSpanSymbol.cs" />
+    <Compile Include="Armadura\TiposRoomTagType.cs" />
+    <Compile Include="Armadura\TiposRebarBarType.cs" />
+    <Compile Include="Creator.cs" />
+    <Compile Include="Elementos_viga\Profile.cs" />
+    <Compile Include="Elementos_viga\ProfileBeam.cs" />
+    <Compile Include="Elemento_Losa\FamilySymbolWrapper.cs" />
+    <Compile Include="Elementos_viga\NH_ListaVIgas.cs" />
+    <Compile Include="AnalisisRoom\ReferenciaRoomHandler.cs" />
+    <Compile Include="Elemento_Losa\NH_TagLosaData.cs" />
+    <Compile Include="Formulario.cs" />
+    <Compile Include="Elemento_Losa\NH_PtosCrearSuples.cs" />
+    <Compile Include="AnalisisRoom\ReferenciaRoom.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaCrearBarra.cs" />
+    <Compile Include="AnalisisRoom\Json\RefereciaRoom_json.cs" />
+    <Compile Include="Enumeraciones\Enumeracion.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaCrearSuple.cs" />
+    <Compile Include="JtElementsOfClassSelectionFilter.cs" />
+    <Compile Include="Matrix4.cs" />
+    <Compile Include="ParameterUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Cambiar\cmd\CmdSeleccionarRoomTest.cs" />
+    <Compile Include="Seleccionar\SeleccinarMuroRefuerzo.cs" />
+    <Compile Include="Seleccionar\cmd\CmdSeleccionarLosa_ConPto.cs" />
+    <Compile Include="Seleccionar\SeleccionarDimensiones.cs" />
+    <Compile Include="Seleccionar\SeleccionarOpeningConMouse.cs" />
+    <Compile Include="Seleccionar\SeleccionarLosaConMouse.cs" />
+    <Compile Include="Seleccionar\SeleccionarLosaConPto.cs" />
+    <Compile Include="Seleccionar\SeleccionarNivel.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathReinfomentVisibilidad.cs" />
+    <Compile Include="Seleccionar\SeleccionarPtoDentroPlanarFace.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarRebarRectangulo.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathReinfomentRectangulo.cs" />
+    <Compile Include="Seleccionar\CommandSeleccionarRebarConPto.cs" />
+    <Compile Include="Seleccionar\Barras\SeleccionarPathReinfomentConPto.cs" />
+    <Compile Include="AnalisisRoom\AnootationGeneralPelotaLosa.cs" />
+    <Compile Include="Seleccionar\SeleccionarPelotaSola.cs" />
+    <Compile Include="Seleccionar\cmd\Cmd_Seleccion_3casos.cs" />
+    <Compile Include="Seleccionar\SeleccionarRoom.cs" />
+    <Compile Include="Shaft\Cmd_Shaft.cs" />
+    <Compile Include="Shaft\IShaftIndividual.cs" />
+    <Compile Include="Shaft\ShaftConjunto.cs" />
+    <Compile Include="Shaft\Entidades\ShaftIndividual.cs" />
+    <Compile Include="Shaft\Entidades\ShaftIndividualNULL.cs" />
+    <Compile Include="UTILES\CrearModeLineAyuda.cs" />
+    <Compile Include="UTILES\IsDentroPoligono.cs" />
+    <Compile Include="UTILES\PointInPoly.cs" />
+    <Compile Include="UTILES\ReloadClass.cs" />
+    <Compile Include="UTILES\UtilitarioFiltrosSeleccion.cs" />
+    <Compile Include="UTILES\ThisApplication.cs" />
+    <Compile Include="UTILES\UtilStopWatch.cs" />
+    <Compile Include="Armadura\BuscadorParametroCompartido.cs" />
+    <Compile Include="ViewFilter\CreadorViewFilterAllView.cs" />
+    <Compile Include="ViewFilter\CreadorViewFilter_OcultarBarrasNoDeVista.cs" />
+    <Compile Include="ViewFilter\Model\WrapperViewFilter.cs" />
+    <Compile Include="ViewFilter\Rules\Extensions.cs" />
+    <Compile Include="ViewFilter\Rules\FilterData.cs" />
+    <Compile Include="ViewFilter\Rules\FilterUtil.cs" />
+    <Compile Include="Viewnh\CreadorView.cs" />
+    <Compile Include="Viewnh\UpDate\ManejadorUpdaterNombreView.cs" />
+    <Compile Include="Viewnh\UpDate\UpdaterNombreView.cs" />
+    <Compile Include="Visibilidad\ManejadorCmdVisibilidadElement.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoPathRebar.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoPath.cs" />
+    <Compile Include="UTILES\ParaBarras\Entidades\ElementoPathRein.cs" />
+    <Compile Include="Visibilidad\Entidades\FactoryColores.cs" />
+    <Compile Include="Visibilidad\Entidades\TiposBarrasDTo.cs" />
+    <Compile Include="Visibilidad\Entidades\WrapperAreaRein.cs" />
+    <Compile Include="Visibilidad\Entidades\WrapperRebar.cs" />
+    <Compile Include="Visibilidad\Entidades\WrapperTagPath.cs" />
+    <Compile Include="Visibilidad\Entidades\WrapperPathSymbol.cs" />
+    <Compile Include="Visibilidad\Ocultar\OcultarBarrasRebaroPathrein.cs" />
+    <Compile Include="Visibilidad\UpdateVistas\Cmd_nombreVistaEnBarras.cs" />
+    <Compile Include="Visibilidad\UpdateVistas\ManejadorNombreVistaEnBarras.cs" />
+    <Compile Include="Visibilidad\UpdateVistas\UpdaterNombreVistaEnBarras.cs" />
+    <Compile Include="Visibilidad\Visualizacion.xaml.cs">
+      <DependentUpon>Visualizacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\ActualizarNameViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\ActualizarNameViewForm.Designer.cs">
+      <DependentUpon>ActualizarNameViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\ManejadorVisibilidadActualizarNombreVista.cs" />
+    <Compile Include="Visibilidad\Visualizacion\ActualizarNombreVista\VisibilidadActualizarNombreVista.cs" />
+    <Compile Include="Visibilidad\Visualizacion\Ayuda\ayudaObtenerElement.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElemenCambiarColorElev.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementoLosa.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementoVigaIdem.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElemenNoEnView.cs" />
+    <Compile Include="Visibilidad\Visualizacion\ManejadorVisibilidadElemenNoEnView.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementDiametro.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementBase.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementDireccion.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementRebarLosa.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementMallaMuro.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementTipoBarra.cs" />
+    <Compile Include="Visibilidad\Visualizacion\VisibilidadElementOrientacion.cs" />
+    <Compile Include="Visibilidad\Entidades\ElementoPathReinOriginal.cs" />
+    <Compile Include="Traslapo\Calculos\CalculoDatoslosa.cs" />
+    <Compile Include="Traslapo\Calculos\CalculoDatosParaReinformentV2.cs" />
+    <Compile Include="Traslapo\Calculos\CalculoTiposTraslapos.cs" />
+    <Compile Include="Traslapo\Calculos\ControladorContenedorDatosTraslapoV2.cs" />
+    <Compile Include="Traslapo\Calculos\ICalculoDatosParaReinforment.CS" />
+    <Compile Include="ElementoBarraRoom\DTO\DatosLosaDTO.cs" />
+    <Compile Include="Traslapo\Contenedores\ContenedorDatosTraslapo.cs" />
+    <Compile Include="Traslapo\extension\MetodoExtensionTraslapo.cs" />
+    <Compile Include="Traslapo\Help\FactoryITraslapo.cs" />
+    <Compile Include="UTILES\ParaBarras\CalculoPath\CoordenadaPath.cs" />
+    <Compile Include="UTILES\ParaBarras\CalculoPath\CalculoCoordPathReinforme.cs" />
+    <Compile Include="ElementoBarraRoom\DTO\DatosPathReinformeDTO.cs" />
+    <Compile Include="Traslapo\DTO\TipoPathReinfDTO.cs" />
+    <Compile Include="UTILES\DesactivarMensajes.cs" />
+    <Compile Include="UTILES\LogNH.cs" />
+    <Compile Include="UTILES\UtilitarioFallasDialogos.cs" />
+    <Compile Include="ViewRang\CommandCambiarViewRangle.cs" />
+    <Compile Include="Traslapo\PathReinformeTraslapoManejador.cs" />
+    <Compile Include="ViewRang\ViewRangleClase.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="UtilBarras.cs" />
+    <Compile Include="UTILES\AyudaRevisionCoud.cs" />
+    <Compile Include="UTILES\CrearTexNote.cs" />
+    <Compile Include="Vector4.cs" />
+    <Compile Include="ViewRang\ViewRangleClaseNull.cs" />
+    <Compile Include="Visibilidad\CmdVisibilidadElement.cs" />
+    <Compile Include="Visibilidad\ManejadorVisibilidad.cs" />
+    <Compile Include="WPFDefaul\RevitEventWrapper.cs" />
+    <Compile Include="WPF\Componentes\EditarPath.xaml.cs">
+      <DependentUpon>EditarPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\ManejadorWPF.cs" />
+    <Compile Include="WPF\EntryCommand.cs" />
+    <Compile Include="WPF\Methods.cs" />
+    <Compile Include="WPF\MethodsWrapped.cs" />
+    <Compile Include="WPF\UI.xaml.cs">
+      <DependentUpon>UI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF\UtilWPF.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AnalisisRoom\Diagramas\ClassDiagram1.cd" />
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
+    <None Include="packages.config" />
+    <Compile Include="Pasadas\Model\EnvoltorioPipes.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Visibilidad\ClassDiagram5.cd" />
+    <None Include="Esquema BordeRoom.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ASSERT\RebarLosa\Barras\" />
+    <Folder Include="BarraAreaPath\ASSERT\" />
+    <Folder Include="BarraMallaRebar\Tag\" />
+    <Folder Include="BarraV\Desglose\Config\" />
+    <Folder Include="BarraV\EditarBarra\cmd\" />
+    <Folder Include="BarraV\EditarBarra\Largo\" />
+    <Folder Include="BarraV\Entidades\" />
+    <Folder Include="Bim\AgruparConductos\Ayuda\" />
+    <Folder Include="Bim\AgruparConductos\ServicioAgrupar\" />
+    <Folder Include="Bim\TagBim\" />
+    <Folder Include="BorrarSeleccion\Rebar\" />
+    <Folder Include="ConfiGeneral\CambioEstado\Ayuda\" />
+    <Folder Include="EditarPath\Tag\" />
+    <Folder Include="ElementoBarraRoom\EditarPathSymbol\" />
+    <Folder Include="ElementoBarraRoom\ExtStore\" />
+    <Folder Include="ElementoBarraRoom\Update\Ayuda\" />
+    <Folder Include="FAMILIA\CMD\" />
+    <Folder Include="FAMILIA\model\" />
+    <Folder Include="Fund\CMD\" />
+    <Folder Include="Niveles\Servicio\" />
+    <Folder Include="Pasadas\Buscar\" />
+    <Folder Include="PathReinf\CMD\" />
+    <Folder Include="RebarFundaciones\Model\" />
+    <Folder Include="RebarFundaciones\Servicios\" />
+    <Folder Include="RebarLosa\Barras\Assert\" />
+    <Folder Include="RebarLosa\CMD\" />
+    <Folder Include="RebarLosa\Entidades\" />
+    <Folder Include="Revision\" />
+    <Folder Include="Seleccionar\FILTROS\" />
+    <Folder Include="Seleccionar\PathReinforment\" />
+    <Folder Include="Test\" />
+    <Folder Include="Viewnh\ayuda\" />
+    <Folder Include="Viewnh\vista\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Armadura\TipoBarra\Form_tipoBarra.resx">
+      <DependentUpon>Form_tipoBarra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarraAuto\FormularioAUTOSUP.resx">
+      <DependentUpon>FormularioAUTOSUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarraV\CargadorBarraV.resx">
+      <DependentUpon>CargadorBarraV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarraV\Copiar\wpf_form\CopiarRebarWpf.resx">
+      <DependentUpon>CopiarRebarWpf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BorrarSeleccion\SharePArameter\BorrarShareParameterForm.resx">
+      <DependentUpon>BorrarShareParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cambiar\CuantiasRoom\CambiarCuantia.resx">
+      <DependentUpon>CambiarCuantia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarPath\EditarPathReinForm.resx">
+      <DependentUpon>EditarPathReinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElementoBarraRoom\Configuracion\ConfiLosa.resx">
+      <DependentUpon>ConfiLosa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ElementoBarraRoom\CopiarEntreLosa\wpf\CopiarRebarEntreLosas.resx">
+      <DependentUpon>CopiarRebarEntreLosas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAUTO.resx">
+      <DependentUpon>FormularioAUTO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParametrosShare\Cambiar\CambiarPArametro.resx">
+      <DependentUpon>CambiarPArametro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prueba\probar_fx_sx.resx">
+      <DependentUpon>probar_fx_sx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RebarLosa\Viewrebar\AgregarIntervalos.resx">
+      <DependentUpon>AgregarIntervalos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TablasSchedule\FormCub.resx">
+      <DependentUpon>FormCub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UTILES\ActualizarNombreView\ActualizarNombreViewFrm.resx">
+      <DependentUpon>ActualizarNombreViewFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UTILES\CargarVarios\FormVariosAyuda.resx">
+      <DependentUpon>FormVariosAyuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UTILES\CreaLine\FormularioAuxLine.resx">
+      <DependentUpon>FormularioAuxLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UTILES\FormularioFallasDialogos\UtilitarioFallasDialogosForm.resx">
+      <DependentUpon>UtilitarioFallasDialogosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visibilidad\Visualizacion\ActualizarNombreVista\ActualizarNameViewForm.resx">
+      <DependentUpon>ActualizarNameViewForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visibilidad\Visualizacion\ActualizarNombreVista\DiferenciaNombrePara.resx">
+      <DependentUpon>DiferenciaNombrePara.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="BarraAreaPath\WPFm\Ui_Malla.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraEstriboP\WPFp\Ui_EstriboP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraEstriboV\WPFv\Ui_EstriboV.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraEstribo\WPFc\Ui_EstriboC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\Automatico\WPFAuto\Ui_AutoElev.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\Automatico\WPF\UI_VariasElevAuto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\Copiar\WPF\UI_CopiarRebar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\Desglose\WPF\UI_desglose.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\EditarBarraLargo\WPFEdB\Ui_EditarBarraLargo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\Horquilla\WPF\UI_Horquilla.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BarraV\WPFb\OpcionesHorizontal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BarraV\WPFb\Ui_BarraV.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Bim\AcotarPAsada\WPF_WorkSet\UI_AcotarPasadasNH.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Bim\BimWorkSet\WPF_WorkSet\UI_WorkSetNH.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Bim\Config\WPF_BIM\UI_ConfBIM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConfiguracionInicial\WPF\Ui_Elevaciones.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CopiaLocal\WPF\UI_CopiaLocal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cubicacion\WPF\UI_Cub.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditarTipoPath\WPF\UI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementoBarraRoom\Tag\Servicio\WPF_EText\Ui_EditarTExtoPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementoBarraRoom\WPFp_suple\Ui_barraSuple.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementoBarraRoom\WPFp\Ui_barra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementoBarraRoom\WPF_pathSymbol\Ui_pathSymbol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EstadoDesarrollo\WPF\UI_EstadoDesarrollo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fund\Editar\WPF\UI_FundEditar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Fund\WPFfund\Ui_barraFund.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\UI_CambiarNombreGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GRIDS\NombreEje\WPFGrid\Ui_UIGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GRIDS\AgregarEje\WPF_AgregraEJE\UI_AgergarEjes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LosaEstructural\WPFp\Ui_pelotaLosa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Niveles\WPF\Ui_UIGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ParametrosShare\Actualizar\Trabas\WPF\Ui_Elevaciones.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pasadas\WPFPasada\UI_Pasadas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pasadas\WPF\Ui_ElevacionesPasadaRegion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pin\WPF_pin\Ui_pin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Prueba\GraficarPtos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="REFUERZOLOSAS\WPFref\Ui_barraRefuerzoLosa.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RefuerzoSupleMuro\WPFp\Ui_RefuerzoSupleMuro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Stairsnh\WPFesc\Ui_barraEscaleras.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TablasSchedule\Wpf\Ui_Sch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Traslapo\WPF\Ui_traslapo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewFilter\Filtro3D\WPF\Component\Diametros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewFilter\Filtro3D\WPF\Component\PorTipo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewFilter\Filtro3D\WPF\Component\PorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewFilter\Filtro3D\WPF\Ui_Filtro3D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewportnNH\WPF\UI_ViewPOrtNH.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Visibilidad\BlancoNegro\WPF\UI_FormatoEntrega.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Visibilidad\Visualizacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPF\Componentes\EditarPath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPF\UI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BarraV\Automatico\WPF\cloud-small.png" />
+    <Content Include="BarraV\Automatico\WPF\flask.png" />
+    <Content Include="BarraV\Copiar\WPF\cloud-small.png" />
+    <Content Include="BarraV\Copiar\WPF\flask.png" />
+    <Content Include="BarraV\Desglose\WPF\cloud-small.png" />
+    <Content Include="BarraV\Desglose\WPF\flask.png" />
+    <Content Include="BarraV\Horquilla\WPF\cloud-small.png" />
+    <Content Include="BarraV\Horquilla\WPF\flask.png" />
+    <Content Include="Bim\Config\WPF_BIM\cloud-small.png" />
+    <Content Include="Bim\Config\WPF_BIM\flask.png" />
+    <Content Include="bin\Debug\Imagen\Fondo.png" />
+    <Content Include="CopiaLocal\WPF\cloud-small.png" />
+    <Content Include="CopiaLocal\WPF\flask.png" />
+    <Content Include="Cubicacion\TextFile1.txt" />
+    <Content Include="Cubicacion\WPF\cloud-small.png" />
+    <Content Include="Cubicacion\WPF\flask.png" />
+    <Content Include="EditarTipoPath\WPF\cloud-small.png" />
+    <Content Include="EditarTipoPath\WPF\flask.png" />
+    <Content Include="ElementoBarraRoom\WPF_pathSymbol\cloud-small.png" />
+    <Content Include="ElementoBarraRoom\WPF_pathSymbol\flask.png" />
+    <Content Include="EstadoDesarrollo\WPF\cloud-small.png" />
+    <Content Include="EstadoDesarrollo\WPF\flask.png" />
+    <Content Include="Fund\Editar\WPF\cloud-small.png" />
+    <Content Include="Fund\Editar\WPF\flask.png" />
+    <Content Include="GRIDS\AgregarEje\WPF_AgregraEJE\cloud-small.png" />
+    <Content Include="GRIDS\AgregarEje\WPF_AgregraEJE\flask.png" />
+    <Content Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\cloud-small.png" />
+    <Content Include="GRIDS\CambiarNombre\WPF_CambiarNombreGrid\flask.png" />
+    <Content Include="Pasadas\WPFPasada\cloud-small.png" />
+    <Content Include="Pasadas\WPFPasada\flask.png" />
+    <Content Include="Prueba\Fondo.png" />
+    <Content Include="Prueba\Imagen\Fondo.png" />
+    <Resource Include="Resources\fundaciones\leader.png" />
+    <Resource Include="Resources\Revit-icon_DESG.png" />
+    <Resource Include="Resources\Flecha-icon_DESG.png" />
+    <Resource Include="Resources\flecha\FlechaDere.png" />
+    <Resource Include="Resources\flecha\FlechaInf.png" />
+    <Resource Include="Resources\flecha\FlechaIzq.png" />
+    <Resource Include="Resources\flecha\FlechaSup.png" />
+    <Resource Include="Resources\flecha\F16A.png" />
+    <Resource Include="Resources\BarraHorizontal\ambos_H.png" />
+    <Resource Include="Resources\EditarText\GenerarLeader.png" />
+    <Resource Include="Resources\EditarText\Reset.png" />
+    <Resource Include="Resources\EditarText\intercambioFL.png" />
+    <Resource Include="Resources\BarraHorizontal\ambosAzul.png" />
+    <Resource Include="Resources\BarraHorizontal\ambosInfAzul.png" />
+    <Content Include="Resources\flecha\F20A.png" />
+    <Resource Include="Resources\fundaciones\leader1.png" />
+    <Resource Include="Resources\fundaciones\funInfv2.png" />
+    <Resource Include="Resources\fundaciones\funSupv2.png" />
+    <Resource Include="Resources\RecuadrosColor\AZUL.png" />
+    <Resource Include="Resources\RecuadrosColor\GRIS.png" />
+    <Resource Include="Resources\RecuadrosColor\NARANJO.png" />
+    <Resource Include="Resources\RecuadrosColor\ROJO.png" />
+    <Resource Include="Resources\RecuadrosColor\VERDE.png" />
+    <Resource Include="Resources\S4Inclinada\S4InfDer.png" />
+    <Resource Include="Resources\S4Inclinada\S4InfInf.png" />
+    <Resource Include="Resources\S4Inclinada\S4InfIzq.png" />
+    <Resource Include="Resources\S4Inclinada\S4InfSup.png" />
+    <Resource Include="Resources\Pasada\pasada.png" />
+    <Resource Include="Resources\fundaciones\funInf.png" />
+    <Resource Include="Resources\fundaciones\funInfV.png" />
+    <Resource Include="Resources\fundaciones\funSup.png" />
+    <Resource Include="Resources\fundaciones\funSupV.png" />
+    <Content Include="Traslapo\WPF\cloud-small.png" />
+    <Content Include="Traslapo\WPF\flask.png" />
+    <Content Include="ViewportnNH\WPF\cloud-small.png" />
+    <Content Include="ViewportnNH\WPF\flask.png" />
+    <Content Include="Visibilidad\BlancoNegro\WPF\cloud-small.png" />
+    <Content Include="Visibilidad\BlancoNegro\WPF\flask.png" />
+    <Content Include="WPF\TextFile1.txt" />
+    <Resource Include="Resources\cloud-small_nube.png" />
+    <Resource Include="Resources\EscInfDer2.png" />
+    <Resource Include="Resources\EscInfInf.png" />
+    <Resource Include="Resources\EscInfIzq.png" />
+    <Resource Include="Resources\EscInfSup.png" />
+    <Resource Include="Resources\EscSupDer2.png" />
+    <Resource Include="Resources\EscSupInf3.png" />
+    <Resource Include="Resources\EscSupIzq2.png" />
+    <Resource Include="Resources\EscSupSup.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfDer.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfDerUP.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfInf.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfInfDown.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfIzq.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfIzqUP.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfSup.png" />
+    <Resource Include="Resources\f3pata\f1_EscInfSupDown.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfDereDOWN.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfDerUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfInfDOWN.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfInfUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfIzqDOWN.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfIzqUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfSupDOWN.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfSupUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfDerDown.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfDerUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfInfDown.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfInfUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfIzqDOWN.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfIzqUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfSupDown.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfSupUP.png" />
+    <Resource Include="Resources\FXinclinada\InclF4_Incli.png" />
+    <Resource Include="Resources\FXinclinada\InclF4_IncliV.png" />
+    <Resource Include="Resources\BarraVerticales\ambos.png" />
+    <Resource Include="Resources\BarraVerticales\inferior.png" />
+    <Resource Include="Resources\BarraVerticales\sin.png" />
+    <Resource Include="Resources\BarraVerticales\superior.png" />
+    <Resource Include="Resources\BarraHorizontal\ambos.png" />
+    <Resource Include="Resources\BarraHorizontal\inferior.png" />
+    <Resource Include="Resources\BarraHorizontal\sin.png" />
+    <Resource Include="Resources\BarraHorizontal\superior.png" />
+    <Resource Include="Resources\BarraTipoViga\tipo1.png" />
+    <Resource Include="Resources\BarraTipoViga\tipo2.png" />
+    <Resource Include="Resources\BarraTipoViga\tipo3.png" />
+    <Resource Include="Resources\BarraHorizontal\ambosInf.png" />
+    <Resource Include="Resources\BarraHorizontal\inferiorInf.png" />
+    <Resource Include="Resources\BarraHorizontal\superiorInf.png" />
+    <Resource Include="Resources\suples\S1.png" />
+    <Resource Include="Resources\suples\S2.png" />
+    <Resource Include="Resources\suples\S3.png" />
+    <Resource Include="Resources\suples\S4.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfInfUPAhorro.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscInfDerUPAhorro.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscIncli_V_continuo_Sup.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscIncli_H_continuo_Inf.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscIncli_H_continuo_Sup.png" />
+    <Resource Include="Resources\FXinclinada\InclF3_EscIncli_V_continuo_Inf.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfIzqDOWN_ahorro.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfInfDOWN_ahorro.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfSupDOWN_ahorro.png" />
+    <Resource Include="Resources\FXinclinada\InclF1_InfDereDOWN_ahorro.png" />
+    <Resource Include="Resources\Pin\DesPin.png" />
+    <Resource Include="Resources\Pin\Pin.png" />
+    <Content Include="varimportantes.txt" />
+    <Content Include="WPF\cloud-small.png" />
+    <Content Include="WPF\flask.png" />
+    <Resource Include="Resources\building.png" />
+    <Content Include="Resources\chart_bar.png" />
+    <Resource Include="Resources\chevron-right.png" />
+    <Resource Include="Resources\code-small.png" />
+    <Content Include="Resources\code-small2.png" />
+    <Resource Include="Resources\code.png" />
+    <Resource Include="Resources\flask.png" />
+    <Content Include="Resources\Fondo.png" />
+    <Content Include="Resources\icon.png" />
+    <Resource Include="Resources\revit-wire.ico" />
+    <Content Include="Resources\revit-wire.png" />
+    <Content Include="Resources\revitIcon.ico" />
+    <Resource Include="Resources\stethoscope.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\terminal-small.png" />
+    <Resource Include="Resources\terminal.png" />
+    <Content Include="Resources\vial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArmaduraLosaRevit.Config\ArmaduraLosaRevit.ConfigurarParametro.csproj">
+      <Project>{5da53f11-0607-494d-a6d9-b48b77f864e7}</Project>
+      <Name>ArmaduraLosaRevit.ConfigurarParametro</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

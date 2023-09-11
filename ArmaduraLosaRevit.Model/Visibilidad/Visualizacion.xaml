@@ -1,0 +1,58 @@
+﻿<Window x:Class="ArmaduraLosaRevit.Model.Visibilidad.Visualizacion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArmaduraLosaRevit.Model.Visibilidad"
+        mc:Ignorable="d"
+        Title="Visualizacion" Height="250" Width="200" ResizeMode="NoResize" Loaded="Window_Loaded" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+   
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+<!-- -->
+        <GroupBox Grid.Row="0" Margin="10"  Header="Path a punto" >
+            <Grid Name="Superior"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"> Fx</Label>
+                <ComboBox  Name="cbx_fx" Grid.Row="1" Grid.Column="2" Width="70" Height="30" >
+                    <ComboBoxItem IsSelected="True">Ver</ComboBoxItem>
+                    <ComboBoxItem >Ocultar</ComboBoxItem>
+               
+                </ComboBox>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">Sx</Label>
+                <ComboBox Name="cbx_sx"  Grid.Row="2" Grid.Column="2" Width="70" Height="30" >
+
+                    <ComboBoxItem IsSelected="True">Ver</ComboBoxItem>
+                    <ComboBoxItem >Ocultar</ComboBoxItem>
+                   
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="aceptar" Width="50" Height="20" Margin="5,0,5,0" ForceCursor="True" Click="aceptar_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Aceptar</Button>
+            <Button x:Name="Cerrar" Width="50" Height="20"  Margin="5,0,5,0"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">Cerrar</Button>
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{889839D1-F9B5-450D-9524-239E67D8EC51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>planta_aux_C</RootNamespace>
+    <AssemblyName>planta_aux_C</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcDbMgd">
+      <HintPath>C:\ObjectARX 2012\inc\AcDbMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acdbmgdbrep">
+      <HintPath>C:\ObjectARX 2012\inc\acdbmgdbrep.dll</HintPath>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>C:\ObjectARX 2012\inc\AcMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AcWindows">
+      <HintPath>C:\ObjectARX 2012\inc\AcWindows.dll</HintPath>
+    </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>C:\ObjectARX 2012\inc\AdWindows.dll</HintPath>
+    </Reference>
+    <Reference Include="deveAutoCad2018">
+      <HintPath>..\..\..\..\_CODIGO DE HELP AUTOCAD2012 MANUAL\deveAutoCad2018\deveAutoCad2018\bin\Debug\deveAutoCad2018.dll</HintPath>
+    </Reference>
+    <Reference Include="ESTRIBOS_MUROS">
+      <HintPath>..\..\..\..\_ESTRIBOS\xxx) barra - xx-xx-xxxx\barra\barra\bin\Debug\ESTRIBOS_MUROS.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VARIOS">
+      <HintPath>..\..\..\..\_VARIOS\xxx) barra - xx-xx-xxxx\barra\barra\obj\Release\VARIOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CargarRutinas\CrearRefPoligonoLosa.cs" />
+    <Compile Include="Elementos\NH_Base__Barra.cs" />
+    <Compile Include="Elementos\NH_Ptos.cs" />
+    <Compile Include="Elementos\NH_ref__Barra.cs" />
+    <Compile Include="CargarRutinas\NH_DibujarEstriboYRefuerzo.cs" />
+    <Compile Include="Elementos\Refuerzo\NH_Estribos.cs" />
+    <Compile Include="Elementos\Refuerzo\NH_Refuerzo.cs" />
+    <Compile Include="CargarRutinas\Prueba_Intersecciones_refuerzo.cs" />
+    <Compile Include="Elemento_Losa\AnalisisPelotaLosa.cs" />
+    <Compile Include="Elemento_Losa\BuscarPolyLosaContigua.cs" />
+    <Compile Include="Elementos\NH_PtosCrearSuples.cs" />
+    <Compile Include="Elemento_Losa\BuscarPolyLosaContigua_NoStatic.cs" />
+    <Compile Include="Elemento_Losa\NH_PoligonosDeLosas.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaLosa.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaLosaParaBarra.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaLosaParaSuple.cs" />
+    <Compile Include="Elemento_Losa\NH_RefereciaLosa_json.cs" />
+    <Compile Include="RutinasSoloPruebas\Prueba_Borrar_Elemntos.cs" />
+    <Compile Include="RutinasSoloPruebas\Class1.cs" />
+    <Compile Include="Elementos\NH_suples__Barra.cs" />
+    <Compile Include="Elementos\NH_Suples.cs" />
+    <Compile Include="Elementos\NH_suples__BarraSuple.cs" />
+    <Compile Include="Elementos\NH_suples__DiseñoREcorrido.cs" />
+    <Compile Include="Elementos\NH_suples__DiseñoCirculo.cs" />
+    <Compile Include="enumera\enumeraciones.cs" />
+    <Compile Include="Formulario.cs" />
+    <Compile Include="RutinasSoloPruebas\NHpolilnea.cs" />
+    <Compile Include="PerimetroBarraConRecorrido.cs" />
+    <Compile Include="Elementos\NH_suples__PerimetroBarraConRecorrido_Suples.cs" />
+    <Compile Include="RutinasSoloPruebas\Prueba_Intersecciones.cs" />
+    <Compile Include="RutinasSoloPruebas\Prueba_ListaDatosPoligonoLosa.cs" />
+    <Compile Include="RutinasSoloPruebas\Prueba_Reccorido.cs" />
+    <Compile Include="Elementos\NH_PolilineaRef.cs" />
+    <Compile Include="Rutinas\Rutinas_Polilineas.cs" />
+    <Compile Include="Rutinas\Rutinas_Recorridos.cs" />
+    <Compile Include="Rutinas\Rutinas_Textos.cs" />
+    <Compile Include="Utiles\BorrarElementos.cs" />
+    <Compile Include="Utiles\ComunesLosa.cs" />
+    <Compile Include="Utiles\DatosBarras.cs" />
+    <Compile Include="Utiles\RecorridoBarras.cs" />
+    <Compile Include="Utiles\RutinasPolilinea.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RutinasSoloPruebas\Prueba_BuscarPolyLosaContigua.cs" />
+    <Compile Include="SombrasHath\SombrearAreaBarras.cs" />
+    <Compile Include="Utiles\Intersecciones.cs" />
+    <Compile Include="Utiles\Transform.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Barra\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VARIOS_C\VARIOS_C.csproj">
+      <Project>{F8679218-F0A7-4BCE-B9AB-6EF9BCD72700}</Project>
+      <Name>VARIOS_C</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

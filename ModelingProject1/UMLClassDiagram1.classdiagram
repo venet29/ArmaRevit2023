@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm13="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="44498576-2c83-4f87-ad96-8f960d279555" name="ArmaduraLosaRevit.Model" linkedPackageId="839b09a7-dbe1-4d68-9150-741b2f57a555" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="1668602d-f2a6-4e8b-a8e5-ce8f88011e58" name="AnalisisRoom.BordeRoom">
+        <elementDefinition Id="9443029f-8df0-43fc-bd03-c63e0baac31f" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="41fb17eb-bef1-4f9c-9fa2-841e174d1376" name="BoundarySegmentNH" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="986b6641-30d6-48c9-ba7e-ebe91a136fac" />
+              <targetEnds>
+                <association Id="233d314b-3080-4f17-809a-30d1bd77afe9" isDerived="false" sourceEndRoleName="BoundarySegmentNH" targetEndRoleName="CoordenadasBorde" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="4529e061-8d86-4086-ba00-a85e947602bd" LastKnownName="CoordenadasBorde" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="38cd51ba-ddbc-4a98-9269-5259c1324522" name="BoundarySegmentNH" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="ad2b1d34-cd1c-473d-b56d-9500adc39687" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="e4e537ca-9a3b-459e-a699-6000956176d5" name="CoordenadasBorde" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <elementDefinition Id="93c09809-9fcd-4f10-870b-40bd64eb9e43" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="a29b3bb4-f55c-41e4-9589-3af237f78a39" />
+                </association>
+                <association Id="8d127f52-32de-4460-b295-85d6f4f0c0de" isDerived="false" sourceEndRoleName="BoundarySegmentNH" targetEndRoleName="ObtenerRefereciasCercanas" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="981815f7-d372-4ad7-b566-b12b065c099a" LastKnownName="ObtenerRefereciasCercanas" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="ec9bfc2d-f4aa-4c74-a920-fb4f9811ab57" name="BoundarySegmentNH" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="0ed4ad80-c658-4da8-92cd-f904530e6b39" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="8083757b-5fa3-42aa-95fa-d25ca6de976a" name="ObtenerRefereciasCercanas" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="9102902d-2efd-40f3-8f98-cad70dea6432" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="e81fdcba-b8a2-4863-856d-7bbcf4e6ff23" />
+                </association>
+              </targetEnds>
+              <ownedAttributesInternal>
+                <property Id="2d67aa19-837b-4691-9ede-4276cc10032c" name="CoordenadasBorde" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="93e287b6-f88f-45f8-b794-f362d6236222" />
+                </property>
+                <property Id="ae63c4ea-78ec-4159-a9d4-ea4fd6ea1780" name="ObtenerRefereciasCercanas" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="77787f6a-9315-4edc-9518-fd80dee1e4bd" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="4529e061-8d86-4086-ba00-a85e947602bd" name="CoordenadasBorde" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="eda01801-1b62-4170-8ae3-cf2fac8c04f3" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="981815f7-d372-4ad7-b566-b12b065c099a" name="ObtenerRefereciasCercanas" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="600414bf-ec09-4017-bf62-90a27f249c08" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="9eba4a46-2d62-4a20-a2ea-d3b1f89667cf" name="BoundarySegmentRoomsGeom" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="6df4cfd5-e8d9-4aa8-b0fe-99dc4531f989" />
+              <targetEnds>
+                <association Id="9e88cc1b-c7c8-471f-bbc0-5f9acb9772a8" isDerived="false" sourceEndRoleName="BoundarySegmentRoomsGeom" targetEndRoleName="BoundarySegmentNH" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="41fb17eb-bef1-4f9c-9fa2-841e174d1376" LastKnownName="BoundarySegmentNH" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="ddf6ab32-afa7-4c2d-ab5f-da0275364ead" name="BoundarySegmentRoomsGeom" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="58507191-2392-4bbb-9d9e-58d56284ab85" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="6bc09492-2586-4a1b-9644-3f1edebc59db" name="BoundarySegmentNH" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                        <lowerValueInternal>
+                          <literalString Id="ac503179-1d51-405d-a2f2-278964f9c8d8" name="Lower" value="*">
+                            <elementDefinition Id="301af978-4d84-41db-b3b7-d84a4c1b0024" />
+                          </literalString>
+                        </lowerValueInternal>
+                        <upperValueInternal>
+                          <literalString Id="1190f6e2-5bc4-4895-b7e4-eedd7634af70" name="Upper" value="*">
+                            <elementDefinition Id="36bf050c-8bc8-402c-b896-9a7e38c290d8" />
+                          </literalString>
+                        </upperValueInternal>
+                        <elementDefinition Id="08f65e58-381f-4d44-a571-bfb5a697e7fa" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="9156c017-79ae-4b68-9fba-fbb227778399" />
+                </association>
+              </targetEnds>
+              <ownedAttributesInternal>
+                <property Id="80a774ba-767e-4415-9f60-45be056cf81d" name="ListaBoundarySegmentNH" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2456361b-d64b-4c7c-bbab-83c70c00ee27" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="f415be77-c8f0-47be-9f62-af340f0b301a" LastKnownName="List&lt;BoundarySegmentNH&gt;" />
+                  </type_NamedElement>
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <packageHasNamedElement>
+      <referencedType Id="f415be77-c8f0-47be-9f62-af340f0b301a" name="List&lt;BoundarySegmentNH&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;BoundarySegmentNH&gt;">
+        <elementDefinition Id="256be500-454e-4928-a3bc-974aa7802b82" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="eedb77ad-0f2f-4ad7-8be2-e54c2ef8e6c2" name="AnalisisRoom">
+        <elementDefinition Id="33d08667-83b0-4530-a842-03c666912c29" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="a2d8255c-8405-4b53-a3d1-5bd087775f7f" name="RoomDatosGenerales" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="4383445b-2dc6-4b58-8a15-483dd8d59b3a" />
+              <targetEnds>
+                <association Id="ac942d28-1655-4ba0-afee-b85c889b973d" isDerived="false" sourceEndRoleName="RoomDatosGenerales" targetEndRoleName="BoundarySegmentRoomsGeom" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="9eba4a46-2d62-4a20-a2ea-d3b1f89667cf" LastKnownName="BoundarySegmentRoomsGeom" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="77176e8d-132b-48cd-9a6e-4e79b13604f3" name="RoomDatosGenerales" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="286f0b17-e12f-4b7b-b512-1dd20b234824" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="4adf3a6a-ed76-443e-9fb6-59890d828589" name="BoundarySegmentRoomsGeom" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="39f19b45-f2d8-4ca7-bce3-2e2ad75dba65" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="d20f054b-bccb-4578-ac00-32a86221fb32" />
+                </association>
+              </targetEnds>
+              <ownedAttributesInternal>
+                <property Id="fd1b12c0-5ec3-4b56-9a58-ba80ad27a876" name="newlistaBS" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7aea89f1-96c3-42b6-8103-7332edf2fb17" />
+                </property>
+              </ownedAttributesInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="aef677f5-ef09-4878-8e1a-2ac4d9693316" name="RoomFunciones" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="f38656a6-7744-4a2d-af47-925977a0f2b3" />
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="839b09a7-dbe1-4d68-9150-741b2f57a555" name="ModelingProject1">
+    <elementDefinition Id="d98e1dc0-d5a2-4997-9e94-917b97a3d84f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b5b981d0-db66-44d8-8ae2-ca1afea170ed">
+        <profileInstance Id="e03a2a00-cf2a-4572-b1a1-2dfb68f86474" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="950d0b32-9a20-4716-9805-e69d2d80e89d">
+        <profileInstance Id="b859624f-0b14-40f9-9f59-55ab74361473" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

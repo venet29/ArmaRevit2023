@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>296</y>
+      <w>384</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>PathReinformeTraslapoManejador
+
+--
+PathReinforcement _pathReinforcement
+ContenedorDatosLosaDTO DatosLosaYpathInicialesDTO
+iCalculoDatosParaReinforment calculoDatosParaReinforment
+
+ SeleccionarPathReinfomentConPto _seleccionarPathReinfomentConPto
+--
+M1_GenerarCalculosGenerales()
+M2_Crear2PathReinformentPorTraslapo()
+M3_CrearDImension()
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>176</y>
+      <w>248</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>CalculoTiposTraslapos
+--
++TipoPathReinf : TipoPathReinf_IzqBajo 
++TipoPathReinf : TipoPathReinf_DerArriba
+--
+-ObtenerBarShape();
+-ObtenerDatosDelPathReinfConIDtipo()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>304</y>
+      <w>144</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>CalculoDatoslosa
+
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>440</y>
+      <w>160</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>CalculoCoordPathReinforme
+
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>88</y>
+      <w>272</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>SeleccionarPathReinfomentConPto
+
+--
+XYZ PuntoSeleccionMouse
+ PathReinforcement PathReinforcement 
+PathReinSpanSymbol PathReinforcementSymbol
+--
+SeleccionarPathReinforment()
+  SeleccionarPathReinfromenSymbol()
+  SeleccionarRoom()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>56</x>
+      <y>216</y>
+      <w>120</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;220.0;10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>536</x>
+      <y>240</y>
+      <w>216</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>536</x>
+      <y>352</y>
+      <w>216</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>536</x>
+      <y>352</y>
+      <w>216</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>176</y>
+      <w>344</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>ControladorContenedorDatosTraslapoV2
+--
+ -List&lt;ContenedorDatosTraslapoV2&gt; _cont;
+--
++ ObtenerBarraIzqBajoTraslapo(TipoBarra ,UbicacionLosa )
+     :ContenedorDatosTraslapoV2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>232</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>368</y>
+      <w>360</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>ContenedorDatosTraslapoV2
+--
++TipoPathReinf _tipoBarra 
++TipoPathReinf _tipoBarraTraslapoIzqBajoResult 
++TipoPathReinf _tipoBarraTraslapoIzqBajo 
++TipoPathReinf _tipoBarraTraslapoIzqBajoInv
++TipoPathReinf _tipoBarraTraslapoDereArribaResult
++TipoPathReinf _tipoBarraTraslapoDereArriba 
++TipoPathReinf _tipoBarraTraslapoDereArribaInv 
+--
++ M1_AsignaSentidoCorrespondiente(UbicacionLosa _ubicacionLosa)
+                                                  :ContenedorDatosTraslapoV2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1056</x>
+      <y>640</y>
+      <w>232</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>TipoPathReinf
+--
+ + TipoBarra Tipobarra 
+ + UbicacionLosa Direccion 
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>536</y>
+      <w>24</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1208</x>
+      <y>272</y>
+      <w>24</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>832</x>
+      <y>16</y>
+      <w>416</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Note..
+List&lt;ContenedorDatosTraslapoV2&gt; _cont 
+contiene una lista con todos los casos:
+ { f1, f3, f4, f7, f9, f9a, f9b, f11, f16, f17, f18, f19, f20, f21, NONE }
+
+ cada 'ContenedorDatosTraslapoV2'
+ contiene las 2 barra que se formar al traslapar un fx  y tb para el caso en 
+ que se traslape ensentido contrario</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

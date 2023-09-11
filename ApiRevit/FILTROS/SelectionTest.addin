@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+        <AddIn Type="Command">
+                <Assembly>RevitSelectionFilters.dll</Assembly>
+                <AddInId>23FBC84D-0BA0-470B-B900-0E686EF5BB79</AddInId>
+                <FullClassName>RevitSelectionFilters.SelectionExamples</FullClassName>
+                <Text>SelectionExample</Text> 
+                <VendorId>EXAMPLE</VendorId>
+                <VendorDescription></VendorDescription> 
+        </AddIn>
+</RevitAddIns>

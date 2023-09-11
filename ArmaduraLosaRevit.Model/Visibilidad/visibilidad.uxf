@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>28</x>
+      <y>399</y>
+      <w>266</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>CmdVisibilidadElement
+--
+--
+CommandCambiarColor : IExternalCommand
+CommandOcultarElemento : IExternalCommand
+CommandDESOcultarElemento : IExternalCommand
+CommandDESOcultarElemento : IExternalCommand
+CmdM1_MostrarPorOrientacion : IExternalCommand
+ (En Uso)
+CmdM2_MostrarPAthPorDiametro : IExternalCommand
+(En Uso)
+CmdM3_MostrarPAthNormal : IExternalCommand
+(En Uso)
+CmdM4_MostrarPAthPorTipo: IExternalCommand
+(En Uso)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>259</y>
+      <w>336</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>SeleccionarPathReinfomentVisibilidad
+--
+
+List&lt;Element&gt; _lista_A_DePathReinfNivelActual 
+List&lt;Element&gt; _lista_A_DeRebarInSystem 
+List&lt;ElementoPath&gt; _lista_A_ElementoPath 
+
+List&lt;WrapperPathSymbol&gt; _lista_B_DePathSymbolNivelActual 
+List&lt;WrapperTagPath&gt; _lista_C_DePathTagNivelActual 
+
+--
+M1_ejecutar()
+M1_1_buscarListaPathEnVistaActual()
+M1_2_ObtenerListaRebarInSystem
+M1_3_buscarListaPathSymbolEnVistaActual()
+M1_4_buscarListaPathTagEnVistaActual()
+
+List&lt;ElementoPathRein&gt; M2_ObtenerElemntosConPAthSymbolVisible()
+ M2_1_ISDentrolistaPathSymbolNivelVisible(ElementoPathRein cc)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>357</x>
+      <y>413</y>
+      <w>266</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>ManejadorVisibilidad
+--
+M1_MostrarPorOrientacion()
+M2_MostrarPorDiametro()
+MostrarPathYOcultarSymbolYTag()
+M3_Restablecer_PathRein_Symbol_Tag_aEstadoNormal()
+M4CAmbiar_PorTipo()
+
+DesactivarRevealHiddenMode()
+ActivarRevealHiddenMode()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>511</y>
+      <w>343</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>VisibilidadElement
+--
+-
+OcultarElemento(IList&lt;Element&gt; Elementos, View view)
+DesOcultarElemento(IList&lt;Element&gt; Elementos, View view)
+CAmbiarColorPorMagenta(IList&lt;Element&gt; Elementos, View view)
+ChangeElementColor(List&lt;ElementId&gt; Listid, string nombreColor)
+
+Ejecutar(
+List&lt;VisibilidadElementoPathDTO&gt; lista_A_VisibilidadElementoPathDTO,
+View view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>420</y>
+      <w>308</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>525</y>
+      <w>224</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;300.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>161</y>
+      <w>224</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>ElementoPath
+--
+Element pathrein
+List&lt;Element&gt; _lista_A_DeRebarInSystem
+Element pathSymbol
+Element tagpath
+
+int DiametroBarra
+
+UbicacionLosa orientacionBarra
+TipoConfiguracionBarra tipoconfiguracionBarra
+TipoBarra TipoBarra</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>105</x>
+      <y>161</y>
+      <w>154</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>Note..
+cada elementos es un desglose
+del pathrein:
+-pathrein
+-REbarInSystem
+-pathSymbol
+-tag
+
+
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>154</y>
+      <w>77</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>259</x>
+      <y>427</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>266</x>
+      <y>441</y>
+      <w>105</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>245</x>
+      <y>462</y>
+      <w>126</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>798</y>
+      <w>336</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>VisibilidadElementOrientacion
+--
+--
+Ejecutar(..)
+M1_CAmbiarColorPorOrientacion(
+List&lt;VisibilidadElementoPathDTO&gt; lista_A_VisibilidadElementoPathDTO,
+View view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>693</y>
+      <w>329</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>VisibilidadElementDiametro
+--
+--
+Ejecutar(..)
+M1_CAmbiarColorPorDiametro(
+  List&lt;VisibilidadElementoPathDTO&gt; lista_A_VisibilidadElementoPathDTO,
+  View view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>637</y>
+      <w>21</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>952</x>
+      <y>637</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>301</y>
+      <w>399</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;En M2 se crea lista&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;120.0;550.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>987</x>
+      <y>147</y>
+      <w>231</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Note..
+
+MUY IMPORTANTE
+tiene todos los path (VisibilidadElementoPathDTO)
+desglosado 
+bg=yellow
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1099</x>
+      <y>210</y>
+      <w>21</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>672</x>
+      <y>476</y>
+      <w>623</w>
+      <h>406</h>
+    </coordinates>
+    <panel_attributes>VISUALIZACION
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>329</y>
+      <w>315</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>COMANDOS
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>301</x>
+      <y>119</y>
+      <w>532</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>ENTIDADES
+--
+layer=-1
+fg=light_gray
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>553</x>
+      <y>154</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>TiposBarrasDTo
+--
+acticionTipoBarra tipofx
+
+acticionTipoBarra tiposx
+acticionTipoBarra tiposRef
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>154</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>WrapperPathSymbol
+--
+Element element
+int idPathReinf
+TipoBarra TipoPath
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>224</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>WrapperTagPath
+--
+Element element
+int idPathReinf
+TipoBarra TipoPath
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,215 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:view2="clr-namespace:ArmaduraLosaRevit.Model.BarraV.Automatico.WPFAuto"
+    x:Class="ArmaduraLosaRevit.Model.BarraV.Automatico.WPFAuto.Ui_AutoElev"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Editor PathReinforment" Height="470" Width="226" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+
+    Background="White"
+    Foreground="Gray" FontSize="12"
+    Name="DebugUtility" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico" ResizeMode="NoResize" Topmost="True">
+
+    <Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Diametro_">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:DiamtrosBarras_"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="TipoBarra">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:TipoBarraTraslapoDereArriba"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="Ubicacion">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local1:UbicacionLosa"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+
+    <!--Closing="Window_Closing"-->
+    <Grid>
+
+
+        <!-- MAIN TAB CONTROLS-->
+        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" />
+
+
+        <TabControl HorizontalAlignment="Left"  Width="208" BorderBrush="{x:Null}" Background="{x:Null}"
+                   Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
+
+            <TabItem x:Name="TbTest"  Margin="0,-2,-4,-2"  Padding="5,0,5,0">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Height="14" />
+                        <Label Content="Vista" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="1.2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30" />
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0"  Orientation="Horizontal">
+                        <Label Grid.Row="5" Grid.Column="0" Margin="15,0,0,0" ToolTip="Modo de seleccionar los puntos. Modo Punto: es mas lento cuando hay mucha barras en la elevacion " >Traslapo</Label>
+                        <ComboBox Name="cbx_diseñoBarras"  Grid.Row="5" Margin="40,0,0,0"  Grid.Column="1" Height="20" Width="80" DropDownClosed="cbx_diseñoBarras_DropDownClosed">
+                            <ComboBoxItem IsSelected="True" >Dibujar</ComboBoxItem>
+                            <ComboBoxItem  >Desplazar</ComboBoxItem>
+
+                        </ComboBox>
+                    </StackPanel >
+
+                    <GroupBox Grid.Row="1">
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+
+                            <CheckBox x:Name="itemBarra" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Barra</CheckBox>
+                            <CheckBox x:Name="itemMalla" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Malla</CheckBox>
+                            <CheckBox x:Name="itemEstribo" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Estribo</CheckBox>
+                            <CheckBox x:Name="itemConf" Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Confinamineto</CheckBox>
+
+                            <Button Grid.Row="5" Grid.ColumnSpan="2"  Name="Ejecutar" Margin="0,4,0,4" Height="20"  Width="150" Content="Ejecutar Verticales" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9"></Button>
+                            <Button Grid.Row="2" Grid.Column="1"  Name="DesAgrupar" Margin="0,4,0,4" Height="20"  Width="70" Content="Desagrupar" ToolTip="Desagrupa, Niveles que esten agrupado y guarda los datos en archivo para agrupar posteriormente.F1 video Ayuda" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9" AutomationProperties.HelpText="rtertert" KeyUp="DesAgrupar_KeyUp_1" MouseMove="DesAgrupar_MouseMove"/>
+                            <Button Grid.Row="3" Grid.Column="1"  Name="Agrupar" Margin="0,4,0,4" Height="20"  Width="70" Content="Agrupar" ToolTip="Agrupa elemento con datos de archivo guardados previamente.F1 video Ayuda" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9" MouseMove="Agrupar_MouseMove" KeyUp="DesAgrupar_KeyUp_1"/>
+                        </Grid>
+                    </GroupBox>
+
+
+                    <GroupBox Grid.Row="2">
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+
+
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+
+                            <CheckBox x:Name="itemBarraH" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Barra</CheckBox>
+
+                            <CheckBox x:Name="itemEstriboH" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Estribo</CheckBox>
+
+                            <Button Name="Ocultar_Level" Grid.Row="1" Grid.Column="2"   Height="25"  Width="70"  HorizontalAlignment="Center" Content="Ocultar" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9" ToolTip="Oculta barras en vigas idem" ></Button>
+                            <Button Name="Mostrar_Level" Grid.Row="2" Grid.Column="2"   Height="25"  Width="70"  HorizontalAlignment="Center" Content="Desocultar" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9" ToolTip="Desoculta barras en vigas idem"></Button>
+
+
+                            <Button Grid.Row="4" Grid.ColumnSpan="2"  Name="EjecutarH" Margin="0,4,0,4" Height="20"  Width="150" Content="Ejecutar Horizonatales" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9"></Button>
+
+
+                        </Grid>
+                    </GroupBox>
+
+
+                    <Button Grid.Row="3"   Name="Cerrar" Margin="0,4,0,4" Height="20"  Width="70" Content="Cerrar" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9"></Button>
+
+                </Grid>
+
+
+            </TabItem>
+
+            <TabItem x:Name="TbTestM"  Margin="0,-2,-4,-2"  Padding="5,0,5,0">
+
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ArmaduraLosaRevit.Model;component/Resources/terminal.png" VerticalAlignment="Center"
+                               HorizontalAlignment="Center" Height="14" />
+                        <Label Content="Multiples" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <ScrollViewer Grid.Row="0" Grid.ColumnSpan="2"  Margin="5,10,5,10" VerticalScrollBarVisibility="Auto" BorderThickness="0" BorderBrush="{x:Null}">
+                        <TextBox x:Name="TbDebugM" FontFamily="Consolas" Margin="0" TextWrapping="Wrap" Text=""
+                                 BorderThickness="0" BorderBrush="{x:Null}" />
+                    </ScrollViewer>
+
+                    <CheckBox x:Name="itemBarraM" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Barra</CheckBox>
+                    <CheckBox x:Name="itemMallaM" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Malla</CheckBox>
+                    <CheckBox x:Name="itemEstriboM" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Estribo</CheckBox>
+                    <CheckBox x:Name="itemConfM" Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" IsChecked="True">Confinamineto</CheckBox>
+                    <Label Grid.Row="5" Grid.Column="0" Margin="15,0,0,0" ToolTip="Modo de seleccionar los puntos. Modo Punto: es mas lento cuando hay mucha barras en la elevacion " >Traslapo</Label>
+                    <ComboBox Name="cbx_diseñoBarrasM"  Grid.Row="5"  Grid.Column="1" Height="20" Margin="0,0,10,0"  DropDownClosed="cbx_diseñoBarras_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Dibujar</ComboBoxItem>
+                        <ComboBoxItem >Desplazar</ComboBoxItem>
+
+                    </ComboBox>
+
+                    <Label Grid.Row="6" Grid.Column="0" Margin="13,0,2,0" ToolTip="Texto para remover de nombre de 'View' para igualar con nombre de archivos 'Json'. Se pueden agregar varios casos separados por comas " >Remover Elev</Label>
+                    <TextBox Name="remover_elev" Height="25"  Grid.Row="6" Grid.Column="1"  Margin="0,0,10,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding RemoverView, Mode=TwoWay}"></TextBox>
+                    <Label Grid.Row="7" Grid.Column="0" Margin="13,0,2,0" ToolTip="Texto para remover de nombre de 'Json' para igualar con nombre de 'View'. Se pueden agregar varios casos separados por comas" >Remover Json</Label>
+                    <TextBox Name="remover_json" Height="25"  Grid.Row="7" Grid.Column="1" Margin="0,0,10,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding RemoverJson, Mode=TwoWay}"></TextBox>
+
+                    <Button Grid.Row="9" Grid.Column="1"  Name="CerrarM" Margin="0,4,0,4" Height="20"  Width="70" Content="Cerrar" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9"></Button>
+
+                    <Button Grid.Row="9"  Name="Ejecutar_variasM" Margin="0,4,0,4" Height="20"  Width="70" Content="Ejecutar" Click="BExternalMethod1_Click" Background="#FFE2E1E4" BorderBrush="#FFC9C9C9"></Button>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+
+
+    </Grid>
+</Window>

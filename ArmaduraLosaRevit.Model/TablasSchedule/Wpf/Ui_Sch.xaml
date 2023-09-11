@@ -1,0 +1,58 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="ArmaduraLosaRevit.Model.TablasSchedule.Wpf.Ui_Schedule"
+    xmlns:local1="clr-namespace:ArmaduraLosaRevit.Model.Enumeraciones"
+
+    mc:Ignorable="d"
+    xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
+    Title="Estribo Viga" Height="220" Width="400" WindowStartupLocation="CenterScreen"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" 
+
+
+    Name="DebugUtility" Icon="/ArmaduraLosaRevit.Model;component/Resources/revit-wire.ico" ResizeMode="NoResize" Topmost="True" Loaded="DebugUtility_Loaded">
+
+    <GroupBox Margin="5">
+        
+ 
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <!-- MAIN TAB CONTROLS-->
+
+
+
+
+
+
+
+
+            <Button x:Name="btn_crearExcel" Grid.Row="1" Grid.Column="1"   Grid.RowSpan="2" Click="BExternalMethod1_Click" Height="80" Width="120"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2" >
+            <TextBlock TextAlignment="Center">Crear Excel<LineBreak/>cubicaciones</TextBlock>
+        </Button>
+            <Button x:Name="btn_crearSchedules" Grid.Row="1" Grid.Column="3"   Grid.RowSpan="2"  Click="BExternalMethod1_Click" Height="80" Width="120"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2">
+            <TextBlock TextAlignment="Center">Crear Schedules<LineBreak/>Cubicaciones</TextBlock>
+        </Button>
+  
+
+
+    </Grid>
+
+    </GroupBox>
+
+</Window>

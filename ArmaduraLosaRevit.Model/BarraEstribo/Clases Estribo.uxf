@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>81</y>
+      <w>396</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>ManejadorEstriboCOnfinamiento
+--
++ ConfiguracionInicialEstriboDTO configuracionInicialEstriboDTO
++List&lt;ElementId&gt; _listaRebarIdCambiarColor
+--
+ void M1_Ejecutar()  -&gt;principal
+ void M1_2_CAmbiarColor()
+--
+Responsibilities
+-- Resp1
+-- Resp2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>72</y>
+      <w>297</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>ConfiguracionInicialEstriboDTO
+--
+int DiamtroEstriboMM
+double espaciamientoEstriboCM
+string cantidadEstribo
+TipoConfiguracionEstribo tipoConfiguracionBarra
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>81</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>423</x>
+      <y>342</y>
+      <w>324</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>SeleccionarElementos
+--
+--
+M1_ObtenerPtoinicio()
+   M1_1_CrearWorkPLane_EnCentroViewSecction()
+    M1_2_SeleccionarBordeMuro()
+    M1_3_SeleccionarMuroElement()    
+     M1_4_BuscarPtoInicioBase()
+
+ ElementoSeleccionadoDTO
+ M2_OBtenerElementoREferenciaDTO()    
+--
+resp: seleccionando host 
+direccion
+origen
+pto sobre face</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>288</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>SeleccionarNivel
+--
+--
+resp: obtener los niveles</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>351</x>
+      <y>648</y>
+      <w>288</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>SeleccionPtosEstribo
+--
+ConfiguracionInicialEstriboDTO 
+    _configuracionInicialEstriboDTO;
+List&lt;EstriboMuroDTO&gt; listaDeEstribos
+--
+resp: seleccionando barras y 
+generando coordenadas</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>567</y>
+      <w>153</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;150.0;40.0;10.0;40.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>63</x>
+      <y>432</y>
+      <w>270</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Note..
+el objeto ElementoSeleccionadoDTO
+contiene los datos 
+del elemto host
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>459</y>
+      <w>117</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+</diagram>

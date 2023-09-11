@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B7E4C9B-43DE-42D8-A8ED-40EBF9ACCC0C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArmaduraLosaRevit.ModelTest</RootNamespace>
+    <AssemblyName>ArmaduraLosaRevit.ModelTest</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>dll\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAddInUtility">
+      <HintPath>..\Libreria\RevitAddInUtility.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>..\Libreria\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\Libreria\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitTestFrameworkTypes, Version=1.19.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RevitTestFramework.1.19.23\lib\net47\RevitTestFrameworkTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="RTFRevit, Version=1.19.23.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RevitTestFramework.1.19.23\lib\net47\RTFRevit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArmaduraRefuerzo\SelecionarElementoParaRefuerzoTest.cs" />
+    <Compile Include="ArmaduraRefuerzo\TagBarra\Cmd_GeometriaTagTest_.cs" />
+    <Compile Include="ArmaduraRefuerzo\TagBarra\Cmd_CreacionTagTest.cs" />
+    <Compile Include="CambiarEspesorLosa\CmdCambiarEspesorAParametroPathTest.cs" />
+    <Compile Include="CambiarEspesorLosa\CambiarEspesorLosa_CambioRoomEspesorTest.cs" />
+    <Compile Include="CambiarEspesorLosa\CambiarEspesorLosa_CambiaParametroEspesorPathTest.cs" />
+    <Compile Include="ElementoBarraRoom\Editar\CreadorEditarPathRein.cs" />
+    <Compile Include="ElementoBarraRoom\Editar\EditarPathRein_alargarPathReinHAciaLaderchaTest.cs" />
+    <Compile Include="Extender\ExtensionLine.cs" />
+    <Compile Include="PelotaLosas\BuscarPtoDentroLosa.cs" />
+    <Compile Include="PlantillaGenerica.cs" />
+    <Compile Include="ElementoBarraRoom\aux_listaPtoDTO.cs" />
+    <Compile Include="ElementoBarraRoom\CrearSuple_ListaPoligonosRooms_S1_S3V2.cs" />
+    <Compile Include="ElementoBarraRoom\CrearBarraInf_ListaFinal_ptov2.cs" />
+    <Compile Include="ElementoBarraRoom\CrearSuplesTest.cs" />
+    <Compile Include="ElementoBarraRoom\CrearBarraInferiorTest.cs" />
+    <Compile Include="ElementoBarraRoom\CrearBarraInf_ListaPoligonosRooms_fx.cs" />
+    <Compile Include="PelotaLosas\CreardorCrearRoomConPelotaLosaTest.cs" />
+    <Compile Include="PelotaLosas\CreardorPelotaLosaEstructural.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilitarioFallasDialogos.cs" />
+    <Compile Include="Util\UtilTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArmaduraLosaRevit.Model\ArmaduraLosaRevit.Model.csproj">
+      <Project>{2624d226-c056-42e4-a55f-655a0dbe49de}</Project>
+      <Name>ArmaduraLosaRevit.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Automatico\" />
+    <Folder Include="LargosMin\" />
+    <Folder Include="Traslapo\" />
+    <Folder Include="Varios\" />
+    <Folder Include="visibilidad\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
+  </Target>
+</Project>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>808</x>
+      <y>56</y>
+      <w>272</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>HelperSeleccinarFloorRefuerzo
+--
+-ElementoSeleccionado:Element
++ pto1SeleccionadoConMouse :XYZ
++ListaPtosBordeMuroIntersecatdo : List&lt;XYZ&gt; 
+--
+
+void EjecutarSeleccion()
+void GetBordeIntersectaConPto(XYZ segundoPto)
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>776</x>
+      <y>0</y>
+      <w>344</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Seleccionar
+--
+bg=orange
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1144</x>
+      <y>56</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Note..
+obtiene</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>592</x>
+      <y>344</y>
+      <w>320</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>CalculosRefuerzoTipoViga
+--
++ List&lt;EstriboRefuerzoDTO&gt; ListaEstriboRefuerzoDTO
++ List&lt;EstriboRefuerzoDTO&gt; ListaEstriboRefuerzoDTO
++ List&lt;BarraRefuerzoDTO&gt; ListaBArrasInferior 
+--
+
+- ObtenerAngulodeSeleccion()
+- OBtenerTrasformadas()
+- Ordenar4PtosInicales()
+
+- GenerarPtosBarraRefuerzo()
+- GenerarPtosBarraEStribo()
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>568</x>
+      <y>304</y>
+      <w>416</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Calculos
+--
+bg=orange
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>240</x>
+      <y>240</y>
+      <w>1096</w>
+      <h>928</h>
+    </coordinates>
+    <panel_attributes>REFUERZOLOSAS
+--
+bg=white
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>792</x>
+      <y>456</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Note..
+se genar BarrarefDto
+
+se genera EstriboDto
+fg=red
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>736</x>
+      <y>488</y>
+      <w>72</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>736</x>
+      <y>472</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>392</y>
+      <w>56</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>336</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>EstriboRefuerzoDTO
+--
++  XYZ Origen
++ Line Curve
++ double AnchoFoot
++ double EspaciamientoEntreEstribo
++ int DiamtroBarraEnMM 
+--
+
+layer=1
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>264</x>
+      <y>304</y>
+      <w>272</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>DTo
+--
+bg=orange
+layer=-2
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>304</x>
+      <y>440</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>BarraRefuerzoDTO
+--
++ XYZ pa_Orig
++ XYZ pb_Orig
++ XYZ pc_Orig
++ XYZ pd_Orig
++ int diamEnMM 
+--
+
+layer=1
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>384</y>
+      <w>104</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>432</y>
+      <w>104</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>552</x>
+      <y>584</y>
+      <w>728</w>
+      <h>544</h>
+    </coordinates>
+    <panel_attributes>Calculos
+--
+layer=-1
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>648</y>
+      <w>176</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>BarraRefuerzo
+--
+- CalculosRefuerzoTipoViga
+        calculosRefuerzoTipoViga
+-Floor floor
+--
+
+DibujarEstribo();
+DibujarBarra();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>512</y>
+      <w>24</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>648</y>
+      <w>232</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>BarraRefuerzoEstribo
+--
+- CalculosRefuerzoTipoViga
+        calculosRefuerzoTipoViga
+-Floor floor
+--
+ConfigurarDatosIniciales()
+M2_ConfigurarBarraCurve()
+ConfigurarRebarShape()
+M1_2_DibujarBarraRebarShape()
+ConfiguraEspaciamiento()
+ConfigurarAsignarParametrosRebarshape()
+M1_6_visualizar()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1072</x>
+      <y>648</y>
+      <w>176</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>ARebar
+--
+
+-Floor floor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1040</x>
+      <y>728</y>
+      <w>48</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>840</y>
+      <w>336</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>BarraRefuerzoBordeLibre
+--
+
+--
+M1_ConfigurarDatosIniciales()
+M2_ConfigurarBarraCurve()
+M3_DibujarBarraCurve()
+M4_ConfigurarAsignarParametrosRebarshape()
+M5_ConfiguraEspaciamiento_SetLayoutAsNumberWithSpacing()
+M1_6_visualizar()
+M7_ConfiguraEspaciamiento_SetLayoutAsFixedNumber()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>816</y>
+      <w>48</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+</diagram>

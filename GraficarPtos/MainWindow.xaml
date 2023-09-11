@@ -1,0 +1,16 @@
+﻿<Window x:Class="GraficarPtos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraficarPtos"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="734" Width="833">
+    <Grid>
+        <Canvas x:Name="canGraph" Height="734" Width="833"
+                Background="Wheat" UseLayoutRounding="False" AllowDrop="True" >
+            <Image Canvas.Top="0" Canvas.Left="0"  OpacityMask="#FFC2E5DB"
+          Source="Imagen\Fondo.png"/>
+        </Canvas>
+    </Grid>
+</Window>
