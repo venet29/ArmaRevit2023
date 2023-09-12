@@ -194,7 +194,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Tag
             {
                 case TipoBarra.f1:
                     return new GeomeTagF1(doc, ptoMOuse, listaPtosPerimetroBarras, _solicitudBarraDTO);
-                case TipoBarra.f1_incliInf:
+                case TipoBarra.f1_incli:
                     return new GeomeTagF1_incliInf(doc, rebarInferiorDTO1);
                 case TipoBarra.f1_esc135_sinpata:
                 case TipoBarra.f1_esc45_conpata:

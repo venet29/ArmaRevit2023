@@ -105,7 +105,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
                 if (BarraRoomGeometria.LargoRecorridoY != 0)// && ptoSelect_tras.Y + LargoRecorrido_axu / 2 < p1.Y)
                                                             //pf1 = new XYZ(p1.X, ptoSelect_tras.Y + LargoRecorrido_axu / 2, 0);
                 {
-                    double valory = (ptoSelect_tras.Y + LargoRecorrido_axu < p2.Y ? ptoSelect_tras.Y + LargoRecorrido_axu : p1.Y);
+                    double valory = (ptoSelect_tras.Y + LargoRecorrido_axu < p1.Y ? ptoSelect_tras.Y + LargoRecorrido_axu : p1.Y);
                     pf1 = new XYZ(p1.X, valory, p1.Z);
                 }
                 else
@@ -134,7 +134,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
                 if (BarraRoomGeometria.LargoRecorridoY != 0)// && ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p2.Y)
                 {
                     double valory = (ptoSelect_tras.Y - LargoRecorrido_axu > p2.Y ? ptoSelect_tras.Y - LargoRecorrido_axu : p2.Y);
-                    pf2 = new XYZ(p2.X, valory, pf2.Z);
+                    pf2 = new XYZ(p2.X, valory, p2.Z);
                 }
                 else
                     pf2 = p2;
@@ -147,8 +147,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
 
                 if (BarraRoomGeometria.LargoRecorridoY != 0)// && ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p3.Y)
                 {
-                    double valory = (ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p3.Y ? ptoSelect_tras.Y - LargoRecorrido_axu : p3.Y);
-                    pf3 = new XYZ(p3.X, ptoSelect_tras.Y - LargoRecorrido_axu / 2, p3.Z);
+                    double valory = (ptoSelect_tras.Y - LargoRecorrido_axu  > p3.Y ? ptoSelect_tras.Y - LargoRecorrido_axu : p3.Y);
+                    pf3 = new XYZ(p3.X, valory, p3.Z);
                 }
                 else
                     pf3 = p3;
@@ -164,8 +164,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
                                                             //pf1 = new XYZ(p1.X, ptoSelect_tras.Y + LargoRecorrido_axu / 2, 0);
                 {
                     //nota dos lineas sin compreobar pq estan para enfierrado automatico
-                    double valorX = (ptoSelect_tras.X + LargoRecorrido_axu < p1.X ? ptoSelect_tras.X + LargoRecorrido_axu : p1.X);
-                    pf2 = new XYZ(valorX,p1.Y, p1.Z);
+                    double valorX = (ptoSelect_tras.X - LargoRecorrido_axu > p2.X ? ptoSelect_tras.X - LargoRecorrido_axu : p2.X);
+                    pf2 = new XYZ(valorX,p2.Y, p2.Z);
                 }
                 else
                     pf2 = p2;
@@ -177,8 +177,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
                 if (BarraRoomGeometria.LargoRecorridoX != 0)// && ptoSelect_tras.Y + LargoRecorrido_axu / 2 < p4.Y)
                 {
                     //nota dos lineas sin compreobar pq estan para enfierrado automatico
-                    double valorx = (ptoSelect_tras.X+ LargoRecorrido_axu < p2.X ? ptoSelect_tras.X + LargoRecorrido_axu : p2.X);
-                    pf1 = new XYZ(valorx, p2.Y, p2.Z);
+                    double valorx = (ptoSelect_tras.X - LargoRecorrido_axu > p1.X ? ptoSelect_tras.X - LargoRecorrido_axu : p1.X);
+                    pf1 = new XYZ(valorx, p1.Y, p1.Z);
                 }
                 else
                     pf1 = p1;
@@ -194,8 +194,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
 
                 if (BarraRoomGeometria.LargoRecorridoX != 0)// && ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p2.Y)
                 {
-                    double valorx = (ptoSelect_tras.Y - LargoRecorrido_axu > p2.X ? ptoSelect_tras.X - LargoRecorrido_axu : p2.Y);
-                    pf3 = new XYZ(valorx,p4.Y, p4.Z);
+                    double valorx = (ptoSelect_tras.Y + LargoRecorrido_axu < p3.X ? ptoSelect_tras.X + LargoRecorrido_axu : p3.X);
+                    pf3 = new XYZ(valorx,p3.Y, p3.Z);
                 }
                 else
                     pf3 = p3;
@@ -208,8 +208,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
 
                 if (BarraRoomGeometria.LargoRecorridoX != 0)// && ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p3.Y)
                 {
-                    double valorX = (ptoSelect_tras.X - LargoRecorrido_axu / 2 > p3.Y ? ptoSelect_tras.X - LargoRecorrido_axu : p3.Y);
-                    pf4 = new XYZ(valorX,p3.X,  p3.Z);
+                    double valorX = (ptoSelect_tras.X + LargoRecorrido_axu / 2 < p4.Y ? ptoSelect_tras.X + LargoRecorrido_axu : p4.X);
+                    pf4 = new XYZ(valorX,p4.Y,  p4.Z);
                 }
                 else
                     pf4 = p4;

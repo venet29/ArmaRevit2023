@@ -79,6 +79,8 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         LOSA_ESC_F1_45,
         LOSA_ESC_F1_45_CONPATA,
         LOSA_ESC_F1_135_SINPATA,
+        LOSA_ESC_F1B,
+        LOSA_ESC_F1A,
         LOSA_ESC_F3_BA,
         LOSA_ESC_F3_AB,
         LOSA_ESC_F3_0A,
@@ -98,7 +100,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         FUND_BA_SUP,
         FUND_BA_BPT,//borrar
         FUND_SUP_BPT,
-
+        LOSA_ESC_F1_AB,
     }
 
 

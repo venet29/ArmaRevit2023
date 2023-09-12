@@ -35,7 +35,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         f1_a,
         f4_incli,
      
-        f1_incliInf,
+        f1_incli,
         f3_refuezoSuple,
         f22_Izq,
         f22_Dere,
@@ -59,6 +59,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         f10B_fund,
         f11A_fund,
         f11B_fund,
+        f1_esc45,
     }
 
     public enum NombreParametros { A_,B_,C_, D_,E_,F_, FF,G_,H_,LL}

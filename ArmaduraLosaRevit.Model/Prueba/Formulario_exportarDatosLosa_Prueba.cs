@@ -14,6 +14,7 @@ using Autodesk.Revit.DB.Structure;
 using ArmaduraLosaRevit.Model.Armadura;
 using ArmaduraLosaRevit.Model.Enumeraciones;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ayudas;
+using ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico;
 
 namespace ArmaduraLosaRevit.Model.Prueba
 {

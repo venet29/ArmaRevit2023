@@ -1449,8 +1449,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
 
             // LargoRecorridoY= LargoRecorridoX = 4;
             // 4 ptos que definen el area de la barra a dibujarnhs
-            BarraRoomGeometria.LargoRecorridoX = LargoRecorridoX;
-            BarraRoomGeometria.LargoRecorridoY = LargoRecorridoY;
+            BarraRoomGeometria.LargoRecorridoX =  LargoRecorridoX;
+            BarraRoomGeometria.LargoRecorridoY =  LargoRecorridoY;
             BarraRoomGeometria.ptoSelect = ptoConMouseEnlosa1;
 
             //obtiene   < pto perimetros,curva path>

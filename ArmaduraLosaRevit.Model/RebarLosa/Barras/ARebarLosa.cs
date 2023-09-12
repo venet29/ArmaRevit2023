@@ -282,7 +282,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Barras
                     break;
                 case TipoBarra.f12:
                     break;
-                case TipoBarra.f1_incliInf:
+                case TipoBarra.f1_incli:
                     _BarraTipo = TipoRebar.LOSA_INCLI_F1;
                     break;
                 case TipoBarra.f3_refuezoSuple:

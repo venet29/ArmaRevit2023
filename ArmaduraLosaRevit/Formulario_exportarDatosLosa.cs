@@ -15,6 +15,7 @@ using ArmaduraLosaRevit.Model.Armadura;
 using ArmaduraLosaRevit.Model.Enumeraciones;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ayudas;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ahorro;
+using ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico;
 
 namespace ArmaduraLosaRevit
 {

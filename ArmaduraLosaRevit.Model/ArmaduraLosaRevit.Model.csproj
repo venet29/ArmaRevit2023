@@ -1627,10 +1627,10 @@
     <Compile Include="LosaArmadura\Entidades\LosaBorde.cs" />
     <Compile Include="LosaArmadura\Geometria\MuroGeometrias.cs" />
     <Compile Include="LosaArmadura\Geometria\LosaGeometrias.cs" />
-    <Compile Include="FormularioAUTO.cs">
+    <Compile Include="ElementoBarraRoom\Automatico\FormularioAUTO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormularioAUTO.Designer.cs">
+    <Compile Include="ElementoBarraRoom\Automatico\FormularioAUTO.Designer.cs">
       <DependentUpon>FormularioAUTO.cs</DependentUpon>
     </Compile>
     <Compile Include="LosaEstructural\WPFp\ManejadorWPF_pelotaLosa.cs" />
@@ -1926,7 +1926,7 @@
     <Compile Include="Elementos_viga\NH_ListaVIgas.cs" />
     <Compile Include="AnalisisRoom\ReferenciaRoomHandler.cs" />
     <Compile Include="Elemento_Losa\NH_TagLosaData.cs" />
-    <Compile Include="Formulario.cs" />
+    <Compile Include="ElementoBarraRoom\Automatico\Formulario.cs" />
     <Compile Include="Elemento_Losa\NH_PtosCrearSuples.cs" />
     <Compile Include="AnalisisRoom\ReferenciaRoom.cs" />
     <Compile Include="Elemento_Losa\NH_RefereciaCrearBarra.cs" />
@@ -2135,7 +2135,7 @@
     <EmbeddedResource Include="ElementoBarraRoom\CopiarEntreLosa\wpf\CopiarRebarEntreLosas.resx">
       <DependentUpon>CopiarRebarEntreLosas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormularioAUTO.resx">
+    <EmbeddedResource Include="ElementoBarraRoom\Automatico\FormularioAUTO.resx">
       <DependentUpon>FormularioAUTO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParametrosShare\Cambiar\CambiarPArametro.resx">

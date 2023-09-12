@@ -1,4 +1,5 @@
 ﻿using ArmaduraLosaRevit.Model.Armadura;
+using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ayudas;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ocultar;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Tag.TagF;
 using ArmaduraLosaRevit.Model.Enumeraciones;
@@ -22,18 +23,17 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
         private Document _doc;
         private View _view;
         private OcultarBarras _OcultarBarras;
-#pragma warning disable CS0649 // Field 'BarraRoom_ocultar_view.listaView' is never assigned to, and will always have its default value null
         private List<View> listaView;
-#pragma warning restore CS0649 // Field 'BarraRoom_ocultar_view.listaView' is never assigned to, and will always have its default value null
+
 
         public BarraRoom_ocultar_view(UIApplication _uiapp)
         {
             this._uiapp = _uiapp;
             this._doc = _uiapp.ActiveUIDocument.Document;
             this._view = _uiapp.ActiveUIDocument.Document.ActiveView;
-
+            listaView = new List<View>();
             _OcultarBarras = new OcultarBarras(_doc);
-          //  _OcultarBarras.Ocultar1BarraCreada_AgregarParametroARebarSystem(m_createdPathReinforcement);
+            //  _OcultarBarras.Ocultar1BarraCreada_AgregarParametroARebarSystem(m_createdPathReinforcement);
 
         }
         public void Ejecutar(List<BarraRoom> ListaBarraRoom)
@@ -47,22 +47,30 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
                 {
                     trans2.Start("Crear CreatePathReinforcement2-NH");
 
+
+                    AyudaAsignarTipoBarra _AyudaAsignarTipoBarra = new AyudaAsignarTipoBarra();
+
                     for (int i = 0; i < ListaBarraRoom.Count; i++)
                     {
                         BarraRoom newBarraRoom = ListaBarraRoom[i];
 
-
-                        if (newBarraRoom.m_createdPathReinforcement != null)
+                        if (newBarraRoom.m_createdPathReinforcement != null && newBarraRoom.m_createdPathReinforcement.IsValidObject)
                         {
-                            TipoRebar auxTipoRebar = EnumeracionBuscador.ObtenerEnumGenerico(TipoRebar.NONE, newBarraRoom.TipoBarraStr);
+                           
+                            TipoRebar auxTipoRebar = TipoRebar.NONE;
+
+                            if (_AyudaAsignarTipoBarra.AsignarBarrasInferiore(newBarraRoom.TipoBarraStr))
+                                auxTipoRebar = _AyudaAsignarTipoBarra._tipoRebar;
+
+                            // TipoRebar auxTipoRebar = EnumeracionBuscador.ObtenerEnumGenerico(TipoRebar.NONE, newBarraRoom.TipoBarraStr);
                             var aux_BarraTipo = Tipos_Barras.M1_Buscar_nombreTipoBarras_porTipoRebar(auxTipoRebar);
 
                             _OcultarBarras.Ocultar1BarraCreada_AgregarParametroARebarSystem(newBarraRoom.m_createdPathReinforcement, aux_BarraTipo, IsConTransaccion: false);
                             ITagF newITagF = FactoryITagF_.ObtenerICasoyBarraX(_doc, newBarraRoom.m_createdPathReinforcement, newBarraRoom.TipoBarraStr);
-                            if (newITagF!=null)newITagF.Ejecutar();
+                            if (newITagF != null) newITagF.Ejecutar();
                         }
 
-                        if (newBarraRoom.m_createdPathReinforcement_izq != null)
+                        if (newBarraRoom.m_createdPathReinforcement_izq != null && newBarraRoom.m_createdPathReinforcement_izq.IsValidObject)
                         {
                             TipoRebar auxTipoRebar_Izq = EnumeracionBuscador.ObtenerEnumGenerico(TipoRebar.NONE, newBarraRoom.TipoBarra_izq_Inf);
                             var aux_BarraTipo_Izq = Tipos_Barras.M1_Buscar_nombreTipoBarras_porTipoRebar(auxTipoRebar_Izq);
@@ -71,7 +79,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
                             ITagF newITagF = FactoryITagF_.ObtenerICasoyBarraX(_doc, newBarraRoom.m_createdPathReinforcement_izq, newBarraRoom.TipoBarra_izq_Inf);
                             if (newITagF != null) newITagF.Ejecutar();
                         }
-                        if (newBarraRoom.m_createdPathReinforcement_dere != null)
+                        if (newBarraRoom.m_createdPathReinforcement_dere != null && newBarraRoom.m_createdPathReinforcement_dere.IsValidObject)
                         {
                             TipoRebar auxTipoRebar_Der = EnumeracionBuscador.ObtenerEnumGenerico(TipoRebar.NONE, newBarraRoom.TipoBarra_dere_sup);
                             var aux_BarraTipo_Der = Tipos_Barras.M1_Buscar_nombreTipoBarras_porTipoRebar(auxTipoRebar_Der);
@@ -80,7 +88,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
                             ITagF newITagF = FactoryITagF_.ObtenerICasoyBarraX(_doc, newBarraRoom.m_createdPathReinforcement_dere, newBarraRoom.TipoBarra_dere_sup);
                             if (newITagF != null) newITagF.Ejecutar();
                         }
-                      
+
                     }
                     trans2.Commit();
                 }
@@ -97,10 +105,6 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
 
         private void OcultarBarraCreada_AgregarParametroARebarSystem_v2(PathReinforcement listaPathReinforcement)
         {
-
-
-
-
 
             if (!listaPathReinforcement.IsValidObject) return;
             var Ilist_RebarInSystem = listaPathReinforcement.GetRebarInSystemIds();

@@ -18,7 +18,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Barras
             {
                 case TipoBarra.f1:
                     return new fx_null();
-                case TipoBarra.f1_incliInf:
+                case TipoBarra.f1_incli:
                     return new f1_incliInf(_uiapp, _rebarInferiorDTO, _newIGeometriaTag);
                     
                 case TipoBarra.f1_esc135_sinpata:

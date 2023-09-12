@@ -142,7 +142,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Servicio
                         {
                             ListaIntervalos = intervalo,
                             ptoMouse = M1_4_ObtenerPtoMouse(intervalo, dire, _tipoPosicionMouse),
-                            _tipoBarra = (IsPataInicial ? TipoBarra.f1_incliInf.ToString() : _TipoBarra),
+                            _tipoBarra = (IsPataInicial ? TipoBarra.f1_incli.ToString() : _TipoBarra),
                             _ubicacionEnlosa = _ubicacionEnlosa
 
                         });
@@ -175,7 +175,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Servicio
                 {
                     ListaIntervalos = intervalo,
                     ptoMouse = M1_4_ObtenerPtoMouse(intervalo, dire, _tipoPosicionMouse),
-                    _tipoBarra = (IsPataFinal ? TipoBarra.f1_incliInf.ToString() : _TipoBarra),
+                    _tipoBarra = (IsPataFinal ? TipoBarra.f1_incli.ToString() : _TipoBarra),
                     _ubicacionEnlosa = (IsPataFinal
                                         ? (_ubicacionEnlosa == UbicacionLosa.Inferior ? UbicacionLosa.Superior : UbicacionLosa.Derecha)
                                         : _ubicacionEnlosa)

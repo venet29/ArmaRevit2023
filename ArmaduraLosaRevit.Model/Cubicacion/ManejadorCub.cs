@@ -7,7 +7,6 @@ using ArmaduraLosaRevit.Model.ElementoBarraRoom.Familias;
 using ArmaduraLosaRevit.Model.Enumeraciones;
 using ArmaduraLosaRevit.Model.Seleccionar;
 using ArmaduraLosaRevit.Model.TablasSchedule;
-using ArmaduraLosaRevit.Model.UpdateGenerar;
 using ArmaduraLosaRevit.Model.UTILES;
 using ArmaduraLosaRevit.Model.UTILES.AyudasView;
 using ArmaduraLosaRevit.Model.UTILES.ParaBarras.Entidades;

@@ -34,7 +34,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa
                 BarraRoom barraRoom = new BarraRoom(_uiapp, tipobarra.ToString(), ubicacion);
 
                 //para losa inclinada
-                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incliInf)
+                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incli)
                     barraRoom.AsignarTipoFaceBusqueda(Util.Pointsdownwards);
 
                 barraRoom.statusbarra = barraRoom.Load_fx(null, null, false);
@@ -79,7 +79,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa
                 BarraRoom barraRoom = new BarraRoom(_uiapp, tipobarra.ToString(), ubicacion);
 
                 //para losa inclinada
-                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incliInf)
+                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incli)
                     barraRoom.AsignarTipoFaceBusqueda(Util.Pointsdownwards);
 
                 barraRoom.statusbarra = barraRoom.Load_fx(null, null, false);
@@ -160,7 +160,7 @@ namespace ArmaduraLosaRevit.Model.RebarLosa
                 BarraRoom barraRoom = new BarraRoom(_uiapp, tipobarra.ToString(), ubicacion);
 
                 //para losa inclinada
-                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incliInf)
+                if (tipobarra == TipoBarra.f4_incli || tipobarra == TipoBarra.f3_incli || tipobarra == TipoBarra.f1_incli)
                     barraRoom.AsignarTipoFaceBusqueda(Util.Pointsdownwards);
 
                 barraRoom.statusbarra = barraRoom.Load_fx(null, null, false);

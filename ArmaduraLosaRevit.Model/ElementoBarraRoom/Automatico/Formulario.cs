@@ -1,36 +1,17 @@
 ﻿using System;
-using System.Text;
-
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.DB.Architecture;
-using ArmaduraLosaRevit;
 using ArmaduraLosaRevit.Model.Enumeraciones;
-using System.IO;
 
 using ArmaduraLosaRevit.Model.Elemento_Losa;
-using Newtonsoft.Json;
-using ArmaduraLosaRevit.Model.Armadura;
-using ArmaduraLosaRevit.Model.ElementoBarraRoom;
 using ArmaduraLosaRevit.Model.AnalisisRoom;
-using Autodesk.Revit.DB.Events;
 using ArmaduraLosaRevit.Model.UTILES;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
-using ArmaduraLosaRevit.Model.ViewRang;
-using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ayudas;
-using Autodesk.Revit.DB.Structure;
-using ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Update;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Ahorro;
-using ArmaduraLosaRevit.Model.Viewnh;
 
-namespace ArmaduraLosaRevit.Model
+namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
 {
 
     public class Formulario

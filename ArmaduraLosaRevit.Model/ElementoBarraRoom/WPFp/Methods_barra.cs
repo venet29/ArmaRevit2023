@@ -65,39 +65,39 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.WPFp
             {
                 case "f1_LosaInclinadaIzq_b2":
                 case "f1_LosaInclinadaIzq_b":
-                    barraManejador.BarraInferiores(TipoBarra.f1_incliInf, UbicacionLosa.Izquierda);
+                    barraManejador.BarraInferiores(TipoBarra.f1_incli, UbicacionLosa.Izquierda);
                     result = true;
                     break;
                 case "f1_LosaInclinadaDer_b2":
                 case "f1_LosaInclinadaDer_b":
-                    barraManejador.BarraInferiores(TipoBarra.f1_incliInf, UbicacionLosa.Derecha);
+                    barraManejador.BarraInferiores(TipoBarra.f1_incli, UbicacionLosa.Derecha);
                     result = true;
                     break;
                 case "f1_LosaInclinadaInf_b2":
                 case "f1_LosaInclinadaInf_b":
-                    barraManejador.BarraInferiores(TipoBarra.f1_incliInf, UbicacionLosa.Inferior);
+                    barraManejador.BarraInferiores(TipoBarra.f1_incli, UbicacionLosa.Inferior);
                     result = true;
                     break;
                 case "f1_LosaInclinadaSup_b2":
                 case "f1_LosaInclinadaSup_b":
-                    barraManejador.BarraInferiores(TipoBarra.f1_incliInf, UbicacionLosa.Superior);
+                    barraManejador.BarraInferiores(TipoBarra.f1_incli, UbicacionLosa.Superior);
                     result = true;
                     break;
 
                 case "f1_LosaInclinadaIzq_b_ahorro":
-                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incliInf, UbicacionLosa.Izquierda);
+                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incli, UbicacionLosa.Izquierda);
                     result = true;
                     break;
                 case "f1_LosaInclinadaDer_b_ahorro":
-                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incliInf, UbicacionLosa.Derecha);
+                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incli, UbicacionLosa.Derecha);
                     result = true;
                     break;
                 case "f1_LosaInclinadaInf_b_ahorro":
-                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incliInf, UbicacionLosa.Inferior);
+                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incli, UbicacionLosa.Inferior);
                     result = true;
                     break;
                 case "f1_LosaInclinadaSup_b_ahorro":
-                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incliInf, UbicacionLosa.Superior);
+                    barraManejador.BarraInferiores_ConAhorrro(TipoBarra.f1_incli, UbicacionLosa.Superior);
                     result = true;
                     break;
                 //*******************

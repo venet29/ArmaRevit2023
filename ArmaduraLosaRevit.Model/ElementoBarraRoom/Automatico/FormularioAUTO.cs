@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ArmaduraLosaRevit.Model
+namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
 {
     public partial class FormularioAUTO : Form
     {

@@ -77,6 +77,7 @@ using System.Security.Cryptography;
 using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.UI.Selection;
 using ArmaduraLosaRevit.Model.ParametrosShare.Servicio;
+using ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico;
 
 
 #endregion // Namespaces

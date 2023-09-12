@@ -1,4 +1,4 @@
-﻿namespace ArmaduraLosaRevit.Model
+﻿namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico
 {
     partial class FormularioAUTO
     {
