@@ -209,7 +209,7 @@ namespace ArmaduraLosaRevit.Model.Visibilidad.ActualizarNombreVista
                                 tr.Commit();
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception )
                         {
                 
                         }

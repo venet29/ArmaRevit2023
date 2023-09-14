@@ -13,7 +13,6 @@ namespace ArmaduraLosaRevit.Model.ConfiGeneral.CambioEstado.model
 
     public class ViewSheetNH
     {
-        private static int cant = 0;
 
         public string NombreVista { get; set; } = "";
         public Revision revisionActual { get; private set; }

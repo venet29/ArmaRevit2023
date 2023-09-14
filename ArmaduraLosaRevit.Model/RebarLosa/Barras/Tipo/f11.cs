@@ -20,8 +20,6 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Barras.Tipo
 #pragma warning restore CS0108 // 'f4_incli._uiapp' hides inherited member 'ARebarLosa._uiapp'. Use the new keyword if hiding was intended.
         private RebarInferiorDTO _RebarInferiorDTO;
 
-        private XYZ direccionBarraSuperior_inicial;
-        private XYZ direccionBarraSuperior_final;
         private double _deltaZInicioFinconSigno;
         private double _deltaZ;
         XYZ DireccionEspesor;

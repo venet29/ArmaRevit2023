@@ -22,8 +22,7 @@ namespace ArmaduraLosaRevit.Model.Pasadas
         private int contadorPasadas;
         private Document _doc;
         private View _view;
-        private UIDocument _uidoc;
-        private List<Element> Listaele;
+
         private List<PlanarFace> ListaPLAnarFace;
         private FilledRegionType _FilledRegion;
 
@@ -34,7 +33,7 @@ namespace ArmaduraLosaRevit.Model.Pasadas
             this.nombrePasada = nombrePasada;
             this._doc = uiapp.ActiveUIDocument.Document;
             this._view = uiapp.ActiveUIDocument.ActiveView;
-            this._uidoc = uiapp.ActiveUIDocument;
+           // this._uidoc = uiapp.ActiveUIDocument;
             ListaPLAnarFace = new List<PlanarFace>();
             contadorPasadas = 0;
         }

@@ -37,7 +37,7 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.model
                 CODIGOESTADODEAVANCE = ParameterUtil.FindValueParaByName(View_, "CODIGO ESTADO DE AVANCE");
                 ESPECIALIDAD = ParameterUtil.FindValueParaByName(View_, "ESPECIALIDAD");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return false;

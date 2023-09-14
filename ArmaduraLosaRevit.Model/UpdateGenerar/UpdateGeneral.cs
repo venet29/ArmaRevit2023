@@ -61,7 +61,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
                 _uiapp = uiapp;
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Util.ErrorMsg($"Error en 'AsignaUapp'. ");
                 return false;

@@ -27,7 +27,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Factory
                 SchemaName = "prueba",
                 VendorId = "nh2147",
                 SpecTypeId_ = 1,
-                NuevoGuid = new Guid("71cfa9df-85bd-41cc-b710-00a41cfa8bca")
+                NuevoGuid = new Guid("03f6295b-03b4-40a6-8058-51f85a608d0b")// "71cfa9df-85bd-41cc-b710-00a41cfa8bca")
               //  UnitTypeId_ = UnitTypeId.Feet
 
         };

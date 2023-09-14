@@ -37,7 +37,6 @@ namespace ArmaduraLosaRevit.Model.Bim.AcotarPAsada.Servicios
 
         public List<EnvoltorioConduit> ListaConduit;
         public List<EnvoltorioCableTray> ListaCableTary;
-        private List<EnvoltorioDuct> ListaDucts;
 
 
         public ServicioBuscarGrilla(UIApplication uiapp, List<ElementId> _listaElementExiste)

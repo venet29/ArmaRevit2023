@@ -704,7 +704,6 @@
       <DependentUpon>Ui_traslapo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Traslapo\WPF\UtilWPF.cs" />
-    <Compile Include="UpdateGenerar\UpdateGeneral_respaldo.cs" />
     <Compile Include="UTILES\AdministrarFile.cs" />
     <Compile Include="UTILES\Buscar\ObtenerListaParametros.cs" />
     <Compile Include="UTILES\Buscar\ObtenerLineaPorTipo.cs" />

@@ -22,7 +22,7 @@ namespace ArmaduraLosaRevit.Model.ParametrosShare.Servicio
             this._uiapp = uiapp;
         }
 
-        public ExternalDefinitionCreationOptions Ejecutar( string NombrePArametro, string TipoParametro)
+        public ExternalDefinitionCreationOptions Ejecutar(string NombrePArametro, string TipoParametro)
         {
             instance = null;
             if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
@@ -105,13 +105,13 @@ namespace ArmaduraLosaRevit.Model.ParametrosShare.Servicio
         {
             try
             {
-                
-                    
+
+
                 Document _doc = _uiapp.ActiveUIDocument.Document;
-                Definition value = null;
+             
                 Type parameterType = default;
                 string[] nombre = TipoParametro.Split('.'); //"SpecTypeId.String.Text"
-                string tipo= nombre[1];
+                string tipo = nombre[1];
                 string valor = nombre[2];
 
                 List<Type> types = _doc.GetType().Assembly.GetTypes().Where(a => a.IsClass && a.Name == "SpecTypeId").ToList();
@@ -119,7 +119,7 @@ namespace ArmaduraLosaRevit.Model.ParametrosShare.Servicio
                 {
                     Type specTypeId = types[0];
                     // Obteniendo la clase anidada Boolean
-                    parameterType = _doc.GetType().Assembly.GetType(specTypeId.FullName + "+"+ tipo);//Boolean
+                    parameterType = _doc.GetType().Assembly.GetType(specTypeId.FullName + "+" + tipo);//Boolean
                 }
                 else
                 {
@@ -160,7 +160,7 @@ namespace ArmaduraLosaRevit.Model.ParametrosShare.Servicio
 
                 Console.WriteLine("Instancia de Clase1 creada!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 Util.ErrorMsg("Error al crear parametro compartido individual");
@@ -168,14 +168,15 @@ namespace ArmaduraLosaRevit.Model.ParametrosShare.Servicio
             }
             return true;
         }
+
+        // aquise muetsra como obtener el enum 'ParameterType' que sirve de parametro para la calse 'ExternalDefinitionCreationOptions'
+        // la clase 'ExternalDefinitionCreationOptions' tambien se obteniene con reflexion y se cargar con el contructor y el parametro
         private bool Ejecutar21Down(UIApplication _uiapp, string NombrePArametro, string TipoParametro)//NombrePArametro
         {
             try
             {
                 Document _doc = _uiapp.ActiveUIDocument.Document;
-                Definition value = null;
-
-                string[] nombre= TipoParametro.Split('.');
+                string[] nombre = TipoParametro.Split('.');
 
                 Type parameterType = default;
 

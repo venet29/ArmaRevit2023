@@ -320,7 +320,7 @@ namespace ArmaduraLosaRevit.Model
         public static bool IsNOParaleloX(XYZ v)
         {
             v = v.Normalize();
-            return ! IsSimilarValor(v.Y, 0, 0.01);
+            return !IsSimilarValor(v.Y, 0, 0.01);
         }
         public static bool IsHorizontal(XYZ v)
         {
@@ -3356,18 +3356,14 @@ namespace ArmaduraLosaRevit.Model
 
         public static void UnjoinGeometry2(this Document doc, Element firstElement, Element secondElement)
         {
-            List<Type> ls = doc.GetType().Assembly
-            .GetTypes().Where(a => a.IsClass && a
-           .Name == "JoinGeometryUtils").ToList();
-            object[] parametros = new object[] { doc,
-            firstElement, secondElement };
-            Type[] tipos = parametros.Select(a => a
-           .GetType()).ToArray();
+            List<Type> ls = doc.GetType().Assembly.GetTypes().Where(a => a.IsClass && a.Name == "JoinGeometryUtils").ToList();
+
+            object[] parametros = new object[] { doc,firstElement, secondElement };
+            Type[] tipos = parametros.Select(a => a.GetType()).ToArray();
             if (ls.Count > 0)
             {
                 Type t = ls[0];
-                MethodInfo met = t
-                .GetMethod("UnjoinGeometry", tipos);
+                MethodInfo met = t.GetMethod("UnjoinGeometry", tipos);
                 met.Invoke(null, parametros);
             }
         }

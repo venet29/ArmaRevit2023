@@ -42,7 +42,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Horquilla.Creador
 
                 M4_DibujarBarrasCOnfiguracion();              
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Util.ErrorMsg( "Error al crear rebar verticaL CreadorBarrasV");
                 return false;

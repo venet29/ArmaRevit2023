@@ -137,7 +137,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Automatico.WPFAuto
             else if (tipoPosiicon == "DesAgrupar")
             {
                 ManejadorGrupos _ManejadorGrupos = new ManejadorGrupos(_uiapp);
-                bool resul = true;
+                //bool resul = true;
                 _ManejadorGrupos.BuscarGrupos();
                 _ManejadorGrupos.DesHaceGrupos();
 

@@ -67,7 +67,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
             {
                 //busca esquema
                 schema = Schema.Lookup(_guid);
-
+                AyudaCasosUnidades_2021Arriba._uiapp = _uiapp;
                 //si no esta lo crea
                 if (schema == null)
                 {
@@ -83,6 +83,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
 
                 Entity entity = new Entity(schema); // create an entity (object) for this schema (class)  set the value for this entity entity.Set<XYZ>(fieldSpliceLocation, PTO, UnitTypeId.Feet);
 
+                
                 entity = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(entity, fieldSpliceLocation, PTO);
                 //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
                 //    entity = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(entity, fieldSpliceLocation, PTO);
@@ -115,7 +116,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 // create a field to store an XYZ
                 FieldBuilder fieldBuilder = schemaBuilder.AddSimpleField(_CreadorExtStoreDTO.SchemaName, typeof(XYZ));
                 //fieldBuilder.SetSpec(SpecTypeId.Length);
-
+            
                 fieldBuilder = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fieldBuilder);
                 //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
                 //    fieldBuilder = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fieldBuilder);
@@ -147,12 +148,12 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 retrievedData = XYZ.Zero;
                 // retrievedData = retrievedEntity.Get<XYZ>(schema.GetField(_SchemaName), UnitTypeId.Feet);
 
-                retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity, _SchemaName);
-                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                //    retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity, _SchemaName);
+               // retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity, _SchemaName);
+                if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
+                    retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity, _SchemaName);
                 //else
                 //    retrievedData = AyudaCasosUnidades_2020Bajo.Obtener_DUT_DECIMAL_FEET_(retrievedEntity, _SchemaName);
-              
+
             }
             catch (Exception ex)
             {

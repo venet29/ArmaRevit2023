@@ -208,7 +208,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Geometria
 
                 if (BarraRoomGeometria.LargoRecorridoX != 0)// && ptoSelect_tras.Y - LargoRecorrido_axu / 2 > p3.Y)
                 {
-                    double valorX = (ptoSelect_tras.X + LargoRecorrido_axu / 2 < p4.Y ? ptoSelect_tras.X + LargoRecorrido_axu : p4.X);
+                    double valorX = (ptoSelect_tras.X + LargoRecorrido_axu < p4.Y ? ptoSelect_tras.X + LargoRecorrido_axu : p4.X);
                     pf4 = new XYZ(valorX,p4.Y,  p4.Z);
                 }
                 else

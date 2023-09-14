@@ -31,13 +31,8 @@ namespace ArmaduraLosaRevit.Model.Bim.AcotarPAsada.Servicios
 
         public List<EnvoltorioMuro> ListaMurosPorVIew { get; private set; }
         public ObservableCollection<EnvoltorioMuro> ListaMuroObser { get; private set; }
-
-
-
         public List<EnvoltorioConduit> ListaConduit;
         public List<EnvoltorioCableTray> ListaCableTary;
-        private List<EnvoltorioDuct> ListaDucts;
-
 
         public ServicioBuscarMuros(UIApplication uiapp, List<ElementId> _listaElementExiste)
         {

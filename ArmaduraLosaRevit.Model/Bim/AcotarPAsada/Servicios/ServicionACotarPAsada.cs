@@ -103,11 +103,7 @@ namespace ArmaduraLosaRevit.Model.Bim.AcotarPAsada.Servicios
         {
             try
             {
-                Dimension dimension1 = default;
-                Dimension dimension1_grid = default;
 
-                EnvoltoriosPlanos _envoltoriosPlanos = default;
-                List<EnvoltoriosPlanos> ListaPLanosPAsadas_aux = default;
                 if (envoltoriPasada == null) return;
 
                 using (Transaction t = new Transaction(_doc))
@@ -116,7 +112,7 @@ namespace ArmaduraLosaRevit.Model.Bim.AcotarPAsada.Servicios
 
                     var dim1Planar = envoltoriPasada.parBordeParalelo1;
                     IAcotarCasos _acotar = null;
-                    bool result = false;
+       
                     switch (enumPasadasConGrilla_)
                     {
                         case EnumPasadasConGrilla.Izquieda_inf:

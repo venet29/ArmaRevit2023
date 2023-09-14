@@ -17,8 +17,6 @@ namespace ArmaduraLosaRevit.Model.Fund.TipoBarraFund
 
         private RebarInferiorDTO _RebarInferiorDTO;
 
-        private XYZ direccionBarraSuperior_inicial;
-        private XYZ direccionBarraSuperior_final;
         private double _deltaZInicioFinconSigno;
         private double _deltaZ;
         XYZ DireccionEspesor;

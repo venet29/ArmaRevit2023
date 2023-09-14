@@ -2261,25 +2261,18 @@ namespace ArmaduraLosaRevit
     public static class CompatibilityMethods
     {
         #region Autodesk.Revit.DB.Curve
-        public static XYZ GetPoint2(
-          this Curve curva,
-          int i)
+        public static XYZ GetPoint2(this Curve curva, int i)
         {
             XYZ value = null;
 
-            MethodInfo met = curva.GetType().GetMethod(
-              "GetEndPoint",
-              new Type[] { typeof(int) });
+            MethodInfo met = curva.GetType().GetMethod("GetEndPoint", new Type[] { typeof(int) });
 
             if (met == null)
             {
-                met = curva.GetType().GetMethod(
-                  "get_EndPoint",
-                  new Type[] { typeof(int) });
+                met = curva.GetType().GetMethod("get_EndPoint", new Type[] { typeof(int) });
             }
 
-            value = met.Invoke(curva, new object[] { i })
-              as XYZ;
+            value = met.Invoke(curva, new object[] { i }) as XYZ;
 
             return value;
         }
@@ -2319,13 +2312,11 @@ namespace ArmaduraLosaRevit
           ElementId id)
         {
             Element value = null;
-            MethodInfo met = doc.GetType()
-            .GetMethod("get_Element", new Type[] { typeof(ElementId) });
+            MethodInfo met = doc.GetType().GetMethod("get_Element", new Type[] { typeof(ElementId) });
             if (met == null)
-                met = doc.GetType()
-                .GetMethod("GetElement", new Type[] { typeof(ElementId) });
-            value = met.Invoke(doc,
-              new object[] { id }) as Element;
+                met = doc.GetType().GetMethod("GetElement", new Type[] { typeof(ElementId) });
+
+            value = met.Invoke(doc, new object[] { id }) as Element;
             return value;
         }
         public static Element GetElement2(this Document
@@ -2335,94 +2326,61 @@ namespace ArmaduraLosaRevit
             value = doc.GetElement(refe);
             return value;
         }
-        public static Line CreateLine2(
-          this Document doc,
-          XYZ p1, XYZ p2,
-          bool bound = true)
+        public static Line CreateLine2(this Document doc, XYZ p1, XYZ p2, bool bound = true)
         {
             Line value = null;
-            object[] parametros = new object[] { p1,
-            p2 };
-            Type[] tipos = parametros.Select(a => a
-           .GetType()).ToArray();
+            object[] parametros = new object[] { p1, p2 };
+            Type[] tipos = parametros.Select(a => a.GetType()).ToArray();
             string metodo = "CreateBound";
-            if (bound == false) metodo =
-             "CreateUnbound";
-            MethodInfo met = typeof(Line)
-            .GetMethod(metodo, tipos);
+            if (bound == false) metodo = "CreateUnbound";
+            MethodInfo met = typeof(Line).GetMethod(metodo, tipos);
             if (met != null)
             {
-                value = met.Invoke(null,
-                  parametros) as Line;
+                value = met.Invoke(null, parametros) as Line;
             }
             else
             {
-                parametros = new object[] { p1, p2,
-                bound };
-                tipos = parametros.Select(a => a
-               .GetType()).ToArray();
-                value = doc.Application.Create
-                .GetType().GetMethod("NewLine", tipos).Invoke(doc
-                .Application.Create, parametros) as Line;
+                parametros = new object[] { p1, p2, bound };
+                tipos = parametros.Select(a => a.GetType()).ToArray();
+                value = doc.Application.Create.GetType().GetMethod("NewLine", tipos).Invoke(doc.Application.Create, parametros) as Line;
             }
             return value;
         }
-        public static Wall CreateWall2(
-          this Document doc,
-          Curve curve, ElementId wallTypeId,
-          ElementId levelId, double height,
-          double offset, bool flip,
+        public static Wall CreateWall2(this Document doc, Curve curve, ElementId wallTypeId, ElementId levelId, double height, double offset, bool flip,
           bool structural)
         {
             Wall value = null;
-            object[] parametros = new object[] { doc,
-            curve, wallTypeId, levelId, height, offset, flip,
-            structural };
-            Type[] tipos = parametros.Select(a => a
-           .GetType()).ToArray();
-            MethodInfo met = typeof(Wall)
-            .GetMethod("Create", tipos);
+            object[] parametros = new object[] { doc, curve, wallTypeId, levelId, height, offset, flip, structural };
+            Type[] tipos = parametros.Select(a => a.GetType()).ToArray();
+            MethodInfo met = typeof(Wall).GetMethod("Create", tipos);
             if (met != null)
             {
-                value = met.Invoke(null,
-                  parametros) as Wall;
+                value = met.Invoke(null, parametros) as Wall;
             }
             else
             {
                 parametros = new object[] { curve,
-                (WallType)doc.GetElement2(wallTypeId), (Level)doc
-              .GetElement2(levelId), height, offset, flip,
-                structural };
-                tipos = parametros.Select(a => a
-               .GetType()).ToArray();
-                value = doc.Create.GetType()
-                .GetMethod("NewWall", tipos).Invoke(doc.Create,
-                  parametros) as Wall;
+                (WallType)doc.GetElement2(wallTypeId), (Level)doc.GetElement2(levelId), height, offset, flip,structural };
+                tipos = parametros.Select(a => a.GetType()).ToArray();
+                value = doc.Create.GetType().GetMethod("NewWall", tipos).Invoke(doc.Create, parametros) as Wall;
             }
             return value;
         }
-        public static Arc CreateArc2(
-          this Document doc,
-          XYZ p1, XYZ p2, XYZ p3)
+        public static Arc CreateArc2(this Document doc, XYZ p1, XYZ p2, XYZ p3)
         {
             Arc value = null;
-            object[] parametros = new object[] { p1,
-            p2, p3 };
-            Type[] tipos = parametros.Select(a => a
-           .GetType()).ToArray();
+            object[] parametros = new object[] { p1, p2, p3 };
+            Type[] tipos = parametros.Select(a => a.GetType()).ToArray();
             string metodo = "Create";
-            MethodInfo met = typeof(Arc)
-            .GetMethod(metodo, tipos);
+            MethodInfo met = typeof(Arc).GetMethod(metodo, tipos);
+
             if (met != null)
             {
-                value = met.Invoke(null,
-                  parametros) as Arc;
+                value = met.Invoke(null, parametros) as Arc;
             }
             else
             {
-                value = doc.Application.Create
-                .GetType().GetMethod("NewArc", tipos).Invoke(doc
-                .Application.Create, parametros) as Arc;
+                value = doc.Application.Create.GetType().GetMethod("NewArc", tipos).Invoke(doc.Application.Create, parametros) as Arc;
             }
             return value;
         }

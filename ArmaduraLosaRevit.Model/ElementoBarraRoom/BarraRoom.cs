@@ -1708,7 +1708,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
                             }
 
                             //Element paraElem = m_createdPathReinforcement as Element;// _doc.GetElement(m_createdPathReinforcement.Id);
-
+   
                             AgregarParameterShared(m_createdPathReinforcement);
                             if (m_createdPathReinforcement == null)
                             {
@@ -1795,7 +1795,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
 
                             //**************************************************************************************************************************************************************************
                             //2)Family fam = TiposFamilyRebar.getFamilyRebarShape("Structural Path Reinforcement 3", doc);
-
+                         
                             if (elemtoSymboloPath == null)
                             {
                                 //obtiene elemento dentos de la biblioteca de familia del PathReinforcementSymbol
@@ -1877,7 +1877,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
                                 DibujarTagPathReinforment(desplazamientoPathReinSpanSymbol, numbreIndependentTagPath);
 
                             }
-
+                        
                             // doc.Regenerate();
                             trans.Commit();
                             //   uidoc.RefreshActiveView();

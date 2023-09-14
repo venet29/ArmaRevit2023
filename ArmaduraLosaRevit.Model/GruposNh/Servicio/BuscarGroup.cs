@@ -29,8 +29,6 @@ namespace ArmaduraLosaRevit.Model.Armadura
             {
                 if (groupType.FamilyName != "Model Group") continue;
 
-
-                string message = "GroupType";
                 //Retrieve a set of all the groups that have this type.
                 foreach (Group group in groupType.Groups)
                 {

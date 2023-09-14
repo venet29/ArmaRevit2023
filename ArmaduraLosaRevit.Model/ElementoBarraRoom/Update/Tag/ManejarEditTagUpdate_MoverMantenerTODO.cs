@@ -51,7 +51,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.Tag
 #pragma warning restore CS0219 // The variable 'CTO' is assigned but its value is never used
                 if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
                 {
-                 //   M5_Mover_revit22HAciaArriba();
+                    M5_Mover();
                 }
                 else
                     M5_Mover();

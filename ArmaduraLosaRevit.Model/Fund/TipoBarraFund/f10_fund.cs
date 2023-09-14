@@ -21,12 +21,8 @@ namespace ArmaduraLosaRevit.Model.Fund.TipoBarraFund
 #pragma warning restore CS0108 // 'f4_incli._uiapp' hides inherited member 'ARebarLosa._uiapp'. Use the new keyword if hiding was intended.
         private RebarInferiorDTO _RebarInferiorDTO;
 
-        private XYZ direccionBarraSuperior_inicial;
-        private XYZ direccionBarraSuperior_final;
         private double _deltaZInicioFinconSigno;
         private double _deltaZ;
-        XYZ DireccionEspesor;
-        private double LArgoPataHOok_foot;
         private double LArgoPataHOokIzq_foot;
         private double LArgoPataHOokDere_foot;
         private XYZ DireccionEspesor_izq;
