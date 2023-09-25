@@ -68,8 +68,6 @@ namespace ArmaduraLosaRevit.Model.Extension
             PlanarFace planarfaceInterseccion = null;
             foreach (PlanarFace _lanarFace in ListaPlanarFace)
             {
-
-
                 IntersectionResultArray resultsSuperior;
                 SetComparisonResult resultSuperior = _lanarFace.Intersect(lineVertcal, out resultsSuperior);
                 if (resultSuperior == SetComparisonResult.Overlap)
@@ -88,6 +86,9 @@ namespace ArmaduraLosaRevit.Model.Extension
             }
             return planarfaceInterseccion;
         }
+
+       
+
     }
 
     public class IntersectionResultNH

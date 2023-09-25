@@ -11,25 +11,26 @@ using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
 {
     public class UpDate_EditTagPathSymbol : IUpdater
     {
-        private  UIApplication _uiapp;
+        private UIApplication _uiapp;
         static AddInId _appId;
         static UpdaterId _updaterId;
         private Document _doc;
-
-
+        private string _guid;
 
         public UpDate_EditTagPathSymbol(UIApplication _uiapp, AddInId id)//codigo interno del Updater 145689
         {
             this._uiapp = _uiapp;
             _appId = id;
             _doc = _uiapp.ActiveUIDocument.Document;
-            _updaterId = new UpdaterId(_appId, new Guid("ecc365be-fe27-4822-ac05-060a942ad190"));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
-  
+            _guid = "ecc365be-fe27-4822-ac05-060a942ad190";
+            _updaterId = new UpdaterId(_appId, new Guid(_guid));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
+
         }
         public void Execute(UpdaterData data)
         {
@@ -80,20 +81,23 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
 
             var _CreadorExtStoreDTO = FactoryExtStore.ObtnerPosicionTagLosa();
             CreadorExtStore _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
+
+            Debug.WriteLine($"UpDate_EditTagPathSymbol");
             foreach (ElementId id in data.GetModifiedElementIds())
-            {    
+            {
+                Debug.WriteLine($"element Id :{id}");
                 var _independentTag = _doc.GetElement(new ElementId(id.IntegerValue)) as IndependentTag;
                 if (_independentTag == null) continue;
                 _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(_independentTag, _independentTag.TagHeadPosition);
 
             }
 
-            Debug.WriteLine($"UpdaterBarrasRebar   VerificarDatos : {timeMeasure1.ElapsedMilliseconds } ms");
+            Debug.WriteLine($"UpdaterBarrasRebar   VerificarDatos : {timeMeasure1.ElapsedMilliseconds} ms");
         }
 
         #region Metodos eExecute
 
- 
+
 
         #endregion
         public string GetUpdaterName()

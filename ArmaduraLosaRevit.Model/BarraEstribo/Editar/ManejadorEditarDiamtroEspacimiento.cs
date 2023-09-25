@@ -107,11 +107,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Editar
                 if (_datosMalla.IsMallaH == true)
                 {
 
-                    _rebarBarType_MallaH = TiposRebarBarType.getRebarBarType("Ø" + _datosMalla.diametroH_mm, _doc, true);
+                    _rebarBarType_MallaH = TiposRebarBarType.getRebarBarType("Ø" + _datosMalla.diametroH, _doc, true);
 
                     if (_rebarBarType_MallaH == null)
                     {
-                        Util.ErrorMsg($"Error al obtener el tipo {"Ø " + _datosMalla.diametroH_mm}  de estribo");
+                        Util.ErrorMsg($"Error al obtener el tipo {"Ø " + _datosMalla.diametroH}  de estribo");
                         return false;
                     }
                 }
@@ -119,11 +119,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Editar
                 if (_datosMalla.IsMallaV == true)
                 {
 
-                    _rebarBarType_MallaV = TiposRebarBarType.getRebarBarType("Ø" + _datosMalla.diametroV_mm, _doc, true);
+                    _rebarBarType_MallaV = TiposRebarBarType.getRebarBarType("Ø" + _datosMalla.diametroV, _doc, true);
 
                     if (_rebarBarType_MallaV == null)
                     {
-                        Util.ErrorMsg($"Error al obtener el tipo {"Ø " + _datosMalla.diametroV_mm}  de lateral");
+                        Util.ErrorMsg($"Error al obtener el tipo {"Ø " + _datosMalla.diametroV}  de lateral");
                         return false;
                     }
                 }
@@ -222,8 +222,8 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Editar
                             var NuevoTExtoMalla = _datosMalla.ObtenerTExto();
                             if (elementBarra.ObtenerTipoBarra.TipoBarra_ == TipoRebar.ELEV_MA_H)
                             {
-                                diam_mm = _datosMalla.diametroH_mm;
-                                espaciamiento_cm = _datosMalla.espaciemientoH_cm;
+                                diam_mm = _datosMalla.diametroH;
+                                espaciamiento_cm = _datosMalla.espaciemientoH;
                                 if (!Util.IsSimilarValor(diam_mm, Util.FootToMm(diam_foot), 1))
                                 {
                                     rebarAnalizada.ChangeTypeId(_rebarBarType_MallaH.Id);
@@ -231,8 +231,8 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Editar
                             }
                             else
                             {
-                                diam_mm = _datosMalla.diametroV_mm;
-                                espaciamiento_cm = _datosMalla.espaciemientoV_cm;
+                                diam_mm = _datosMalla.diametroV;
+                                espaciamiento_cm = _datosMalla.espaciemientoV;
                                 if (!Util.IsSimilarValor(diam_mm, Util.FootToMm(diam_foot), 1))
                                 {
                                     rebarAnalizada.ChangeTypeId(_rebarBarType_MallaV.Id);

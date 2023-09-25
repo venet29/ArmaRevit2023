@@ -29,12 +29,12 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
         {
             DatosMallasAutoDTO datosMallasDTO = new DatosMallasAutoDTO()
             {
-                diametroH_mm = _datosMallasDTO.diametroH_mm,
-                diametroV_mm = _datosMallasDTO.diametroV_mm,
+                diametroH = _datosMallasDTO.diametroH,
+                diametroV = _datosMallasDTO.diametroV,
                 paraCantidadLineasV = _datosMallasDTO.ObtenerNUmeroMallas_tipoMallaV(), //   AyudaMallaAUTO.ObtenerNUmeroMallas("E.D."),//tipo_mallaV.Text
                 paraCantidadLineasH = _datosMallasDTO.ObtenerNUmeroMallas_tipoMallaH(),//AyudaMallaAUTO.ObtenerNUmeroMallas("E.D."),
-                espaciemientoH_cm = _datosMallasDTO.espaciemientoH_cm,
-                espaciemientoV_cm = _datosMallasDTO.espaciemientoV_cm,
+                espaciemientoH = _datosMallasDTO.espaciemientoH,
+                espaciemientoV = _datosMallasDTO.espaciemientoV,
                 tipoMallaH = _datosMallasDTO.tipoMallaH,
                 tipoMallaV = _datosMallasDTO.tipoMallaH,
                 tipoSeleccionInf = TipoSeleccionMouse.nivel,

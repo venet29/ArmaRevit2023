@@ -15,9 +15,9 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         NONE
     }
 
-    public enum TipoBarraRefuerzoViga { RefuerzoCentral, RefuerzoBorde, RefuerzoVigas,NONE }
+    public enum TipoBarraRefuerzoViga { RefuerzoCentral, RefuerzoBorde, RefuerzoVigas, NONE }
 
-    public enum BuscarMurosEstado { Inicial,MuroEncontrado, MuroNoEncontrado,MurosEncontradoConerror }
+    public enum BuscarMurosEstado { Inicial, MuroEncontrado, MuroNoEncontrado, MurosEncontradoConerror }
     public enum FormaDibujarPAth { Normal, Inicial, Final, mouse }
     public enum TipoCategoria { Principal, Secuandario }
     public enum UbicacionEnPier { izquierda, centro, derecha }
@@ -30,17 +30,21 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
 
     public enum TipoMoverTag
     {
-        MoverConfiguracionInicial, MoverMantenerTODO, MoverMantenerExtremo, NONE,
-        MoverMantenerSOLOExtremos
+        MoverConfiguracionInicial,
+        MoverMantenerTODO,
+        MoverMantenerSOLOExtremos,
+        NONE
     }
 
     public enum UbicacionLosa { Derecha, Izquierda, Superior, Inferior, NONE }
-    public enum TipoCaraObjeto { Inferior, Superior, Vertical,
+    public enum TipoCaraObjeto
+    {
+        Inferior, Superior, Vertical,
         Izquierdo,
         Derecho
     }
 
-    public enum LargoEstriboEnbarra { Inicial=0,Centrol=1, Final=2, Completa=3} // enum se utiliza para definir el largo del estribo cuando se crea automaticamente, una viga puede tener estribo al inicio, centro y fin
+    public enum LargoEstriboEnbarra { Inicial = 0, Centrol = 1, Final = 2, Completa = 3 } // enum se utiliza para definir el largo del estribo cuando se crea automaticamente, una viga puede tener estribo al inicio, centro y fin
     public enum TipoCaraUbicacion { Inferior, Superior }
 
     public enum TipoCambioFund { CambiarDatos, CambiarGeom }
@@ -95,7 +99,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         FUND_BA,
         FUND_TRABA,
         FUND_ES,
-        FUND_ES_T,        
+        FUND_ES_T,
         FUND_BA_INF,
         FUND_BA_SUP,
         FUND_BA_BPT,//borrar
@@ -135,7 +139,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
     public enum TipoIntervaloMalla { inicial, central, final, incialFinal }
     public enum TipoPataBarra
     {
-        buscar, BarraVPataInicial, BarraVPataFinal, BarraVSinPatas, BarraVPataAmbos, NoBuscar, BarraVPataAUTO,  BuscarSinExtender,
+        buscar, BarraVPataInicial, BarraVPataFinal, BarraVSinPatas, BarraVPataAmbos, NoBuscar, BarraVPataAUTO, BuscarSinExtender,
         BarraVHorquilla,
         BarraVPataAmbos_Horquilla
     }
@@ -280,7 +284,9 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
     }
 
 
-    public enum TipoEstriboConfig { E, EL, ET, ELT, L, LT, T,
+    public enum TipoEstriboConfig
+    {
+        E, EL, ET, ELT, L, LT, T,
         EL_TF,
         E_TF
     }

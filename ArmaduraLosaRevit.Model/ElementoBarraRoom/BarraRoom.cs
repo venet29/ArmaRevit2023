@@ -1853,7 +1853,8 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
                                 {
                                     if (item.IsOk)
                                     {
-                                        if (!DibujarTagPathReinforment(item, desplazamientoPathReinSpanSymbol))
+                                        ;
+                                        if (!item.DibujarTagPathReinforment(m_createdPathReinforcement, _uiapp, _view, desplazamientoPathReinSpanSymbol))
                                         {
                                             message = "NO se pudo obtener el TAg de PathReinforcement";
                                             Util.ErrorMsg($"CrearBarra  -->   ex {message}");
@@ -2584,7 +2585,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom
         }
         private bool DibujarTagPathReinforment(TagBarra tagBarra, XYZ desplazamientoPathReinSpanSymbol)
         {
-            if (!tagBarra.IsOk) return false;
+           if (!tagBarra.IsOk) return false;
             IndependentTag independentTag = IndependentTag.Create(_doc, tagBarra.ElementIndependentTagPath.Id, _view.Id, new Reference(m_createdPathReinforcement), false,
                                                       TagOrientation.Horizontal, desplazamientoPathReinSpanSymbol); //new XYZ(0, 0, 0)
 

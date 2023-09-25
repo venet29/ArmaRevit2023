@@ -49,12 +49,15 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.Tag
 #pragma warning disable CS0219 // The variable 'CTO' is assigned but its value is never used
                 var CTO = ConstNH.CONST_COT;
 #pragma warning restore CS0219 // The variable 'CTO' is assigned but its value is never used
-                if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
-                {
-                    M5_Mover();
-                }
-                else
-                    M5_Mover();
+
+                M5_Mover(); ;
+
+                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                //{
+                //    M5_Mover();
+                //}
+                //else
+                //    M5_Mover();
 
             }
             catch (Exception ex)
@@ -75,73 +78,74 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.Tag
                 var _listaIndependentTagAnoy = _listaIndependentTag_Enview.Select(c => new TagPathReinProcesado() { tagPath = c, Isprocesado = false }).ToList();
 
 
-               /* if (UtilVersionesRevit.IsMAyorOigual(_uiapp, VersionREvitNh.v2021))
-                {
+                /* if (UtilVersionesRevit.IsMAyorOigual(_uiapp, VersionREvitNh.v2021))
+                 {
 
-                    _CreadorExtStoreDTO = FactoryExtStore.ObtnerPosicionTagLosa();
-                    _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
-
-
-                    for (int i = 0; i < _listaIndependentTagAnoy.Count; i++)
-                    {
-                        var item = _listaIndependentTagAnoy[i];
-                        if (item.Isprocesado == true) continue;
-
-                        if (ContieneTagCOrrecto(item.tagPath.Name))
-                        {
-                            //set
-                            _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
-                            continue;
-                        }
-
-                        //get
-                        if (_CreadorExtStore.GET_DataInElement_XYZ_SinTrans(item.tagPath, _CreadorExtStoreDTO.SchemaName))
-                        {
-                            if (_CreadorExtStore.retrievedData.IsAlmostEqualTo(XYZ.Zero)) continue;
-
-                            XYZ posicionAnteriorGuardada = _CreadorExtStore.retrievedData;
-
-                            XYZ DesltaDesplaiento = ObtenerDesplazaminetoEnSentidoBarras.Ejecutar(posicionAnteriorGuardada, item.tagPath, _coordenadaPath);
-                            ElementTransformUtils.MoveElement(_doc, item.tagPath.Id, DesltaDesplaiento.AsignarZ(0));
-                        }
-                        //set
-                        _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
-                    }
-                }
-                else
-                {
-                    var _CreadorExtStoreDTOOld = FactoryExtStore.ObtnerPosicionTagLosa();
-                    var _CreadorExtStoreOld = new CreadorExtStore_2020Abajo(_uiapp, _CreadorExtStoreDTOOld);
+                     _CreadorExtStoreDTO = FactoryExtStore.ObtnerPosicionTagLosa();
+                     _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
 
 
-                    for (int i = 0; i < _listaIndependentTagAnoy.Count; i++)
-                    {
-                        var item = _listaIndependentTagAnoy[i];
-                        if (item.Isprocesado == true) continue;
+                     for (int i = 0; i < _listaIndependentTagAnoy.Count; i++)
+                     {
+                         var item = _listaIndependentTagAnoy[i];
+                         if (item.Isprocesado == true) continue;
 
-                        if (ContieneTagCOrrecto(item.tagPath.Name))
-                        {
-                            //set
-                            _CreadorExtStoreOld.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
-                            continue;
-                        }
+                         if (ContieneTagCOrrecto(item.tagPath.Name))
+                         {
+                             //set
+                             _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
+                             continue;
+                         }
 
-                        //get
-                        if (_CreadorExtStoreOld.GET_DataInElement_XYZ_SinTrans(item.tagPath, _CreadorExtStoreDTOOld.SchemaName))
-                        {
-                            if (_CreadorExtStoreOld.retrievedData.IsAlmostEqualTo(XYZ.Zero)) continue;
+                         //get
+                         if (_CreadorExtStore.GET_DataInElement_XYZ_SinTrans(item.tagPath, _CreadorExtStoreDTO.SchemaName))
+                         {
+                             if (_CreadorExtStore.retrievedData.IsAlmostEqualTo(XYZ.Zero)) continue;
 
-                            XYZ posicionAnteriorGuardada = _CreadorExtStoreOld.retrievedData;
+                             XYZ posicionAnteriorGuardada = _CreadorExtStore.retrievedData;
 
-                            XYZ DesltaDesplaiento = ObtenerDesplazaminetoEnSentidoBarras.Ejecutar(posicionAnteriorGuardada, item.tagPath, _coordenadaPath);
-                            ElementTransformUtils.MoveElement(_doc, item.tagPath.Id, DesltaDesplaiento.AsignarZ(0));
-                        }
-                        //set
-                        _CreadorExtStoreOld.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
-                    }
-                }
-                */
+                             XYZ DesltaDesplaiento = ObtenerDesplazaminetoEnSentidoBarras.Ejecutar(posicionAnteriorGuardada, item.tagPath, _coordenadaPath);
+                             ElementTransformUtils.MoveElement(_doc, item.tagPath.Id, DesltaDesplaiento.AsignarZ(0));
+                         }
+                         //set
+                         _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
+                     }
+                 }
+                 else
+                 {
+                     var _CreadorExtStoreDTOOld = FactoryExtStore.ObtnerPosicionTagLosa();
+                     var _CreadorExtStoreOld = new CreadorExtStore_2020Abajo(_uiapp, _CreadorExtStoreDTOOld);
 
+
+                     for (int i = 0; i < _listaIndependentTagAnoy.Count; i++)
+                     {
+                         var item = _listaIndependentTagAnoy[i];
+                         if (item.Isprocesado == true) continue;
+
+                         if (ContieneTagCOrrecto(item.tagPath.Name))
+                         {
+                             //set
+                             _CreadorExtStoreOld.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
+                             continue;
+                         }
+
+                         //get
+                         if (_CreadorExtStoreOld.GET_DataInElement_XYZ_SinTrans(item.tagPath, _CreadorExtStoreDTOOld.SchemaName))
+                         {
+                             if (_CreadorExtStoreOld.retrievedData.IsAlmostEqualTo(XYZ.Zero)) continue;
+
+                             XYZ posicionAnteriorGuardada = _CreadorExtStoreOld.retrievedData;
+
+                             XYZ DesltaDesplaiento = ObtenerDesplazaminetoEnSentidoBarras.Ejecutar(posicionAnteriorGuardada, item.tagPath, _coordenadaPath);
+                             ElementTransformUtils.MoveElement(_doc, item.tagPath.Id, DesltaDesplaiento.AsignarZ(0));
+                         }
+                         //set
+                         _CreadorExtStoreOld.SET_DataInElement_XYZ_SInTrans(item.tagPath, item.tagPath.TagHeadPosition);
+                     }
+                 }
+                 */
+
+           
                 _CreadorExtStoreDTO = FactoryExtStore.ObtnerPosicionTagLosa();
                 _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
 

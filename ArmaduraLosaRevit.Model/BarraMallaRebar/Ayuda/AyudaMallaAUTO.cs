@@ -44,12 +44,12 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar.Ayuda
         {
             DatosMallasAutoDTO datosMallasDTO = new DatosMallasAutoDTO()
             {
-                diametroH_mm = 8,
-                diametroV_mm = 8,
+                diametroH = 8,
+                diametroV = 8,
                 paraCantidadLineasV = ObtenerNUmeroMallas("E.D."),//tipo_mallaV.Text
                 paraCantidadLineasH = ObtenerNUmeroMallas("E.D."),
-                espaciemientoH_cm = 20,
-                espaciemientoV_cm = 20,
+                espaciemientoH = 20,
+                espaciemientoV = 20,
                 tipoMallaH = ObtenerTipo("E.D."),
                 tipoMallaV = ObtenerTipo("E.D."),//tipo_mallaV.Text
                 tipoSeleccionInf = TipoSeleccionMouse.nivel,

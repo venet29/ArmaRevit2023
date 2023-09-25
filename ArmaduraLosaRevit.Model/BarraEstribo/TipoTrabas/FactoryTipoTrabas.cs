@@ -17,6 +17,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.TipoTrabas
 
             switch (espesorMuroOviga)
             {
+                case 14:
                 case 15:
                     return new TrabaMuroEspesor15_20_25(_configuracionBarraTrabaDTO);
                 case 18:

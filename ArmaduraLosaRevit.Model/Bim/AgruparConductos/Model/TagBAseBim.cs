@@ -64,7 +64,7 @@ namespace ArmaduraLosaRevit.Model.Bim.Model
             if (!IsDIrectriz) return;
 
             if (independentTag == null) return;
-            independentTag.Set_LeaderEnd(confTag.LeaderElbow);
+            independentTag.Set_LeaderEnd(_uiapp, confTag.LeaderElbow);
 
             FamilySymbol tagSymbol = _doc.GetElement(independentTag.GetTypeId()) as FamilySymbol;
 

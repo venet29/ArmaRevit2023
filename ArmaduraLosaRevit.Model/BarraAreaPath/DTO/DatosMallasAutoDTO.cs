@@ -10,10 +10,10 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
     public class DatosMallasAutoDTO
     {
         public double espesorFoot { get; set; } // en foot
-        public int diametroH_mm { get; set; }
-        public int diametroV_mm { get; set; }
-        public double espaciemientoH_cm { get; set; } // en cm 
-        public double espaciemientoV_cm { get; set; }  // en cm
+        public int diametroH { get; set; } //mm
+        public int diametroV { get; set; } //mm
+        public double espaciemientoH { get; set; } // en cm 
+        public double espaciemientoV { get; set; }  // en cm
 
         public TipoMAllaMuro tipoMallaV { get; set; }
 
@@ -45,7 +45,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
         {
             var espesor_cm = Util.AproximarNumero(Util.FootToCm(espesorFoot),0.00001);
 
-            if (diametroH_mm == 6 || diametroV_mm == 6)
+            if (diametroH == 6 || diametroV == 6)
             {
 
 
@@ -63,21 +63,21 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
                         return $"M.H.A e={espesor_cm}\nMALLA ACMA C188";
                 }
             }
-            else if (diametroH_mm == diametroV_mm && espaciemientoH_cm == espaciemientoV_cm)
+            else if (diametroH == diametroV && espaciemientoH == espaciemientoV)
             {
          
                 switch (tipoMallaV)
                 {
                     case TipoMAllaMuro.SM:
-                        return $"M.H.A e={espesor_cm}\nM. Ø{diametroH_mm}a{espaciemientoH_cm}";
+                        return $"M.H.A e={espesor_cm}\nM. Ø{diametroH}a{espaciemientoH}";
                     case TipoMAllaMuro.DM:
-                        return $"M.H.A e={espesor_cm}\nD.M. Ø{diametroH_mm}a{espaciemientoH_cm}";
+                        return $"M.H.A e={espesor_cm}\nD.M. Ø{diametroH}a{espaciemientoH}";
                     case TipoMAllaMuro.TM:
-                        return $"M.H.A e={espesor_cm}\nT.M. Ø{diametroH_mm}a{espaciemientoH_cm}";
+                        return $"M.H.A e={espesor_cm}\nT.M. Ø{diametroH}a{espaciemientoH}";
                     case TipoMAllaMuro.CM:
-                        return $"M.H.A e={espesor_cm}\nC.M. Ø{diametroH_mm}a{espaciemientoH_cm}";
+                        return $"M.H.A e={espesor_cm}\nC.M. Ø{diametroH}a{espaciemientoH}";
                     default:
-                        return $"M.H.A e={espesor_cm}\nD.M. Ø{diametroH_mm}a{espaciemientoH_cm}";
+                        return $"M.H.A e={espesor_cm}\nD.M. Ø{diametroH}a{espaciemientoH}";
                 }
             }
             else
@@ -85,15 +85,15 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
                 switch (tipoMallaV)
                 {
                     case TipoMAllaMuro.SM:
-                        return $"M.H.A e={espesor_cm}\nM.H Ø{diametroH_mm}a{espaciemientoH_cm}\nM.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                        return $"M.H.A e={espesor_cm}\nM.H Ø{diametroH}a{espaciemientoH}\nM.V Ø{diametroV}a{espaciemientoV}";
                     case TipoMAllaMuro.DM:
-                        return $"M.H.A e={espesor_cm}\nD.M.H Ø{diametroH_mm}a{espaciemientoH_cm}\nD.M.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                        return $"M.H.A e={espesor_cm}\nD.M.H Ø{diametroH}a{espaciemientoH}\nD.M.V Ø{diametroV}a{espaciemientoV}";
                     case TipoMAllaMuro.TM:
-                        return $"M.H.A e={espesor_cm}\nT.M.H Ø{diametroH_mm}a{espaciemientoH_cm}\nD.M.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                        return $"M.H.A e={espesor_cm}\nT.M.H Ø{diametroH}a{espaciemientoH}\nD.M.V Ø{diametroV}a{espaciemientoV}";
                     case TipoMAllaMuro.CM:
-                        return $"M.H.A e={espesor_cm}\nC.M.H Ø{diametroH_mm}a{espaciemientoH_cm}\nD.M.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                        return $"M.H.A e={espesor_cm}\nC.M.H Ø{diametroH}a{espaciemientoH}\nD.M.V Ø{diametroV}a{espaciemientoV}";
                     default:
-                        return $"M.H.A e={espesor_cm}\nD.M.H Ø{diametroH_mm}a{espaciemientoH_cm}\nD.M.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                        return $"M.H.A e={espesor_cm}\nD.M.H Ø{diametroH}a{espaciemientoH}\nD.M.V Ø{diametroV}a{espaciemientoV}";
                 }
                
             }
@@ -124,10 +124,10 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.DTO
 
         private string ObtenerCuantiaViga()
         {
-            if (diametroH_mm == diametroV_mm && espaciemientoH_cm == espaciemientoV_cm)
-                return $"D.M.\n Ø{diametroH_mm}a{espaciemientoH_cm}";
+            if (diametroH == diametroV && espaciemientoH == espaciemientoV)
+                return $"D.M.\n Ø{diametroH}a{espaciemientoH}";
             else
-                return $"D.M.H Ø{diametroH_mm}a{espaciemientoH_cm}\nD.M.V Ø{diametroV_mm}a{espaciemientoV_cm}";
+                return $"D.M.H Ø{diametroH}a{espaciemientoH}\nD.M.V Ø{diametroV}a{espaciemientoV}";
         }
 
 

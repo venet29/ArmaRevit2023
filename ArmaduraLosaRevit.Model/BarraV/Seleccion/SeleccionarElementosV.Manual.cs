@@ -263,6 +263,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                 }
 
                 _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, _ptoSeleccionMouseCentroCaraMuro, _PtoInicioIntervaloBarra);
+                //_PtoInicioIntervaloBarra = _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost;
                 if (_PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost.IsAlmostEqualTo(XYZ.Zero)) return false;
 
             }

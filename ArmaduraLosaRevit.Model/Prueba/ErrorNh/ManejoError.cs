@@ -9,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace ArmaduraLosaRevit.Model.Prueba.ErrorNh
 {
-    internal class ManejoError
-    {
-    }
-
+ 
     public class RevitApplication : IExternalApplication
     {
         private SyntheticFailureReplacement failureReplacement;
 
         public Result OnStartup(UIControlledApplication application)
         {
+            Util.InfoMsg("OnStartup");
             failureReplacement = new SyntheticFailureReplacement();
 
             application.ControlledApplication.FailuresProcessing += ControlledApplicationOnFailuresProcessing;
@@ -28,6 +26,7 @@ namespace ArmaduraLosaRevit.Model.Prueba.ErrorNh
 
         public Result OnShutdown(UIControlledApplication application)
         {
+            Util.InfoMsg("OnShutdown");
             application.ControlledApplication.FailuresProcessing -= ControlledApplicationOnFailuresProcessing;
 
             return Result.Succeeded;

@@ -100,12 +100,12 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar
 
                         DatosMallasAutoDTO _datosMallasAutoDTO = new DatosMallasAutoDTO()
                         {
-                            diametroH_mm = item._datosMallasDTO.diametroH_mm,
-                            diametroV_mm = item._datosMallasDTO.diametroV_mm,
+                            diametroH = item._datosMallasDTO.diametroH,
+                            diametroV = item._datosMallasDTO.diametroV,
                             paraCantidadLineasV = item._datosMallasDTO.ObtenerNUmeroMallas_tipoMallaV(), //   AyudaMallaAUTO.ObtenerNUmeroMallas("E.D."),//tipo_mallaV.Text
                             paraCantidadLineasH = item._datosMallasDTO.ObtenerNUmeroMallas_tipoMallaH(),//AyudaMallaAUTO.ObtenerNUmeroMallas("E.D."),
-                            espaciemientoH_cm = item._datosMallasDTO.espaciemientoH_cm,
-                            espaciemientoV_cm = item._datosMallasDTO.espaciemientoV_cm,
+                            espaciemientoH = item._datosMallasDTO.espaciemientoH,
+                            espaciemientoV = item._datosMallasDTO.espaciemientoV,
                             tipoMallaH = item._datosMallasDTO.tipoMallaH,
                             tipoMallaV = item._datosMallasDTO.tipoMallaH,
                             tipoSeleccionInf = TipoSeleccionMouse.nivel,

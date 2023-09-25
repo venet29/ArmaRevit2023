@@ -526,14 +526,15 @@ namespace ArmaduraLosaRevit.Model.BarraV
             else if (_newCmd_CargadorBarraV.tipodeCaso == "ExtStore")
             {
                 ManejadotExtStore_Wall _ManejadotExtStore = new ManejadotExtStore_Wall(commandData.Application);
-                _ManejadotExtStore.AgregarExtStore();
-#pragma warning disable CS0219 // The variable 'tipo' is assigned but its value is never used
+                
                 int tipo = 0;
-#pragma warning restore CS0219 // The variable 'tipo' is assigned but its value is never used
-                //if(tipo==0)
-                //    _ManejadotExtStore.AgregarExtStore_multiples();
-                //else if (tipo == 1)
-                //    _ManejadotExtStore.UpdateExtStore_multiples();
+
+                if (tipo == 0)
+                    _ManejadotExtStore.AgregarExtStore();
+                else if (tipo == 1)
+                    _ManejadotExtStore.AgregarExtStore_multiples();
+                else if (tipo == 2)
+                    _ManejadotExtStore.UpdateExtStore_multiples();
             }
             else if (_newCmd_CargadorBarraV.tipodeCaso == "_AssemblyInstanceNH")
             {
@@ -702,7 +703,6 @@ namespace ArmaduraLosaRevit.Model.BarraV
                 {
                     // If there are something wrong, give error information and return failed
                     message = ex.Message;
-               
                 }
                 UpdateGeneral.M4_CargarGenerar(_uiapp);
                 TaskDialog.Show("ok", "Elementos cargados correctamente");
@@ -711,11 +711,9 @@ namespace ArmaduraLosaRevit.Model.BarraV
             else if (_newCmd_CargadorBarraV.tipodeCaso == "cargarParametros")
             {
                 ManejadorConfiguracionInicialGeneral.cargar(commandData.Application);
-
             }
 
             return Result.Succeeded;
-
         }
     }
 }

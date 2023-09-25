@@ -154,14 +154,14 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar
                             if (soloUnavez)
                             {
                                 soloUnavez = false;
-                                sumadeltaEspesor += _datosMallasDTO.diametroH_mm / 10f;
+                                sumadeltaEspesor += _datosMallasDTO.diametroH / 10f;
                                 _confiWPFEnfierradoDTO.IntervalosEspaciamiento[i] = espacimientoEntreLinea + sumadeltaEspesor;// + _datosMallasDTO.diametroH*2/10;
                             }
                             else
                             {
 
                                 _confiWPFEnfierradoDTO.IntervalosEspaciamiento[i] = espacimientoEntreLinea - sumadeltaEspesor * 2;
-                                sumadeltaEspesor -= _datosMallasDTO.diametroH_mm / 10f;
+                                sumadeltaEspesor -= _datosMallasDTO.diametroH / 10f;
                             }
                         }
                     }

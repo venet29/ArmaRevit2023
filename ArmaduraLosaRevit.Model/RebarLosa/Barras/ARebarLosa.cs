@@ -287,6 +287,16 @@ namespace ArmaduraLosaRevit.Model.RebarLosa.Barras
                     break;
                 case TipoBarra.f3_refuezoSuple:
                     break;
+                case TipoBarra.f11A_fund:
+                case TipoBarra.f11B_fund:
+                case TipoBarra.f11_fund:
+                    _BarraTipo = TipoRebar.FUND_BA_INF;
+                    break;
+                case TipoBarra.f10A_fund:
+                case TipoBarra.f10B_fund:
+                case TipoBarra.f10_fund:
+                    _BarraTipo = TipoRebar.FUND_BA_SUP;
+                    break;
                 default:
                     break;
             }

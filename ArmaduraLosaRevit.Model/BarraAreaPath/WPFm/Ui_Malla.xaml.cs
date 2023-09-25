@@ -115,12 +115,12 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.WPFm
         {
             DatosMallasAutoDTO datosMallasDTO = new DatosMallasAutoDTO()
             {
-                diametroH_mm = Util.ConvertirStringInInteger(diam_mallaH.Text),
-                diametroV_mm = Util.ConvertirStringInInteger(diam_mallaV.Text),
+                diametroH = Util.ConvertirStringInInteger(diam_mallaH.Text),
+                diametroV = Util.ConvertirStringInInteger(diam_mallaV.Text),
                 paraCantidadLineasV = ObtenerNUmeroMallas(tipo_mallaH.Text),//tipo_mallaV.Text
                 paraCantidadLineasH = ObtenerNUmeroMallas(tipo_mallaH.Text),
-                espaciemientoH_cm = Util.ConvertirStringInInteger(espa_mallaH.Text.Replace(",",".")),
-                espaciemientoV_cm = Util.ConvertirStringInInteger(espa_mallaV.Text.Replace(",", ".")),
+                espaciemientoH = Util.ConvertirStringInInteger(espa_mallaH.Text.Replace(",",".")),
+                espaciemientoV = Util.ConvertirStringInInteger(espa_mallaV.Text.Replace(",", ".")),
                 tipoMallaH = ObtenerTipo(tipo_mallaH.Text),
                 tipoMallaV = ObtenerTipo(tipo_mallaH.Text),//tipo_mallaV.Text
                 tipoSeleccionInf = (rbt_ini_M.IsChecked == true ? TipoSeleccionMouse.mouse : TipoSeleccionMouse.nivel),

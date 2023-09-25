@@ -69,8 +69,6 @@ namespace ArmaduraLosaRevit.Model.Extension
         {
             try
             {
-
-
                 PlanarFace planarSup = ObtenerCaraSuperior(_element, pto, direccion);
                 if (planarSup == null)
                     planarSup = ObtenerPLanarFAce_superior(_element, false);
@@ -79,9 +77,6 @@ namespace ArmaduraLosaRevit.Model.Extension
                 //planarSup.ProjectNH(pto);
 
                 //XYZ  ptoSup = planarSup.ObtenerPtosInterseccionFace(pto, XYZ.BasisZ);
-
-
-
 
                 PlanarFace planarInf = ObtenerCaraInferior(_element, pto, direccion);
                 if (planarInf == null)
@@ -99,8 +94,6 @@ namespace ArmaduraLosaRevit.Model.Extension
             }
             catch (Exception)
             {
-
-
             }
             return null;
         }
@@ -125,7 +118,6 @@ namespace ArmaduraLosaRevit.Model.Extension
             PlanarFace planar = ObtenerCaraSuperior(_element, pto, direccion);
             return planar.ObtenerPtosInterseccionFaceHorizontal(pto);
         }
-
 
         //**************************** superior
 
@@ -166,9 +158,10 @@ namespace ArmaduraLosaRevit.Model.Extension
                     var losa_Encontrada_RuledFace = AyudaLosa.obtenerFaceSuperiorLosa_RuledFace(floor);
                     if (losa_Encontrada_RuledFace == null)
                     {
-                        Util.ErrorMsg_COnverificacion($"Error al obtener punto intersecion con face superior de losa. Se utliza punto 'origen' de face superior");
-
-                        return ListaPlanarFaceSuperior[0].Origin;
+                        string msje = $"Error al obtener punto intersecion con face superior de losa. Se utliza punto 'origen' de face superior";
+                        //Util.ErrorMsg_COnverificacion(msje);
+                        Debug.WriteLine(msje);
+                        return ptoselec.AsignarZ( ListaPlanarFaceSuperior[0].Origin.Z);
                     }
 
                     return losa_Encontrada_RuledFace.ReludfaceNH.ProjectNH(ptoselec);
@@ -194,7 +187,11 @@ namespace ArmaduraLosaRevit.Model.Extension
                                                                  .OrderByDescending(c => c.Origin.Z).ToList();
             //se elige dos porquepuede ser una viga semi inveritda entoces se forman dos elemtnos vigas, con dos normales z positvos y 2 normales z negativo
             if (listFaceSuperior.Count > 2 && IsConMensajeError)
-                Util.ErrorMsg_COnverificacion($"Se encontraron {listFaceSuperior.Count} caras superiores. Revisar seleccion de elemento");
+            {
+                string msje = $"Se encontraron {listFaceSuperior.Count} caras superiores. Revisar seleccion de elemento";
+                Util.ErrorMsg_COnverificacion(msje);
+                Debug.WriteLine(msje);
+            }
 
             PlanarFace FaceSuperior = listFaceSuperior.FirstOrDefault();
 

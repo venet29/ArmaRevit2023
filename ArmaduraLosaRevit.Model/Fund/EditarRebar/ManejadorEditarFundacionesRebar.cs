@@ -8,6 +8,7 @@ using ArmaduraLosaRevit.Model.Fund.Servicios;
 using ArmaduraLosaRevit.Model.Fund.WPFfund;
 using ArmaduraLosaRevit.Model.Seleccionar.Barras;
 using ArmaduraLosaRevit.Model.UTILES;
+using ArmaduraLosaRevit.Model.UTILES.ParaBarras.CalculoPath;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.DB.Structure;
@@ -152,6 +153,9 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar
                 var hostElement = _doc.GetElement(hostId);
 
                 //  hostElement.ob
+
+                //CalculoCoordPathReinforme _CalculoCoordPathReinforme = new CalculoCoordPathReinforme(path, _doc);
+                //_CalculoCoordPathReinforme.Calcular4PtosPathReinf();
 
                 List<XYZ> listapto = path.ObtenerPtoPerimetro_NivelCaraHost();
 

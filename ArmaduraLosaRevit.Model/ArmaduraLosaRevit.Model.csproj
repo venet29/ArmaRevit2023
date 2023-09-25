@@ -150,9 +150,11 @@
     <Compile Include="Armadura\TipoDiametrosBarrasDTO.cs" />
     <Compile Include="BarraEstribo\Editar\ManejadorEditarDiamtroEspacimiento.cs" />
     <Compile Include="BarraV\Horquilla\Creador\CreadorBarrasV_HorqH.cs" />
+    <Compile Include="ElementoBarraRoom\Update\Manejador_GeneralMover.cs" />
     <Compile Include="Extension\ExtensionPathReinSpanSymbol.cs" />
     <Compile Include="Extension\ExtensionIndependentTag.cs" />
     <Compile Include="Extension\ExtensionRebarBarType.cs" />
+    <Compile Include="ExtStore\Ayuda\AyudaCasosUnidades_2020Bajo.cs" />
     <Compile Include="FILTROS\FiltroVIga_Muro_Column_Floor_Rebar.cs" />
     <Compile Include="FILTROS\FiltroVIga_Muro_Column_Floor.cs" />
     <Compile Include="FILTROS\PathReinSymbolSelection_RebarInsystemFilter.cs" />
@@ -540,10 +542,8 @@
     <Compile Include="ExtStore\Ayuda\AyudaCasosUnidades_2021Arriba.cs" />
     <Compile Include="ExtStore\model\EnumPasadas.cs" />
     <Compile Include="ExtStore\Tipos\CreadorExtStoreComplejo.cs" />
-    <Compile Include="ExtStore\Tipos\CreadorExtStore_2020Abajo.cs" />
     <Compile Include="ExtStore\model\DatosExtStoreDTO_2020Abajo.cs" />
     <Compile Include="ExtStore\model\DatosExtStoreDTO.cs" />
-    <Compile Include="ExtStore\Factory\FactoryExtStore_2020Abajo.cs" />
     <Compile Include="ExtStore\Factory\FactoryExtStore.cs" />
     <Compile Include="FAMILIA\MAnejadorCambiarLetraArial.cs" />
     <Compile Include="FAMILIA\Varios\AgregarVErsion.cs" />
@@ -640,6 +640,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Prueba\BuscarRefenenciaBarras.cs" />
+    <Compile Include="Prueba\ErrorNh\CargarEvento.cs" />
     <Compile Include="Prueba\ErrorNh\ManejoError.cs" />
     <Compile Include="Prueba\User\AyudaUser.cs" />
     <Compile Include="Prueba\User\RepositorioUsuarios.cs" />

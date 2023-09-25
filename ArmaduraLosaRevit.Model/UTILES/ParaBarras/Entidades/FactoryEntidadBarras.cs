@@ -74,7 +74,7 @@ namespace ArmaduraLosaRevit.Model.UTILES.ParaBarras.Entidades
 
 
 
-                 new EntidadBarras(TipoRebar.FUND_BA_INF,"FUND_BA"  ,TipoBarraGeneral.Fundaciones,"BA",Orientacion_Cub.inf,Elemento_cub.FUND),
+                 new EntidadBarras(TipoRebar.FUND_BA,"FUND_BA"  ,TipoBarraGeneral.Fundaciones,"BA",Orientacion_Cub.inf,Elemento_cub.FUND),
                  new EntidadBarras(TipoRebar.FUND_TRABA,"FUND_TRABA"  ,TipoBarraGeneral.Fundaciones,"BA-T",Orientacion_Cub.inf,Elemento_cub.FUND),
                    new EntidadBarras(TipoRebar.FUND_BA_INF,"FUND_BA_INF"  ,TipoBarraGeneral.Fundaciones,"BA",Orientacion_Cub.inf,Elemento_cub.FUND),
                  new EntidadBarras(TipoRebar.FUND_BA_SUP,"FUND_BA_SUP"  ,TipoBarraGeneral.Fundaciones,"BA",Orientacion_Cub.sup,Elemento_cub.FUND),

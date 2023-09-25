@@ -110,7 +110,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Creador
             }
             else
             {
-                double espaBarraFoot = (_muroSeleccionadoDTO._EspesorMuroFoot - ConstNH.RECUBRIMIENTO_MALLA_foot * 2-Util.MmToFoot(_datosMallasDTO.diametroH_mm+ _datosMallasDTO.diametroV_mm*2)) / (_confiWPFEnfierradoDTO.IntervalosCantidadBArras.Length - i);
+                double espaBarraFoot = (_muroSeleccionadoDTO._EspesorMuroFoot - ConstNH.RECUBRIMIENTO_MALLA_foot * 2-Util.MmToFoot(_datosMallasDTO.diametroH+ _datosMallasDTO.diametroV*2)) / (_confiWPFEnfierradoDTO.IntervalosCantidadBArras.Length - i);
                 _confiWPFEnfierradoDTO.EspaciamientoREspectoBordeFoot += espaBarraFoot;
             }
 

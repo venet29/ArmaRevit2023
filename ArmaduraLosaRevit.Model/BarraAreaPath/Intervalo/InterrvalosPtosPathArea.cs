@@ -148,8 +148,8 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
 
         private void DesplazarPtosPorEspesoresBArras()
         {
-            ptIni = ptIni + _dIreccionMuroEnIgualSentidoRightDirection * Util.MmToFoot(_datosMallasDTO.diametroH_mm) / 2;
-            ptFin = ptFin - _dIreccionMuroEnIgualSentidoRightDirection * Util.MmToFoot(_datosMallasDTO.diametroH_mm) / 2;
+            ptIni = ptIni + _dIreccionMuroEnIgualSentidoRightDirection * Util.MmToFoot(_datosMallasDTO.diametroH) / 2;
+            ptFin = ptFin - _dIreccionMuroEnIgualSentidoRightDirection * Util.MmToFoot(_datosMallasDTO.diametroH) / 2;
         }
 
         #region Generar 4ptos mallas
@@ -180,7 +180,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
             double aux_PtoInicioZ = ptIni.Z;
             double aux_PtoFinalZ = ptFin.Z;
 
-            BuscandoFundaciones buscandoFundaciones = new BuscandoFundaciones(_uiapp, _view3D_buscar, _datosMallasDTO.diametroV_mm);
+            BuscandoFundaciones buscandoFundaciones = new BuscandoFundaciones(_uiapp, _view3D_buscar, _datosMallasDTO.diametroV);
             if (buscandoFundaciones.OBbtenerFundaciones(ptIni))
             {
                 aux_PtoInicioZ = buscandoFundaciones.p1_porFundaciones.Z;
@@ -209,7 +209,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
 
             XYZ p1 = new XYZ(ptIni.X, ptIni.Y, aux_PtoInicioZ);
 
-            BuscandoFundaciones buscandoFundaciones = new BuscandoFundaciones(_uiapp, _view3D_buscar, _datosMallasDTO.diametroV_mm);
+            BuscandoFundaciones buscandoFundaciones = new BuscandoFundaciones(_uiapp, _view3D_buscar, _datosMallasDTO.diametroV);
             if (buscandoFundaciones.OBbtenerFundaciones(p1))
             {
                 p1 = buscandoFundaciones.p1_porFundaciones;
@@ -219,9 +219,9 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
 
             XYZ pto2_aux = p1 + DistanciaEntrePtosXY0 * _dIreccionMuroEnIgualSentidoRightDirection;
             XYZ p2 = new XYZ(pto2_aux.X, pto2_aux.Y, aux_PtoInicioZ);
-            XYZ p3 = new XYZ(ptFin.X, ptFin.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm));
+            XYZ p3 = new XYZ(ptFin.X, ptFin.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV));
             XYZ pto4_aux = p3 + -DistanciaEntrePtosXY0 * _dIreccionMuroEnIgualSentidoRightDirection;
-            XYZ p4 = new XYZ(pto4_aux.X, pto4_aux.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm));
+            XYZ p4 = new XYZ(pto4_aux.X, pto4_aux.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV));
 
 
 
@@ -245,10 +245,10 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
             XYZ p1 = new XYZ(ptIni.X, ptIni.Y, aux_PtoInicioZ);
             XYZ pto2_aux = p1 + DistanciaEntrePtosXY0 * _dIreccionMuroEnIgualSentidoRightDirection;
             XYZ p2 = new XYZ(pto2_aux.X, pto2_aux.Y, aux_PtoInicioZ);
-            XYZ p3 = new XYZ(ptFin.X, ptFin.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm));
+            XYZ p3 = new XYZ(ptFin.X, ptFin.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV));
 
             XYZ pto4_aux = p3 + -DistanciaEntrePtosXY0 * _dIreccionMuroEnIgualSentidoRightDirection;
-            XYZ p4 = new XYZ(pto4_aux.X, pto4_aux.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm));
+            XYZ p4 = new XYZ(pto4_aux.X, pto4_aux.Y, aux__PtoFinalZ + UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV));
 
             GenerarCurvaAreaPath2(p1, p2, p3, p4);
         }
@@ -257,14 +257,14 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Intervalo
         {
 
             double largoDesarrollo = 0;
-            BuscarMuros BuscarMuros = new BuscarMuros(_uiapp, UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm));
+            BuscarMuros BuscarMuros = new BuscarMuros(_uiapp, UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV));
             var (wallSeleccionado, espesor, ptoSobreMuro) = BuscarMuros.OBtenerRefrenciaMuro(_view3D_buscar, ptFin, new XYZ(0, 0, 1));
 
 
             if (wallSeleccionado == null)
             { largoDesarrollo = -ConstNH.RECUBRIMIENTO_PATA_BARRAV_Foot; }
             else
-            { largoDesarrollo = UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV_mm); }
+            { largoDesarrollo = UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosMallasDTO.diametroV); }
 
             double aux_PtoInicioZ = ListaLevelIntervalo[ListaLevelIntervalo.Count - 2].ProjectElevation;
 

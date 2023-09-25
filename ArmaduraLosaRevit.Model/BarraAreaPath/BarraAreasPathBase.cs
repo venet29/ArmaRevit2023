@@ -140,16 +140,16 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath
 
 
             //horizontal  major
-            RebarBarType _rebarBarTypeH = TiposRebarBarType.getRebarBarType("Ø" + datosMallasDTO.diametroH_mm, _doc, true);
+            RebarBarType _rebarBarTypeH = TiposRebarBarType.getRebarBarType("Ø" + datosMallasDTO.diametroH, _doc, true);
 
 
-            if (null == _rebarBarTypeH) { Util.ErrorMsg("Error al obtener la familiar Ø" + datosMallasDTO.diametroH_mm + " LayoutRebar_AreaRefuerzo"); ; return false; }
+            if (null == _rebarBarTypeH) { Util.ErrorMsg("Error al obtener la familiar Ø" + datosMallasDTO.diametroH + " LayoutRebar_AreaRefuerzo"); ; return false; }
 
             ParameterUtil.SetParaElementId(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_BAR_TYPE_BACK_DIR_1, _rebarBarTypeH.Id); //"Bottom Minor Bar Type" 
             ParameterUtil.SetParaElementId(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_BAR_TYPE_FRONT_DIR_1, _rebarBarTypeH.Id); //	"Top Minor Bar Type" 
 
-            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_BACK_DIR_1, Util.CmToFoot(datosMallasDTO.espaciemientoH_cm));
-            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_FRONT_DIR_1, Util.CmToFoot(datosMallasDTO.espaciemientoH_cm));
+            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_BACK_DIR_1, Util.CmToFoot(datosMallasDTO.espaciemientoH));
+            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_FRONT_DIR_1, Util.CmToFoot(datosMallasDTO.espaciemientoH));
 
             if (_tipodeHookStartPrincipalH == null)
                 _tipodeHookStartPrincipalH = TipoRebarHookType.ObtenerHook("Rebar Hook 90", _doc);
@@ -164,16 +164,16 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath
 
             //verticalMayor
 
-            RebarBarType rebarBarTypeV = TiposRebarBarType.getRebarBarType("Ø" + datosMallasDTO.diametroV_mm, _doc, true);
-            if (null == rebarBarTypeV) { Util.ErrorMsg("Error al obtener la familiar Ø" + datosMallasDTO.diametroV_mm + " LayoutRebar_AreaRefuerzo"); ; return false; }
+            RebarBarType rebarBarTypeV = TiposRebarBarType.getRebarBarType("Ø" + datosMallasDTO.diametroV, _doc, true);
+            if (null == rebarBarTypeV) { Util.ErrorMsg("Error al obtener la familiar Ø" + datosMallasDTO.diametroV + " LayoutRebar_AreaRefuerzo"); ; return false; }
 
 
             ParameterUtil.SetParaElementId(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_BAR_TYPE_BACK_DIR_2, rebarBarTypeV.Id);// 	"Top Major Direction" 
             ParameterUtil.SetParaElementId(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_BAR_TYPE_FRONT_DIR_2, rebarBarTypeV.Id);// 	"Top Minor Direction"
 
 
-            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_BACK_DIR_2, Util.CmToFoot(datosMallasDTO.espaciemientoV_cm));
-            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_FRONT_DIR_2, Util.CmToFoot(datosMallasDTO.espaciemientoV_cm));
+            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_BACK_DIR_2, Util.CmToFoot(datosMallasDTO.espaciemientoV));
+            ParameterUtil.SetParaDouble(m_createdAreaReinforcement, BuiltInParameter.REBAR_SYSTEM_SPACING_FRONT_DIR_2, Util.CmToFoot(datosMallasDTO.espaciemientoV));
 
             //GANCHO
 

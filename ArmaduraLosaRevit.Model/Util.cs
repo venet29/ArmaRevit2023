@@ -98,7 +98,7 @@ namespace ArmaduraLosaRevit.Model
             }
         }
 
-        public static void DebugDescripcion(Exception ex, string msj = "")
+        public static void DebugDescripcion(Exception ex, string msj = "NH-Mensajes error")
         {
             Debug.WriteLine($" {msj}   --> ex:{ex.Message}");
         }
@@ -3604,8 +3604,7 @@ namespace ArmaduraLosaRevit.Model
             typeof(bool) });
             if (met != null)
             {
-                value = (double)met.Invoke(ele,
-                  new object[] { m.Id, false });
+                value = (double)met.Invoke(ele,   new object[] { m.Id, false });
             }
             else
             {

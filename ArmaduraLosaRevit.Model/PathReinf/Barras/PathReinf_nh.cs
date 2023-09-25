@@ -460,6 +460,10 @@ namespace ArmaduraLosaRevit.Model.PathReinf.Barras
                     //trans.RollBack();
                     return false;
                 }
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -477,7 +481,20 @@ namespace ArmaduraLosaRevit.Model.PathReinf.Barras
             {
                 if (symbolPath.TagHeadPosition.AsignarZ(0).DistanceTo(_pathReinfSeleccionDTO.ptoConMouse.AsignarZ(0)) > 0.1)
                 {
-                    if (_pathReinfSeleccionDTO?.ptoConMouse != null) symbolPath.TagHeadPosition = _pathReinfSeleccionDTO.ptoConMouse;
+                    if (_pathReinfSeleccionDTO?.ptoConMouse != null)
+                    {
+                        //pathsymbol
+                        symbolPath.TagHeadPosition = _pathReinfSeleccionDTO.ptoConMouse;
+                        // tag 
+                        //if (_listaTAgBArra.M4_IsFAmiliaValida())
+                        //{
+                        //    foreach (TagBarra _TagBarra in _listaTAgBArra.listaTag)
+                        //    {
+                        //        if (_TagBarra.IsOk)
+                        //            _TagBarra.ReAsignarFreeEnd();
+                        //    }
+                        //}
+                    }
                 }
             }
             catch (Exception ex)

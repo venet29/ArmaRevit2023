@@ -9,6 +9,7 @@ using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
 {
@@ -18,16 +19,16 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
         static AddInId _appId;
         static UpdaterId _updaterId;
         private Document _doc;
-
-
+        private string _guid;
         private TipoMoverTag _TipoMoverTag;
         public UpDate_MoverPathSymbol(UIApplication _uiapp, AddInId id)//codigo interno del Updater 145689
         {
             this._uiapp = _uiapp;
             _appId = id;
             _doc = _uiapp.ActiveUIDocument.Document;
-            _updaterId = new UpdaterId(_appId, new Guid("2f0738a8-1731-4d94-84ce-d62d51170fd7"));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
-            _TipoMoverTag = TipoMoverTag.MoverMantenerTODO;
+            _guid = "2f0738a8-1731-4d94-84ce-d62d51170fd7";
+            _updaterId = new UpdaterId(_appId, new Guid(_guid));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
+            _TipoMoverTag = TipoMoverTag.MoverMantenerSOLOExtremos;
         }
         public void Execute(UpdaterData data)
         {
@@ -46,31 +47,19 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
             foreach (ElementId id in data.GetModifiedElementIds())
             {
                 var tasr = _doc.GetElement(id);
-                PathReinSpanSymbol _independentTag = _doc.GetElement(new ElementId(id.IntegerValue - 1)) as PathReinSpanSymbol;
-                if (_independentTag == null) continue;
+                PathReinSpanSymbol _pathReinSpanSymbol = _doc.GetElement(new ElementId(id.IntegerValue - 1)) as PathReinSpanSymbol;
+                if (_pathReinSpanSymbol == null) continue;
 
-                PathReinforcement PathRein = _doc.GetElement(_independentTag.Obtener_GetTaggedLocalElementID()) as PathReinforcement;
+                PathReinforcement PathRein = _doc.GetElement(_pathReinSpanSymbol.Obtener_GetTaggedLocalElementID()) as PathReinforcement;
                 if (PathRein == null) continue;
 
                 List<IndependentTag> listaIndependentTag = TiposPathReinTagsEnView.M1_GetFamilySymbol_ConPathReinforment(PathRein.Id, _doc, _doc.ActiveView.Id);
                 if (listaIndependentTag.Count == 0) continue;
 
-                if (_TipoMoverTag == TipoMoverTag.MoverConfiguracionInicial)
-                {
-                    //mantener tag como configuracion inicial
-                    ManejarEditTagUpdate_MoverConfiguracionInicial _ManejarEditTagUpdate_move = new ManejarEditTagUpdate_MoverConfiguracionInicial(_uiapp, PathRein, _independentTag.TagHeadPosition, listaIndependentTag);
-                    _ManejarEditTagUpdate_move.Ejecutar_SinTrans();
-                }
-                else if (_TipoMoverTag == TipoMoverTag.MoverMantenerTODO)
-                {
-                    ManejarEditTagUpdate_MoverMantenerTODO _ManejarEditTagUpdate_MoverMantenerTODO = new ManejarEditTagUpdate_MoverMantenerTODO(_uiapp, PathRein, _independentTag.TagHeadPosition, listaIndependentTag);
-                    _ManejarEditTagUpdate_MoverMantenerTODO.Ejecutar();
-                }
-                else if (_TipoMoverTag == TipoMoverTag.MoverMantenerSOLOExtremos)
-                {
-                    ManejarEditTagUpdate_MoverMantenerSOLOExtremos _ManejarEditTagUpdate_MoverMantenerSOLOExtremos = new ManejarEditTagUpdate_MoverMantenerSOLOExtremos(_uiapp, PathRein, _independentTag.TagHeadPosition, listaIndependentTag);
-                    _ManejarEditTagUpdate_MoverMantenerSOLOExtremos.Ejecutar();
-                }
+
+                Manejador_GeneralMover.EjecutarMOver(_uiapp, PathRein, _pathReinSpanSymbol.TagHeadPosition, listaIndependentTag, _TipoMoverTag);
+
+     
             }
 
             Debug.WriteLine($"UpDate_MoverPathSymbol   VerificarDatos : {timeMeasure1.ElapsedMilliseconds } ms");

@@ -81,7 +81,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
 
                 Entity entity = new Entity(_schema); // create an entity (object) for this schema (class) set the value for this entity entity.Set<XYZ>(fieldSpliceLocation, PTO, UnitTypeId.Feet);
 
-                entity = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(entity, fieldSpliceLocation, PTO);
+                entity = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(_uiapp, entity, fieldSpliceLocation, PTO);
                 //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
                 //    entity = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(entity, fieldSpliceLocation, PTO);
                 //else
@@ -113,7 +113,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 FieldBuilder fieldBuilder = schemaBuilder.AddSimpleField(_datosExtStoreDTO.SchemaName, typeof(XYZ));
                 // fieldBuilder.SetUnitType(_datosExtStoreDTOOld_2020Abajo.UnitTypeIdAld_);
 
-                fieldBuilder = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fieldBuilder);
+                fieldBuilder = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(_uiapp, fieldBuilder);
                 
                 //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
                 //    fieldBuilder = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fieldBuilder);
@@ -144,7 +144,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 retrievedData = XYZ.Zero;
                 // retrievedData = retrievedEntity.Get<XYZ>(_SchemaName, DisplayUnitType.DUT_DECIMAL_FEET);
 
-                retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity, _SchemaName);
+                retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(_uiapp, retrievedEntity, _SchemaName);
                 //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
                 //    retrievedData = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(retrievedEntity,_SchemaName );
                 //else

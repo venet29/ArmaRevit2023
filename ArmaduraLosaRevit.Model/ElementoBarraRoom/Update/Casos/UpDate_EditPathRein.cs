@@ -24,15 +24,15 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos
         static AddInId _appId;
         static UpdaterId _updaterId;
         private Document _doc;
-
-
+        private string _guid;
 
         public UpDate_EditPathRein(UIApplication _uiapp, AddInId id)//codigo interno del Updater 145689
         {
             this._uiapp = _uiapp;
             _appId = id;
             _doc = _uiapp.ActiveUIDocument.Document;
-            _updaterId = new UpdaterId(_appId, new Guid("a57883c2-8c85-46fd-bb19-23ac2a7e09bc"));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
+            _guid = "a57883c2-8c85-46fd-bb19-23ac2a7e09bc";
+            _updaterId = new UpdaterId(_appId, new Guid(_guid));//CAMBIAR CODIGO EN CADA UPDATER NUEVO
  
         }
         public void Execute(UpdaterData data)

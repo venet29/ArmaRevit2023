@@ -72,8 +72,9 @@ namespace ArmaduraLosaRevit.Model.Fund.TipoBarraFund
             DireccionEspesor = -planarface.FaceNormal * LArgoPataHOok_foot;
             ladoAB = Line.CreateBound(ptoini + DireccionEspesor, ptoini);
             ladoBC = Line.CreateBound(ptoini, ptofin);
-           // ladoCD = Line.CreateBound(ptofin, ptofin + DireccionEspesor);
-
+            // ladoCD = Line.CreateBound(ptofin, ptofin + DireccionEspesor);
+            _rebarInferiorDTO.TexToLargoParciales = $"({Math.Round(Util.FootToCm(ladoAB.Length + mitadDiam_foot), 0)}+{Math.Round(Util.FootToCm(ladoBC.Length + mitadDiam_foot * 2), 0)})";
+            _rebarInferiorDTO.LargoTotal = Math.Round(Util.FootToCm(ladoAB.Length + mitadDiam_foot), 0) + Math.Round(Util.FootToCm(ladoBC.Length + mitadDiam_foot * 2), 0);
         }
 
         #endregion

@@ -273,13 +273,13 @@ namespace ArmaduraLosaRevit.Model.Seleccionar.Barras
                     if (ResulTag.HasLeader)
                     {
                         IsLeaderElbow = true;                         
-                        _LeaderElbow = ResulTag.Obtener_LeaderElbow();
+                        _LeaderElbow = ResulTag.Obtener_LeaderElbow(_uiapp);
                     }
 
                     if (ResulTag.LeaderEndCondition == LeaderEndCondition.Free)
                     {
                         IsLeaderEnd = true;
-                        _LeaderEnd =  ResulTag.Obtener_LeaderEnd();
+                        _LeaderEnd =  ResulTag.Obtener_LeaderEnd(_uiapp);
                     }
 
                 }

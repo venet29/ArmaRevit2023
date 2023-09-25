@@ -74,9 +74,9 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar
             _confiWPFEnfierradoDTO.TipoBarraRebar_ = _confiWPFEnfierradoDTO.TipoBarraRebarHorizontal_;// _  TipoBarraVertical.MallaH;
             muroSeleccionadoDTO.DireccionPataEnFierrado = DirePataEnfirerr_aux;
             _confiWPFEnfierradoDTO.M1_ObtenerIntervalosDireccionMuro(_datosMallasDTO.paraCantidadLineasH, "20");
-            _confiWPFEnfierradoDTO.inicial_diametroMM = _datosMallasDTO.diametroH_mm;
-            _confiWPFEnfierradoDTO.IntervalosEspaciamiento[0] = (int)_datosMallasDTO.espaciemientoV_cm;//20
-            _confiWPFEnfierradoDTO.EspaciamietoRecorridoBarraFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoH_cm).ToString();//20
+            _confiWPFEnfierradoDTO.inicial_diametroMM = _datosMallasDTO.diametroH;
+            _confiWPFEnfierradoDTO.IntervalosEspaciamiento[0] = (int)_datosMallasDTO.espaciemientoV;//20
+            _confiWPFEnfierradoDTO.EspaciamietoRecorridoBarraFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoH).ToString();//20
             _confiWPFEnfierradoDTO.LineaBarraAnalizada = 0;
             _confiWPFEnfierradoDTO.BarraTipo = TipoRebar.ELEV_MA_H;
             RecalcularEspaciamientoLineasBarrasHorizontal(muroSeleccionadoDTO._EspesorMuroFoot, 1);
@@ -105,16 +105,16 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar
 
         private void DibujarMallaVertical_Sintras(SelecionarPtoSup selecionarPtoSup, DatosMuroSeleccionadoDTO muroSeleccionadoDTO)
         {
-            double _parteDeci = Util.ParteDecimal(_DireccionRecorrido.LargoRecorridoCm / _datosMallasDTO.espaciemientoV_cm);
-            muroSeleccionadoDTO.DesplazamientoVerticalFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoV_cm * (1 + _parteDeci)) / 2;
+            double _parteDeci = Util.ParteDecimal(_DireccionRecorrido.LargoRecorridoCm / _datosMallasDTO.espaciemientoV);
+            muroSeleccionadoDTO.DesplazamientoVerticalFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoV * (1 + _parteDeci)) / 2;
 
             //4
             //XYZ _PtoInicioSobrePLanodelMuro_aux = muroSeleccionadoDTO.PtoInicioBaseBordeElemen_ProyectadoCaraElemenHost;
-            _confiWPFEnfierradoDTO.IntervalosEspaciamiento[0] = (int)_datosMallasDTO.espaciemientoV_cm;
-            _confiWPFEnfierradoDTO.EspaciamietoRecorridoBarraFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoV_cm).ToString();
+            _confiWPFEnfierradoDTO.IntervalosEspaciamiento[0] = (int)_datosMallasDTO.espaciemientoV;
+            _confiWPFEnfierradoDTO.EspaciamietoRecorridoBarraFoot = Util.CmToFoot(_datosMallasDTO.espaciemientoV).ToString();
             _confiWPFEnfierradoDTO.TipoBarraRebar_ = TipoBarraVertical.MallaV;
             _confiWPFEnfierradoDTO.BarraTipo = TipoRebar.ELEV_MA_V;
-            _confiWPFEnfierradoDTO.inicial_diametroMM = _datosMallasDTO.diametroV_mm;
+            _confiWPFEnfierradoDTO.inicial_diametroMM = _datosMallasDTO.diametroV;
             _confiWPFEnfierradoDTO.IsDibujarTag = true;
             // _confiWPFEnfierradoDTO.inicial_tipoBarraV = TipoPatasMAllasVertical(_datosMallasDTO.Tipo_PataV);
 
@@ -122,7 +122,7 @@ namespace ArmaduraLosaRevit.Model.BarraMallaRebar
             {
             //    if (i == _confiWPFEnfierradoDTO.IntervalosCantidadBArras.Length - 1) muroSeleccionadoDTO.DireccionPataEnFierrado *= -1;
 
-                _confiWPFEnfierradoDTO.IntervalosCantidadBArras[i] = (int)(_DireccionRecorrido.LargoRecorridoCm / _datosMallasDTO.espaciemientoV_cm);
+                _confiWPFEnfierradoDTO.IntervalosCantidadBArras[i] = (int)(_DireccionRecorrido.LargoRecorridoCm / _datosMallasDTO.espaciemientoV);
                 _confiWPFEnfierradoDTO.LineaBarraAnalizada = i + 1;
                 _confiWPFEnfierradoDTO.CuantiaMalla = _datosMallasDTO.ObtenerTExto();
 

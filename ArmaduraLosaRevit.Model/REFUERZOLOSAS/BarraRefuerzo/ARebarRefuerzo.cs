@@ -406,7 +406,7 @@ namespace ArmaduraLosaRevit.Model.REFUERZOLOSAS.BarraRefuerzo
                         {
                             if (item == null) continue;
                             if (!item.IsOk) continue;
-                            item.DibujarTagEstribo(_rebarRef, _doc, viewActual, configuracionTAgEstriboDTo, item.posicion);
+                            item.DibujarTagEstribo(_rebarRef, _uiapp, viewActual, configuracionTAgEstriboDTo, item.posicion);
                         }
                     }
                     tx.Commit();

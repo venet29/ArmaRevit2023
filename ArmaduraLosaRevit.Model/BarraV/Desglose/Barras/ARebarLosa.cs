@@ -655,7 +655,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Desglose.Calculos
             }
             catch (Exception)
             {
-                Util.ErrorMsg("Error al Crear tag");
+                Util.ErrorMsg("Error al CreaDimension");
             }
         }
 
@@ -668,7 +668,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Desglose.Calculos
             }
             catch (Exception)
             {
-                Util.ErrorMsg("Error al Crear tag");
+                Util.ErrorMsg("Error al CreaCirculo");
             }
         }
         public void M11_CrearGrupo()
@@ -695,7 +695,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Desglose.Calculos
             }
             catch (Exception)
             {
-                Util.ErrorMsg("Error al Crear tag");
+                Util.ErrorMsg("Error al CrearGrupo");
             }
         }
         #endregion

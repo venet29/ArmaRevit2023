@@ -36,11 +36,11 @@ namespace ArmaduraLosaRevit.Model.Pasadas.Model
                 if (entityPtoInsercion != null)
                 {
 
-                    PtoInsercion = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(entityPtoInsercion, "SubFieldTest11");
-                    //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                    //    PtoInsercion = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(entityPtoInsercion, "SubFieldTest11");
-                    //else
-                    //    PtoInsercion = AyudaCasosUnidades_2020Bajo.Obtener_DUT_DECIMAL_FEET_(entityPtoInsercion, "SubFieldTest11");
+                    //PtoInsercion = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(_uiapp, entityPtoInsercion, "SubFieldTest11");
+                    if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                        PtoInsercion = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(_uiapp,entityPtoInsercion, "SubFieldTest11");
+                    else
+                        PtoInsercion = AyudaCasosUnidades_2020Bajo.Obtener_DUT_DECIMAL_FEET_(_uiapp, entityPtoInsercion, "SubFieldTest11");
                 }
 
                 //b)
@@ -53,11 +53,11 @@ namespace ArmaduraLosaRevit.Model.Pasadas.Model
                 var entityArea = _CreadorExtStore.M3_OBtenerResultado_Entity(Pasada, "area");
                 if (entityArea != null)
                 {
-                    Area = AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(entityArea, "SubFieldTest31");
-                    //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                    //    Area = AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(entityArea, "SubFieldTest31");
-                    //else
-                    //    Area = AyudaCasosUnidades_2020Bajo.Obtener_DUT_NUMERO_FEET_(entityArea, "SubFieldTest31");
+                    //Area = AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(_uiapp,entityArea, "SubFieldTest31");
+                    if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
+                        Area = AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(_uiapp, entityArea, "SubFieldTest31");
+                    else
+                        Area = AyudaCasosUnidades_2020Bajo.Obtener_DUT_NUMERO_FEET_(_uiapp, entityArea, "SubFieldTest31");
                 }
 
                 //d

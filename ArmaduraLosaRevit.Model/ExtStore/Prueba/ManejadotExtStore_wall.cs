@@ -1,6 +1,7 @@
 ﻿using ApiRevit.FILTROS;
 using ArmaduraLosaRevit.Model.Armadura;
 using ArmaduraLosaRevit.Model.Enumeraciones;
+using ArmaduraLosaRevit.Model.ExtStore.Ayuda;
 using ArmaduraLosaRevit.Model.ExtStore.Factory;
 using ArmaduraLosaRevit.Model.ExtStore.model;
 using ArmaduraLosaRevit.Model.ExtStore.Tipos;
@@ -48,18 +49,18 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Prueba
                 elementoMuro = _doc.GetElement(ref_pickobject_element);
 
 
-                DatosExtStoreDTO _CreadorExtStoreDTO = FactoryExtStore.ObtnerExtStorePrueba();
-
-                CreadorExtStore _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
-                //SET
-                _CreadorExtStore.SET_DataInElement_XYZConTrans(elementoMuro, _ptoSeleccionMouseCentroCaraMuro);
-                //GET
-                _CreadorExtStore.GET_DataInElement_XYZ_SinTrans(elementoMuro, _CreadorExtStoreDTO.SchemaName);
 
 
-                //if (UtilVersionesRevit.IsMAyorOigual(_uiapp, VersionREvitNh.v2021))
+
+                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
                 //{
+                    DatosExtStoreDTO _CreadorExtStoreDTO = FactoryExtStore.ObtnerExtStorePrueba();
 
+                    CreadorExtStore _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
+                    //SET
+                    _CreadorExtStore.SET_DataInElement_XYZConTrans(elementoMuro, _ptoSeleccionMouseCentroCaraMuro);
+                    //GET
+                    _CreadorExtStore.GET_DataInElement_XYZ_SinTrans(elementoMuro, _CreadorExtStoreDTO.SchemaName);
 
                 //}
                 //else
@@ -98,9 +99,52 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Prueba
                 elementoMuro = _doc.GetElement(ref_pickobject_element);
                 double area = 20.0;
 
-                DatosExtStoreDTO _CreadorExtStoreDTO = FactoryExtStore.ObtnerExtStorePrueba();
+                DatosExtStoreDTO _CreadorExtStoreDTO = FactoryExtStore.ObtnerExtStorePruebaCompplejo();
                 CreadorExtStoreComplejo _CreadorExtStore = new CreadorExtStoreComplejo(_uiapp, _CreadorExtStoreDTO);
-                _CreadorExtStore.M1_SET_DataInElement_XYZConTrans(elementoMuro, _ptoSeleccionMouseCentroCaraMuro, EstadoPasada.Validado, area,"caso prueba");
+                _CreadorExtStore.M1_SET_DataInElement_XYZConTrans(elementoMuro, _ptoSeleccionMouseCentroCaraMuro, EstadoPasada.Validado, area, "caso prueba");
+
+
+                //d)
+                var entityinsertar = _CreadorExtStore.M3_OBtenerResultado_Entity(elementoMuro, "insertar");
+                if (entityinsertar != null)
+                {
+                    //var coment = entityinsertar.Get<XYZ>("SubFieldTest11", UnitTypeId.Feet);
+                    XYZ PtoInsercion = XYZ.Zero;// AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(_uiapp, entityinsertar, "SubFieldTest11");
+                    if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                        PtoInsercion = AyudaCasosUnidades_2021Arriba.Obtener_DUT_DECIMAL_FEET(_uiapp, entityinsertar, "SubFieldTest11");
+                    else
+                        PtoInsercion = AyudaCasosUnidades_2020Bajo.Obtener_DUT_DECIMAL_FEET_(_uiapp, entityinsertar, "SubFieldTest11");
+                }
+
+                //b)
+                var entityEstado = _CreadorExtStore.M3_OBtenerResultado_Entity(elementoMuro, "estado");
+                if (entityEstado != null)
+                {
+                    var EstadoPasada1 = entityEstado.Get<string>("SubFieldTest21");
+                    var EstadoPasada = _CreadorExtStore.M3_OBtenerResultado_String(elementoMuro, "estado", "SubFieldTest21");//  entityEstado.Get<string>("SubFieldTest21");
+                }
+
+
+                //c)
+                var entityArea = _CreadorExtStore.M3_OBtenerResultado_Entity(elementoMuro, "area");
+                if (entityArea != null)
+                {
+                    //var Area1 = entityEstado.Get<double>("SubFieldTest31", UnitTypeId.Feet);
+                    double Area = 0;/// AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(_uiapp, entityArea, "SubFieldTest31");
+                    if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                        Area = AyudaCasosUnidades_2021Arriba.Obtener_DUT_Numero_FEET(_uiapp, entityArea, "SubFieldTest31");
+                    else
+                        Area = AyudaCasosUnidades_2020Bajo.Obtener_DUT_NUMERO_FEET_(_uiapp, entityArea, "SubFieldTest31");
+                }
+
+                //d)
+                var entitycomentario = _CreadorExtStore.M3_OBtenerResultado_Entity(elementoMuro, "comentario");
+                if (entitycomentario != null)
+                {
+                    var coment1 = entitycomentario.Get<string>("SubFieldTest41");
+                    var coment = _CreadorExtStore.M3_OBtenerResultado_String(elementoMuro, "comentario", "SubFieldTest41");
+
+                }
 
             }
             catch (Exception ex)
@@ -123,7 +167,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Prueba
                 DatosExtStoreDTO _CreadorExtStoreDTO = FactoryExtStore.ObtnerExtStorePrueba();
                 CreadorExtStoreComplejo _CreadorExtStore = new CreadorExtStoreComplejo(_uiapp, _CreadorExtStoreDTO);
                 //GET
-                _CreadorExtStore.M2_Update_DataInElement_XYZConTrans(elementoMuro, "acepatado","caso prueba");
+                _CreadorExtStore.M2_Update_DataInElement_XYZConTrans(elementoMuro, "acepatado", "caso prueba");
 
 
 

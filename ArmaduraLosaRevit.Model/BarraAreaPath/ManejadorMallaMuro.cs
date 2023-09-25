@@ -59,7 +59,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath
 
                     //3obtener resultados de seleccion
                     SeleccionMuroAreaPathDTO _seleccionMuroAreaPathDTO = SeleccionMuroAreaPath.Resultado();
-                    _seleccionMuroAreaPathDTO.diamtromallaVertical = _datosMallasDTO.diametroV_mm;
+                    _seleccionMuroAreaPathDTO.diamtromallaVertical = _datosMallasDTO.diametroV;
 
                     _datosMallasDTO.espesorFoot = _seleccionMuroAreaPathDTO._espesorMuroFoot;
                     

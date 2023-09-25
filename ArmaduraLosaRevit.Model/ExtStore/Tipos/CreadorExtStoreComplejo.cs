@@ -84,24 +84,22 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                     Util.ErrorMsg("Error al obtener subentidades 'Extensible Storage'");
                     return false;
                 }
-                ent1 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(ent1, "SubFieldTest11", PTO);
-                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                //    ent1 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(ent1, "SubFieldTest11", PTO);
-                //else
-                //    ent1 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_DECIMAL_FEET(ent1, "SubFieldTest11", PTO);
-
-                //ent1.Set<XYZ>("SubFieldTest11", PTO, DisplayUnitType.DUT_DECIMAL_FEET);// UnitTypeId.Feet);
-                ent2.Set<string>("SubFieldTest21", estado.ToString());
-
-                ent3 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_Numero_FEET(ent3, "SubFieldTest31", area);
-                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                //    ent3 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_Numero_FEET(ent3, "SubFieldTest31", area);
-                //else
-                //    ent3 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_NUMERO_FEET(ent3, "SubFieldTest31", area);
-
-
-                ent4.Set<string>("SubFieldTest41", comentario.ToString());
-
+                //ent1 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(_uiapp, ent1, "SubFieldTest11", PTO);
+                if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                {
+                    ent1 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_DECIMAL_FEET(_uiapp, ent1, "SubFieldTest11", PTO);
+                    ent2 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_String_FEET(_uiapp, ent2, "SubFieldTest21", estado.ToString()); ;// ent2.Set<string>("SubFieldTest21", estado.ToString());
+                    ent3 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_Numero_FEET(_uiapp, ent3, "SubFieldTest31", area);
+                    ent4 = AyudaCasosUnidades_2021Arriba.Asignar_DUT_String_FEET(_uiapp, ent4, "SubFieldTest41", comentario);//; ent4.Set<string>("SubFieldTest41", comentario.ToString());
+                }
+                else
+                {
+                    ent1 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_DECIMAL_FEET(_uiapp, ent1, "SubFieldTest11", PTO);
+                    ent2 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_String_FEET(_uiapp, ent2, "SubFieldTest21", estado.ToString()); ;// ent2.Set<string>("SubFieldTest21", estado.ToString());
+                    ent3 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_NUMERO_FEET(_uiapp, ent3, "SubFieldTest31", area);
+                    ent4 = AyudaCasosUnidades_2020Bajo.Asignar_DUT_String_FEET(_uiapp, ent4, "SubFieldTest41", comentario);//; ent4.Set<string>("SubFieldTest41", comentario.ToString());
+                }
+                                   
                 Entity ent = new Entity(schema);
                 ent.Set<Entity>("insertar", ent1);
                 ent.Set<Entity>("estado", ent2);
@@ -133,11 +131,11 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 sb1.SetSchemaName("SubSchemaTest1");
                 FieldBuilder fb11 = sb1.AddSimpleField("SubFieldTest11", typeof(XYZ));
 
-                fb11 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fb11);
-                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                //    fb11 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(fb11);
-                //else
-                //    fb11 = AyudaCasosUnidades_2020Bajo.Obtener_UT_Length(fb11);
+                //fb11 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(_uiapp, fb11);
+                if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                    fb11 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Length(_uiapp, fb11);
+                else
+                    fb11 = AyudaCasosUnidades_2020Bajo.Obtener_UT_Length(_uiapp, fb11);
                 Schema schemaSubCampo1 = sb1.Finish();
                 ent1 = new Entity(schemaSubCampo1);
 
@@ -154,11 +152,11 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
                 sb3.SetSchemaName("SubSchemaTest3");
                 FieldBuilder fb31 = sb3.AddSimpleField("SubFieldTest31", typeof(double));
 
-                fb31 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Numero(fb31);
-                //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2021))
-                //    fb31 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Numero(fb31);
-                //else
-                //    fb31 = AyudaCasosUnidades_2020Bajo.Obtener_UT_Numero(fb31);
+                //fb31 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Numero(_uiapp, fb31);
+                if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+                    fb31 = AyudaCasosUnidades_2021Arriba.Obtener_UT_Numero(_uiapp, fb31);
+                else
+                    fb31 = AyudaCasosUnidades_2020Bajo.Obtener_UT_Numero(_uiapp, fb31);
                 Schema schemaSubCampo3 = sb3.Finish();
                 ent3 = new Entity(schemaSubCampo3);
 
@@ -173,7 +171,7 @@ namespace ArmaduraLosaRevit.Model.ExtStore.Tipos
 
                 //****creando esquema contenedor
                 SchemaBuilder SchemaBAse = new SchemaBuilder(_guid);
-                SchemaBAse.SetSchemaName("SchemaTest1");
+                SchemaBAse.SetSchemaName(_datosExtStoreDTO.SchemaName);
 
                 FieldBuilder fb1 = SchemaBAse.AddSimpleField("insertar", typeof(Entity));
                 fb1.SetSubSchemaGUID(new Guid(_guidFile1));

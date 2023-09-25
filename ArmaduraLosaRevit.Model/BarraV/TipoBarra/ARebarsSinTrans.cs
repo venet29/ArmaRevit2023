@@ -270,7 +270,7 @@ namespace rmaduraLosaRevit.Model.BarraV.TipoBarra
                             item.IsOk = false;
                         }
                         else
-                            item.DibujarTagEstribo(_rebarRef, _doc, viewActual, configuracionTAgEstriboDTo, item.posicion);
+                            item.DibujarTagEstribo(_rebarRef, _uiapp, viewActual, configuracionTAgEstriboDTo, item.posicion);
                     }
                 }
 
@@ -303,7 +303,7 @@ namespace rmaduraLosaRevit.Model.BarraV.TipoBarra
             catch (Exception)
             {
 
-                Util.ErrorMsg("Error al Crear tag");
+                Util.ErrorMsg("Error al Tag Rebar Refuerzo Losa");
                 return false;
             }
             return true;

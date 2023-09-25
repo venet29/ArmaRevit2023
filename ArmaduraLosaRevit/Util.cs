@@ -2455,26 +2455,17 @@ namespace ArmaduraLosaRevit
                 met.Invoke(null, parametros);
             }
         }
-        public static bool IsJoined2(
-          this Document doc,
-          Element firstElement,
-          Element secondElement)
+        public static bool IsJoined2(this Document doc, Element firstElement, Element secondElement)
         {
             bool value = false;
-            List<Type> ls = doc.GetType().Assembly
-            .GetTypes().Where(a => a.IsClass && a
-           .Name == "JoinGeometryUtils").ToList();
-            object[] parametros = new object[] { doc,
-            firstElement, secondElement };
-            Type[] tipos = parametros.Select(a => a
-           .GetType()).ToArray();
+            List<Type> ls = doc.GetType().Assembly.GetTypes().Where(a => a.IsClass && a.Name == "JoinGeometryUtils").ToList();
+            object[] parametros = new object[] { doc, firstElement, secondElement };
+            Type[] tipos = parametros.Select(a => a.GetType()).ToArray();
             if (ls.Count > 0)
             {
                 Type t = ls[0];
-                MethodInfo met = t
-                .GetMethod("AreElementsJoined", tipos);
-                value = (bool)met.Invoke(null,
-                  parametros);
+                MethodInfo met = t.GetMethod("AreElementsJoined", tipos);
+                value = (bool)met.Invoke(null, parametros);
             }
             return value;
         }

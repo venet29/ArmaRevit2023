@@ -20,68 +20,79 @@ namespace ArmaduraLosaRevit.Model.Extension
     public static class ExtensionIndependentTag
     {
 
-        public static void Set_LeaderElbow(this IndependentTag tag, XYZ pto)
+        public static void Set_LeaderElbow(this IndependentTag tag, UIApplication _uiapp, XYZ pto)
         {
-            //version22 hacia arriba
-            MethodInfo meth = tag.GetType().GetMethod("SetLeaderElbow", new Type[] { typeof(Reference), typeof(XYZ) });
-            if (meth != null)
+            if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
             {
-                //var referenc = tag.GetTaggedReferences().FirstOrDefault();
-                MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
-                List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
+                //version22 hacia arriba
+                MethodInfo meth = tag.GetType().GetMethod("SetLeaderElbow", new Type[] { typeof(Reference), typeof(XYZ) });
+                if (meth != null)
+                {
+                    //var referenc = tag.GetTaggedReferences().FirstOrDefault();
+                    MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
+                    List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
 
-                var referenc = methRefevalor.FirstOrDefault();
-                object valor = meth.Invoke(tag, new object[] { referenc, pto });
-                return;
+                    var referenc = methRefevalor.FirstOrDefault();
+                    object valor = meth.Invoke(tag, new object[] { referenc, pto });
+                    return;
+                }
             }
-
-            PropertyInfo prop2 = tag.GetType().GetProperty("LeaderElbow");
-            if (prop2 != null)
+            else
             {
-                prop2.SetValue(tag, pto, null);
-                return;
+                PropertyInfo prop2 = tag.GetType().GetProperty("LeaderElbow");
+                if (prop2 != null)
+                {
+                    prop2.SetValue(tag, pto, null);
+                    return;
+                }
             }
         }
 
         //version 2021 hacia abajo
-        public static XYZ Obtener_LeaderElbow(this IndependentTag tag)
+        public static XYZ Obtener_LeaderElbow(this IndependentTag tag, UIApplication _uiapp)
         {
             XYZ punto = default;
 
-            //version22 hacia arriba
-            MethodInfo prop = tag.GetType().GetMethod("GetLeaderElbow", new Type[] { typeof(Reference) });
-            if (prop != null)
+            if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
             {
-                MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
-                List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] {  }) as List<Reference>;
-                var referenc = methRefevalor.FirstOrDefault();
-                //object valor = prop.GetValue(tag, new Type[] { typeof(referenc) });
-                object valor = prop.Invoke(tag, new object[] { referenc });
-                if (valor != null)
+                //version22 hacia arriba
+                MethodInfo prop = tag.GetType().GetMethod("GetLeaderElbow", new Type[] { typeof(Reference) });
+                if (prop != null)
                 {
-                    punto = (XYZ)valor;
-                    return punto;
+                    MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
+                    List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
+                    var referenc = methRefevalor.FirstOrDefault();
+                    //object valor = prop.GetValue(tag, new Type[] { typeof(referenc) });
+                    object valor = prop.Invoke(tag, new object[] { referenc });
+                    if (valor != null)
+                    {
+                        punto = (XYZ)valor;
+                        return punto;
+                    }
                 }
             }
-            //version 2021 hacia abajo
-            PropertyInfo prop2 = tag.GetType().GetProperty("LeaderElbow");
-            if (prop2 != null)
+            else
             {
-                object valor = prop2.GetValue(tag, null);
-                if (valor != null)
+                //version 2021 hacia abajo
+                PropertyInfo prop2 = tag.GetType().GetProperty("LeaderElbow");
+                if (prop2 != null)
                 {
-                    punto = (XYZ)valor;
-                    return punto;
+                    object valor = prop2.GetValue(tag, null);
+                    if (valor != null)
+                    {
+                        punto = (XYZ)valor;
+                        return punto;
+                    }
                 }
             }
-
             return punto;
         }
 
         //**************************
 
-        public static void Set_LeaderEnd(this IndependentTag tag, XYZ pto)
+        public static void Set_LeaderEnd(this IndependentTag tag, UIApplication _uiapp, XYZ pto)
         {
+
             //XYZ punto = default;
             //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
             //    tag.SetLeaderElbow(tag.GetTaggedReferences().FirstOrDefault(), pto);
@@ -95,53 +106,65 @@ namespace ArmaduraLosaRevit.Model.Extension
             //}
             //return punto;
 
-            //version22 hacia arriba
-            MethodInfo meth = tag.GetType().GetMethod("SetLeaderElbow", new Type[] { typeof(Reference), typeof(XYZ) });
-            if (meth != null)
+            if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
             {
-                //var referenc = tag.GetTaggedReferences().FirstOrDefault();
-                MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
-                List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
-
-                var referenc = methRefevalor.FirstOrDefault();
-                object valor = meth.Invoke(tag, new object[] { referenc, pto });
-                return;
-            }
-
-            PropertyInfo prop2 = tag.GetType().GetProperty("LeaderEnd");
-            if (prop2 != null)
-            {
-                prop2.SetValue(tag, pto, null);
-                return;
-            }
-        }
-        public static XYZ Obtener_LeaderEnd(this IndependentTag tag)
-        {
-            XYZ punto = default;
-            //version22 hacia arriba
-            MethodInfo prop = tag.GetType().GetMethod("GetLeaderEnd", new Type[] { typeof(Reference) });
-            if (prop != null)
-            {
-                MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
-                List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
-                var referenc = methRefevalor.FirstOrDefault();
-                //object valor = prop.GetValue(tag, new Type[] { typeof(referenc) });
-                object valor = prop.Invoke(tag, new object[] { referenc });
-                if (valor != null)
+                //version22 hacia arriba
+                MethodInfo meth = tag.GetType().GetMethod("SetLeaderEnd", new Type[] { typeof(Reference), typeof(XYZ) });
+                if (meth != null)
                 {
-                    punto = (XYZ)valor;
-                    return punto;
+                    //var referenc = tag.GetTaggedReferences().FirstOrDefault();
+                    //   independentTag.SetLeaderElbow(independentTag.GetTaggedReferences().FirstOrDefault(), ptoelbow);
+                    MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
+                    List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
+
+                    var referenc = methRefevalor.FirstOrDefault();
+                    object valor = meth.Invoke(tag, new object[] { referenc, pto });
+                    return;
                 }
             }
-            //version 2021 hacia abajo
-            PropertyInfo prop2 = tag.GetType().GetProperty("LeaderEnd");
-            if (prop2 != null)
+            else
             {
-                object valor = prop2.GetValue(tag, null);
-                if (valor != null)
+                PropertyInfo prop2 = tag.GetType().GetProperty("LeaderEnd");
+                if (prop2 != null)
                 {
-                    punto = (XYZ)valor;
-                    return punto;
+                    prop2.SetValue(tag, pto, null);
+                    return;
+                }
+            }
+        }
+        public static XYZ Obtener_LeaderEnd(this IndependentTag tag, UIApplication _uiapp)
+        {
+            XYZ punto = default;
+            if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+            {
+                //version22 hacia arriba
+                MethodInfo prop = tag.GetType().GetMethod("GetLeaderEnd", new Type[] { typeof(Reference) });
+                if (prop != null)
+                {
+                    MethodInfo methRefe = tag.GetType().GetMethod("GetTaggedReferences");
+                    List<Reference> methRefevalor = methRefe.Invoke(tag, new object[] { }) as List<Reference>;
+                    var referenc = methRefevalor.FirstOrDefault();
+                    //object valor = prop.GetValue(tag, new Type[] { typeof(referenc) });
+                    object valor = prop.Invoke(tag, new object[] { referenc });
+                    if (valor != null)
+                    {
+                        punto = (XYZ)valor;
+                        return punto;
+                    }
+                }
+            }
+            else
+            {
+                //version 2021 hacia abajo
+                PropertyInfo prop2 = tag.GetType().GetProperty("LeaderEnd");
+                if (prop2 != null)
+                {
+                    object valor = prop2.GetValue(tag, null);
+                    if (valor != null)
+                    {
+                        punto = (XYZ)valor;
+                        return punto;
+                    }
                 }
             }
             //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
