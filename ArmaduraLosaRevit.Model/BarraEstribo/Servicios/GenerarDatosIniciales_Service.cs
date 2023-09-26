@@ -15,7 +15,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
         private readonly UIApplication _uiapp;
         private Document _doc;
        
-        private SeleccionPtosEstriboMuro _seleccionPtosEstribo;
+        private SeleccionPtosEstriboConfinamientoMuro _seleccionPtosEstribo;
         private SeleccionPtosEstriboViga _seleccionPtosEstriboViga;
         public SeleccionPtosEstriboViga_sinSeleccionBarras _SeleccionPtosEstriboViga_sinSeleccionBarras { get; set; }
         private View3D _view3D_BUSCAR;
@@ -119,7 +119,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             List<EstriboMuroDTO> resul_EstriboMuroDTO = new List<EstriboMuroDTO>();
             //2) seleccionando barras y generando coordenadas
             ISeleccionarNivel _seleccionarNivel = new SeleccionarNivel(_uiapp);
-            _seleccionPtosEstribo = new SeleccionPtosEstriboMuroGeom(_uiapp, _view3D_BUSCAR, _configuracionInicialEstriboDTO, _seleccionarNivel);
+            _seleccionPtosEstribo = new SeleccionPtosEstribosMuro(_uiapp, _view3D_BUSCAR, _configuracionInicialEstriboDTO, _seleccionarNivel);
             if (!_seleccionPtosEstribo.M1_Ejecutar()) return resul_EstriboMuroDTO;
             //2.1) obtener resultados 
             resul_EstriboMuroDTO = _seleccionPtosEstribo.M2_ObtenerEstriboMuroDTO();
@@ -132,7 +132,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             List<EstriboMuroDTO> resul_EstriboMuroDTO = new List<EstriboMuroDTO>();
             //2) seleccionando barras y generando coordenadas
             ISeleccionarNivel _seleccionarNivel = new SeleccionarNivel(_uiapp);
-            _seleccionPtosEstribo = new SeleccionPtosEstriboMuro(_uiapp, _view3D_BUSCAR, _configuracionInicialEstriboDTO, _seleccionarNivel);
+            _seleccionPtosEstribo = new SeleccionPtosEstriboConfinamientoMuro(_uiapp, _view3D_BUSCAR, _configuracionInicialEstriboDTO, _seleccionarNivel);
             if (!_seleccionPtosEstribo.M1_Ejecutar()) return resul_EstriboMuroDTO;
             //2.1) obtener resultados 
             resul_EstriboMuroDTO = _seleccionPtosEstribo.M2_ObtenerEstriboMuroDTO();

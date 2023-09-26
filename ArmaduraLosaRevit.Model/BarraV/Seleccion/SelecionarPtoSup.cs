@@ -29,7 +29,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intervalos
         private View _view;
         private UIDocument _uidoc;
         private ConfiguracionIniciaWPFlBarraVerticalDTO _confiEnfierradoDTO;
-
+        public Element _ElemenetoSelectSup { get; set; }
         public XYZ _PtoInicioIntervaloBarra { get; set; }
         public XYZ _PtoFinalIntervaloBarra { get; set; }
         public List<Level> _listaLevel { get; set; }
@@ -145,33 +145,33 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intervalos
                 {
                     //ISelectionFilter filtroMuro = new FiltroVIga_Muro_Rebar_Columna();//   SelFilter.GetElementFilter(typeof(Wall), typeof(FamilyInstance));
                     Reference ref_pickobject_element = default;
-                    Element _barraEleme1 = default;
+                    _ElemenetoSelectSup = default;
 
                     bool ISCOntinuar = true;
                     while (ISCOntinuar)
                     {
                          ref_pickobject_element = _uidoc.Selection.PickObject(ObjectType.PointOnElement, "Seleccionar Punto Superior Barra:");
-                         _barraEleme1 = _doc.GetElement(ref_pickobject_element);
+                         _ElemenetoSelectSup = _doc.GetElement(ref_pickobject_element);
 
-                        if (filtroMuro.AllowElement(  _barraEleme1))
+                        if (filtroMuro.AllowElement(  _ElemenetoSelectSup))
                         {
                             ISCOntinuar = false;
                         }
                         else
-                            Util.ErrorMsg($"Selecciono un elemento :{_barraEleme1.Category.Name}\n\nSeleccionar elemetos BARRA, VIGA , MURO o COLUMNA");
+                            Util.ErrorMsg($"Selecciono un elemento :{_ElemenetoSelectSup.Category.Name}\n\nSeleccionar elemetos BARRA, VIGA , MURO o COLUMNA");
                     }
            
                     _PtoFinalIntervaloBarra = ref_pickobject_element.GlobalPoint;
              
              
-                    if (_barraEleme1 is Rebar)
+                    if (_ElemenetoSelectSup is Rebar)
                     {
                         Rebar _barra1 = (Rebar)_doc.GetElement(ref_pickobject_element);
                         if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barra1, _view)) return false;
                     }
                     else
                     {
-                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barraEleme1, _view)) return false;
+                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_ElemenetoSelectSup, _view)) return false;
                     }
 
                     NormalCaraElemento = AyudaObtenerNormarPlanoVisisible.FaceNormal;

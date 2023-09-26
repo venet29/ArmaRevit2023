@@ -22,6 +22,8 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
     public partial class SeleccionarElementosV
     {
 
+        public Element _ElemenetoSelect1 { get; set; }
+        public Element _ElemenetoSelect2 { get; set; }
         public bool  IsSalirSeleccionPilarMuro { get; set; }
         public Element hostParaleloView { get; set; }
         #region Programanual
@@ -227,18 +229,18 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                     }
                  
 
-                    Element _barraEleme1 = _doc.GetElement(ref_pickobject_element);
+                    _ElemenetoSelect1 = _doc.GetElement(ref_pickobject_element);
                     //Element host = default;
-                    if (_barraEleme1 is Rebar)
+                    if (_ElemenetoSelect1 is Rebar)
                     {
-                       Rebar _barra1 = (Rebar)_doc.GetElement(ref_pickobject_element);
+                       Rebar _barra1 = (Rebar)_ElemenetoSelect1;
                         if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barra1, _view)) return false;
                         hostParaleloView = _doc.GetElement(_barra1.GetHostId());
                     }
                     else
                     {
-                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barraEleme1, _view)) return false;
-                        hostParaleloView = _barraEleme1;
+                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_ElemenetoSelect1, _view)) return false;
+                        hostParaleloView = _ElemenetoSelect1;
                  
                     }
               

@@ -2,28 +2,25 @@
 using ArmaduraLosaRevit.Model.Extension;
 using ArmaduraLosaRevit.Model.FILTROS;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using ArmaduraLosaRevit.Model.BarraEstribo.DTO;
 using ArmaduraLosaRevit.Model.Seleccionar;
-using ArmaduraLosaRevit.Model.BarraEstribo.Servicios;
 using ArmaduraLosaRevit.Model.UTILES;
 using ArmaduraLosaRevit.Model.UTILES.ParaBarras;
 using ArmaduraLosaRevit.Model.BarraV.DTO;
 using ArmaduraLosaRevit.Model.BarraV.Intervalos;
 using ArmaduraLosaRevit.Model.BarraV.Buscar;
+using Autodesk.Revit.DB.Structure;
 
 namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 {
-    public class SeleccionPtosEstriboMuroGeom : SeleccionPtosEstriboMuro
+    public class SeleccionPtosEstribosMuro : SeleccionPtosEstriboConfinamientoMuro
     {
         public Element MuroParaleloView { get; set; }
-        public SeleccionPtosEstriboMuroGeom(UIApplication _uiapp, View3D _view3D_paraBuscar,
+        public SeleccionPtosEstribosMuro(UIApplication _uiapp, View3D _view3D_paraBuscar,
                                         DatosConfinamientoAutoDTO configuracionInicialEstriboDTO, ISeleccionarNivel _seleccionarNivel)
             : base(_uiapp, _view3D_paraBuscar, configuracionInicialEstriboDTO, _seleccionarNivel)
         {
@@ -69,8 +66,14 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 IsSalirSeleccionPilarMuro = true;
                 M2_SeleccionarPtoInicio();
                 if (IsSalirSeleccionPilarMuro == false) return false;
+
+                if (_ElemenetoSelect1 is Rebar)
+                {
+                    Rebar _barra1 = (Rebar)_ElemenetoSelect1;
+                    _diamtroBarra1Foot = _barra1.ObtenerDiametroFoot();
+                }
                 _ptobarra1 = _PtoInicioIntervaloBarra;
-                _ptoSeleccionMouseCentroCaraMuro = _PtoInicioIntervaloBarra;
+               // _ptoSeleccionMouseCentroCaraMuro = _PtoInicioIntervaloBarra;
                 _anchoEstribo1Foot = 0; ;
 
 
@@ -79,11 +82,17 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 selecionarPtoSup._PtoInicioIntervaloBarra = _PtoInicioIntervaloBarra;
                 //selecionarPtoSup.SeleccionarPtoSuperior(_PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost, _ptoSeleccionMouseCentroCaraMuro);
 
-                if (selecionarPtoSup.SeleccionarPtoFin(_ptoSeleccionMouseCentroCaraMuro, new FiltroVIga_Muro_Rebar_Columna())) return false;
-                _ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, _ptoSeleccionMouseCentroCaraMuro, selecionarPtoSup._PtoFinalIntervaloBarra);
+                if (selecionarPtoSup.SeleccionarPtoFin(_PtoInicioIntervaloBarra, new FiltroVIga_Muro_Rebar_Columna())) return false;
+
+                if (selecionarPtoSup._ElemenetoSelectSup is Rebar)
+                {
+                    Rebar _barra2 = (Rebar)selecionarPtoSup._ElemenetoSelectSup;
+                    _diamtroBarra2Foot = _barra2.ObtenerDiametroFoot();
+                }
+                _ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, _PtoInicioIntervaloBarra, selecionarPtoSup._PtoFinalIntervaloBarra);
                 _anchoEstribo2Foot = 0;
 
-                _direccionBarra = (_ptobarra2.GetXY0() - _ptoSeleccionMouseCentroCaraMuro.GetXY0()).Normalize();
+                _direccionBarra = (_ptobarra2.GetXY0() - _ptobarra1.GetXY0()).Normalize();
             }
             catch (Exception ex)
             {

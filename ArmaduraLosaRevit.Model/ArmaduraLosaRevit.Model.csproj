@@ -204,7 +204,7 @@
     <Compile Include="BarraEstriboV\Editar\EditarUbicacionEstribo.cs" />
     <Compile Include="BarraEstriboV\Editar\ManejarEditar.cs" />
     <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamientoViga.cs" />
-    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboMuroGeom.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstribosMuro.cs" />
     <Compile Include="BarraEstribo\Seleccion\Vigas\SeleccionPtosEstriboViga_sinSeleccionBarras.cs" />
     <Compile Include="BarraEstribo\Servicios\CambiarLargoVigas.cs" />
     <Compile Include="BarraMallaRebar\DibujarBarraMalla_sinTrans.cs" />
@@ -868,7 +868,7 @@
     <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamientoAuto.cs" />
     <Compile Include="BarraEstribo\ManejadorEstriboCOnfinamiento.cs" />
     <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboConfinamientoAuto.cs" />
-    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboMuro.cs" />
+    <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboConfinamientoMuro.cs" />
     <Compile Include="BarraEstribo\Seleccion\SeleccionPtosEstriboViga.cs" />
     <Compile Include="BarraEstribo\Servicios\CambiarColorBarras_Service.cs" />
     <Compile Include="BarraEstribo\Servicios\GenerarDatosIniciales_Service.cs" />

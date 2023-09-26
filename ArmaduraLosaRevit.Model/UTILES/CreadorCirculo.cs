@@ -1,4 +1,6 @@
 ﻿using ArmaduraLosaRevit.Model.Armadura;
+using ArmaduraLosaRevit.Model.Enumeraciones;
+using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace ArmaduraLosaRevit.Model.UTILES
 {
@@ -93,20 +96,24 @@ namespace ArmaduraLosaRevit.Model.UTILES
         }
 
         //vistas
-        public static DetailArc CrearCirculo_DetailLine_ConTrans(double d, XYZ centro, UIDocument uidoc, XYZ direccionX, XYZ DireccionY, string graphic_stylesName = "ROJO", View view = null)
+        public static DetailArc CrearCirculo_DetailLine_ConTrans(double d, XYZ centro, UIDocument uidoc, XYZ direccionX, XYZ DireccionY, string graphic_stylesName = "ROJO", Autodesk.Revit.DB.View view = null)
         {
             DetailArc lineafalsa = null;
+            Document _doc = uidoc.Document;
             try
             {
-                using (Transaction t = new Transaction(uidoc.Document))
+                using (Transaction t = new Transaction(_doc))
                 {
                     t.Start("Create circulo2-NH");
 
-                    lineafalsa=CrearCirculo_DetailLine_SinTrans(d, centro, uidoc, direccionX, DireccionY, graphic_stylesName, view);
-                    // uidoc.Document.Regenerate();
+                    lineafalsa = CrearCirculo_DetailLine_SinTrans(d, centro, uidoc, direccionX, DireccionY, graphic_stylesName, view);
+                    //lineafalsa.GeometryCurve();
+                    //uidoc.Document.Regenerate();
                     t.Commit();
-                    //  uidoc.RefreshActiveView();
+                    //uidoc.RefreshActiveView();
                 }
+
+                funcionAUx_movercirculo(centro, lineafalsa, _doc);
 
             }
             catch (Exception ex)
@@ -114,10 +121,40 @@ namespace ArmaduraLosaRevit.Model.UTILES
 
                 Util.ErrorMsg($"Error en 'CrearCirculo b'  EX:{ex.Message}");
             }
+
+            
             return lineafalsa;
         }
 
-        public static DetailArc CrearCirculo_DetailLine_SinTrans(double d, XYZ centro, UIDocument uidoc, XYZ direccionX, XYZ DireccionY, string graphic_stylesName,View view=null)
+        //25-09-2023
+        //funcion creada por el ciruclo se movia cerca del  (0,0,0) cuando l centro estaba en  ()
+        private static void funcionAUx_movercirculo(XYZ centro, DetailArc lineafalsa, Document _doc)
+        {
+            var arcGeom = lineafalsa.GeometryCurve as Arc;
+            if (arcGeom != null)
+            {
+                XYZ center = arcGeom.Center;
+                if (center.DistanceTo(centro) > 2)
+                {
+
+                    try
+                    {
+                        using (Transaction t = new Transaction(_doc))
+                        {
+                            t.Start("CMOver barra-NH");
+                            ElementTransformUtils.MoveElement(_doc, lineafalsa.Id, centro.GetXY0() - center.GetXY0());
+                            t.Commit();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Util.ErrorMsg("No se puede mover barra");
+                    }
+                }
+            }
+        }
+
+        public static DetailArc CrearCirculo_DetailLine_SinTrans(double d, XYZ centro, UIDocument uidoc, XYZ direccionX, XYZ DireccionY, string graphic_stylesName, View view = null)
         {
             DetailArc lineafalsa = default;
             if (view == null)

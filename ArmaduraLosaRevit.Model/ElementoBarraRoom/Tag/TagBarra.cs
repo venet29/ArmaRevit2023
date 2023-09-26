@@ -158,7 +158,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Tag
             }
 
 
-            if (independentTag == null)
+            if (independentTag != null)
             {
                 _CreadorExtStore = new CreadorExtStore(_uiapp, _CreadorExtStoreDTO);
                 _CreadorExtStore.SET_DataInElement_XYZ_SInTrans(independentTag, independentTag.TagHeadPosition);
