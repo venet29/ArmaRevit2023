@@ -1,6 +1,7 @@
 ﻿using ArmaduraLosaRevit.Model.BarraEstribo.DTO;
 using ArmaduraLosaRevit.Model.BarraEstribo.TipoTrabas.Tipos;
 using ArmaduraLosaRevit.Model.Enumeraciones;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.TipoTrabas
     {
         public static ITipoTraba ObtenerTipoTrabas(ConfiguracionBarraTrabaDTO _configuracionBarraTrabaDTO)
         {
-            int espesorMuroOviga = (int)Util.FootToCm(_configuracionBarraTrabaDTO.EspesroMuroOVigaFoot);
+            double espesorMuroOviga = Math.Round( Util.FootToCm(_configuracionBarraTrabaDTO.EspesroMuroOVigaFoot));
 
             switch (espesorMuroOviga)
             {

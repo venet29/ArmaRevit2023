@@ -17,26 +17,30 @@ using ArmaduraLosaRevit.Model.BarraEstribo.Servicios;
 using ArmaduraLosaRevit.Model.BarraV.Buscar;
 using ArmaduraLosaRevit.Model.UTILES;
 using ArmaduraLosaRevit.Model.UTILES.ParaBarras;
+using ArmaduraLosaRevit.Model.BarraV.DTO;
+using ArmaduraLosaRevit.Model.BarraV.Intervalos;
 
 namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 {
     public class SeleccionPtosEstriboConfinamientoMuro : SeleccionarElementosV
     {
         public List<XYZ> _listaPtosPAthArea;
-        protected Rebar _barra1;
+  
         protected double _diamtroBarra1Foot;
         protected double _anchoEstribo1Foot;
         protected XYZ _ptobarra1;
         protected XYZ _ptobarra2;
+        protected Rebar _barra1;
         protected Rebar _barra2;
         protected double _diamtroBarra2Foot;
         protected double _anchoEstribo2Foot;
+        protected Element _wallSeleccionado;
 
 
         protected DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO;
         protected ISeleccionarNivel _seleccionarNivel;
         protected DireccionSeleccionMouse _direccionSeleccionMouse;
-        protected Element _wallSeleccionado;
+        
         private XYZ _direccionParalelaViewSecctioin;
         private XYZ _direccionPerpenEntradoHaciaViewSecction;
         private double _AnchoVisibleFoot;
@@ -80,10 +84,10 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             if (!M1_1_CrearWorkPLane_EnCentroViewSecction()) return false;
 
             if (!M1_3a_SeleccionarRebarElement()) return false;
-
+            //_wallSeleccionado = base.hostParaleloView;
             if (!M1_4b_1_OrientacionSeleccion()) return false;
 
-            if (!M1_4_BuscarMuroPerpendicularVIew()) return false;
+            //if (!M1_4_BuscarMuroPerpendicularVIew()) return false;
 
             if (!M1_4a_ReCalcularP1P2_conRecubrimieto()) return false;
 
@@ -100,6 +104,8 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
         }
         #region comandos :M1 Ejecutar
+
+        /*
         public virtual bool M1_3a_SeleccionarRebarElement()
         {
 
@@ -110,7 +116,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 //1
                 Reference ref_baar1 = _uidoc.Selection.PickObject(ObjectType.Element, filtroRebar, "Seleccionar primera Barra:");
                 _ptoSeleccionMouseCentroCaraMuro = ref_baar1.GlobalPoint;
-
+                _ptobarra1 = ref_baar1.GlobalPoint;
 
                 _barra1 = (Rebar)_doc.GetElement(ref_baar1);
 
@@ -153,7 +159,65 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
             return true;
         }
+        */
+        public bool M1_3a_SeleccionarRebarElement()
+        {
+            try
+            {
+                double recub = ConstNH.RECUBRIMIENTO_ESTRIBO_FOOT;
+                _confiEnfierradoDTO = new ConfiguracionIniciaWPFlBarraVerticalDTO();
+                _confiEnfierradoDTO.TipoSelecion = TipoSeleccion.ConElemento;
 
+                //1) pto inicial
+                IsSalirSeleccionPilarMuro = true;
+                M2_SeleccionarPtoInicio();
+                if (IsSalirSeleccionPilarMuro == false) return false;
+
+                if (base._ElemenetoSelect1_ is Rebar)
+                {
+                    Rebar _barra1 = (Rebar)base._ElemenetoSelect1_;
+                    _diamtroBarra1Foot = _barra1.ObtenerDiametroFoot();
+                }
+                XYZ ptoSobreMuro_menosRecub = _ptoSeleccionMouseCentroCaraMuro - _view.ViewDirection * recub;
+
+                _ptobarra1 = _PtoInicioIntervaloBarra;
+                _ptobarra1 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(_view.ViewDirection, ptoSobreMuro_menosRecub, _ptobarra1);
+                // _ptoSeleccionMouseCentroCaraMuro = _PtoInicioIntervaloBarra;
+
+                double anchoCOnrecub=hostParaleloView.ObtenerEspesorConCaraVerticalVIsible_foot(_view);
+                _anchoEstribo1Foot = anchoCOnrecub - recub * 2; 
+
+
+                //2) pto final)
+                SelecionarPtoSup selecionarPtoSup = new SelecionarPtoSup(_uiapp, _confiEnfierradoDTO, new List<Level>());
+                selecionarPtoSup._PtoInicioIntervaloBarra = _PtoInicioIntervaloBarra;
+                //selecionarPtoSup.SeleccionarPtoSuperior(_PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost, _ptoSeleccionMouseCentroCaraMuro);
+
+                if (selecionarPtoSup.SeleccionarPtoFin(_PtoInicioIntervaloBarra, new FiltroVIga_Muro_Rebar_Columna())) return false;
+
+                if (selecionarPtoSup._ElemenetoSelectSup is Rebar)
+                {
+                    Rebar _barra2 = (Rebar)selecionarPtoSup._ElemenetoSelectSup;
+                    _diamtroBarra2Foot = _barra2.ObtenerDiametroFoot();
+                }
+                _ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, ptoSobreMuro_menosRecub, selecionarPtoSup._PtoFinalIntervaloBarra);
+                _anchoEstribo2Foot = anchoCOnrecub - recub * 2;
+
+                _direccionBarra = (_ptobarra2.GetXY0() - _ptobarra1.GetXY0()).Normalize();
+                _espesorMuroVigaFoot = hostParaleloView.ObtenerEspesorConCaraVerticalVIsible_foot(_view);
+                _wallSeleccionado = hostParaleloView;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($" ex:{ex.Message}");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /*
         public bool M1_3a_SeleccionarRebarMuroVigaElement()
         {
             try
@@ -218,7 +282,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             }
             return true;
         }
-
+        */
         public bool M1_4_BuscarMuroPerpendicularVIew()
         {
             _wallSeleccionado = _doc.GetElement(_barra1.GetHostId());
@@ -253,17 +317,22 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             try
             {
                 double maxDiamtro = Math.Max(_diamtroBarra1Foot, _diamtroBarra2Foot);
+                _ptobarra1 = _ptobarra1 - _view.ViewDirection * maxDiamtro;
+                _ptobarra2 = _ptobarra2 - _view.ViewDirection * maxDiamtro;
+
+
                 if (_direccionSeleccionMouse == DireccionSeleccionMouse.IzqToDere)
                 {
-                    _ptobarra1 = _ptobarra1 - _view.ViewDirection * maxDiamtro - _view.RightDirection * (_diamtroBarra1Foot * 0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
-                   // _ptoSeleccionMouseCentroCaraMuro = _ptoSeleccionMouseCentroCaraMuro + _view.ViewDirection * maxDiamtro - _view.RightDirection * (_diamtroBarra1Foot*0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
-                    _ptobarra2 = _ptobarra2 - _view.ViewDirection * maxDiamtro + _view.RightDirection * (_diamtroBarra2Foot * 0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
+                    _ptobarra1 = _ptobarra1 - _view.RightDirection * (_diamtroBarra1Foot * 1 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 1);
+                    // _ptoSeleccionMouseCentroCaraMuro = _ptoSeleccionMouseCentroCaraMuro + _view.ViewDirection * maxDiamtro - _view.RightDirection * (_diamtroBarra1Foot*0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
+                    _ptobarra2 = _ptobarra2 + _view.RightDirection * (_diamtroBarra2Foot * 1 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 1);
                 }
                 else
                 {
-                    _ptobarra1 = _ptobarra1 + _view.ViewDirection * maxDiamtro + _view.RightDirection * (_diamtroBarra2Foot * 0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
+                    _ptobarra2 = _ptobarra2 - _view.RightDirection * (_diamtroBarra2Foot * 1 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 1);
+                    _ptobarra1 = _ptobarra1 + _view.RightDirection * (_diamtroBarra2Foot * 1 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 1);
                     //_ptoSeleccionMouseCentroCaraMuro = _ptoSeleccionMouseCentroCaraMuro + _view.ViewDirection * maxDiamtro + _view.RightDirection * (_diamtroBarra1Foot* 0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM)* 0.5);
-                    _ptobarra2 = _ptobarra2 + _view.ViewDirection * maxDiamtro - _view.RightDirection * (_diamtroBarra2Foot * 0.5 + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) * 0.5);
+
                 }
             }
             catch (Exception)
@@ -337,20 +406,18 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             //siempre que el _ptobarra1 sea el de menor Z
             if (_ptobarra1.Z > _ptobarra2.Z)
             {
-
-                XYZ _ptobarra2_aux = _ptobarra2;
+                XYZ _ptobarra2_aux = _ptobarra2.ObtenerCopia();
                 Rebar _barr2_aux = _barra2;
                 double _anchoEstribo2Foot_aux = _anchoEstribo2Foot;
 
-                _ptobarra2 = _ptoSeleccionMouseCentroCaraMuro;
+                _ptobarra2 = _ptobarra1.ObtenerCopia();
                 _barra2 = _barra1;
                 _anchoEstribo2Foot = _anchoEstribo1Foot;
 
                 //cambio
-                _ptoSeleccionMouseCentroCaraMuro = _ptobarra2_aux;
+                _ptobarra1 = _ptobarra2_aux.ObtenerCopia();
                 _barra1 = _barr2_aux;
                 _anchoEstribo1Foot = _anchoEstribo2Foot_aux;
-
             }
         }
 
@@ -364,11 +431,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 double zp2_aux = _ptobarra2.Z;
                 XYZ new_ptobarra1 = _ptobarra2.AsignarZ(zp1_aux);
                 XYZ new_ptobarra2 = _ptobarra1.AsignarZ(zp2_aux);
-                _ptoSeleccionMouseCentroCaraMuro = new_ptobarra1;
+                _ptobarra1 = new_ptobarra1;
                 _ptobarra2 = new_ptobarra2;
             }
-
-
         }
         protected bool M1_4c_ObtenerRangoLevelSeleccionado()
         {
@@ -486,7 +551,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
                 // este opcion es para que no se vuelva a buscar el muro si solo se dibuja el estribo en un piso,osea seleccion mouse-mouse => solo dos nieveles)
                 // si hay mas nieveles entoences se busca muro en cada nivel 
-                if(ListaLevelSeleccionado.Count>2)
+                if (ListaLevelSeleccionado.Count > 2)
                     M2_2_ObtenerDatosEstribo();
 
                 M2_2_ObtenerLateraleMuroDTO();
@@ -551,7 +616,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             try
             {
                 var XpuntoBUScar = ((aux_ptobarra1 + aux_ptobarra2) / 2)
-                                    .AsignarZ(aux_ptobarra1.Z + Util.CmToFoot(50))+_view.ViewDirection* Util.CmToFoot(5);
+                                    .AsignarZ(aux_ptobarra1.Z + Util.CmToFoot(50)) + _view.ViewDirection * Util.CmToFoot(5);
 
                 BuscarMuros BuscarMuros = new BuscarMuros(_uiapp, Util.CmToFoot(45));
                 XYZ ptoSobreMuro = XYZ.Zero;
@@ -560,17 +625,17 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 (_wallSeleccionado, _espesorMuroVigaFoot, ptoSobreMuro)
                     = BuscarMuros.OBtenerRefrenciaMuro(_view3D_paraBuscar, XpuntoBUScar, -_view.ViewDirection);
 
-                if (_wallSeleccionado == null && _wallDeBarras!=null)
+                if (_wallSeleccionado == null && _wallDeBarras != null)
                 {
                     BuscarMuros.AsignarMuro(_wallDeBarras);
                     _wallSeleccionado = _wallDeBarras;
-                    _espesorMuroVigaFoot =(_wallDeBarras as Wall).ObtenerEspesorMuroFoot(_doc);
+                    _espesorMuroVigaFoot = (_wallDeBarras as Wall).ObtenerEspesorMuroFoot(_doc);
 
                     //BuscarMuros.CentroCaraNormalInversaVistaMuro();
                     // ptoSobreMuro = BuscarMuros.CentroCaraNormalInversaVista;
                     (bool resulta, PlanarFace _planar) = _wallDeBarras.ObtenerCaraVerticalVIsible(_view);
                     ptoSobreMuro = (resulta ? _planar.ObtenerCenterDeCara() : XYZ.Zero);
-                  
+
                 }
 
                 if (_wallSeleccionado == null)
@@ -630,6 +695,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             if (_configuracionInicialEstriboDTO.IsLateral == true)
             {
                 //   XYZ ptoInicialLateral_aux_ptobarra1 = _ptoSeleccionMouseCentroCaraMuro_Inicial + _porRecubrimieto;
+
                 XYZ ptoInicialLateral_aux_ptobarra1 = aux_ptobarra1;// + _porRecubrimieto;
 
                 //ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_configuracionInicialEstriboDTO.DiamtroLateralEstriboMM, aux_ptobarra1, aux_ptobarra2);
@@ -657,11 +723,13 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
         protected ConfiguracionBarraTrabaDTO M2_3_1_ObtenerDatosParaTraba()
         {
+            if (_configuracionInicialEstriboDTO.cantidadTraba == 0)
+                _configuracionInicialEstriboDTO.cantidadTraba = CantidadTrabas.Ejecutar(_AnchoVisibleFoot);
 
             return new ConfiguracionBarraTrabaDTO()
             {
                 DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,
-                Ptobarra1 = aux_ptobarra1 + XYZ.BasisZ * Util.CmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10.0f) * .9999 ,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                Ptobarra1 = aux_ptobarra1 + XYZ.BasisZ * Util.CmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10.0f) * .9999,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
                 Ptobarra2 = aux_ptobarra2,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
                 EspesroMuroOVigaFoot = _espesorMuroVigaFoot,
                 textoTraba = (_configuracionInicialEstriboDTO.IsTraba == false ? "" : _configuracionInicialEstriboDTO.ObtenerTextBarra_Borrar()),

@@ -2,6 +2,7 @@
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Update;
 using ArmaduraLosaRevit.Model.FILTROS.Ayuda;
 using ArmaduraLosaRevit.Model.RebarLosa.UpDate;
+using ArmaduraLosaRevit.Model.UTILES;
 using ArmaduraLosaRevit.Model.Viewnh.UpDate;
 using ArmaduraLosaRevit.Model.Visibilidad.UpdateVistas;
 using Autodesk.Revit.DB;
@@ -31,6 +32,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         public UpdateGeneral(UIApplication uiapp)
         {
             _uiapp = uiapp;
+
         }
 
         //NOTA IMPORT  NO BORRAR CONSTRUCTOR  PORQUE CARGA VALIABLE QUE SE USA CON EL RIBBON AL ABRIR NUEVOS PROYECTO EN EÑ METODO '?cargarMetodoNOmbreClase'
@@ -59,6 +61,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
             try
             {
                 _uiapp = uiapp;
+      
 
             }
             catch (Exception )
@@ -78,6 +81,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 if (IsM1_ConfiguracionAlCArgarREvit) return true;
 
                 // if (!CrearInstancia(_uiapp)) return false;
@@ -111,6 +115,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 if (IsM1_ConfiguracionAlCArgarREvit) return true;
 
                 //   if (!CrearInstancia(_uiapp)) return false;
@@ -143,6 +148,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 //  if (!CrearInstancia(_uiapp)) return false;
 
                 Manejador_UpdateRebar.DesCargarUpdateREbar(_uiapp);
@@ -173,6 +179,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 if (IsM4_CargarGenerar) return true;
 
                 //  if (!CrearInstancia(_uiapp)) return false;
@@ -205,6 +212,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 //  if (!CrearInstancia(_uiapp)) return false;
 
                 Manejador_UpdateRebar.DesCargarUpdateREbar(_uiapp);
@@ -230,6 +238,7 @@ namespace ArmaduraLosaRevit.Model.UpdateGenerar
         {
             try
             {
+                UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
                 if (IsM6_CargarRebarParaEditar) return true;
                 //   if (!CrearInstancia(_uiapp)) return false;
 

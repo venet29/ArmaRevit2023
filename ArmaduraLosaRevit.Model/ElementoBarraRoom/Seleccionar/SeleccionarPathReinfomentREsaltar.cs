@@ -97,7 +97,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Seleccionar
                 if (!(ePathReinSymbol is PathReinSpanSymbol)) return;
 
                 var _pathReinSymbol = ePathReinSymbol as PathReinSpanSymbol;
-                Element ePathReinforcement = _pathReinSymbol.Obtener_GetTaggedLocalElement();
+                Element ePathReinforcement = _pathReinSymbol.Obtener_GetTaggedLocalElement(_uiapp);
                 //obtiene una referencia floor con la referencia r
                 if (!(ePathReinforcement is PathReinforcement)) return;
                 WrapperBarrasLosa _WrapperBarrasLosa = null;

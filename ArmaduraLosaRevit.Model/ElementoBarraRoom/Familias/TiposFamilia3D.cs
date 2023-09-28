@@ -51,7 +51,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Familias
 
                     if (View3D_VISUALIZAR==null)
                     {
-                        List<string> ListaView = new List<string>() { "{3D - masteringenieria.cl}", "{3D - delporteing@gmail.com}" };
+                        List<string> ListaView = new List<string>() { "{3D - masteringenieria.cl}", "{3D - delporteing@gmail.com}", "{3D - delporte.bim}", "3D" };
 
                         foreach (string itemview3d in ListaView)
                         {

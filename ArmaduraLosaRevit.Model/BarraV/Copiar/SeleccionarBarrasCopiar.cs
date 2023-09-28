@@ -15,32 +15,23 @@ using System.Linq;
 namespace ArmaduraLosaRevit.Model.BarraV.Copiar
 {
 
-    public class SeleccionarBarrasREbar_InfoComppleta: SeleccionarRebarRectanguloWrapperRebar
+    public class SeleccionarBarrasREbar_InfoComppleta : SeleccionarRebarRectanguloWrapperRebar
     {
-#pragma warning disable CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._uiapp' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._uiapp'. Use the new keyword if hiding was intended.
-        private UIApplication _uiapp;
-#pragma warning restore CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._uiapp' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._uiapp'. Use the new keyword if hiding was intended.
-        private readonly double _valorZ;
-#pragma warning disable CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._uidoc' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._uidoc'. Use the new keyword if hiding was intended.
-        private UIDocument _uidoc;
-#pragma warning restore CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._uidoc' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._uidoc'. Use the new keyword if hiding was intended.
-#pragma warning disable CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._doc' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._doc'. Use the new keyword if hiding was intended.
-        private Document _doc;
-#pragma warning restore CS0108 // 'SeleccionarBarrasREbar_InfoComppleta._doc' hides inherited member 'SeleccionarRebarRectanguloWrapperRebar._doc'. Use the new keyword if hiding was intended.
+        private double _valorZ;  // valor de desfase para cppiar barras entre vigas para vigas idem
         private View _view;
-        public List<ElementoRebar_Elev> ListaBarrasRebar_InfoCompleta { get;  set; }
+        public List<ElementoRebar_Elev> ListaBarrasRebar_InfoCompleta { get; set; }
 
         private TiposRebarTagsEnView _tiposRebarTagsEnView;
 
-        public SeleccionarBarrasREbar_InfoComppleta(UIApplication uiapp, double valorZ=0.0d)
-            :base(uiapp,TipoBarraGeneral.Elevacion, "soloElementoViga")
+        public SeleccionarBarrasREbar_InfoComppleta(UIApplication uiapp, double valorZ = 0.0d)
+            : base(uiapp, TipoBarraGeneral.Elevacion, "soloElementoViga")
         {
             this._uiapp = uiapp;
             this._valorZ = valorZ;
             this._uidoc = uiapp.ActiveUIDocument;
             this._doc = _uidoc.Document;
             this._view = _doc.ActiveView;
-    
+
             ListaBarrasRebar_InfoCompleta = new List<ElementoRebar_Elev>();
             _tiposRebarTagsEnView = new TiposRebarTagsEnView(_uiapp, _doc.ActiveView);
         }
@@ -48,7 +39,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Copiar
         public bool GenerarLista()
         {
             try
-            {                
+            {
                 _tiposRebarTagsEnView.M0_BuscarRebarTagInView();
                 List<ElementId> refs_pickobjects = null;
                 try
@@ -73,10 +64,10 @@ namespace ArmaduraLosaRevit.Model.BarraV.Copiar
 
                     List<IndependentTag> listaTag = _tiposRebarTagsEnView.M1_BuscarEnColecctorPorRebar(Element_pickobject_element.Id);
 
-                    ElementoRebar_Elev _WrapperBarrasElevaciones_inicial = new ElementoRebar_Elev((Rebar)Element_pickobject_element, listaTag,_view);
+                    ElementoRebar_Elev _WrapperBarrasElevaciones_inicial = new ElementoRebar_Elev((Rebar)Element_pickobject_element, listaTag, _view);
                     _WrapperBarrasElevaciones_inicial.ObtenerPArametros(_valorZ);
 
-                    if(_WrapperBarrasElevaciones_inicial.IsOk)
+                    if (_WrapperBarrasElevaciones_inicial.IsOk)
                         ListaBarrasRebar_InfoCompleta.Add(_WrapperBarrasElevaciones_inicial);
                 }
             }
@@ -94,8 +85,8 @@ namespace ArmaduraLosaRevit.Model.BarraV.Copiar
             try
             {
                 var listaActualBarrasRebarSeleccionadas = _uidoc.Selection.GetElementIds().ToList();
-                if (!SeleccionarBarrasViga()) return false;    
-                var listaNUevosRebrSelecciondos=ListaWrapperRebarFiltro.Select(c => c.element.Id).ToList();
+                if (!SeleccionarBarrasViga()) return false;
+                var listaNUevosRebrSelecciondos = ListaWrapperRebarFiltro.Select(c => c.element.Id).ToList();
                 listaNUevosRebrSelecciondos.AddRange(listaActualBarrasRebarSeleccionadas);
                 _uidoc.Selection.SetElementIds(listaNUevosRebrSelecciondos);
             }

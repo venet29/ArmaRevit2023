@@ -1,5 +1,6 @@
 ﻿using ArmaduraLosaRevit.Model.Armadura;
 using ArmaduraLosaRevit.Model.Enumeraciones;
+using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Structure;
 using System;
@@ -30,7 +31,7 @@ namespace ArmaduraLosaRevit.Model.UTILES.ParaBarras.Entidades
             PathReinSpanSymbol _independentTag = _elem as PathReinSpanSymbol;
             if (_independentTag == null) return null;
 
-            PathReinforcement _PathRein = _doc.GetElement(_independentTag.GetTaggedLocalElementIds().FirstOrDefault()) as PathReinforcement;
+            PathReinforcement _PathRein = _independentTag.Obtener_GetTaggedLocalElement(null) as PathReinforcement; ;  //_doc.GetElement(_independentTag.Obtener_GetTaggedLocalElement()) as PathReinforcement;
             if (_PathRein == null) return null;
 
             List<IndependentTag> listaIndependentTag = TiposPathReinTagsEnView.M1_GetFamilySymbol_ConPathReinforment(_PathRein.Id, _doc, _doc.ActiveView.Id);

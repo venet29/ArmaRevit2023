@@ -133,7 +133,7 @@ namespace ArmaduraLosaRevit.Model.Seleccionar.Barras
                     if (!(ePathReinSymbol is PathReinSpanSymbol)) return false;
 
                     var _pathReinSymbol = ePathReinSymbol as PathReinSpanSymbol;
-                    Element ePathReinforcement = _pathReinSymbol.Obtener_GetTaggedLocalElement();
+                    Element ePathReinforcement = _pathReinSymbol.Obtener_GetTaggedLocalElement(_uiapp);
                     //obtiene una referencia floor con la referencia r
                     if (!(ePathReinforcement is PathReinforcement)) return false;
 

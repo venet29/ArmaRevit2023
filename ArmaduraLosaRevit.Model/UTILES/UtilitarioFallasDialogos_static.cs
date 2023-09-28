@@ -89,7 +89,6 @@ namespace ArmaduraLosaRevit.Model.UTILES
                 //**
 
 
-
                 FailureDefinitionId failID = FallaActual.FailID;//  fma.GetFailureDefinitionId(); // EXISTE UN LISTADO DE FALLAS POSIBLES EN BUILTINFAILURES
                 string descrip = FallaActual.Descripcion;// fma.GetDescriptionText();
                 var _sever = FallaActual.Severidad;// fma.GetSeverity();
@@ -100,6 +99,12 @@ namespace ArmaduraLosaRevit.Model.UTILES
                            descrip == "Highlighted room separation lines overlap. One of them may be ignored when Revit finds room boundaries. Delete one of the lines." ||
                            descrip == "A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap." ||
                            descrip == "A wall and a room separation line overlap. One of them may be ignored when Revit finds room boundaries. Shorten or delete the room separation line to remove the overlap. You can tab-select one of the overlapping elements to exclude it from the group instance.") // SE USA PARA EVALUAR FALLAS ESPECIFICAS
+                {
+                    failuresAccessor.DeleteWarning(failure);
+                    e.SetProcessingResult(FailureProcessingResult.Continue);
+                    continue;
+                }
+                else if (_sever == FailureSeverity.Warning && descrip == "Line is slightly off axis and may cause inaccuracies.")
                 {
                     failuresAccessor.DeleteWarning(failure);
                     e.SetProcessingResult(FailureProcessingResult.Continue);

@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Armadura\TipoDiametrosBarrasDTO.cs" />
     <Compile Include="BarraEstribo\Editar\ManejadorEditarDiamtroEspacimiento.cs" />
+    <Compile Include="BarraEstribo\Seleccion\CantidadTrabas.cs" />
     <Compile Include="BarraV\Horquilla\Creador\CreadorBarrasV_HorqH.cs" />
     <Compile Include="ElementoBarraRoom\Update\Manejador_GeneralMover.cs" />
     <Compile Include="Extension\ExtensionPathReinSpanSymbol.cs" />
@@ -639,6 +640,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Prueba\AnalisisNiveles.cs" />
     <Compile Include="Prueba\BuscarRefenenciaBarras.cs" />
     <Compile Include="Prueba\ErrorNh\CargarEvento.cs" />
     <Compile Include="Prueba\ErrorNh\ManejoError.cs" />

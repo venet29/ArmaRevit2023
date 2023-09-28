@@ -20,7 +20,7 @@ namespace ArmaduraLosaRevit.Model.Seleccionar.Barras
 {
     public class SeleccionarRebarRectanguloWrapperRebar
     {
-
+        protected UIApplication _uiapp;
         protected UIDocument _uidoc;
         protected Document _doc;
 
@@ -29,7 +29,7 @@ namespace ArmaduraLosaRevit.Model.Seleccionar.Barras
         public List<ElementId> _listaDimenedionesId { get; set; }
         public List<WrapperRebar> ListaWrapperRebarFiltro { get; set; }
 
-        protected UIApplication _uiapp;
+     
         protected TipoBarraGeneral tipocaso;
         protected readonly string casoEspecifico;
 

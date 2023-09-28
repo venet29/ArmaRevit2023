@@ -62,7 +62,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.EditarBarra.EditarRebarShape
         public void ObtenerDatosDebarra()
         {
             _independeTag = seleccionarTagRebar.independentTag;
-            Element elem = _independeTag.Obtener_GetTaggedLocalElement();
+            Element elem = _independeTag.Obtener_GetTaggedLocalElement(_uiapp);
             if (elem==null)
             {
                 IsOK = false;

@@ -1,23 +1,12 @@
 ﻿
 using ArmaduraLosaRevit.Model.BarraEstribo.DTO;
-using ArmaduraLosaRevit.Model.BarraEstribo.Seleccion;
-using ArmaduraLosaRevit.Model.BarraEstribo.TAG;
 using ArmaduraLosaRevit.Model.Enumeraciones;
-
-using ArmaduraLosaRevit.Model.Seleccionar;
 using ArmaduraLosaRevit.Model.UTILES;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
-using ArmaduraLosaRevit.Model.ElementoBarraRoom.Tag;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArmaduraLosaRevit.Model.ElementoBarraRoom.Tag.Tipos;
-using ArmaduraLosaRevit.Model.Visibilidad;
 using ArmaduraLosaRevit.Model.BarraEstribo.Barras;
 using ArmaduraLosaRevit.Model.BarraEstribo.Servicios;
 using ArmaduraLosaRevit.Model.Prueba;

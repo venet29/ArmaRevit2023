@@ -64,7 +64,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Agrupar.Model
         public BarraIng(IndependentTag independentTag)
         {
             this._IndependentTag_soloParaBorrarTag = independentTag;
-            this._rebar = _IndependentTag_soloParaBorrarTag.Obtener_GetTaggedLocalElement() as Rebar;
+            this._rebar = _IndependentTag_soloParaBorrarTag.Obtener_GetTaggedLocalElement(null) as Rebar;
             this._escale = 50; // _Rebar.Document.ActiveView.Scale; ;
             this.IsAgrupado = false;
             this.ListaTodosTagRebar = new List<IndependentTag>();

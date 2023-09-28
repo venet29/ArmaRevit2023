@@ -48,13 +48,14 @@ namespace ArmaduraLosaRevit.Model.Prueba
         {
             try
             {
-                //resultnh = new ResultDTO()
-                //{
-                //    msg = $" validacion falsa",
-                //    Isok = true
-                //};
-                //return true;
-
+//#if DEBUG
+//                resultnh = new ResultDTO()
+//                {
+//                    msg = $" validacion falsa",
+//                    Isok = true
+//                };
+//                return true;
+//#endif
 
                 if (contador < 300 && resultnh.Isok)
                 {
@@ -79,17 +80,13 @@ namespace ArmaduraLosaRevit.Model.Prueba
       
         internal static int ObteneContador() => contador;
 
-#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
         public async Task PostBitacoraAsync(string _comando)
-#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
         {
             try
             {
-
                 InfoSystema_validar _InfoSystema = new InfoSystema_validar();
                 _InfoSystema.M1_EjecutarInfoSistem();
                 _InfoSystema.M3_getMacAddress3();
-
 
                 BitacoraDTO _usuariosDTO = new BitacoraDTO()
                 {

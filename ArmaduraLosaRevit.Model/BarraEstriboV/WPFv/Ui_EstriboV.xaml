@@ -291,14 +291,15 @@
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2"  VerticalAlignment="Top" ToolTip="Modo en que se dibuja los estribo  1) segun posicion de barras  2) segun los  recubrimiento de viga" >Seleccion</Label>
+                            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"  VerticalAlignment="Center" ToolTip="Modo en que se dibuja los estribo  1) segun posicion de barras  2) segun los  recubrimiento de viga" >Seleccion</Label>
 
-                            <ComboBox Name="cbx_tipodeseñoEstriboVIga"  Grid.Row="2"  Grid.Column="4" Grid.ColumnSpan="7" Height="20" Width="130" >
+                            <ComboBox Name="cbx_tipodeseñoEstriboVIga"  Grid.Row="1"  Grid.Column="4" Grid.ColumnSpan="7" Height="20" Width="130" >
                                 <ComboBoxItem IsSelected="True" ToolTip="las dimensiones de estribo era en funcion del recubrimiento de viga">Recubrimiento</ComboBoxItem>
                                 <ComboBoxItem ToolTip="las dimensiones de estribo era en funcion del recubrimiento de viga" >Barra</ComboBoxItem>
                             </ComboBox>
 
-                            <Button x:Name="btnActualizarEstrivo_Viga" Grid.Row="4" Grid.RowSpan="2"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="7" Grid.Column="4" Click="BExternalMethod1_Click" Height="25" Width="130" Content="Actualizar Vigas"></Button>
+                            <Button x:Name="btnActualizarEstrivo_Viga" Grid.Row="3"  Grid.ColumnSpan="9"  Grid.Column="2" ToolTip="Mueve barras hacia cara superior e inferior (segun corresponda), extiende estribo y borra y recrea los laterales"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Click="BExternalMethod1_Click" Height="25" Width="170" Content="Actualizar Vigas"></Button>
 
                         </Grid>
                     </GroupBox>

@@ -47,14 +47,10 @@ namespace ArmaduraLosaRevit.Model.ConfiguracionInicial
                 return;
             }
 
-
             RepositorioUsuarios _RepositorioUsuarios = new RepositorioUsuarios(NombreServer.EUGENIA);
-            if (_RepositorioUsuarios.GetRolUsuarioSPorMac("") == null) return;
+            if (_RepositorioUsuarios.GetRolUsuarioSPorMac("") == null) return;          
 
-          
             UpdateGeneral.M5_DesCargarGenerar(_uiapp);
-
-
             try
             {
                 using (TransactionGroup transGroup = new TransactionGroup(_doc))

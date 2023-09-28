@@ -75,7 +75,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.EditarBarra
             try
             {
                 _independeTag = seleccionarTagRebar.independentTag;
-                RebarSeleccion = _independeTag.Obtener_GetTaggedLocalElement() as Rebar;
+                RebarSeleccion = _independeTag.Obtener_GetTaggedLocalElement(_uiapp) as Rebar;
 
                 if (RebarSeleccion.Pinned)
                 {

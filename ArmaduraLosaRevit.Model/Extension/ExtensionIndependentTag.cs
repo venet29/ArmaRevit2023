@@ -167,35 +167,14 @@ namespace ArmaduraLosaRevit.Model.Extension
                     }
                 }
             }
-            //if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
-            //    punto = tag.GetLeaderEnd(tag.GetTaggedReferences().FirstOrDefault());
-            //else
-            //{
-            //    PropertyInfo prop2 = tag.GetType().GetProperty("LeaderEnd");
-            //    if (prop2 != null)
-            //    {
-            //        object valor = prop2.GetValue(tag, null);
-            //        if (valor != null)
-            //            punto = (XYZ)valor;
-            //    }
-            //}
+
             return punto;
         }
-        //******************
 
-        //public static ElementId Obtener_GetTaggedLocalElementID(this IndependentTag tag, UIApplication _uiapp)
-        //{
-        //    Element result = Obtener_GetTaggedLocalElement(tag);
 
-        //    if (result != null)
-        //        return result.Id;
-        //    else
-        //        return null;
-        //}
-
-        public static ElementId Obtener_GetTaggedLocalElementID(this IndependentTag tag)
+        public static ElementId Obtener_GetTaggedLocalElementID(this IndependentTag tag, UIApplication _uiapp = null)
         {
-            Element result = Obtener_GetTaggedLocalElement(tag);
+            Element result = Obtener_GetTaggedLocalElement(tag, _uiapp);
 
             if (result != null)
                 return result.Id;
@@ -203,31 +182,33 @@ namespace ArmaduraLosaRevit.Model.Extension
                 return null;
         }
 
-        //public static Element Obtener_GetTaggedLocalElement(this IndependentTag tag, UIApplication _uiapp)
-        //{
-        //    Document _doc = tag.Document;
-        //    if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
-        //    {
-        //        var elementId = tag.GetTaggedLocalElementIds().FirstOrDefault();
-        //        Element REbarDeTag = _doc.GetElement(elementId);
-        //        return REbarDeTag;
-        //    }
-        //    else
-        //    {
-        //        MethodInfo prop2 = tag.GetType().GetMethod("GetTaggedLocalElement");
-        //        //MethodInfo prop2 = tag.GetType().GetMethod("get_Element", new Type[] { typeof(ElementId) });   //con parametros
-        //        if (prop2 != null)
-        //        {
-        //            Element REbarDeTag = prop2.Invoke(tag, null) as Element;
-        //            return REbarDeTag;
-        //        }
-        //    }
-        //    return null;
-        //}
-        public static Element Obtener_GetTaggedLocalElement(this IndependentTag tag)
+       // public static Element Obtener_GetTaggedLocalElement(this IndependentTag tag) => Obtener_GetTaggedLocalElement(tag, null);
+        public static Element Obtener_GetTaggedLocalElement(this IndependentTag tag, UIApplication _uiapp)
         {
+            if (UtilVersionesRevit.IsMAyorOIgual(_uiapp, VersionREvitNh.v2022))
+            {
+                return MetodoSObreIgual2022(tag);
+            }
+            else
+            {
+                return MetodoBAjoIgial2021(tag);
+            }
+        }
 
+        private static Element MetodoBAjoIgial2021(IndependentTag tag)
+        {
+            MethodInfo prop2 = tag.GetType().GetMethod("GetTaggedLocalElement");
+            //MethodInfo prop2 = tag.GetType().GetMethod("get_Element", new Type[] { typeof(ElementId) });   //con parametros
+            if (prop2 != null)
+            {
+                Element REbarDeTag = prop2.Invoke(tag, null) as Element;
+                return REbarDeTag;
+            }
+            return null;
+        }
 
+        private static Element MetodoSObreIgual2022(IndependentTag tag)
+        {
             MethodInfo meth = tag.GetType().GetMethod("GetTaggedLocalElementIds");
             //MethodInfo prop2 = tag.GetType().GetMethod("get_Element", new Type[] { typeof(ElementId) });   //con parametros
             if (meth != null)
@@ -240,15 +221,8 @@ namespace ArmaduraLosaRevit.Model.Extension
                 return REbarDeTag;
             }
 
-            MethodInfo prop2 = tag.GetType().GetMethod("GetTaggedLocalElement");
-            //MethodInfo prop2 = tag.GetType().GetMethod("get_Element", new Type[] { typeof(ElementId) });   //con parametros
-            if (prop2 != null)
-            {
-                Element REbarDeTag = prop2.Invoke(tag, null) as Element;
-                return REbarDeTag;
-            }
-
             return null;
         }
+
     }
 }

@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-
+using System.Diagnostics;
 using System.Linq;
+using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
@@ -52,7 +53,18 @@ namespace ArmaduraLosaRevit.Model.Armadura
             if (ListaRebarTagInView.Count == 0)
                 M0_BuscarRebarTagInView();
 
-            var m_roomTagTypes = ListaRebarTagInView.Where(c => c.GetTaggedLocalElementIds().FirstOrDefault() == elementid_rebar).ToList();
+            //int i = 0;
+            //foreach (var item in ListaRebarTagInView)
+            //{
+            //    if (!item.IsValidObject) continue;
+            //    var result = item.Obtener_GetTaggedLocalElement(_uiapp).Id;
+            //    Debug.WriteLine($"{i+=1})tag:");
+            //}
+
+            var m_roomTagTypes = ListaRebarTagInView
+                            .Where(c=> c.IsValidObject)
+                            .Where(c => c.Obtener_GetTaggedLocalElement(_uiapp).Id== elementid_rebar)
+                            .ToList();
 
             return m_roomTagTypes;
         }

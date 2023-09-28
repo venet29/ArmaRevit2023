@@ -22,7 +22,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
     public partial class SeleccionarElementosV
     {
 
-        public Element _ElemenetoSelect1 { get; set; }
+        public Element _ElemenetoSelect1_ { get; set; }
         public Element _ElemenetoSelect2 { get; set; }
         public bool  IsSalirSeleccionPilarMuro { get; set; }
         public Element hostParaleloView { get; set; }
@@ -229,18 +229,18 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                     }
                  
 
-                    _ElemenetoSelect1 = _doc.GetElement(ref_pickobject_element);
+                    _ElemenetoSelect1_ = _doc.GetElement(ref_pickobject_element);
                     //Element host = default;
-                    if (_ElemenetoSelect1 is Rebar)
+                    if (_ElemenetoSelect1_ is Rebar)
                     {
-                       Rebar _barra1 = (Rebar)_ElemenetoSelect1;
+                       Rebar _barra1 = (Rebar)_ElemenetoSelect1_;
                         if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barra1, _view)) return false;
                         hostParaleloView = _doc.GetElement(_barra1.GetHostId());
                     }
                     else
                     {
-                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_ElemenetoSelect1, _view)) return false;
-                        hostParaleloView = _ElemenetoSelect1;
+                        if (!AyudaObtenerNormarPlanoVisisible.Obtener(_ElemenetoSelect1_, _view)) return false;
+                        hostParaleloView = _ElemenetoSelect1_;
                  
                     }
               
@@ -260,11 +260,17 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                 }
                 else if (_confiEnfierradoDTO.TipoSelecion == TipoSeleccion.ConMouse)
                 {
+                    //NOTA para caso estribo pilar no implemnetada :  pq no definido 'NormalCaraElemento' ni
+
                     ObjectSnapTypes snapTypes = ObjectSnapTypes.Intersections | ObjectSnapTypes.Endpoints | ObjectSnapTypes.Midpoints; //Nos permite seleccionar un punto en una posición cualquiera y nos da el dato XYZ
                     _PtoInicioIntervaloBarra = _uidoc.Selection.PickPoint(snapTypes, "Seleccionar Punto Inferior de intervalo ");
+
+                    //Util.ErrorMsg($"Error 'SeleccionarPtoInicio' opcion con 'ConMouse'");
+                    //return false;
                 }
 
-                _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, _ptoSeleccionMouseCentroCaraMuro, _PtoInicioIntervaloBarra);
+                _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost =
+                    ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(NormalCaraElemento, _ptoSeleccionMouseCentroCaraMuro, _PtoInicioIntervaloBarra);
                 //_PtoInicioIntervaloBarra = _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost;
                 if (_PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost.IsAlmostEqualTo(XYZ.Zero)) return false;
 

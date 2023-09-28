@@ -1,6 +1,7 @@
 ﻿using ArmaduraLosaRevit.Model.BarraV.UpDate;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Update.CAsos;
 using ArmaduraLosaRevit.Model.Enumeraciones;
+using ArmaduraLosaRevit.Model.UTILES;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
@@ -29,6 +30,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update
         public static void CargarUpdatePathSymbol(UIApplication _uiapp)
         {
             ConstNH.corte();//  // borrar lo de arriba(estatico) desconemtar el constructor y borrar variable 'IsCargarUpdateREbar'
+            UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
             if (updateopen == null)
                 updateopen = new UpDate_MoverPathSymbol(_uiapp, _uiapp.ActiveAddInId);
 
@@ -57,6 +59,7 @@ namespace ArmaduraLosaRevit.Model.ElementoBarraRoom.Update
 
         public static void DesCargarUpdatePathSymbol(UIApplication _uiapp)
         {
+            UtilVersionesRevit.ObtenerVersionRevit(_uiapp);
             if (updateopen == null)
                 updateopen = new UpDate_MoverPathSymbol(_uiapp, _uiapp.ActiveAddInId);
 

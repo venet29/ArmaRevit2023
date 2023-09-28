@@ -106,10 +106,13 @@ namespace ArmaduraLosaRevit.Model.BarraV
             if (_newCmd_CargadorBarraV.tipodeCaso == "prueba")
             {
 
-                AyudaCreaarDefinition _AyudaCreaarDefinition = new AyudaCreaarDefinition(_uiapp);
-                _AyudaCreaarDefinition.Ejecutar("Altura", "SpecTypeId.String.Text");
-                ManejadorCrearParametrosShare _definicionManejador = new ManejadorCrearParametrosShare(_uiapp, RutaArchivoCompartido: "ParametrosNH");
-                _definicionManejador.EjecutarBIM();
+                AnalisisNiveles.nombreFuncion(_doc);
+
+
+                //AyudaCreaarDefinition _AyudaCreaarDefinition = new AyudaCreaarDefinition(_uiapp);
+                //_AyudaCreaarDefinition.Ejecutar("Altura", "SpecTypeId.String.Text");
+                //ManejadorCrearParametrosShare _definicionManejador = new ManejadorCrearParametrosShare(_uiapp, RutaArchivoCompartido: "ParametrosNH");
+                //_definicionManejador.EjecutarBIM();
             }
             else if (_newCmd_CargadorBarraV.tipodeCaso == "button_cambiarGrid")
             {

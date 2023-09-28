@@ -12,10 +12,10 @@ namespace ArmaduraLosaRevit.Model.UTILES
    public class UtilVersionesRevit
     {
 
-        public static string VersionR { get; set; } = "";
+        public static string VersionRvt { get; set; } = "";
         public static string ObtenerVersionRevit(UIApplication _uiapp=null)
         {
-            if(VersionR!="") return VersionR;
+            if(VersionRvt!="" && _uiapp==null) return VersionRvt;
 
             if (_uiapp == null)
             {
@@ -23,33 +23,33 @@ namespace ArmaduraLosaRevit.Model.UTILES
                 return "";
             }
 
-             VersionR = _uiapp.Application.VersionNumber;
+             VersionRvt = _uiapp.Application.VersionNumber;
 
-            return VersionR;
+            return VersionRvt;
         }
 
         public static bool IsMAyorOIgual(UIApplication _uiapp, VersionREvitNh _VersionREvitNh)
         {
-            string _version = _uiapp.Application.VersionNumber;
+            VersionRvt = ObtenerVersionRevit(_uiapp);
 
             switch (_VersionREvitNh)
             {
                 case VersionREvitNh.v2018:
-                    return (_version.Contains("2018")  ||_version.Contains("2019") || _version.Contains("2020") || _version.Contains("2021") || _version.Contains("2022") || _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return (VersionRvt.Contains("2018")  ||VersionRvt.Contains("2019") || VersionRvt.Contains("2020") || VersionRvt.Contains("2021") || VersionRvt.Contains("2022") || VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2019:
-                    return ( _version.Contains("2019") || _version.Contains("2020") || _version.Contains("2021") || _version.Contains("2022") || _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return ( VersionRvt.Contains("2019") || VersionRvt.Contains("2020") || VersionRvt.Contains("2021") || VersionRvt.Contains("2022") || VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2020:
-                    return ( _version.Contains("2020") || _version.Contains("2021") || _version.Contains("2022") || _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return ( VersionRvt.Contains("2020") || VersionRvt.Contains("2021") || VersionRvt.Contains("2022") || VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2021:
-                    return ( _version.Contains("2021") || _version.Contains("2022") || _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return ( VersionRvt.Contains("2021") || VersionRvt.Contains("2022") || VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2022:
-                    return (_version.Contains("2022") || _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return (VersionRvt.Contains("2022") || VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2023:
-                    return ( _version.Contains("2023") || _version.Contains("2024") || _version.Contains("2025"));
+                    return ( VersionRvt.Contains("2023") || VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2024:
-                    return ( _version.Contains("2024") || _version.Contains("2025"));
+                    return ( VersionRvt.Contains("2024") || VersionRvt.Contains("2025"));
                 case VersionREvitNh.v2025:
-                    return (_version.Contains("2025"));
+                    return (VersionRvt.Contains("2025"));
                 default:
                     return false;
             }

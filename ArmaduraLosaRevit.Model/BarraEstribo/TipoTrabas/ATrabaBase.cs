@@ -36,7 +36,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.TipoTrabas
             this.DiametroTrabasTrasversales_mm = _configuracionBarraTrabaDTO.DiamtroTrabaEstriboMM;
             this._configuracionBarraTrabaDTO = _configuracionBarraTrabaDTO;
         }
-        
+
 
     }
 }

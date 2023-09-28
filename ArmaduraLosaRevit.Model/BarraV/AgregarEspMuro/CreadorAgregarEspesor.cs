@@ -43,7 +43,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.AgregarEspMuro
                 foreach (IndependentTag item in listatagPilar)
                 {
                     XYZ ptoinserccion = item.TagHeadPosition;
-                    Element elem= item.Obtener_GetTaggedLocalElement();
+                    Element elem= item.Obtener_GetTaggedLocalElement(_uiapp);
                     if (elem==null) continue;
                     Rebar _rebarHost = elem as Rebar;
                     if (_rebarHost == null) continue;

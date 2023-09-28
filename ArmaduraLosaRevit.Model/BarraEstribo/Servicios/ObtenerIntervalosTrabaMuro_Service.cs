@@ -58,14 +58,15 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
                 ListTipoITipoTraba[i]._textoTraba = _ConfiguracionBarraTrabaDTO.textoTraba;
                 if (ListTipoITipoTraba[i]._tipo == TipoTraba.Transversal)
                 {
+                    var delta = -_direccionEntradoView * Util.MmToFoot(_ConfiguracionBarraTrabaDTO.DiamtroTrabaEstriboMM);
+
                     if (_ConfiguracionBarraTrabaDTO.UbicacionTraba == DireccionTraba.Izquierda)
-                    {
-                        var delta = -_direccionEntradoView * Util.MmToFoot(_ConfiguracionBarraTrabaDTO.DiamtroTrabaEstriboMM);
+                    {                   
                         _startPont_aux = _ptobarra1 + _direccionAnchoTraba * ListTipoITipoTraba[i]._espaciamiento + delta;
                         
                     }
                     else
-                        _startPont_aux = _ptobarra2.AsignarZ(_ptobarra1.Z) + _direccionAnchoTraba * ListTipoITipoTraba[i]._espaciamiento;
+                        _startPont_aux = _ptobarra2.AsignarZ(_ptobarra1.Z) + _direccionAnchoTraba * ListTipoITipoTraba[i]._espaciamiento+ delta;
 
 
                     ListTipoITipoTraba[i]._startPont_ = _startPont_aux;
@@ -88,6 +89,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             return ListTipoITipoTraba;
         }
 
+      
 
 
 
