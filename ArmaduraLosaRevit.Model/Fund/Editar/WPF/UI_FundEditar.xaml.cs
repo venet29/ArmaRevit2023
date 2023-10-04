@@ -17,6 +17,8 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
     {
 
         public string BotonOprimido { get; set; }
+        public string DireccionImagen { get; set; }
+        
         private readonly Document _doc;
    
         private UIApplication _uiApp;
@@ -116,6 +118,63 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
             }
         }
 
+        //******
+        private string baseImagen; 
+        private string imagen_barra_sin;
+        public string Imagen_barra_sin
+        {
+            get { return imagen_barra_sin; }
+            set
+            {
+                if (imagen_barra_sin != value)
+                {
+                    imagen_barra_sin = value;
+                    RaisePropertyChanged("Imagen_barra_sin");
+                }
+            }
+        }
+
+        private string imagen_barra_izq;
+        public string Imagen_barra_izq
+        {
+            get { return imagen_barra_izq; }
+            set
+            {
+                if (imagen_barra_izq != value)
+                {
+                    imagen_barra_izq = value;
+                    RaisePropertyChanged("Imagen_barra_izq");
+                }
+            }
+        }
+
+        private string imagen_barra_dere;
+        public string Imagen_barra_dere
+        {
+            get { return imagen_barra_dere; }
+            set
+            {
+                if (imagen_barra_dere != value)
+                {
+                    imagen_barra_dere = value;
+                    RaisePropertyChanged("Imagen_barra_dere");
+                }
+            }
+        }
+
+        private string imagen_barra_ambos;
+        public string Imagen_barra_ambos
+        {
+            get { return imagen_barra_ambos; }
+            set
+            {
+                if (imagen_barra_ambos != value)
+                {
+                    imagen_barra_ambos = value;
+                    RaisePropertyChanged("Imagen_barra_ambos");
+                }
+            }
+        }
 
         //private readonly UIApplication _uiApp;
         //private readonly Autodesk.Revit.ApplicationServices.Application _app;
@@ -179,6 +238,14 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
             
             ListaEstribo = new ObservableCollection<string>(){ "Derecha", "Izquierda", "Superior", "Inferior"};
             // this.TipoBarra_ = TipoBarraTraslapoDereArriba.f1;
+
+            
+            baseImagen = @"/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/";
+            Imagen_barra_sin = baseImagen + "sin.png";
+            Imagen_barra_izq = baseImagen + "inferior.png";
+            Imagen_barra_dere = baseImagen + "superior.png";
+            Imagen_barra_ambos = baseImagen + "ambos.png";
+
         }
     
 
@@ -212,6 +279,11 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
             Image boton = (Image)sender;
 
             BotonOprimido = boton.Name;
+            if ((bool)rb_Arriba.IsChecked)
+                DireccionImagen = "Arriba";
+            else
+                DireccionImagen = "Bajo";
+
             _mExternalMethodWpfArg.Raise(this);
         }
 
@@ -265,9 +337,26 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
 
+        private void Arriba_Checked(object sender, RoutedEventArgs e)
+        {
+            baseImagen = @"/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/";
+            Imagen_barra_sin = baseImagen + "sin.png";
+            Imagen_barra_izq = baseImagen + "inferior.png";
+            Imagen_barra_dere = baseImagen + "superior.png";
+            Imagen_barra_ambos = baseImagen + "ambos.png";
+        }
 
+        private void Bajo_Checked(object sender, RoutedEventArgs e)
+        {
+            baseImagen = @"/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/";
+            Imagen_barra_sin = baseImagen + "sin.png";
+            Imagen_barra_izq = baseImagen + "inferiorInf.png";
+            Imagen_barra_dere = baseImagen + "superiorInf.png";
+            Imagen_barra_ambos = baseImagen + "ambosInf.png";
+        }
     }
 
 

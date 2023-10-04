@@ -134,7 +134,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intersecciones
             double DistanciaBajaDesdeNivelSup = Math.Min(_ptofinal.DistanceTo(_pto1NivelAntesfinal) / 2, 5);
             double LargoBusuqeda = UtilBarras.largo_L9_DesarrolloFoot_diamMM(_intervaloBarrasDTO.diametroMM)
                                  + Math.Min(_ptofinal.DistanceTo(_pto1NivelAntesfinal) / 2, 5)
-                                 + (_intervaloBarrasDTO.IsBuscarCororonacion ? Util.CmToFoot(150) : 0);
+                                 + (_intervaloBarrasDTO.IsBuscarCoronacion ? Util.CmToFoot(150) : 0);
 
             _buscarElementosArriba = new BuscarElementosArriba(_uiapp,
                                                                 LargoBusuqeda,

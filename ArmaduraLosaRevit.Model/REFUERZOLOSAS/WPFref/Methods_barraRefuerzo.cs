@@ -135,7 +135,6 @@ namespace ArmaduraLosaRevit.Model.REFUERZOLOSAS.WPFref
                 else if (NombreBoton == "barraSin" || NombreBoton == "barraInferiorSup" || NombreBoton == "barraSuperiorSUp" || NombreBoton == "barraAmbosSup" ||
                          NombreBoton == "barraInferiorInf" || NombreBoton == "barraSuperiorInf" || NombreBoton == "barraAmbosInf")
                 {
-
                     try
                     {
                         EditarBarraDTO newEditarBarraDTO = ui_barraRefuerzoLosa.EditarBarraDTO(TipoCasobarra.BarraRefuerzoLosa);

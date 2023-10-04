@@ -16,12 +16,18 @@ using ArmaduraLosaRevit.Model.EditarTipoPath;
 using ArmaduraLosaRevit.Model.Fund.DTO;
 using System.Diagnostics;
 using ArmaduraLosaRevit.Model.UTILES.CreaLine;
+using ArmaduraLosaRevit.Model.BarraV.DTO;
+using ArmaduraLosaRevit.Model.BarraV.EditarBarraLargo.WPFEdB;
+using ArmaduraLosaRevit.Model.BarraV.EditarBarraLargo;
+using ArmaduraLosaRevit.Model.REFUERZOLOSAS.EditarBarra;
+using ArmaduraLosaRevit.Model.REFUERZOLOSAS.WPFref;
+using ArmaduraLosaRevit.Model.REFUERZOLOSAS;
 
 namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
 {
-/// <summary>
-/// 
-/// </summary>
+    /// <summary>
+    /// 
+    /// </summary>
     internal class Methods_EditFund
     {
 
@@ -40,7 +46,7 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
 
             string tipoPosiicon = ui.BotonOprimido;
             EditarPathReinMouse EditarPathReinMouse = new EditarPathReinMouse(_uiapp);
-            
+
             ui.Hide();
             bool aux_IS_MENSAJE_BUSCAR_ROOM = VariablesSistemas.IS_MENSAJE_BUSCAR_ROOM;
             VariablesSistemas.IS_MENSAJE_BUSCAR_ROOM = false;
@@ -51,6 +57,26 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
                     EditarPathReinMouse_ExtederPathA2punto _EditarPathReinMouse_ExtederPathApunto = new EditarPathReinMouse_ExtederPathA2punto(_uiapp);
                     M1_2_MetodoPathToPto_pto2(ui, _EditarPathReinMouse_ExtederPathApunto);
                 }
+                else if (tipoPosiicon == "RebartoPto")
+                {
+                    EditarBarraDTO newEditarBarraDTO = new EditarBarraDTO()
+                    {
+                        IsCambiarDiametroYEspacia = false
+                    };
+
+                    if (!Util.IsNumeric(ui.distanPtoPto.Text)) return;
+
+                    double dist = Util.ConvertirStringInDouble(ui.distanPtoPto.Text);
+                    EditarBarraLargoDTO _EditarBarraLargoDTO = new EditarBarraLargoDTO()
+                    {
+                        IsUsarMouse = true,
+                        DeltaUsarMouse_cm = dist
+                    };
+
+                    ManejadorBarraV_LargoBarra ManejadorBarraV_CambiarBarra = new ManejadorBarraV_LargoBarra(_uiapp, newEditarBarraDTO, _EditarBarraLargoDTO);
+                    ManejadorBarraV_CambiarBarra.CambiarLargoBarra();
+                }
+
                 else if (tipoPosiicon == "btnSoloDistancia")
                 {
                     M1_4_MetodoPathDistanciaMouse(ui, EditarPathReinMouse);
@@ -61,8 +87,59 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
                 }
                 else if (tipoPosiicon == "barraSinH" || tipoPosiicon == "barraInferiorH" || tipoPosiicon == "barraSuperiorH" || tipoPosiicon == "barraAmbosH")
                 {
-                    // CambiarBarrasHorizontal(ui_Barrav, uiapp, TipoCasobarra.BarrasHorizontal);
-                    Util.ErrorMsg("En desarrollo");
+                    EditarBarraDTO newEditarBarraDTO = new EditarBarraDTO()
+                    {
+                        cantidad = 2,
+                        diametro = 10,
+                        TipoCasobarra = TipoCasobarra.BarraRefuerzoLosa,
+                        IsCambiarDiametroYEspacia = false,
+                    };
+
+                    switch (tipoPosiicon)
+                    {
+                        case "barraSinH":
+                            newEditarBarraDTO.tipobarraV = TipoPataBarra.BarraVSinPatas;
+                            break;
+                        case "barraInferiorH":
+                            newEditarBarraDTO.tipobarraV = TipoPataBarra.BarraVPataInicial;
+                            break;
+                        case "barraSuperiorH":
+                            newEditarBarraDTO.tipobarraV = TipoPataBarra.BarraVPataFinal;
+                            break;
+                        case "barraAmbosH":
+                            newEditarBarraDTO.tipobarraV = TipoPataBarra.BarraVPataAmbos;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (ui.DireccionImagen == "Arriba")
+                        newEditarBarraDTO.ModificadorDireccionEnfierrado = 1;
+                    else
+                        newEditarBarraDTO.ModificadorDireccionEnfierrado = -1;
+
+                    try
+                    {
+
+                        ManejadorBarraRefuerzo_CambiarBarra ManejadorBarraH_CambiarBarra = new ManejadorBarraRefuerzo_CambiarBarra(_uiapp, newEditarBarraDTO);
+                        ManejadorBarraH_CambiarBarra.CambiarFormaBarra();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Ex :" + ex.Message);
+                    }
+                    //Util.ErrorMsg("En desarrollo");
+                }
+                else if (tipoPosiicon == "btnAceptar_Cuantia")
+                {
+                    bool isSoloCAmbiarDatosInternos = false;
+
+                    int CantidadBarras = Util.ConvertirStringInInteger(ui.dtCantidadCuantia.Text);
+
+                    ManejadorModificarTag manejadorRefuerzoTipoBorde = new ManejadorModificarTag(_uiapp, CantidadBarras);
+                    if (isSoloCAmbiarDatosInternos)
+                    { manejadorRefuerzoTipoBorde.EjecutarCambioSintag(); }
+                    else
+                    { manejadorRefuerzoTipoBorde.EjecutarCambioContag(); }
                 }
                 else if (tipoPosiicon == "btnSeleccionarPath")
                 {
@@ -75,7 +152,7 @@ namespace ArmaduraLosaRevit.Model.Fund.Editar.WPF
             }
             catch (Exception ex)
             {
-                    Util.DebugDescripcion(ex);
+                Util.DebugDescripcion(ex);
             }
             VariablesSistemas.IS_MENSAJE_BUSCAR_ROOM = aux_IS_MENSAJE_BUSCAR_ROOM;
             ui.Show();

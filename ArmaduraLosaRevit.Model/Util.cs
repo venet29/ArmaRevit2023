@@ -17,19 +17,15 @@ using System.Linq;
 using System.Reflection;
 using WinForms = System.Windows.Forms;
 using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using System.Collections;
 using ArmaduraLosaRevit.Model.Enumeraciones;
-using Autodesk.Revit.DB.Architecture;
 using System.IO;
 using ArmaduraLosaRevit.Model.Extension;
-using ArmaduraLosaRevit.Model.Armadura;
 using System.Globalization;
 using ArmaduraLosaRevit.Model.UTILES;
-using System.Windows.Interop;
 
 
 #endregion // Namespaces

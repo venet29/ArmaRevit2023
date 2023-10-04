@@ -35,14 +35,14 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             this._configuracionInicialEstriboDTO = configuracionInicialEstriboDTO;
             this.tipoEstriboGenera = tipoEstriboGenera;
         }
-        public GenerarDatosIniciales_Service(UIApplication uiapp, View3D view3D, TipoEstriboGenera tipoEstriboGenera, ConfiguracionTAgEstriboDTo configuracionTAgEstriboDTo )
-        {
-            this._uiapp = uiapp;
-            this._doc = _uiapp.ActiveUIDocument.Document;
-            this._configuracionTAgEstriboDTo = configuracionTAgEstriboDTo;
-             this._view3D_VISUALIZAR = view3D;
-            this.tipoEstriboGenera = tipoEstriboGenera;
-        }
+        //public GenerarDatosIniciales_Service(UIApplication uiapp, View3D view3D, TipoEstriboGenera tipoEstriboGenera, ConfiguracionTAgEstriboDTo configuracionTAgEstriboDTo )
+        //{
+        //    this._uiapp = uiapp;
+        //    this._doc = _uiapp.ActiveUIDocument.Document;
+        //    this._configuracionTAgEstriboDTo = configuracionTAgEstriboDTo;
+        //     this._view3D_VISUALIZAR = view3D;
+        //    this.tipoEstriboGenera = tipoEstriboGenera;
+        //}
 
 
         //a) caso manula

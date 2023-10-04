@@ -38,10 +38,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.EditarBarraLargo.WPFEdB
                     .Select(p => (ViewSheet)p).ToList();
             });
         }
-
-   
-
-
+  
         public static void M1_EjecutarRutinas(Ui_EditarBarraLargo _Ui_EditarBarraLargo, UIApplication uiapp)
         {
             if (BuscarIsNombreViewActualizado.IsError(uiapp.ActiveUIDocument.ActiveView)) return ;
@@ -50,12 +47,9 @@ namespace ArmaduraLosaRevit.Model.BarraV.EditarBarraLargo.WPFEdB
        
             if  (tipoPosiicon == "btnLargoMouse" || tipoPosiicon == "btnLargoFijo")
             {
-
                 _Ui_EditarBarraLargo.Hide();
                 try
                 {
-
-
                     EditarBarraDTO newEditarBarraDTO = new EditarBarraDTO()
                     {
                         IsCambiarDiametroYEspacia = false
@@ -69,18 +63,9 @@ namespace ArmaduraLosaRevit.Model.BarraV.EditarBarraLargo.WPFEdB
                 }
                 catch (Exception)
                 {
-
-
                 }
                 _Ui_EditarBarraLargo.Show();
-
-
-            }
-
-    
+            }  
         }
-
-  
-
     }
 }

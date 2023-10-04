@@ -1,6 +1,11 @@
 ﻿using ArmaduraLosaRevit.Model.BarraEstribo.DTO;
+using ArmaduraLosaRevit.Model.BarraV.DTO;
+using ArmaduraLosaRevit.Model.BarraV.Intervalos;
+using ArmaduraLosaRevit.Model.BarraV.Seleccion;
+using ArmaduraLosaRevit.Model.Enumeraciones;
 using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +16,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
 {
     public class ObtenerIntervalosLateralesMuro_Service
     {
+        private  UIApplication _uiapp;
         private readonly DatosConfinamientoAutoDTO _ConfiguracionInicialEstriboDTO;
 
         //  private readonly DatosConfinamientoDTO _configuracionInicialEstriboDTO;
@@ -26,8 +32,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
         private XYZ _direccionBarra;
         private string _textoLat;
 
-        public ObtenerIntervalosLateralesMuro_Service(DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO, XYZ _ptobarra1, XYZ _ptobarra2)
+        public ObtenerIntervalosLateralesMuro_Service( UIApplication _uiapp,DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO, XYZ _ptobarra1, XYZ _ptobarra2)
         {
+            this._uiapp = _uiapp;
             _ConfiguracionInicialEstriboDTO = _configuracionInicialEstriboDTO;
             //  this._configuracionInicialEstriboDTO = _configuracionInicialEstriboDTO;
             this._ptobarra1 = _ptobarra1;
@@ -49,9 +56,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
 
             List<double> listaIntervalo = ObtenerListaEspacimientoLaterales();
 
+
             for (int i = 0; i < listaIntervalo.Count; i++)
             {
                 XYZ _startPont_aux = _ptobarra1 + _direccionAnchoLAT * listaIntervalo[i];
+
                 BarraLateralesDTO barraLateralesDTO = new BarraLateralesDTO()
                 {
                     _startPont_ = _startPont_aux,
@@ -67,7 +76,70 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             return list;
         }
 
-    
+
+        public List<BarraLateralesDTO> M3_ObtenerLateralesEstriboMuroDTO_v2(ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO)
+        {
+            List<BarraLateralesDTO> list = new List<BarraLateralesDTO>();
+
+            List<double> listaIntervalo = ObtenerListaEspacimientoLaterales();
+
+
+            //IApplication uiapp,
+            SelecionarPtoSup selecionarPtoSup = new SelecionarPtoSup();
+            selecionarPtoSup._PtoInicioIntervaloBarra = _ptobarra1;
+            selecionarPtoSup._PtoFinalIntervaloBarra = _ptobarra2;
+
+            ConfiguracionIniciaWPFlBarraVerticalDTO confiEnfierradoDTO = new ConfiguracionIniciaWPFlBarraVerticalDTO()
+            {
+                inicial_diametroMM = DiamtroLateralEstriboMM
+,                Inicial_Cantidadbarra = "2",
+                Document_ = _uiapp.ActiveUIDocument.Document,
+                //cbx_tipopata.Text
+                inicial_tipoBarraV = TipoPataBarra.BarraLateral,// Enumeraciones.TipoBarraV.BarraVSinPatas,
+                inicial_IsDirectriz = false,
+                Inicial_espacienmietoCm_EntreLineasBarras = "15",
+                TipoSeleccionMousePtoInferior = _ConfiguracionInicialEstriboDTO.PtoInferior,
+                TipoSeleccionMousePtoSuperior = _ConfiguracionInicialEstriboDTO.PtoSuperior,
+                IsDibujarTag = true,
+                IsInvertirPosicionTag = false,
+                TipoBarraRebar_ = TipoBarraVertical.Lateral,
+                BarraTipo = TipoRebar.ELEV_ES_L,
+                TipoSelecion = TipoSeleccion.ConElemento,
+                EspaciamietoRecorridoBarraFoot= "0.5"
+            };
+
+
+            SeleccionarElementosV _seleccionarElementos = new SeleccionarElementosV(_uiapp, confiEnfierradoDTO, new List<Level>());
+            DireccionRecorrido _DireccionRecorrido = new DireccionRecorrido(_uiapp.ActiveUIDocument.ActiveView, DireccionRecorrido_.PerpendicularEntradoVista);
+
+            _seleccionarElementos.AsignarDatosCasoLaterales(_ConfiguracionBarraLateralDTO);
+            DatosMuroSeleccionadoDTO muroSeleccionadoDTO =  _seleccionarElementos.M5_OBtenerElementoREferenciaDTO(_DireccionRecorrido);
+
+            for (int i = 0; i < listaIntervalo.Count; i++)
+            {
+                XYZ _startPont_aux = _ptobarra1 + _direccionAnchoLAT * listaIntervalo[i];
+
+                selecionarPtoSup.ListaLevelIntervalo= new List<double>();
+                selecionarPtoSup.ListaLevelIntervalo.Add(selecionarPtoSup._PtoInicioIntervaloBarra.Z);
+                selecionarPtoSup.ListaLevelIntervalo.Add(selecionarPtoSup._PtoFinalIntervaloBarra.Z);
+                var lateral = new GenerarIntervalos1Nivel(_uiapp, confiEnfierradoDTO, selecionarPtoSup, muroSeleccionadoDTO);
+                lateral.M1_ObtenerIntervaloBarrasDTO();
+
+                BarraLateralesDTO barraLateralesDTO = new BarraLateralesDTO()
+                {
+                    _startPont_ = _startPont_aux,
+                    _endPoint = _startPont_aux.AsignarZ(_ptobarra2.Z) +
+                                    _direccionBarra * (_ConfiguracionInicialEstriboDTO.IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamMM(DiamtroLateralEstriboMM) : 0),
+                    _diamtroLat = DiamtroLateralEstriboMM,
+                    _textoLat = _textoLat
+                };
+
+                list.Add(barraLateralesDTO);
+            }
+
+            return list;
+        }
+
         private List<double> ObtenerListaEspacimientoLaterales()
         {
             int diaLAt = DiamtroLateralEstriboMM;
@@ -137,6 +209,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             return _espaciamietoLat;
 
         }
+
+
+
 
     }
 }

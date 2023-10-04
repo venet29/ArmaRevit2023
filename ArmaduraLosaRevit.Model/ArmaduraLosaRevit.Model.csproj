@@ -148,6 +148,7 @@
       <DependentUpon>Form_tipoBarra.cs</DependentUpon>
     </Compile>
     <Compile Include="Armadura\TipoDiametrosBarrasDTO.cs" />
+    <Compile Include="BarraEstribo\DTO\ConfiguracionBarraLateralDTO.cs" />
     <Compile Include="BarraEstribo\Editar\ManejadorEditarDiamtroEspacimiento.cs" />
     <Compile Include="BarraEstribo\Seleccion\CantidadTrabas.cs" />
     <Compile Include="BarraV\Horquilla\Creador\CreadorBarrasV_HorqH.cs" />
@@ -644,6 +645,7 @@
     <Compile Include="Prueba\BuscarRefenenciaBarras.cs" />
     <Compile Include="Prueba\ErrorNh\CargarEvento.cs" />
     <Compile Include="Prueba\ErrorNh\ManejoError.cs" />
+    <Compile Include="Prueba\ManejadorDatos_NET.cs" />
     <Compile Include="Prueba\User\AyudaUser.cs" />
     <Compile Include="Prueba\User\RepositorioUsuarios.cs" />
     <Compile Include="Prueba\User\RepositoryDataMysql.cs" />

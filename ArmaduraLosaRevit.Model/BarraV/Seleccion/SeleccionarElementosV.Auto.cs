@@ -99,7 +99,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
 
                     return false;
                 }
-                m1_3_1_AuxObtenerMuros(_ElemetSelect);
+                M1_3_1_AuxObtenerMuros(_ElemetSelect);
             }
             catch (Exception ex)
             {

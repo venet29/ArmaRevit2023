@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using ArmaduraLosaRevit.Model.BarraV.DTO;
 using ArmaduraLosaRevit.Model.Enumeraciones;
 using ArmaduraLosaRevit.Model.WPF;
 using Autodesk.Revit.DB;
@@ -140,6 +141,31 @@ namespace ArmaduraLosaRevit.Model.BarraEstriboP.WPFp
             cantidad_lat.IsEnabled = true;
             cantidads_traba.IsEnabled = true;
         }
+
+
+        public ConfiguracionIniciaWPFlBarraVerticalDTO ObtenerConfiguracionInicialBarraVerticalVDTO()
+        {
+            ConfiguracionIniciaWPFlBarraVerticalDTO confiEnfierradoDTO = new ConfiguracionIniciaWPFlBarraVerticalDTO()
+            {
+                inicial_diametroMM = Util.ConvertirStringInInteger(diam_lat.Text),
+                Inicial_Cantidadbarra = "2",
+                Document_ = _doc,
+                //cbx_tipopata.Text
+                inicial_tipoBarraV = TipoPataBarra.BarraLateral,// Enumeraciones.TipoBarraV.BarraVSinPatas,
+                inicial_IsDirectriz = false,
+                Inicial_espacienmietoCm_EntreLineasBarras = "15",
+                TipoSeleccionMousePtoInferior = (rbt_ini_P_M.IsChecked == true ? TipoSeleccionMouse.mouse : TipoSeleccionMouse.nivel),
+                TipoSeleccionMousePtoSuperior = (rbt_sup_P_M.IsChecked == true ? TipoSeleccionMouse.mouse : TipoSeleccionMouse.nivel),
+                IsDibujarTag = true,
+                IsInvertirPosicionTag = false,
+                TipoBarraRebar_ = TipoBarraVertical.Lateral,
+                BarraTipo = TipoRebar.ELEV_ES_L,
+                TipoSelecion = TipoSeleccion.ConElemento
+            };
+            return confiEnfierradoDTO;
+        }
+
+
     }
 
 

@@ -114,7 +114,8 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
         Cabeza, MallaV, MallaH,
         MallaH_Horq,
         Cabeza_Horquilla,
-        Cabeza_BarraVHorquilla
+        Cabeza_BarraVHorquilla,
+        Lateral
     }
     public enum CasoAnalisasBarrasElevacion { Manual, Automatico }
 
@@ -140,6 +141,7 @@ namespace ArmaduraLosaRevit.Model.Enumeraciones
     public enum TipoPataBarra
     {
         buscar, BarraVPataInicial, BarraVPataFinal, BarraVSinPatas, BarraVPataAmbos, NoBuscar, BarraVPataAUTO, BuscarSinExtender,
+        BarraLateral,
         BarraVHorquilla,
         BarraVPataAmbos_Horquilla
     }

@@ -34,6 +34,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
             if (!M1_3a_SeleccionarRebarElement()) return false;
 
+            M1_3_1_AuxObtenerMuros(_wallSeleccionado);
             if (!M1_4b_1_OrientacionSeleccion()) return false;
 
 

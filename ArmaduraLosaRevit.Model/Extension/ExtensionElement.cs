@@ -27,6 +27,7 @@ namespace ArmaduraLosaRevit.Model.Extension
         public static List<List<PlanarFace>> ListaFace(this Element elemet, bool IsComputeReferences = false)
         {
             if (elemet == null) return new List<List<PlanarFace>>();
+            
             GeometriaViga _geometriaBase = new GeometriaViga(elemet.Document);
             _geometriaBase.M1_AsignarGeometriaObjecto(elemet, IsComputeReferences);
             return _geometriaBase.listaGrupoPlanarFace;

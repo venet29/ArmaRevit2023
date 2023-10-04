@@ -61,7 +61,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.DTO
         public bool IsbarraIncial { get; set; }
         public bool IsProloganLosaBajo { get; set; }
         public bool IsNoProloganLosaArriba { get; set; }
-        public bool IsBuscarCororonacion { get; set; }
+        public bool IsBuscarCoronacion { get; set; }
        // public bool IsLargopata { get; set; } = false;
         public bool IsIsDirectriz { get; set; }
         public bool IsFundacion { get; set; }//solo barra horizontal
@@ -96,7 +96,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.DTO
             this.IsIsDirectriz = (confWPFiEnfierradoDTO.inicial_IsDirectriz ? true : false);
             this.IsLargoRecorrido = (muroSeleccionadoDTO.IsLargoRecorrido ? true : false);
 
-            this.IsBuscarCororonacion = (muroSeleccionadoDTO.IsCoronacion ? true : false);
+            this.IsBuscarCoronacion = (muroSeleccionadoDTO.IsCoronacion ? true : false);
             this.EspesorElementoHost = muroSeleccionadoDTO.EspesorElemetoHost;
 
             this._parametrosInternoRebarDTO._texToCantidadoBArras = confWPFiEnfierradoDTO.Inicial_Cantidadbarra;
@@ -474,7 +474,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.DTO
 
             this.IsProloganLosaBajo = item.IsProloganLosaBajo;
             this.IsNoProloganLosaArriba = item.IsNoProloganLosaArriba;
-            this.IsBuscarCororonacion = item.IsBuscarCororonacion;
+            this.IsBuscarCoronacion = item.IsBuscarCororonacion;
 
             XYZ desplaPorTraslapo = DireccionPataEnFierrado * (IsmoverTraslapo ? Util.MmToFoot(diamtroIntervaloAnteriorMM) : 0);
             this.tipobarraV = TipoPataBarra_Inicial; // TipoPataBarra.BarraVSinPatas;

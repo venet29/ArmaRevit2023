@@ -118,7 +118,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Creador
             igenerarIntervalos.M1_ObtenerIntervaloBarrasDTO();
             igenerarIntervalos.M2_GenerarListaBarraVertical();
 
-            if (igenerarIntervalos.ListaIntervaloBarrasDTO.Count > 0 && igenerarIntervalos.ListaIntervaloBarrasDTO[0].IsBuscarCororonacion)
+            if (igenerarIntervalos.ListaIntervaloBarrasDTO.Count > 0 && igenerarIntervalos.ListaIntervaloBarrasDTO[0].IsBuscarCoronacion)
                 ZSUperior_soloMAllaVertical_auto = igenerarIntervalos.ListaIntervaloBarrasDTO[0].ptofinal.Z;
             else
                 ZSUperior_soloMAllaVertical_auto = -100000;

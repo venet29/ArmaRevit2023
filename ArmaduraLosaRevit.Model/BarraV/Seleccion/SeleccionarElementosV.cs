@@ -16,6 +16,7 @@ using ArmaduraLosaRevit.Model.FILTROS;
 using ArmaduraLosaRevit.Model.UTILES;
 using Autodesk.Revit.DB.Structure;
 using ArmaduraLosaRevit.Model.UTILES.ParaBarras;
+using ArmaduraLosaRevit.Model.BarraEstribo.DTO;
 
 namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
 {
@@ -180,7 +181,20 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
 
             return muroSeleccionadoDTO;
         }
+        // metodo que srive para obtener 'DatosMuroSeleccionadoDTO' en el caso laterales de muro
+        internal void AsignarDatosCasoLaterales(ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO)
+        {
+            IsCoronacion = false;
+            _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = _ConfiguracionBarraLateralDTO.Ptobarra1;
+            _ptoSeleccionMouseCentroCaraMuro = default;
+            _direccionMuro = _ConfiguracionBarraLateralDTO.DireccionMuro;
+            _espesorMuroFoot= _ConfiguracionBarraLateralDTO.EspesroMuroOVigaFoot;
+            _largoMuroFoot = _ConfiguracionBarraLateralDTO.LargoElementoSeleccionadoFoot;
+            _ElemetSelect= _ConfiguracionBarraLateralDTO.ElementoSeleccionado;
+            _elementoSeleccionado= ElementoSeleccionado.Muro;
 
+
+        }
 
 
         private XYZ ObtenerDireccionMuroOrientacionView()
@@ -224,6 +238,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
             }
             return ListaLevelIntervalo;
         }
+
 
     }
 }

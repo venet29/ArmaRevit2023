@@ -21,7 +21,8 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intervalos
 
         private IIniciarConXTraslapo _iniciarSinTraslapo;
 
-        public GenerarIntervalos1Nivel(UIApplication _uiapp, ConfiguracionIniciaWPFlBarraVerticalDTO confiWPFEnfierradoDTO, SelecionarPtoSup selecionarPtoSup, DatosMuroSeleccionadoDTO muroSeleccionadoDTO)
+        public GenerarIntervalos1Nivel(UIApplication _uiapp, ConfiguracionIniciaWPFlBarraVerticalDTO confiWPFEnfierradoDTO,
+            SelecionarPtoSup selecionarPtoSup, DatosMuroSeleccionadoDTO muroSeleccionadoDTO)
             : base(_uiapp, confiWPFEnfierradoDTO, selecionarPtoSup, muroSeleccionadoDTO)
         {
 

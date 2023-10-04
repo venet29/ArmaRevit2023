@@ -131,7 +131,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                     Util.ErrorMsg($"No se puedo encontrar Muro de referencia.");
                     return false;
                 }
-                m1_3_1_AuxObtenerMuros(_ElemetSelect);
+                M1_3_1_AuxObtenerMuros(_ElemetSelect);
             }
             catch (Exception ex)
             {
@@ -142,7 +142,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
             return true;
         }
 
-        protected void m1_3_1_AuxObtenerMuros(Element _ElemetSelect)
+        protected void M1_3_1_AuxObtenerMuros(Element _ElemetSelect)
         {
             NormalCaraElemento = _view.ViewDirection6();
             if (AyudaObtenerNormarPlanoVisisible.Obtener(_ElemetSelect, _view))

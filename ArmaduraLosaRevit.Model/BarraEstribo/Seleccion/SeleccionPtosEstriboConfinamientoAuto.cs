@@ -243,7 +243,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
                 ListaLaterales = new List<BarraLateralesDTO>();
                 if (_datosConfinaDTO.IsLateral == true)
                 {
-                    ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_datosConfinaDTO, newIntervalosConfinaminetoDTOAuto.ListaPtos[0], newIntervalosConfinaminetoDTOAuto.ListaPtos[1]);
+                    ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_uiapp,_datosConfinaDTO, newIntervalosConfinaminetoDTOAuto.ListaPtos[0], newIntervalosConfinaminetoDTOAuto.ListaPtos[1]);
                     ListaLaterales = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboMuroDTO();
                 }
             }

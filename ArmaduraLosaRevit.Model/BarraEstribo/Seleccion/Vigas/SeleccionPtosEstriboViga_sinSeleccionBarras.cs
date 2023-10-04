@@ -64,7 +64,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion.Vigas
             _ptoSeleccionMouseCentroCaraMuro = _ptoseleccion;
             _ElemetSelect = _elemetSelect;
 
-            m1_3_1_AuxObtenerMuros(_ElemetSelect);
+            M1_3_1_AuxObtenerMuros(_ElemetSelect);
 
             if (!M1_4_ObtenerPtoInicialYfinalViga()) return false;
             //if (!M1_3a_ObtenerRangoLevelSeleccionado()) return false;

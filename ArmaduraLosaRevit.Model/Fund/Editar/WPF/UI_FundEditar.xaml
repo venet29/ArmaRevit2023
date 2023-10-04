@@ -36,8 +36,9 @@
     <!--Closing="Window_Closing"-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="152*" />
-            <RowDefinition Height="169*" />
+            <RowDefinition Height="63*" />
+            <RowDefinition Height="27*" />
+            <RowDefinition Height="43*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -46,11 +47,11 @@
             <!--  cambiar este parametro a 1*  para ver columna  y volver Width="700"   -->
         </Grid.ColumnDefinitions>
         <!-- MAIN TAB CONTROLS-->
-        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" />
+        <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" />
 
 
         <TabControl x:Name="tabnh" HorizontalAlignment="Left" Width="400" BorderBrush="{x:Null}" Background="{x:Null}"
-                   Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,0">
+                   Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="0,0,0,0">
 
             <TabItem x:Name="tbDatos"  BorderBrush="{x:Null}" Background="{x:Null}"  Margin="0,-2,-4,-2"  Padding="5,0,5,0">
 
@@ -68,10 +69,10 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="10" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="15" />
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="10" />
 
@@ -104,12 +105,27 @@
                             <Button x:Name="btnActualizar" Click="BExternalMethod1_Click" Grid.Row="3" Grid.Column="4" Height="25" Width="80" Content="Actualizar" ToolTip="Actualiza datos de pathReinforment previamente seleccionado" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
 
                             <Button x:Name="btnSeleccionarPath" Click="BExternalMethod1_Click" Grid.Row="2" Grid.Column="4" Height="25" Width="80" Content="Seleccionar" ToolTip="Actualiza datos de pathReinforment seleccionado con mouse" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
-                            <WrapPanel Orientation="Horizontal"  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0">
-                                <Image x:Name="barraSinH" Grid.Row="5" Grid.Column="1" Source="/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/sin.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
-                                <Image x:Name="barraInferiorH" Grid.Row="5" Grid.Column="2" Source="/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/inferior.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
-                                <Image x:Name="barraSuperiorH" Grid.Row="5" Grid.Column="3" Source="/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/superior.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
-                                <Image x:Name="barraAmbosH" Grid.Row="5" Grid.Column="4" Source="/ArmaduraLosaRevit.Model;component/Resources/BarraHorizontal/ambos.png" Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
-                            </WrapPanel>
+                            <StackPanel Orientation="Horizontal"  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+                                    <RadioButton x:Name="rb_Arriba" IsChecked="True" Checked="Arriba_Checked" >Arriba</RadioButton>
+                                    <RadioButton x:Name="rb_Bajo" Checked="Bajo_Checked">Bajo</RadioButton>
+                                </StackPanel>
+                                <Image x:Name="barraSinH" Grid.Row="5" Grid.Column="1" Height="38" Width="38" Source="{Binding Imagen_barra_sin, UpdateSourceTrigger=PropertyChanged}"   Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                                <Image x:Name="barraInferiorH" Grid.Row="5" Grid.Column="2"  Height="38" Width="38" Source="{Binding Imagen_barra_izq, UpdateSourceTrigger=PropertyChanged}"   Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                                <Image x:Name="barraSuperiorH" Grid.Row="5" Grid.Column="3" Height="38" Width="38"  Source="{Binding Imagen_barra_dere, UpdateSourceTrigger=PropertyChanged}"   Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                                <Image x:Name="barraAmbosH" Grid.Row="5" Grid.Column="4"  Height="38" Width="38" Source="{Binding Imagen_barra_ambos, UpdateSourceTrigger=PropertyChanged}"   Margin="1" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Image_MouseUp" />
+                                <StackPanel/>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Label>Cantidad:</Label>
+                                        <ComboBox Name="dtCantidadCuantia"  Text="2"  Grid.Row="4" Grid.Column="4" Height="20" IsEditable="True"  ItemsSource="{Binding  Path=ListaCantidadBArrasString}"    HorizontalContentAlignment="Center" Margin="0,2,0,0" VerticalAlignment="Top" ></ComboBox>
+                                        
+                                    </StackPanel>
+                                    <Button x:Name="btnAceptar_Cuantia" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Column="5" Grid.ColumnSpan="2" Click="BExternalMethod1_Click" Height="25" Width="55" Content="Cambiar" ToolTip="Cambiar datos internos o agregar Tag de barra"></Button>
+                                </StackPanel>
+                        
+                             
+                            </StackPanel>
                         </Grid>
                     </GroupBox>
 
@@ -137,7 +153,8 @@
 
                     <GroupBox  x:Name="pathpto" Grid.Row="0" Grid.Column="0" Header="Path a punto"  Margin="10,5,10,5"  >
                         <WrapPanel Orientation="Vertical"  HorizontalAlignment="Center">
-                            <Button Name="pathtoPto" Margin="0,4,0,2" Height="20"  Width="70" Content="Seleccionar" Click="BExternalMethod1_Click" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1"></Button>
+                            <Button Name="pathtoPto" Margin="0,4,0,2" Height="20"  Width="100" Content="Selecciona Path" Click="BExternalMethod1_Click" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1"></Button>
+                            <Button Name="RebartoPto" Margin="0,4,0,2" Height="20"  Width="100" Content="Selecciona Rebar" Click="BExternalMethod1_Click" BorderBrush="#FFB2B2B2" Background="#FFE1E1E1"></Button>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBox x:Name="distanPtoPto"   Margin="2,2,0,2"   Height="20" Width="40" TextAlignment="Center" Text="0" />
                                 <Label>cm</Label>
@@ -247,7 +264,7 @@
         </TabControl>
 
         <!-- MAIN TAB CONTROLS-->
-        <TabControl Margin="5,31,0,0" Grid.Column="1" Grid.Row="0"  Grid.RowSpan="2">
+        <TabControl Margin="5,31,-5,0" Grid.Column="1" Grid.Row="0"  Grid.RowSpan="3">
             <TabItem x:Name="TabDebug" Padding="5,0,5,0">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">

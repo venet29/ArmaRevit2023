@@ -83,7 +83,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             IsOk = false;
             if (!M1_1_CrearWorkPLane_EnCentroViewSecction()) return false;
 
+      
+
             if (!M1_3a_SeleccionarRebarElement()) return false;
+
+            M1_3_1_AuxObtenerMuros(_wallSeleccionado);
             //_wallSeleccionado = base.hostParaleloView;
             if (!M1_4b_1_OrientacionSeleccion()) return false;
 
@@ -697,17 +701,37 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 //   XYZ ptoInicialLateral_aux_ptobarra1 = _ptoSeleccionMouseCentroCaraMuro_Inicial + _porRecubrimieto;
 
                 XYZ ptoInicialLateral_aux_ptobarra1 = aux_ptobarra1;// + _porRecubrimieto;
-
+                ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO = M2_2_1_ObtenerDatosParaTraba();
                 //ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_configuracionInicialEstriboDTO.DiamtroLateralEstriboMM, aux_ptobarra1, aux_ptobarra2);
-                ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_configuracionInicialEstriboDTO, ptoInicialLateral_aux_ptobarra1, aux_ptobarra2);
-                ListaLaterales = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboMuroDTO();
+                ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_uiapp,_configuracionInicialEstriboDTO, ptoInicialLateral_aux_ptobarra1, aux_ptobarra2);
+                ListaLaterales = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboMuroDTO_v2(_ConfiguracionBarraLateralDTO);
             }
         }
+
+        protected ConfiguracionBarraLateralDTO M2_2_1_ObtenerDatosParaTraba()
+        {
+
+            return new ConfiguracionBarraLateralDTO()
+            {
+                DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,
+                PtoSeleccionMouseCentroCaraMuro=_ptoSeleccionMouseCentroCaraMuro,
+                Ptobarra1 = aux_ptobarra1 + XYZ.BasisZ * Util.CmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10.0f) * .9999,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                Ptobarra2 = aux_ptobarra2,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                EspesroMuroOVigaFoot = _espesorMuroVigaFoot,
+                textoTraba = (_configuracionInicialEstriboDTO.IsTraba == false ? "" : _configuracionInicialEstriboDTO.ObtenerTextBarra_Borrar()),
+                DireccionMuro=_direccionMuro,
+                DireccionEntradoHaciaView = _direccionPerpenEntradoHaciaViewSecction,
+                DireccionEnfierrrado = (_direccionSeleccionMouse == DireccionSeleccionMouse.DereToIzq ? -_direccionParalelaViewSecctioin : _direccionParalelaViewSecctioin),                
+                //listaEspaciamientoTrabasTransversal = _configuracionInicialEstriboDTO.listaEspaciamientoTrabas,
+                ElementoSeleccionado= _wallSeleccionado,
+                LargoElementoSeleccionadoFoot= _largoMuroFoot
+            };
+
+        }
+
         public void M2_3_ObtenerTrabaMuroDTO()
         {
             ListaTraba = new List<BarraTrabaDTO>();
-
-
 
             if (_configuracionInicialEstriboDTO.IsTraba == true)
             {
@@ -718,8 +742,6 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 ListaTraba = _obtenerIntervalosLaterales.M3_ObtenerTrabaEstriboMuroDTO();
             }
         }
-
-
 
         protected ConfiguracionBarraTrabaDTO M2_3_1_ObtenerDatosParaTraba()
         {
