@@ -185,8 +185,8 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
         internal void AsignarDatosCasoLaterales(ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO)
         {
             IsCoronacion = false;
-            _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = _ConfiguracionBarraLateralDTO.Ptobarra1;
-            _ptoSeleccionMouseCentroCaraMuro = default;
+            _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = _ConfiguracionBarraLateralDTO.PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost;
+            _ptoSeleccionMouseCentroCaraMuro = _ConfiguracionBarraLateralDTO.PtoSeleccionMouseCentroCaraMuro;
             _direccionMuro = _ConfiguracionBarraLateralDTO.DireccionMuro;
             _espesorMuroFoot= _ConfiguracionBarraLateralDTO.EspesroMuroOVigaFoot;
             _largoMuroFoot = _ConfiguracionBarraLateralDTO.LargoElementoSeleccionadoFoot;

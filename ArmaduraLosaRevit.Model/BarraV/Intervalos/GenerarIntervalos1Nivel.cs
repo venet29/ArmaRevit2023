@@ -120,6 +120,11 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intervalos
                     interBArraDto.M2_AsiganrCoordenadasV(item.ptoIni_foot.Z, item.ptoFin_foot.Z, moverPorTraslapo,IsPrimeraBarra);
                     interBArraDto.tipobarraV = item.tipoBarraV;
                 }
+                else if (_confiWPFEnfierradoDTO.TipoBarraRebar_ == TipoBarraVertical.Lateral)
+                {
+                    interBArraDto.M2_AsiganrCoordenadasV(item.ptoIni_foot.Z, item.ptoFin_foot.Z, moverPorTraslapo, IsPrimeraBarra);
+                    interBArraDto.tipobarraV = item.tipoBarraV;
+                }
                 else if (_confiWPFEnfierradoDTO.TipoBarraRebar_ == TipoBarraVertical.Cabeza_BarraVHorquilla)
                 {
                     interBArraDto.M2_AsiganrCoordenadasV(item.ptoIni_foot.Z, item.ptoFin_foot.Z, moverPorTraslapo, IsPrimeraBarra);

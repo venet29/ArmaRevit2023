@@ -32,6 +32,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
         private XYZ _direccionBarra;
         private string _textoLat;
 
+        public List<GenerarIntervalos1Nivel> listaGenerarIntervalos1Nivel { get;  set; }
+       
+
         public ObtenerIntervalosLateralesMuro_Service( UIApplication _uiapp,DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO, XYZ _ptobarra1, XYZ _ptobarra2)
         {
             this._uiapp = _uiapp;
@@ -63,11 +66,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
 
                 BarraLateralesDTO barraLateralesDTO = new BarraLateralesDTO()
                 {
-                    _startPont_ = _startPont_aux,
-                    _endPoint = _startPont_aux.AsignarZ(_ptobarra2.Z) +
+                    StartPoint_ = _startPont_aux,
+                    EndPoint_ = _startPont_aux.AsignarZ(_ptobarra2.Z) +
                                     _direccionBarra *  (_ConfiguracionInicialEstriboDTO.IsExtenderLatFin? UtilBarras.largo_L9_DesarrolloFoot_diamMM(DiamtroLateralEstriboMM):0),
-                    _diamtroLat = DiamtroLateralEstriboMM,
-                    _textoLat = _textoLat
+                    DiamtroLat = DiamtroLateralEstriboMM,
+                    TextoLat = _textoLat
                 };
 
                 list.Add(barraLateralesDTO);
@@ -85,9 +88,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
 
 
             //IApplication uiapp,
-            SelecionarPtoSup selecionarPtoSup = new SelecionarPtoSup();
-            selecionarPtoSup._PtoInicioIntervaloBarra = _ptobarra1;
-            selecionarPtoSup._PtoFinalIntervaloBarra = _ptobarra2;
+            SelecionarPtoSup selecionarPtoSup = new SelecionarPtoSup();            
+            selecionarPtoSup._ptoSeleccionMouseCentroCaraMuro = _ConfiguracionBarraLateralDTO.PtoSeleccionMouseCentroCaraMuro;
+            selecionarPtoSup._ElemenetoSelectSup = _ConfiguracionBarraLateralDTO.ElementoSeleccionado;
 
             ConfiguracionIniciaWPFlBarraVerticalDTO confiEnfierradoDTO = new ConfiguracionIniciaWPFlBarraVerticalDTO()
             {
@@ -105,36 +108,80 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
                 TipoBarraRebar_ = TipoBarraVertical.Lateral,
                 BarraTipo = TipoRebar.ELEV_ES_L,
                 TipoSelecion = TipoSeleccion.ConElemento,
-                EspaciamietoRecorridoBarraFoot= "0.5"
+                EspaciamietoRecorridoBarraFoot= "0.5",
+                viewActual= _ConfiguracionBarraLateralDTO.ViewActual,
+                view3D_paraBuscar = _ConfiguracionBarraLateralDTO.View3D_paraBuscar,
+                view3D_paraVisualizar = _ConfiguracionBarraLateralDTO.View3D_paraVisualizar,
+                // cantidad =2+3+3+3
+                //espaciemineto = 20
+                IntervalosCantidadBArras = new int[1] { 2},
+               IntervalosEspaciamiento = new double[1] { 20},
+                NuevaLineaCantidadbarra=2
             };
 
 
-            SeleccionarElementosV _seleccionarElementos = new SeleccionarElementosV(_uiapp, confiEnfierradoDTO, new List<Level>());
-            DireccionRecorrido _DireccionRecorrido = new DireccionRecorrido(_uiapp.ActiveUIDocument.ActiveView, DireccionRecorrido_.PerpendicularEntradoVista);
-
+            SeleccionarElementosV _seleccionarElementos = new SeleccionarElementosV(_uiapp, confiEnfierradoDTO, new List<Level>());           
             _seleccionarElementos.AsignarDatosCasoLaterales(_ConfiguracionBarraLateralDTO);
+
+            DireccionRecorrido _DireccionRecorrido = new DireccionRecorrido(_uiapp.ActiveUIDocument.ActiveView, DireccionRecorrido_.PerpendicularEntradoVista);
             DatosMuroSeleccionadoDTO muroSeleccionadoDTO =  _seleccionarElementos.M5_OBtenerElementoREferenciaDTO(_DireccionRecorrido);
 
             for (int i = 0; i < listaIntervalo.Count; i++)
             {
-                XYZ _startPont_aux = _ptobarra1 + _direccionAnchoLAT * listaIntervalo[i];
+                XYZ PtoInicial = _ptobarra1 + _direccionAnchoLAT * listaIntervalo[i];
 
                 selecionarPtoSup.ListaLevelIntervalo= new List<double>();
+                selecionarPtoSup._PtoInicioIntervaloBarra = PtoInicial;
+                selecionarPtoSup._PtoFinalIntervaloBarra = PtoInicial.AsignarZ(_ptobarra2.Z);
                 selecionarPtoSup.ListaLevelIntervalo.Add(selecionarPtoSup._PtoInicioIntervaloBarra.Z);
                 selecionarPtoSup.ListaLevelIntervalo.Add(selecionarPtoSup._PtoFinalIntervaloBarra.Z);
                 var lateral = new GenerarIntervalos1Nivel(_uiapp, confiEnfierradoDTO, selecionarPtoSup, muroSeleccionadoDTO);
                 lateral.M1_ObtenerIntervaloBarrasDTO();
+                var result= lateral.ListaIntervaloBarrasDTO[0];
+                //lateral.M2_GenerarListaBarraVertical();
+
+                XYZ ptoFinal = default;
+                XYZ EndPataFinalAux = default;
+                XYZ EndPataInicialAux = default;
+
+                if (result.tipobarraV == TipoPataBarra.BarraVPataAmbos)
+                {
+                    EndPataInicialAux = PtoInicial.AsignarZ(result.ptoini.Z) + _direccionAnchoLAT * UtilBarras.largo_ganchoFoot_diamMM(DiamtroLateralEstriboMM);
+                    PtoInicial = PtoInicial.AsignarZ(result.ptoini.Z);
+                    ptoFinal = PtoInicial.AsignarZ(result.ptofinal.Z);
+                    EndPataFinalAux = ptoFinal + _direccionAnchoLAT * UtilBarras.largo_ganchoFoot_diamMM(DiamtroLateralEstriboMM);
+                }
+                else if (result.tipobarraV == TipoPataBarra.BarraVPataFinal)
+                {
+                    ptoFinal = PtoInicial.AsignarZ(result.ptofinal.Z);
+                    EndPataFinalAux = ptoFinal + _direccionAnchoLAT * UtilBarras.largo_ganchoFoot_diamMM(DiamtroLateralEstriboMM);
+                }
+               else if (result.tipobarraV == TipoPataBarra.BarraVPataInicial)
+                {
+                    EndPataInicialAux = PtoInicial.AsignarZ(result.ptoini.Z) + _direccionAnchoLAT * UtilBarras.largo_ganchoFoot_diamMM(DiamtroLateralEstriboMM);
+                    PtoInicial = PtoInicial.AsignarZ(result.ptoini.Z);
+                    ptoFinal = PtoInicial.AsignarZ(_ptobarra2.Z) +
+                                  _direccionBarra * (_ConfiguracionInicialEstriboDTO.IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamMM(DiamtroLateralEstriboMM) : 0);
+
+                }
+                else
+                    ptoFinal = PtoInicial.AsignarZ(_ptobarra2.Z) +
+                                    _direccionBarra * (_ConfiguracionInicialEstriboDTO.IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamMM(DiamtroLateralEstriboMM) : 0);
+
 
                 BarraLateralesDTO barraLateralesDTO = new BarraLateralesDTO()
                 {
-                    _startPont_ = _startPont_aux,
-                    _endPoint = _startPont_aux.AsignarZ(_ptobarra2.Z) +
-                                    _direccionBarra * (_ConfiguracionInicialEstriboDTO.IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamMM(DiamtroLateralEstriboMM) : 0),
-                    _diamtroLat = DiamtroLateralEstriboMM,
-                    _textoLat = _textoLat
+                    PataStart = EndPataInicialAux,
+                    StartPoint_ = PtoInicial.ObtenerCopia(),
+                    EndPoint_ = ptoFinal,
+                    PataEnd = EndPataFinalAux,
+                    TipoLateral = result.tipobarraV,
+                    DiamtroLat = DiamtroLateralEstriboMM,
+                    TextoLat = _textoLat
                 };
 
                 list.Add(barraLateralesDTO);
+    
             }
 
             return list;

@@ -115,7 +115,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
             foreach (BarraLateralesDTO item in _estriboMuroDTO.ListaLateralesDTO)
             {
                 M1_1_AsignarEspaciamientoYrecorrido();
-                M2_ConfigurarLateralCurve(item._diamtroLat);
+                M2_ConfigurarLateralCurve(item.DiamtroLat);
                 M0_CalcularCurva(item);
                 M3_DibujarBarraCurve_ConTrans();
                 M1_5__ConfiguraEspaciamientoLaterales();
@@ -229,9 +229,46 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
         {
             //  listcurve.Clear();
             listcurve = new System.Collections.Generic.List<Curve>();
-            Curve ladoCentral = Line.CreateBound(item._startPont_, item._endPoint);
+            Curve ladoPataInicial = default;
+            Curve ladoPatafinal = default;
+            Curve ladoCentral = default;
+
+            ladoCentral = Line.CreateBound(item.StartPoint_, item.EndPoint_);
             _largoCurva = Math.Round(ladoCentral.Length, 2);
-            listcurve.Add(ladoCentral);
+           
+            if (item.TipoLateral == TipoPataBarra.BarraVPataAmbos)
+            {
+                ladoPataInicial = Line.CreateBound( item.PataStart,item.StartPoint_);
+                ladoPatafinal = Line.CreateBound(item.EndPoint_, item.PataEnd);
+
+                listcurve.Add(ladoPataInicial);
+                listcurve.Add(ladoCentral);
+                listcurve.Add(ladoPatafinal);
+
+                _largoCurva = Math.Round(ladoPataInicial.Length, 2)+ Math.Round(ladoCentral.Length, 2)+ Math.Round(ladoPatafinal.Length, 2);
+            }
+            else if (item.TipoLateral == TipoPataBarra.BarraVPataFinal)
+            {
+
+                ladoPatafinal = Line.CreateBound(item.EndPoint_, item.PataEnd);
+                listcurve.Add(ladoCentral);
+                listcurve.Add(ladoPatafinal);
+
+                _largoCurva =  Math.Round(ladoCentral.Length, 2) + Math.Round(ladoPatafinal.Length, 2);
+            }
+            else if (item.TipoLateral == TipoPataBarra.BarraVPataInicial)
+            {
+                ladoPataInicial = Line.CreateBound(item.PataStart, item.StartPoint_);
+
+                listcurve.Add(ladoPataInicial);
+                listcurve.Add(ladoCentral);
+
+                _largoCurva = Math.Round(ladoPataInicial.Length, 2) + Math.Round(ladoCentral.Length, 2);
+            }
+            else
+            {
+                _largoCurva = Math.Round(ladoCentral.Length, 2);
+            }
 
         }
         private void M1_1_ConfigurarRebarShape()
@@ -451,7 +488,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
                         ParameterUtil.SetParaInt(_rebar, "BarraTipo", Tipos_Barras.M1_Buscar_nombreTipoBarras_porTipoRebar(BarraTipo));  //"nombre de vista"
 
                     if (ParameterUtil.FindParaByName(_rebar, "CantidadEstriboLAT") != null)
-                        ParameterUtil.SetParaInt(_rebar, "CantidadEstriboLAT", item._textoLat);
+                        ParameterUtil.SetParaInt(_rebar, "CantidadEstriboLAT", item.TextoLat);
                     t.Commit();
                 }
             }

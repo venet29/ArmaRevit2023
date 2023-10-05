@@ -557,7 +557,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.DTO
                         ptoini = ptoini.AsignarZ(TiposDeBarraPorInterseccion._ptoini.Z);
                 }
             }
-            else if (_TipoBarraVertical == TipoBarraVertical.Cabeza)
+            else if (_TipoBarraVertical == TipoBarraVertical.Cabeza || _TipoBarraVertical == TipoBarraVertical.Lateral)
                 ptoini = TiposDeBarraPorInterseccion._ptoini;
 
 

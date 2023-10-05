@@ -26,6 +26,7 @@ using System.IO;
 using ArmaduraLosaRevit.Model.Extension;
 using System.Globalization;
 using ArmaduraLosaRevit.Model.UTILES;
+using ArmaduraLosaRevit.Model.BarraV.Agrupar.Ayuda;
 
 
 #endregion // Namespaces
@@ -2981,11 +2982,39 @@ namespace ArmaduraLosaRevit.Model
         /// </summary>
         public static double SignedDistanceTo(this Plane plane, XYZ p)
         {
+          //  var result=PointProjectionOnPlane(plane, p);
+         //   var resutl1 = LinePlaneIntersection(plane, p);
             Debug.Assert(Util.IsEqual(plane.Normal.GetLength(), 1), "expected normalised plane normal");
             XYZ v = p - plane.Origin;
             return plane.Normal.DotProduct(v);
         }
 
+        public static XYZ PointProjectionOnPlane(this Plane plane, XYZ p )
+        {
+            XYZ w = p - plane.Origin;
+            double d = w.DotProduct(plane.Normal) / (plane.Normal.DotProduct( plane.Normal));
+            XYZ projection = p - d * plane.Normal;
+
+            return projection;
+        }
+        public static XYZ LinePlaneIntersection(this Plane plane, XYZ p)
+        {
+            XYZ p1 = p + plane.Origin * 100;
+             XYZ p2= p + plane.Origin * -100;
+
+            XYZ u = p2 - p1;
+            XYZ w = p1 - plane.Origin;
+
+            double dot = plane.Normal.DotProduct( u);
+
+            if (Math.Abs(dot) < 1e-6) // Los valores cercanos a cero indican que la línea es paralela al plano.
+                return null;
+
+            double factor = -plane.Normal.DotProduct(w) / dot;
+            XYZ intersection = p1 + factor * u;
+
+            return intersection;
+        }
 
 
 

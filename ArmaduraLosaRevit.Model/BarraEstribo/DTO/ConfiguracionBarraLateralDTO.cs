@@ -26,5 +26,9 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.DTO
         public double[] listaEspaciamientoTrabasTransversal { get;  set; }
         public XYZ DireccionMuro { get; internal set; }
         public XYZ PtoSeleccionMouseCentroCaraMuro { get; internal set; }
+        public XYZ PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost { get; internal set; }
+        public View ViewActual { get; internal set; }
+        public View3D View3D_paraBuscar { get; internal set; }
+        public View3D View3D_paraVisualizar { get; internal set; }
     }
 }

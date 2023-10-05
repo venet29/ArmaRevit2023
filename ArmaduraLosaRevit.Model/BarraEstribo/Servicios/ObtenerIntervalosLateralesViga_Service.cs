@@ -60,10 +60,10 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             {
                 BarraLateralesDTO barraLateralesDTO = new BarraLateralesDTO()
                 {
-                    _startPont_ = _ptobarra1 - view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) - _direccionBarra * ProlonInicial,
-                    _endPoint = _ptobarra2.AsignarZ(_ptobarra1.Z) - view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) + _direccionBarra * ProlonFinal,
-                    _diamtroLat = _configuracionInicialEstriboDTO.DiamtroLateralEstriboMM,
-                    _textoLat = _textoLat
+                    StartPoint_ = _ptobarra1 - view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) - _direccionBarra * ProlonInicial,
+                    EndPoint_ = _ptobarra2.AsignarZ(_ptobarra1.Z) - view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) + _direccionBarra * ProlonFinal,
+                    DiamtroLat = _configuracionInicialEstriboDTO.DiamtroLateralEstriboMM,
+                    TextoLat = _textoLat
                 };
 
                 list.Add(barraLateralesDTO);

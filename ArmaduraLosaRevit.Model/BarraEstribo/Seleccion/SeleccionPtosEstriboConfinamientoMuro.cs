@@ -48,7 +48,8 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
         private List<double> ListaLevelSeleccionado;
         private List<EstriboMuroDTO> listaDeEstribos;
         private string _nombreFamilia;
-        private XYZ aux_ptobarra2;
+        
+        private XYZ aux_ptobarra2 { get; set; }
         private XYZ _ptoTag;
         protected XYZ _direccionBarra;
         protected double _espesorMuroVigaFoot;
@@ -657,7 +658,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
                 _ptoSeleccionMouseCentroCaraMuro = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, aux_ptobarra1);
                 aux_ptobarra1 = _ptoSeleccionMouseCentroCaraMuro;
-                aux_ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, _ptobarra2);
+                aux_ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, aux_ptobarra2);
 
 
 
@@ -711,10 +712,13 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
         protected ConfiguracionBarraLateralDTO M2_2_1_ObtenerDatosParaTraba()
         {
 
+
+
             return new ConfiguracionBarraLateralDTO()
             {
                 DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,
-                PtoSeleccionMouseCentroCaraMuro=_ptoSeleccionMouseCentroCaraMuro,
+                PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost,
+                PtoSeleccionMouseCentroCaraMuro =_ptoSeleccionMouseCentroCaraMuro,
                 Ptobarra1 = aux_ptobarra1 + XYZ.BasisZ * Util.CmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10.0f) * .9999,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
                 Ptobarra2 = aux_ptobarra2,// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
                 EspesroMuroOVigaFoot = _espesorMuroVigaFoot,
@@ -724,7 +728,10 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 DireccionEnfierrrado = (_direccionSeleccionMouse == DireccionSeleccionMouse.DereToIzq ? -_direccionParalelaViewSecctioin : _direccionParalelaViewSecctioin),                
                 //listaEspaciamientoTrabasTransversal = _configuracionInicialEstriboDTO.listaEspaciamientoTrabas,
                 ElementoSeleccionado= _wallSeleccionado,
-                LargoElementoSeleccionadoFoot= _largoMuroFoot
+                LargoElementoSeleccionadoFoot= _largoMuroFoot,
+                ViewActual= _view,
+                View3D_paraBuscar= _view3D_paraBuscar,
+                View3D_paraVisualizar=null
             };
 
         }

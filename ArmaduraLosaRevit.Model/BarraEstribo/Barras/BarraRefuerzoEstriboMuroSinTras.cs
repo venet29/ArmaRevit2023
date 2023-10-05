@@ -104,7 +104,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
             foreach (BarraLateralesDTO item in _estriboMuroDTO.ListaLateralesDTO)
             {
                 M1_1_AsignarEspaciamientoYrecorrido();
-                M2_ConfigurarLateralCurve(item._diamtroLat);
+                M2_ConfigurarLateralCurve(item.DiamtroLat);
                 M0_CalcularCurva(item);
                 M3_DibujarBarraCurve();
                 M1_5__ConfiguraEspaciamientoLaterales();
@@ -251,11 +251,48 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
             //  listcurve.Clear();
             listcurve = new System.Collections.Generic.List<Curve>();
 
-            //  CrearModeLineAyuda.modelarlinea_sinTrans(_doc,item._startPont_, item._endPoint);
-            Curve ladoCentral = Line.CreateBound(item._startPont_, item._endPoint);
-            _largoCurva = Math.Round(ladoCentral.Length, 2);
-            listcurve.Add(ladoCentral);
+            Curve ladoPataInicial = default;
+            Curve ladoPatafinal = default;
+            Curve ladoCentral = default;
 
+            ladoCentral = Line.CreateBound(item.StartPoint_, item.EndPoint_);
+            _largoCurva = Math.Round(ladoCentral.Length, 2);
+
+            if (item.TipoLateral == TipoPataBarra.BarraVPataAmbos)
+            {
+                ladoPataInicial = Line.CreateBound(item.PataStart, item.StartPoint_);
+                ladoPatafinal = Line.CreateBound(item.EndPoint_, item.PataEnd);
+
+                listcurve.Add(ladoPataInicial);
+                listcurve.Add(ladoCentral);
+                listcurve.Add(ladoPatafinal);
+
+                _largoCurva = Math.Round(ladoPataInicial.Length, 2) + Math.Round(ladoCentral.Length, 2) + Math.Round(ladoPatafinal.Length, 2);
+            }
+            else if (item.TipoLateral == TipoPataBarra.BarraVPataFinal)
+            {
+
+                ladoPatafinal = Line.CreateBound(item.EndPoint_, item.PataEnd);
+                listcurve.Add(ladoCentral);
+                listcurve.Add(ladoPatafinal);
+
+                _largoCurva = Math.Round(ladoCentral.Length, 2) + Math.Round(ladoPatafinal.Length, 2);
+            }
+            else if (item.TipoLateral == TipoPataBarra.BarraVPataInicial)
+            {
+                ladoPataInicial = Line.CreateBound(item.PataStart, item.StartPoint_);
+
+                listcurve.Add(ladoPataInicial);
+                listcurve.Add(ladoCentral);
+
+                _largoCurva = Math.Round(ladoPataInicial.Length, 2) + Math.Round(ladoCentral.Length, 2);
+            }
+            else
+            {
+                listcurve.Add(ladoCentral);
+                _largoCurva = Math.Round(ladoCentral.Length, 2);
+            }
+            
         }
         private void M1_1_ConfigurarRebarShape()
         {
@@ -421,13 +458,13 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Barras
                 if (ParameterUtil.FindParaByName(EstriboRebarCreado, "BarraTipo") != null && BarraTipo != TipoRebar.NONE)
                     ParameterUtil.SetParaInt(EstriboRebarCreado, "BarraTipo", Tipos_Barras.M1_Buscar_nombreTipoBarras_porTipoRebar(BarraTipo));  //"nombre de vista"
 
-                if (ParameterUtil.FindParaByName(EstriboRebarCreado, "B") != null) ParameterUtil.SetParaInt(EstriboRebarCreado, "B", _largoCurva);
+                //if (ParameterUtil.FindParaByName(EstriboRebarCreado, "B") != null) ParameterUtil.SetParaInt(EstriboRebarCreado, "B", _largoCurva);
 
                 if (viewActual != null && ParameterUtil.FindParaByName(EstriboRebarCreado, "NombreVista") != null)
                     ParameterUtil.SetParaInt(EstriboRebarCreado, "NombreVista", viewActual.ObtenerNombreIsDependencia());  //"nombre de vista"
 
                 if (ParameterUtil.FindParaByName(EstriboRebarCreado, "CantidadEstriboLAT") != null)
-                    ParameterUtil.SetParaInt(EstriboRebarCreado, "CantidadEstriboLAT", item._textoLat);
+                    ParameterUtil.SetParaInt(EstriboRebarCreado, "CantidadEstriboLAT", item.TextoLat);
 
             }
             catch (Exception ex)
