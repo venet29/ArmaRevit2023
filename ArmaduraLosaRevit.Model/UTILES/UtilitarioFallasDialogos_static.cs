@@ -31,10 +31,10 @@ namespace ArmaduraLosaRevit.Model.UTILES
         }
         public static void ProcesamientoFallas(object sender, Autodesk.Revit.DB.Events.FailuresProcessingEventArgs e)
         {
-          
+
             FailuresAccessor failuresAccessor = e.GetFailuresAccessor();
             var proce = e.GetProcessingResult();
-            
+
             string transactionName = failuresAccessor.GetTransactionName();
             System.Diagnostics.Debug.Print("Nombre Transaction: " + transactionName);
 
@@ -49,14 +49,14 @@ namespace ArmaduraLosaRevit.Model.UTILES
 
             var listaErrore = fmas.ToList();
 
-       
-   
+
+
 
             foreach (FailureMessageAccessor failure in fmas)
             {
                 TipoFallaAdvertercias FallaActual = new TipoFallaAdvertercias(failure);
 
-                if(false) // desactivado  obtener Elemento que genera error, dificil obtener
+                if (false) // desactivado  obtener Elemento que genera error, dificil obtener
                     ObtenerElementoDeError(sender, failure);
 
                 ObtenerMensajeError(failure);
@@ -196,6 +196,11 @@ namespace ArmaduraLosaRevit.Model.UTILES
                             e.SetProcessingResult(FailureProcessingResult.ProceedWithRollBack);
                             return;
                         }
+                        else
+                        {
+                            failuresAccessor.ResolveFailure(failure);
+                            return;
+                        }
 
 
                     }
@@ -278,10 +283,10 @@ namespace ArmaduraLosaRevit.Model.UTILES
         {
             var _uiapp2 = sender as Autodesk.Revit.ApplicationServices.Application;
             List<ElementId> errorElementIds = failure.GetFailingElementIds().ToList(); //lista de elementId que  genera los mensajes de error
-            
+
             //obtener lista de documento,  NOTA: aun nose como obtener documento actibo
             var _ListaDocum = _uiapp2.Documents;
-            
+
             foreach (var f in _ListaDocum)
             {
                 var elem = errorElementIds.FirstOrDefault();
@@ -311,7 +316,7 @@ namespace ArmaduraLosaRevit.Model.UTILES
             }
         }
 
-        private static (bool, int) CerrarTransaccionForzosa(FailuresProcessingEventArgs e, FailuresAccessor failuresAccessor, FailureMessageAccessor failure, string descrip,string idConError)
+        private static (bool, int) CerrarTransaccionForzosa(FailuresProcessingEventArgs e, FailuresAccessor failuresAccessor, FailureMessageAccessor failure, string descrip, string idConError)
         {
 
             bool _IsAceptar = false;
@@ -320,7 +325,7 @@ namespace ArmaduraLosaRevit.Model.UTILES
             if (IsSalir == false)
             {
 
-                UtilitarioFallasDialogosForm _UtilitarioFallasDialogosForm = new UtilitarioFallasDialogosForm(descrip,  idConError);
+                UtilitarioFallasDialogosForm _UtilitarioFallasDialogosForm = new UtilitarioFallasDialogosForm(descrip, idConError);
                 _UtilitarioFallasDialogosForm.ShowDialog();
                 _IsAceptar = _UtilitarioFallasDialogosForm.IsAceptar;
                 _tipoTransaccion = _UtilitarioFallasDialogosForm.TipoTrasaccion;

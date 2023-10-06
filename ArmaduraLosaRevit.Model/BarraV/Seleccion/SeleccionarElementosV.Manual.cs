@@ -24,7 +24,7 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
 
         public Element _ElemenetoSelect1_ { get; set; }
         public Element _ElemenetoSelect2 { get; set; }
-        public bool  IsSalirSeleccionPilarMuro { get; set; }
+        public bool IsSalirSeleccionPilarMuro { get; set; }
         public Element hostParaleloView { get; set; }
         #region Programanual
 
@@ -60,13 +60,13 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
             {
                 Util.ErrorMsg($"Error al crear plano de referencia");
                 return false;
-            }     
+            }
             //double AnchoView = _view.get_Parameter(BuiltInParameter.VIEWER_BOUND_OFFSET_FAR).AsDouble();
             //XYZ NuevoOrigen = _origenSeccionView + -_ViewNormalDirection6 * AnchoView / 2;
             //if (!M1_1_1_CrearOAsignarSketchPlane(NuevoOrigen)) return false;
             return true;
         }
-     
+
         #endregion
         //_PtoInicioBase : solo re ferencia, despues se proyecto en el plano del muro
         public bool M1_2_SeleccionarBordeMuro()
@@ -219,21 +219,35 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                     Reference ref_pickobject_element = default;
                     try
                     {
-                        ref_pickobject_element = _uidoc.Selection.PickObject(ObjectType.PointOnElement, "Seleccionar Punto Inferior intervalo:");
-                        _PtoInicioIntervaloBarra = ref_pickobject_element.GlobalPoint;
+                        bool IsContinuar = true;
+                        while (IsContinuar)
+                        {
+                            ref_pickobject_element = _uidoc.Selection.PickObject(ObjectType.PointOnElement, "Seleccionar Punto Inferior intervalo:");
+                            _PtoInicioIntervaloBarra = ref_pickobject_element.GlobalPoint;
+    
+                            _ElemenetoSelect1_ = _doc.GetElement(ref_pickobject_element);
+
+                            if (filtroMuro.AllowElement(_ElemenetoSelect1_))
+                            {
+                                IsContinuar = false;
+                            }
+                            else
+                                Util.ErrorMsg($"Selecciono un elemento :{_ElemenetoSelect1_.Category.Name}\n\nSeleccionar elemetos BARRA, VIGA , MURO o COLUMNA");
+                        }
+
                     }
                     catch (Exception)
                     {
-                        IsSalirSeleccionPilarMuro=false;
+                        IsSalirSeleccionPilarMuro = false;
                         return false;
                     }
-                 
 
-                    _ElemenetoSelect1_ = _doc.GetElement(ref_pickobject_element);
+
+                    //_ElemenetoSelect1_ = _doc.GetElement(ref_pickobject_element);
                     //Element host = default;
                     if (_ElemenetoSelect1_ is Rebar)
                     {
-                       Rebar _barra1 = (Rebar)_ElemenetoSelect1_;
+                        Rebar _barra1 = (Rebar)_ElemenetoSelect1_;
                         if (!AyudaObtenerNormarPlanoVisisible.Obtener(_barra1, _view)) return false;
                         hostParaleloView = _doc.GetElement(_barra1.GetHostId());
                     }
@@ -241,14 +255,14 @@ namespace ArmaduraLosaRevit.Model.BarraV.Seleccion
                     {
                         if (!AyudaObtenerNormarPlanoVisisible.Obtener(_ElemenetoSelect1_, _view)) return false;
                         hostParaleloView = _ElemenetoSelect1_;
-                 
+
                     }
-              
+
                     _ptoSeleccionMouseCentroCaraMuro = AyudaObtenerNormarPlanoVisisible.caraVisibleVErtical.ObtenerCenterDeCara();
 
-                    if (_ptoSeleccionMouseCentroCaraMuro?.IsAlmostEqualTo(XYZ.Zero)==true || _ptoSeleccionMouseCentroCaraMuro==null)
+                    if (_ptoSeleccionMouseCentroCaraMuro?.IsAlmostEqualTo(XYZ.Zero) == true || _ptoSeleccionMouseCentroCaraMuro == null)
                     {
-                        (bool reult, PlanarFace plface)  = hostParaleloView.ObtenerCaraVerticalVIsible(_view);
+                        (bool reult, PlanarFace plface) = hostParaleloView.ObtenerCaraVerticalVIsible(_view);
 
                         if (reult)
                             _ptoSeleccionMouseCentroCaraMuro = plface.ObtenerCenterDeCara();

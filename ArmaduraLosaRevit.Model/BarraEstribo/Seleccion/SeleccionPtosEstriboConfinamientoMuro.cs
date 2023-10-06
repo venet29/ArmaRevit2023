@@ -656,8 +656,8 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
                 if (!AyudaObtenerNormarPlanoVisisible.Obtener(_wallSeleccionado, _view)) return false;
 
-                _ptoSeleccionMouseCentroCaraMuro = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, aux_ptobarra1);
-                aux_ptobarra1 = _ptoSeleccionMouseCentroCaraMuro;
+                _ptoSeleccionMouseCentroCaraMuro = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, (aux_ptobarra1+ aux_ptobarra2)/2);
+                aux_ptobarra1 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, aux_ptobarra1); //_ptoSeleccionMouseCentroCaraMuro;
                 aux_ptobarra2 = ProyectadoEnPlano.ObtenerPtoProyectadoEnPlano_conRedondeo8(AyudaObtenerNormarPlanoVisisible.FaceNormal, ptoSobreMuro_menosRecub, aux_ptobarra2);
 
 

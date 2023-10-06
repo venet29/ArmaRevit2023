@@ -110,6 +110,9 @@ namespace ArmaduraLosaRevit.Model.BarraV.Intervalos
                                     _muroSeleccionadoInicialDTO.DireccionEnFierrado * ConstNH.CONST_DESPLZAMIENTO_BUSQUEDA_MUROFOOT * contador; //muevo el pto en direccion del muro
 
                 bool IsDIbujarLinea = false;
+#if DEBUG
+       //IsDIbujarLinea = true;
+#endif
                 var (wallSeleccionado, espesor, ptoSobreMuro) = BuscarMuros.OBtenerRefrenciaMuro(_confiWPFEnfierradoDTO.view3D_paraBuscar, ptobusquedaMuro, _muroSeleccionadoInicialDTO.NormalEntradoView, null,IsDIbujarLinea);
 
                 ListaResuult.Add(BuscarMuros.BuscarMurosEstado_);
