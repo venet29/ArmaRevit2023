@@ -49,13 +49,14 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
         private List<EstriboMuroDTO> listaDeEstribos;
         private string _nombreFamilia;
         
-        private XYZ aux_ptobarra2 { get; set; }
+       
         private XYZ _ptoTag;
         protected XYZ _direccionBarra;
         protected double _espesorMuroVigaFoot;
         private List<BarraLateralesDTO> ListaLaterales;
         private List<BarraTrabaDTO> ListaTraba;
         private XYZ aux_ptobarra1;
+        private XYZ aux_ptobarra2 { get; set; }
 
         //private XYZ _ptoSeleccionMouseCentroCaraMuro_Inicial;
 

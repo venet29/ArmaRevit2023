@@ -26,7 +26,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
     {
         public List<XYZ> _listaPtosPAthArea;
         private IntervalosConfinaDTOAuto newIntervalosConfinaminetoDTOAuto;
-        private DatosConfinamientoAutoDTO _datosConfinaDTO;
+        private DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO;
 
         public EstriboMuroDTO _EstriboMuroDTO { get; set; }
         public bool Isok { get; set; }
@@ -59,7 +59,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
             _listaPtosPAthArea = new List<XYZ>();
             _view3D_paraBuscar = view3D_paraBuscar;
             this.newIntervalosConfinaminetoDTOAuto = newIntervalosConfinaminetoDTOAuto;
-            _datosConfinaDTO = newIntervalosConfinaminetoDTOAuto._datosConfinaDTO; ;
+            _configuracionInicialEstriboDTO = newIntervalosConfinaminetoDTOAuto._datosConfinaDTO; ;
             this.IsOk = true;
 
             _view = _uiapp.ActiveUIDocument.Document.ActiveView;
@@ -90,22 +90,22 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
                     OrigenEstribo = newIntervalosConfinaminetoDTOAuto.ListaPtos[0],
                     ElementHost = _ElemetSelect,
                     Espesor_ElementHostFoot = _espesorMuroFoot,
-                    DiamtroBarraEnMM = _datosConfinaDTO.DiamtroEstriboMM,
-                    EspaciamientoEntreEstriboFoot = Util.CmToFoot(_datosConfinaDTO.espaciamientoEstriboCM),
+                    DiamtroBarraEnMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,
+                    EspaciamientoEntreEstriboFoot = Util.CmToFoot(_configuracionInicialEstriboDTO.espaciamientoEstriboCM),
                     _anchoEstribo1Foot = _anchoEstribo1Foot,
                     direccionParalelaViewSecctioin = _RightDirection,
                     direccionPerpenEntradoHaciaViewSecction = -_ViewNormalDirection6,
                     AnchoVisibleFoot = _AnchoVisibleFoot,
                     largoRecorridoEstriboFoot = _largoRecorridoEstriboFoot,
-                    cantidadEstribo = ObtenerTextoEstribo(_datosConfinaDTO.cantidadEstribo),
+                    cantidadEstribo = ObtenerTextoEstribo(_configuracionInicialEstriboDTO.cantidadEstribo),
                     NombreFamilia = _nombreFamilia,
-                    tipoEstriboGenera = _datosConfinaDTO.tipoEstriboGenera,
+                    tipoEstriboGenera = _configuracionInicialEstriboDTO.tipoEstriboGenera,
                     ListaLateralesDTO = ListaLaterales,
                     ListaTrabasDTO = ListaTraba,
-                    direccionBarra = (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? _direccionBarra : -_direccionBarra),
+                    direccionBarra = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? _direccionBarra : -_direccionBarra),
                     direccionTag = _direccionBarra,
-                    DireccionSeleccionConMouse = _datosConfinaDTO.direccionSeleccionMOuse,
-                    TextoAUXTraba = (_datosConfinaDTO.IsTraba == false ? "" : _datosConfinaDTO.ObtenerTextBarra_Borrar()),
+                    DireccionSeleccionConMouse = _configuracionInicialEstriboDTO.direccionSeleccionMOuse,
+                    TextoAUXTraba = (_configuracionInicialEstriboDTO.IsTraba == false ? "" : _configuracionInicialEstriboDTO.ObtenerTextBarra_Borrar()),
                     Posi1TAg = _ptoTag
                 };
 
@@ -125,12 +125,12 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
                 _p1 = newIntervalosConfinaminetoDTOAuto.ListaPtos[0];
                 _PtoTAgAux = _p1.ObtenerCopia();
                 _p2 = newIntervalosConfinaminetoDTOAuto.ListaPtos[1];
-                XYZ ptoCentro = _datosConfinaDTO.centroPier.GetXYZ();
-                _direccionBarra = (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ?
+                XYZ ptoCentro = _configuracionInicialEstriboDTO.centroPier.GetXYZ();
+                _direccionBarra = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ?
                                                                                     (_p2.GetXY0() - _p1.GetXY0()) :
                                                                                     (_p2.GetXY0() - _p1.GetXY0())).Normalize();
 
-                _AnchoVisibleFoot = _p1.GetXY0().DistanceTo(_p2.GetXY0()) - Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM / 10);
+                _AnchoVisibleFoot = _p1.GetXY0().DistanceTo(_p2.GetXY0()) - Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10);
 
                 BuscarFundaciones(ptoCentro);
 
@@ -147,12 +147,12 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
                             if (dina.AlturaMaxima - _p2.Z < Util.CmToFoot(150))
                             {
                                 _p2 = _p2.AsignarZ(((double)dina.AlturaMaxima) - Util.CmToFoot(ConstNH.RECUBRIMIENTO_BARRA_VERT_CM));
-                                _datosConfinaDTO.IsExtenderLatFin = false;
+                                _configuracionInicialEstriboDTO.IsExtenderLatFin = false;
                             }
                         }
                         else if (dina.IsCoronacion == "si")
                         {
-                            _datosConfinaDTO.IsExtenderLatFin = false;
+                            _configuracionInicialEstriboDTO.IsExtenderLatFin = false;
                         }
                     }
                 }
@@ -193,23 +193,23 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
             try
             {
                 XYZ PtoBusqueda_zmasbajo = ptoCentro.AsignarZ(Math.Min(_p1.Z, _p2.Z));
-                BuscarFundacionLosa BuscarMuros = new BuscarFundacionLosa(_uiapp, UtilBarras.largo_L9_DesarrolloFoot_diamMM(_datosConfinaDTO.DiamtroEstriboMM));
+                BuscarFundacionLosa BuscarMuros = new BuscarFundacionLosa(_uiapp, UtilBarras.largo_L9_DesarrolloFoot_diamMM(_configuracionInicialEstriboDTO.DiamtroEstriboMM));
                 if (BuscarMuros.OBtenerRefrenciaFundacionSegunVector(_view3D_paraBuscar, PtoBusqueda_zmasbajo, new XYZ(0, 0, -1)))
                 {
                     if (newIntervalosConfinaminetoDTOAuto._datosConfinaDTO.tipoEstriboGenera == TipoEstriboGenera.EMuro)
                     {
                         if (_p1.Z > _p2.Z)
-                            _p2 = _p2.AsignarZ(BuscarMuros._PtoSObreCaraInferiorFund.Z + ConstNH.RECUBRIMIENTO_FUNDACIONES_foot + Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM) / 2);
+                            _p2 = _p2.AsignarZ(BuscarMuros._PtoSObreCaraInferiorFund.Z + ConstNH.RECUBRIMIENTO_FUNDACIONES_foot + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) / 2);
                         else
-                            _p1 = _p1.AsignarZ(BuscarMuros._PtoSObreCaraInferiorFund.Z + ConstNH.RECUBRIMIENTO_FUNDACIONES_foot + Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM) / 2);
+                            _p1 = _p1.AsignarZ(BuscarMuros._PtoSObreCaraInferiorFund.Z + ConstNH.RECUBRIMIENTO_FUNDACIONES_foot + Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) / 2);
                     }
                     else if (newIntervalosConfinaminetoDTOAuto._datosConfinaDTO.tipoEstriboGenera == TipoEstriboGenera.EConfinamiento)
                     {
                         //para dibujar dimension que acota despalzamoneto dentro de fundaciones
                         newIntervalosConfinaminetoDTOAuto._datosConfinaDTO.IsDImensionPorBajarFUndacion = true;
-                        var AuxDireccion = (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? _direccionBarra : -_direccionBarra);
+                        var AuxDireccion = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? _direccionBarra : -_direccionBarra);
 
-                        if (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq)
+                        if (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq)
                         {
                             newIntervalosConfinaminetoDTOAuto._datosConfinaDTO.ptoInicialDimension = _p1.ObtenerCopia().AsignarZ(BuscarMuros._PtoSObreCaraSuperiorFund.Z) + AuxDireccion * 1.3;
                             newIntervalosConfinaminetoDTOAuto._datosConfinaDTO.ptoFinalDimension = _p1.ObtenerCopia().AsignarZ(BuscarMuros._PtoSObreCaraSuperiorFund.Z) - XYZ.BasisZ * (ConstNH.RECUBRIMIENTO_FUNDACIONES_CONFINAMINETO_ABAJO_foot) + AuxDireccion * 1.3;
@@ -221,7 +221,7 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
                         }
 
                         // bajar coodenad p1 5cm sobre cara inferiro fundaciones *****************
-                        _p1 = _p1.AsignarZ(BuscarMuros._PtoSObreCaraSuperiorFund.Z - ConstNH.RECUBRIMIENTO_FUNDACIONES_CONFINAMINETO_ABAJO_foot - Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM) / 2);
+                        _p1 = _p1.AsignarZ(BuscarMuros._PtoSObreCaraSuperiorFund.Z - ConstNH.RECUBRIMIENTO_FUNDACIONES_CONFINAMINETO_ABAJO_foot - Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) / 2);
 
                         //if (_p1.Z > _p2.Z)
                         //    _p2 = _p2.AsignarZ(BuscarMuros._PtoSObreCaraSuperiorFund.Z - ConstNH.RECUBRIMIENTO_FUNDACIONES_CONFINAMINETO_ABAJO_foot - Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM) / 2);
@@ -241,10 +241,11 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
             try
             {
                 ListaLaterales = new List<BarraLateralesDTO>();
-                if (_datosConfinaDTO.IsLateral == true)
+                if (_configuracionInicialEstriboDTO.IsLateral == true)
                 {
-                    ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_uiapp,_datosConfinaDTO, newIntervalosConfinaminetoDTOAuto.ListaPtos[0], newIntervalosConfinaminetoDTOAuto.ListaPtos[1]);
-                    ListaLaterales = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboMuroDTO();
+                    ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO = M2_2_1_ObtenerDatosParaTraba();
+                    ObtenerIntervalosLateralesMuro_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesMuro_Service(_uiapp,_configuracionInicialEstriboDTO, newIntervalosConfinaminetoDTOAuto.ListaPtos[0], newIntervalosConfinaminetoDTOAuto.ListaPtos[1]);
+                    ListaLaterales = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboMuroDTO_v2(_ConfiguracionBarraLateralDTO);
                 }
             }
             catch (Exception)
@@ -254,13 +255,39 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
             }
             return ListaLaterales;
         }
+        protected ConfiguracionBarraLateralDTO M2_2_1_ObtenerDatosParaTraba()
+        {
+
+
+
+            return new ConfiguracionBarraLateralDTO()
+            {
+                DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,
+                PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost,
+                PtoSeleccionMouseCentroCaraMuro = _ptoSeleccionMouseCentroCaraMuro,
+                Ptobarra1 = newIntervalosConfinaminetoDTOAuto.ListaPtos[0] + XYZ.BasisZ * Util.CmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 10.0f) * 1.00d,
+                Ptobarra2 = newIntervalosConfinaminetoDTOAuto.ListaPtos[1],// + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                EspesroMuroOVigaFoot = _espesorMuroFoot,
+                textoTraba = (_configuracionInicialEstriboDTO.IsTraba == false ? "" : _configuracionInicialEstriboDTO.ObtenerTextBarra_Borrar()),
+                DireccionMuro = _direccionMuro,
+                DireccionEntradoHaciaView = _direccionPerpenEntradoHaciaViewSecction,
+                DireccionEnfierrrado = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? -_direccionParalelaViewSecctioin : _direccionParalelaViewSecctioin),
+                //listaEspaciamientoTrabasTransversal = _configuracionInicialEstriboDTO.listaEspaciamientoTrabas,
+                ElementoSeleccionado = _ElemetSelect,
+                LargoElementoSeleccionadoFoot = _largoMuroFoot,
+                ViewActual = _view,
+                View3D_paraBuscar = _view3D_paraBuscar,
+                View3D_paraVisualizar = null
+            };
+
+        }
         private void M2_3_ObtenerTrabaMuroDTO()
         {
             ListaTraba = new List<BarraTrabaDTO>();
 
 
 
-            if (_datosConfinaDTO.IsTraba == true)
+            if (_configuracionInicialEstriboDTO.IsTraba == true)
             {
                 var confTraba = M2_3_1_ObtenerDatosParaTraba();
 
@@ -275,18 +302,18 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
 
             return new ConfiguracionBarraTrabaDTO()
             {
-                DiamtroTrabaEstriboMM = _datosConfinaDTO.DiamtroTrabaEstriboMM,
-                Ptobarra1 = newIntervalosConfinaminetoDTOAuto.ListaPtos[0] + new XYZ(0, 0, 1) * Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM) + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM / 2),
-                Ptobarra2 = newIntervalosConfinaminetoDTOAuto.ListaPtos[1] + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_datosConfinaDTO.DiamtroEstriboMM / 2),
-                EspesroMuroOVigaFoot = _datosConfinaDTO.espesor,
-                tipoTraba_posicion = (_datosConfinaDTO.cantidadTraba_long > 0 ? TipoTraba_posicion.B : TipoTraba_posicion.A),
-                textoTraba = (_datosConfinaDTO.IsTraba == false ? "" : _datosConfinaDTO.ObtenerTextBarra_Borrar()),
+                DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroTrabaEstriboMM,
+                Ptobarra1 = newIntervalosConfinaminetoDTOAuto.ListaPtos[0] + new XYZ(0, 0, 1) * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM) + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                Ptobarra2 = newIntervalosConfinaminetoDTOAuto.ListaPtos[1] + _direccionPerpenEntradoHaciaViewSecction * Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM / 2),
+                EspesroMuroOVigaFoot = _configuracionInicialEstriboDTO.espesor,
+                tipoTraba_posicion = (_configuracionInicialEstriboDTO.cantidadTraba_long > 0 ? TipoTraba_posicion.B : TipoTraba_posicion.A),
+                textoTraba = (_configuracionInicialEstriboDTO.IsTraba == false ? "" : _configuracionInicialEstriboDTO.ObtenerTextBarra_Borrar()),
                 DireccionEntradoHaciaView = _direccionPerpenEntradoHaciaViewSecction,
-                DireccionEnfierrrado = (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? -_direccionParalelaViewSecctioin : _direccionParalelaViewSecctioin),
-                UbicacionTraba = (_datosConfinaDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? DireccionTraba.Derecha : DireccionTraba.Izquierda),
-                CantidadTrabasTranversal = _datosConfinaDTO.cantidadTraba,
-                CantidadTrabasLongitudinal = _datosConfinaDTO.cantidadTraba_long,
-                listaEspaciamientoTrabasTransversal = _datosConfinaDTO.listaEspaciamientoTrabas
+                DireccionEnfierrrado = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? -_direccionParalelaViewSecctioin : _direccionParalelaViewSecctioin),
+                UbicacionTraba = (_configuracionInicialEstriboDTO.direccionSeleccionMOuse == DireccionSeleccionMouse.DereToIzq ? DireccionTraba.Derecha : DireccionTraba.Izquierda),
+                CantidadTrabasTranversal = _configuracionInicialEstriboDTO.cantidadTraba,
+                CantidadTrabasLongitudinal = _configuracionInicialEstriboDTO.cantidadTraba_long,
+                listaEspaciamientoTrabasTransversal = _configuracionInicialEstriboDTO.listaEspaciamientoTrabas
             };
 
         }
