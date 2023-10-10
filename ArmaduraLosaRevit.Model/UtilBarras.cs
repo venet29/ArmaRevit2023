@@ -85,57 +85,13 @@ namespace ArmaduraLosaRevit.Model
             double largo_desarrollo = LargoBarras_x(diamEnmm);
             return largo_desarrollo;
         }
-
-        public static double largo_traslapoFoot_diamMM(int diamEnmm)
+        public static double largo_L9_DesarrolloFoot_diamFoot(double diametroFoot)
         {
-            double largo_traslapo = LargoBarras_x(diamEnmm);
-            return largo_traslapo;
+            //double largo_traslapo = 0;
+            int diam = (int)Util.FootToMmInt(diametroFoot);
+            return largo_L9_DesarrolloFoot_diamMM(diam);
         }
-        private static double LargoBarras_x(int diamEnmm)
-        {
-            double largo_desarrollo = 0;
-            switch (diamEnmm)
-            {
-                case 1:
-                    largo_desarrollo = Util.CmToFoot(1);
-                    break;
-                case 6:
-                    largo_desarrollo = Util.CmToFoot(50);
-                    break;
-                case 8:
-                    largo_desarrollo = Util.CmToFoot(50);
-                    break;
-                case 10:
-                    largo_desarrollo = Util.CmToFoot(60);
-                    break;
-                case 12:
-                    largo_desarrollo = Util.CmToFoot(75);
-                    break;
-                case 16:
-                    largo_desarrollo = Util.CmToFoot(95);
-                    break;
-                case 18:
-                    largo_desarrollo = Util.CmToFoot(110);
-                    break;
-                case 22:
-                    largo_desarrollo = Util.CmToFoot(165);
-                    break;
-                case 25:
-                    largo_desarrollo = Util.CmToFoot(185);
-                    break;
-                case 28:
-                    largo_desarrollo = Util.CmToFoot(210);
-                    break;
-                case 32:
-                    largo_desarrollo = Util.CmToFoot(240);
-                    break;
-                case 36:
-                    largo_desarrollo = Util.CmToFoot(260);
-                    break;
-            }
 
-            return largo_desarrollo;
-        }
 
 
 
@@ -296,51 +252,14 @@ namespace ArmaduraLosaRevit.Model
             return Util.CmToFoot(largo_traslapo);
         }
 
-        public static double ObtenerBendDiamFoot(int diamEnmm)
+        public static double largo_ganchoFoot_diamFoot(double diametro)
         {
-
-            //tabla by NH
-            double largo_traslapo = 0;
-            switch (diamEnmm)
-            {
-                case 6:
-                    largo_traslapo = 15;//12D=9.6   +5d=4
-
-                    break;
-                case 8:
-                    largo_traslapo = 15;//12D=9.6 +5d=4
-                    break;
-                case 10:
-                    largo_traslapo = 20;//12D=12 +6d=6
-                    break;
-                case 12:
-                    largo_traslapo = 25;//12D=14.4+6d=7.2
-                    break;
-                case 16:
-                    largo_traslapo = 30;//12D=19.2 +6d=9.6
-                    break;
-                case 18:
-                    largo_traslapo = 35;//12D=21.6 +6d=10.8
-                    break;
-                case 22:
-                    largo_traslapo = 40;//12D=26.4 +6d=13.2
-                    break;
-                case 25:
-                    largo_traslapo = 45;//12D=30 +6d=15.0
-                    break;
-                case 28:
-                    largo_traslapo = 50;//12D=33.6 +8d=22.4
-                    break;
-                case 32:
-                    largo_traslapo = 55;//12D=36 +8d=25.6
-                    break;
-                case 36:
-                    largo_traslapo = 60;//12D=38.4 +8d=28.8
-                    break;
-            }
-
-            return Util.CmToFoot(largo_traslapo);
+            //double largo_traslapo = 0;
+            int diam = (int)Util.FootToMmInt(diametro);
+            return largo_ganchoFoot_diamMM(diam);
         }
+
+
 
         ///ob1)c 
         public static int largo_gancho_diamMM_soloFUndaciones_cm(int diamEnmm)
@@ -407,6 +326,102 @@ namespace ArmaduraLosaRevit.Model
             //double largo_traslapo = 0;
             int diam = (int)Util.FootToMmInt(diametro);
             return largo_traslapoFoot_diamMM(diam);
+        }
+
+        public static double largo_traslapoFoot_diamMM(int diamEnmm)
+        {
+            double largo_traslapo = LargoBarras_x(diamEnmm);
+            return largo_traslapo;
+        }
+        private static double LargoBarras_x(int diamEnmm)
+        {
+            double largo_desarrollo = 0;
+            switch (diamEnmm)
+            {
+                case 1:
+                    largo_desarrollo = Util.CmToFoot(1);
+                    break;
+                case 6:
+                    largo_desarrollo = Util.CmToFoot(50);
+                    break;
+                case 8:
+                    largo_desarrollo = Util.CmToFoot(50);
+                    break;
+                case 10:
+                    largo_desarrollo = Util.CmToFoot(60);
+                    break;
+                case 12:
+                    largo_desarrollo = Util.CmToFoot(75);
+                    break;
+                case 16:
+                    largo_desarrollo = Util.CmToFoot(95);
+                    break;
+                case 18:
+                    largo_desarrollo = Util.CmToFoot(110);
+                    break;
+                case 22:
+                    largo_desarrollo = Util.CmToFoot(165);
+                    break;
+                case 25:
+                    largo_desarrollo = Util.CmToFoot(185);
+                    break;
+                case 28:
+                    largo_desarrollo = Util.CmToFoot(210);
+                    break;
+                case 32:
+                    largo_desarrollo = Util.CmToFoot(240);
+                    break;
+                case 36:
+                    largo_desarrollo = Util.CmToFoot(260);
+                    break;
+            }
+
+            return largo_desarrollo;
+        }
+        public static double ObtenerBendDiamFoot(int diamEnmm)
+        {
+
+            //tabla by NH
+            double largo_traslapo = 0;
+            switch (diamEnmm)
+            {
+                case 6:
+                    largo_traslapo = 15;//12D=9.6   +5d=4
+
+                    break;
+                case 8:
+                    largo_traslapo = 15;//12D=9.6 +5d=4
+                    break;
+                case 10:
+                    largo_traslapo = 20;//12D=12 +6d=6
+                    break;
+                case 12:
+                    largo_traslapo = 25;//12D=14.4+6d=7.2
+                    break;
+                case 16:
+                    largo_traslapo = 30;//12D=19.2 +6d=9.6
+                    break;
+                case 18:
+                    largo_traslapo = 35;//12D=21.6 +6d=10.8
+                    break;
+                case 22:
+                    largo_traslapo = 40;//12D=26.4 +6d=13.2
+                    break;
+                case 25:
+                    largo_traslapo = 45;//12D=30 +6d=15.0
+                    break;
+                case 28:
+                    largo_traslapo = 50;//12D=33.6 +8d=22.4
+                    break;
+                case 32:
+                    largo_traslapo = 55;//12D=36 +8d=25.6
+                    break;
+                case 36:
+                    largo_traslapo = 60;//12D=38.4 +8d=28.8
+                    break;
+            }
+
+            return Util.CmToFoot(largo_traslapo);
         }
 
         // pts[0]   pt1-------  pt2    pts[1]

@@ -70,21 +70,21 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.TAG
             int desplazaEESTRIBO = 10;
             int desplazaLATERAL = 5;
             int desplazaTRABA = 20;
-            int desplazaEspesor = 70;
+            int desplazaEspesor = 50;
 
             if (escala_realview == 75)
             {
                  desplazaEESTRIBO = 12;
                  desplazaLATERAL = 6;
                  desplazaTRABA = 22;
-                desplazaEspesor = 80;
+                desplazaEspesor = 60;
             }
             if (escala_realview == 100)
             {
                 desplazaEESTRIBO = 13;
                 desplazaLATERAL = 9;
                 desplazaTRABA = 24;
-                desplazaEspesor = 110;
+                desplazaEspesor = 90;
             }
 
             XYZ p0_Estribo = CentroBarra + new XYZ(0, 0, Util.CmToFoot(desplazaEESTRIBO));

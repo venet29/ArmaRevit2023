@@ -28,15 +28,17 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
         private Rebar _barra1;
         protected double _anchoEstribo1Foot_extremoAextremo; // ancho del extremos de cada lado -- largo mas extremo
-       // protected XYZ _ptobarra1;
-      //  protected XYZ _ptobarra2;
+                                                             // protected XYZ _ptobarra1;
+                                                             //  protected XYZ _ptobarra2;
 
         public XYZ _ptobarra1 { get; set; }
         public XYZ _ptobarra2 { get; set; }
+
+
         private Rebar _barra2;
         protected double _anchoEstribo2Foot_extremoAextrem; // ancho del extremos de cada lado -- largo mas extremo
 
-       
+
         protected DatosConfinamientoAutoDTO _configuracionInicialEstriboDTO;
 
         private DireccionSeleccionMouse _direccionSeleccionMouse;
@@ -53,25 +55,26 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
         //private List<double> listaEspac;
         private string _nombreFamilia;
         private XYZ _ptoTag;
-       // private XYZ _direccionBarra;
+        // private XYZ _direccionBarra;
         private List<BarraTrabaDTO> ListaTraba;
-
+        public BuscarFundacionLosaV2 BuscarFundacionLosaInf { get; set; }
+        public BuscarFundacionLosaV2 BuscarFundacionLosaSup { get; set; }
         public bool IsOk { get; set; }
 
-        public SeleccionPtosEstriboViga(UIApplication _uiapp, View3D _view3D_paraBuscar_,  DatosConfinamientoAutoDTO configuracionInicialEstriboDTO)
+        public SeleccionPtosEstriboViga(UIApplication _uiapp, View3D _view3D_paraBuscar_, DatosConfinamientoAutoDTO configuracionInicialEstriboDTO)
             : base(_uiapp)
         {
             // _uidoc = _uiapp.ActiveUIDocument;
             _listaPtosPAthArea = new List<XYZ>();
             _view3D_paraBuscar = _view3D_paraBuscar_;
             this._configuracionInicialEstriboDTO = configuracionInicialEstriboDTO;
-            
+
             ListaLevelSeleccionado = new List<Level>();
             listaDeEstribos = new List<EstriboMuroDTO>();
 
         }
-       
-        
+
+
         #region 1) rutina PRincipal
 
         public bool M1_Ejecutar_SeleccionarRebar()
@@ -82,7 +85,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             //if (!M1_3_SeleccionarMuroElement()) return false;
             //if (!M1_4_BuscarPtoInicioBase()) return false;
             if (!M1_3_SeleccionarRebarElement()) return false;
-            
+
             //if (!M1_3a_ObtenerRangoLevelSeleccionado()) return false;
 
             if (!(M1_4_BuscarMuroPerpendicularVIew((_ptobarra1 + _ptobarra2) / 2))) return false;
@@ -91,7 +94,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
             {
                 if (!(M1_4_2_BuscarPuntosSegunMargen(_ptobarra1)))// pto inical barras inicial
                 {
-                    if (!(M1_4_2_BuscarPuntosSegunMargen( _ptobarra2))) // pto final 
+                    if (!(M1_4_2_BuscarPuntosSegunMargen(_ptobarra2))) // pto final 
                     {
                         return false;
                     }
@@ -118,7 +121,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 //1
                 Reference ref_baar1 = _uidoc.Selection.PickObject(ObjectType.Element, filtroRebar, "Seleccionar primera Barra:");
                 _ptobarra1 = ref_baar1.GlobalPoint;
-              
+
 
                 _barra1 = (Rebar)_doc.GetElement(ref_baar1);
                 if (_barra1.Quantity == 1)
@@ -135,7 +138,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 {
                     _ptobarra1 = _ptobarra1.AsignarZ(AyudaObtenerPtoEnRebar.ptoMASCercano.Z);
                 }
-               // _ptobarra1 = _ptoSeleccionMouseCentroCaraMuro.ObtenerCopia();
+                // _ptobarra1 = _ptoSeleccionMouseCentroCaraMuro.ObtenerCopia();
 
                 double diamtroEstribo_Foot = Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM);
 
@@ -195,7 +198,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 M1_3_3_ReasignarSiP2MasCercaOriengeViewSeccion();
 
                 _ptoSeleccionMouseCentroCaraMuro = (_ptobarra1 + _ptobarra2) / 2;
-              //  _ptoSeleccionMouseCaraMuro = (_ptobarra1 + _ptobarra2) / 2;
+                //  _ptoSeleccionMouseCaraMuro = (_ptobarra1 + _ptobarra2) / 2;
 
             }
             catch (Exception ex)
@@ -278,7 +281,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 XYZ new_ptobarra2 = _ptobarra1.AsignarZ(zp2_aux);
                 _ptobarra1 = new_ptobarra1;
                 _ptobarra2 = new_ptobarra2;
-           }
+            }
 
 
         }
@@ -335,7 +338,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 if (_configuracionInicialEstriboDTO.TipoDiseñoEstriboViga == TipoDisenoEstriboVIga.SoloBarra) return true;
 
                 double recub = ConstNH.RECUBRIMIENTO_ESTRIBO_FOOT;
-     
+
                 var caraSUperior = _wallSeleccionado.ObtenerPLanarFAce_superior(false);
                 _ptobarra2 = _ptobarra2.AsignarZ(caraSUperior.Origin.Z - recub);
 
@@ -355,10 +358,10 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
                 //b) obtener valores en Z
 
-                BuscarFundacionLosaV2 _buscarFundacionLosaInf = new BuscarFundacionLosaV2(_uiapp, Util.CmToFoot(40));
-                if (_buscarFundacionLosaInf.OBtenerRefrenciaLosa(_view3D_paraBuscar, _ptobarra1, new XYZ(0, 0, -1), TipoCaraObjeto.Inferior))
+                BuscarFundacionLosaInf = new BuscarFundacionLosaV2(_uiapp, Util.CmToFoot(40));
+                if (BuscarFundacionLosaInf.OBtenerRefrenciaLosa(_view3D_paraBuscar, _ptobarra1, new XYZ(0, 0, -1), TipoCaraObjeto.Inferior))
                 {
-                    Buscar_elementoEncontradoDTO elemetSelecc = _buscarFundacionLosaInf._listaFundLosaEncontrado.OrderBy(c => c.distancia).FirstOrDefault();
+                    Buscar_elementoEncontradoDTO elemetSelecc = BuscarFundacionLosaInf._listaFundLosaEncontrado.OrderBy(c => c.distancia).FirstOrDefault();
 
                     if (elemetSelecc._PlanarFace.FaceNormal.Z == -1)
                         _ptobarra1 = _ptobarra1.AsignarZ(elemetSelecc.PtoSObreCaraInferiorFundLosa.Z + recub);
@@ -366,10 +369,10 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
 
 
-                BuscarFundacionLosaV2 _buscarFundacionLosaSup = new BuscarFundacionLosaV2(_uiapp, Util.CmToFoot(40));
-                if (_buscarFundacionLosaSup.OBtenerRefrenciaLosa(_view3D_paraBuscar, _ptobarra2, new XYZ(0, 0, 1), TipoCaraObjeto.Superior))
+                BuscarFundacionLosaSup = new BuscarFundacionLosaV2(_uiapp, Util.CmToFoot(40));
+                if (BuscarFundacionLosaSup.OBtenerRefrenciaLosa(_view3D_paraBuscar, _ptobarra2, new XYZ(0, 0, 1), TipoCaraObjeto.Superior))
                 {
-                    Buscar_elementoEncontradoDTO elemetSelecc = _buscarFundacionLosaSup._listaFundLosaEncontrado.OrderBy(c => c.distancia).FirstOrDefault();
+                    Buscar_elementoEncontradoDTO elemetSelecc = BuscarFundacionLosaSup._listaFundLosaEncontrado.OrderBy(c => c.distancia).FirstOrDefault();
 
                     if (elemetSelecc._PlanarFace.FaceNormal.Z == 1)
                         _ptobarra2 = _ptobarra2.AsignarZ(elemetSelecc.PtoSObreCaraSuperiorFundLosa.Z - recub);
@@ -397,7 +400,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
         {
             _direccion1DeEstribo = new XYZ(0, 0, -1); // direcicion 1 para la barra
             _direccionPerpenEntradoHaciaViewSecction = -Util.GetVectorPerpendicular2((_ptobarra2.GetXY0() - _ptobarra1.GetXY0()).Normalize()).Normalize(); // -_ViewNormalDirection6;// direccion 2 para para definir estribo 
-            _largoRecorridoEstriboFoot =  _ptobarra1.GetXY0().DistanceTo(_ptobarra2.GetXY0());
+            _largoRecorridoEstriboFoot = _ptobarra1.GetXY0().DistanceTo(_ptobarra2.GetXY0());
             _AnchoVisibleFoot = Math.Abs(_ptobarra1.Z - _ptobarra2.Z);
             return true;
         }
@@ -429,15 +432,18 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
 
         public List<EstriboMuroDTO> M2_ObtenerEstriboVigaDTO(Func<XYZ, XYZ, XYZ> funciotag)
         {
-           // _ptobarra1 = _ptoSeleccionMouseCentroCaraMuro;
+            // _ptobarra1 = _ptoSeleccionMouseCentroCaraMuro;
             _ptoTag = funciotag(_ptobarra1, _ptobarra2);
 
             List<BarraLateralesDTO> ListaLat = new List<BarraLateralesDTO>();
 
             if (_configuracionInicialEstriboDTO.IsLateral == true)
             {
-                ObtenerIntervalosLateralesViga_Service _obtenerIntervalosLaterales = new ObtenerIntervalosLateralesViga_Service(_configuracionInicialEstriboDTO, _ptobarra1, _ptobarra2, _view);
-                ListaLat = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboVigaDTO();
+                _configuracionInicialEstriboDTO.espesor = _espesorMuroVigaFoot;
+                _configuracionInicialEstriboDTO.ElementoSeleccionado = _wallSeleccionado;
+                ObtenerIntervalosLateralesViga_Service _obtenerIntervalosLaterales =
+         new ObtenerIntervalosLateralesViga_Service(_uiapp, _view3D_paraBuscar, _configuracionInicialEstriboDTO, _ptobarra1, _ptobarra2, _view);
+                ListaLat = _obtenerIntervalosLaterales.M3_ObtenerLateralesEstriboVigaDTO_buscarPAta();
             }
 
 
@@ -501,7 +507,7 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Seleccion
                 DireccionEntradoHaciaView = _direccionPerpenEntradoHaciaViewSecction,
                 DireccionEnfierrrado = (_direccionSeleccionMouse == DireccionSeleccionMouse.DereToIzq ? -_view.RightDirection : _view.RightDirection),
                 UbicacionTraba = (_direccionSeleccionMouse == DireccionSeleccionMouse.DereToIzq ? DireccionTraba.Derecha : DireccionTraba.Izquierda),
-                CantidadTrabasTranversal = _configuracionInicialEstriboDTO.cantidadTraba+ _configuracionInicialEstriboDTO.cantidadTraba_long,
+                CantidadTrabasTranversal = _configuracionInicialEstriboDTO.cantidadTraba + _configuracionInicialEstriboDTO.cantidadTraba_long,
                 CantidadTrabasLongitudinal = 0,
                 listaEspaciamientoTrabasTransversal = _configuracionInicialEstriboDTO.listaEspaciamientoTrabas
             };

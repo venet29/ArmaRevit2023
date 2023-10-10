@@ -258,8 +258,8 @@ namespace ArmaduraLosaRevit.Model.BarraAreaPath.Seleccion
         protected ConfiguracionBarraLateralDTO M2_2_1_ObtenerDatosParaTraba()
         {
 
-
-
+            _PtoInicioBaseBordeMuro_ProyectadoCaraMuroHost = newIntervalosConfinaminetoDTOAuto.ListaPtos[0];
+;
             return new ConfiguracionBarraLateralDTO()
             {
                 DiamtroTrabaEstriboMM = _configuracionInicialEstriboDTO.DiamtroEstriboMM,

@@ -57,7 +57,7 @@ namespace ArmaduraLosaRevit.Model.Prueba
 //                return true;
 //#endif
 
-                if (contador < 300 && resultnh.Isok)
+                if (contador < 600 && resultnh.Isok)
                 {
                     contador = contador + 1;
                     return true;
