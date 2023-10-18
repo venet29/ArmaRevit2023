@@ -78,6 +78,7 @@ using ArmaduraLosaRevit.Model.Extension;
 using Autodesk.Revit.UI.Selection;
 using ArmaduraLosaRevit.Model.ParametrosShare.Servicio;
 using ArmaduraLosaRevit.Model.ElementoBarraRoom.Automatico;
+using ArmaduraLosaRevit.Model.ViewportnNH.WPF;
 
 
 #endregion // Namespaces
@@ -113,6 +114,13 @@ namespace ArmaduraLosaRevit.Model.BarraV
                 //_AyudaCreaarDefinition.Ejecutar("Altura", "SpecTypeId.String.Text");
                 //ManejadorCrearParametrosShare _definicionManejador = new ManejadorCrearParametrosShare(_uiapp, RutaArchivoCompartido: "ParametrosNH");
                 //_definicionManejador.EjecutarBIM();
+            }
+
+            else if (_newCmd_CargadorBarraV.tipodeCaso == "CrearSheet")
+            {
+                ManejadorWPF_ViewPortNH _ManejadorWPF_ViewPortNH = new ManejadorWPF_ViewPortNH(_uiapp);
+                _ManejadorWPF_ViewPortNH.Execute();
+
             }
             else if (_newCmd_CargadorBarraV.tipodeCaso == "button_cambiarGrid")
             {
@@ -529,7 +537,7 @@ namespace ArmaduraLosaRevit.Model.BarraV
             else if (_newCmd_CargadorBarraV.tipodeCaso == "ExtStore")
             {
                 ManejadotExtStore_Wall _ManejadotExtStore = new ManejadotExtStore_Wall(commandData.Application);
-                
+
                 int tipo = 0;
 
                 if (tipo == 0)

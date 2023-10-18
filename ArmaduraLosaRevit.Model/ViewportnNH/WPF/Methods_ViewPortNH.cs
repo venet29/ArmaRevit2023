@@ -29,7 +29,7 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
         {
             UtilStopWatch _utilStopWatch = new UtilStopWatch();
             Document _doc = _uiapp.ActiveUIDocument.Document;
-            if (BuscarIsNombreViewActualizado.IsError(_uiapp.ActiveUIDocument.ActiveView)) return;
+          //  if (BuscarIsNombreViewActualizado.IsError(_uiapp.ActiveUIDocument.ActiveView)) return;
             //UpdateGeneral _updateGeneral = new UpdateGeneral(_uiapp);
             UpdateGeneral.M3_DesCargarBarras(_uiapp);
 
@@ -54,7 +54,7 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                 var listaIsChecket = ListaViewDTO.Where(c => c.IsSelected).ToList();
                 var ListaSheet = listaIsChecket.GroupBy(c => c.NumeroSheet).Select(c => c.Key).ToList();
                 var cantidadSheet = ListaSheet.Count();
-                var result = Util.InfoMsg_YesNo($"confirma que desea crear {cantidadSheet} sheet?");
+                var result = Util.InfoMsg_YesNo($"Confirma que desea crear {cantidadSheet} sheet(Si no estan creado) con {listaIsChecket.Count} Elevaciones ?");
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     _utilStopWatch.IniciarMedicion();

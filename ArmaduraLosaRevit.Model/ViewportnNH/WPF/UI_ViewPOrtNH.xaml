@@ -7,7 +7,7 @@
 
     mc:Ignorable="d"
     xmlns:view="clr-namespace:ArmaduraLosaRevit.Model.WPF.Componentes"
-    Title="Creacion ViewPort" Height="800" Width="1150" WindowStartupLocation="CenterScreen"
+    Title="Creacion ViewPort" Height="800" Width="1450" WindowStartupLocation="CenterScreen"
     xmlns:System="clr-namespace:System;assembly=mscorlib" 
 
     Background="White"
@@ -25,6 +25,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
+
         </Grid.ColumnDefinitions>
         <!-- MAIN TAB CONTROLS-->
         <Border BorderBrush="#FFACACAC" BorderThickness="1" Height="32" VerticalAlignment="Top" Margin="0,0,0,0" />
@@ -195,7 +196,8 @@
                             <ColumnDefinition  Width="1*" />
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="90" />
-                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="300" />
+                            
                         </Grid.ColumnDefinitions>
 
                         <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="6">
@@ -206,14 +208,14 @@
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"  Grid.ColumnSpan="4">
                             <CheckBox Name="SeleccionTodos_elev"  VerticalAlignment="Bottom" Checked="SeleccionTodos_elev_Checked" Unchecked="SeleccionTodos_elev_Unchecked" >Todos</CheckBox>
                             <Button  Name="ActualizarElev"  Margin="450,0,0,0" Height="25"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"  ToolTip="Actualiza numero de Sheet de forma incremental" Click="ActualizarEstruc_Click">Actualizar N°</Button>
+                            <Label Margin="10,0,0,0">N° Sheet</Label>
+                            <Label Margin="20,0,0,0">Titulo elevacion en Sheet</Label>
                         </StackPanel>
                         
-
-
                         <Button Name="CrearArmaduraEleva" Grid.Row="4" Grid.Column="2"   Height="25" Click="BExternalMethod1_Click" Width="60"  HorizontalAlignment="Center" Content="Crear"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
                         <Button Name="BorrarArmaduraEleva" Grid.Row="4" Grid.Column="3"   Height="25" Click="BExternalMethod1_Click" Width="60"  HorizontalAlignment="Center" Content="Borrar" Background="#FFE1E1E1" BorderBrush="#FFB2B2B2" ></Button>
                         <Button Name="Cerrar_estruc_elev" Grid.Row="4" Grid.Column="4"   Height="25"  Width="60"  HorizontalAlignment="Center" Content="Cerrar" Click="Cerrar_estruc_Click"  Background="#FFE1E1E1" BorderBrush="#FFB2B2B2"></Button>
-                        <ListBox x:Name="listBox_elev"  Grid.Row="3"   Grid.Column="1"  Grid.ColumnSpan="5" ItemsSource="{Binding ListaElev}" >
+                        <ListBox x:Name="listBox_elev"  Grid.Row="3"   Grid.Column="1"  Grid.ColumnSpan="4" ItemsSource="{Binding ListaElev}" >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -221,6 +223,19 @@
                                         <Button  Click="VisulizarGeo">Visulizar</Button>
                                         <ComboBox  Name="listaNumeroElev" Grid.Row="4" Grid.Column="2" IsEditable="True"  MinWidth="100"  Text="{Binding NumeroSheet, Mode=TwoWay}" ItemsSource="{Binding Path=ListaSheetNumero}"  HorizontalContentAlignment="Left" />
                                         <ComboBox  Name="listaSheetElev" Grid.Row="4" Grid.Column="2" IsEditable="True"  MinWidth="420"   Text="{Binding NombreSheetEditado, Mode=TwoWay}" ItemsSource="{Binding Path=ListaSheetNombre}"  HorizontalContentAlignment="Left"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+
+                        </ListBox>
+
+
+                        <ListBox x:Name="listBox_elevSheet"  Grid.Row="3"   Grid.Column="5"  Grid.ColumnSpan="2" ItemsSource="{Binding ListaSheetEstructura}" Margin="10,0,10,0" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox Content="{Binding NombreVista}" IsChecked="{Binding IsSelected ,  Mode=TwoWay}" Width="500"/>
+                                       
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -234,7 +249,7 @@
 
 
         </TabControl>
-
+    
 
     </Grid>
 </Window>

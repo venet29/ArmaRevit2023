@@ -46,11 +46,11 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
             this._view = _view;
             _alturaEstribo = Math.Abs(_ptobarra1.Z - _ptobarra2.Z) + ConstNH.RECUBRIMIENTO_ESTRIBO_FOOT * 2;
             _alturaEstriboMedia = _alturaEstribo / 2;
-            _direccionPata= XYZ.Zero;
+            _direccionPata= XYZ.BasisZ;
             _espaciamietoLat = new List<double>();
             _espaciamientoBase = Util.CmToFoot(22.5);
             _diametroEstribo_foot = Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroEstriboMM);
-            _diametroLat_foot = Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroLateralEstriboMM) / 2;
+            _diametroLat_foot = Util.MmToFoot(_configuracionInicialEstriboDTO.DiamtroLateralEstriboMM);
             _IsExtenderLatInicio = _configuracionInicialEstriboDTO.IsExtenderLatInicio;
             _IsExtenderLatFin = _configuracionInicialEstriboDTO.IsExtenderLatFin;
             this._direccionBarra = (_ptobarra2 - _ptobarra1).AsignarZ(0).Normalize();
@@ -102,7 +102,13 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
 
             ConfiguracionBarraLateralDTO _ConfiguracionBarraLateralDTO = M2_2_1_ObtenerDatosParaTraba();
 
-
+            var _empotramientoPatasDTO = new EmpotramientoPatasDTO()
+            {
+                _conEmpotramientoIzqInf = TipoEmpotramiento.total,
+                _conEmpotramientoDereSup = TipoEmpotramiento.total,
+                TipoPataIzqInf = TipoPataBarra.BarraVPataAUTO, // TipoPataBarra.BarraVSinPatas //(i==0? _configuracionInicialBarraHorizontalDTO.inicial_tipoBarraH : TipoBarraV.NoBuscar)
+                TipoPataDereSup = TipoPataBarra.BarraVPataAUTO,//((_listaptoTramo.Count - 2)==i ? _configuracionInicialBarraHorizontalDTO.inicial_tipoBarraH : TipoBarraV.NoBuscar),
+            };
 
             //a
             confiEnfierradoDTO = new ConfiguracionInicialBarraHorizontalDTO()
@@ -119,52 +125,58 @@ namespace ArmaduraLosaRevit.Model.BarraEstribo.Servicios
                 Inicial_espacienmietoCm_direccionmuro = "8",
                 BarraTipo = TipoRebar.ELEV_BA_H,
                 DireccionTraslapoH_ = DireccionTraslapoH.central,// DireccionTraslapoH.izquierda
-                TipoSelecion = TipoSeleccion.ConElemento
+                TipoSelecion = TipoSeleccion.ConElemento,
+                _empotramientoPatasDTO= _empotramientoPatasDTO,
+                view3D_paraBuscar= _view3D_ParaBuscar
             };
-
+            
 
             for (int i = 0; i < listaIntervalo.Count; i++)
             {
-
                 XYZ PtoInicial = _ptobarra1 - _view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) - _direccionBarra * ProlonInicial;
-                XYZ PtoFinal = _ptobarra2.AsignarZ(_ptobarra1.Z) - _view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) + _direccionBarra * ProlonFinal;
-      
-
-                SelecionarPtoHorizontal selecionarPtoSup = M4_SeleccionarSegundoPtoHorizontalTramo(PtoInicial, PtoFinal);
-
+                XYZ PtoFinal = _ptobarra2.AsignarZ(_ptobarra1.Z) - _view.ViewDirection * (_diametroEstribo_foot + _diametroLat_foot) + new XYZ(0, 0, listaIntervalo[i]) + _direccionBarra * ProlonFinal;            
 
                 DireccionRecorrido _DireccionRecorrido = new DireccionRecorrido(_view, DireccionRecorrido_.PerpendicularEntradoVista);
-
                 _seleccionarElementos = new SeleccionarElementosH(_uiapp, confiEnfierradoDTO, _DireccionRecorrido);
                 _seleccionarElementos.PtoInicioBaseBordeViga_ProyectadoCaraMuroHost = PtoInicial;
+                _seleccionarElementos._PtoInicioBaseBordeViga6 = PtoInicial;
+                _seleccionarElementos.PtoSeleccionMouseCentroCaraMuro6=(PtoInicial+PtoFinal)/2.0D;
+                _seleccionarElementos.ElemetSelect = _configuracionInicialEstriboDTO.ElementoSeleccionado;
+                _seleccionarElementos.EspesorViga=_configuracionInicialEstriboDTO.espesor;
+                _seleccionarElementos.DireccionMuro6 = (PtoFinal.AsignarZ(0) - PtoInicial.AsignarZ(0)).Normalize();
+                _seleccionarElementos.DireccionBordeElemeto = (PtoFinal.AsignarZ(0) - PtoInicial.AsignarZ(0)).Normalize();
                 var _vigaSeleccionadoDTO = _seleccionarElementos.M2_OBtenerElementoREferenciaDTO();
+
+                SelecionarPtoHorizontal selecionarPtoSup = M4_SeleccionarSegundoPtoHorizontalTramo(PtoInicial, PtoFinal);
 
                 var lateral = new GenerarIntervalosSINNivel(_uiapp, confiEnfierradoDTO, selecionarPtoSup, _vigaSeleccionadoDTO);
                 lateral.M1_ObtenerIntervaloBarrasDTO();
                 var result = lateral.ListaIntervaloBarrasDTO[0];
 
 
-               // XYZ ptoFinal = default;
+                _IsExtenderLatInicio = true;
+                _IsExtenderLatFin=true;
+                // XYZ ptoFinal = default;
                 XYZ EndPataFinalAux = default;
                 XYZ EndPataInicialAux = default;
 
                 if (result.tipobarraV == TipoPataBarra.BarraVPataAmbos)
                 {
-                    EndPataInicialAux = result.ptoini + _direccionPata * (_IsExtenderLatInicio ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroLat_foot) : 0);
+                    EndPataInicialAux = result.ptoini + _direccionPata * UtilBarras.largo_ganchoFoot_diamFoot(_diametroLat_foot);
                     PtoInicial = result.ptoini;
                     PtoFinal = result.ptofinal;
-                    EndPataFinalAux = result.ptofinal + _direccionPata * (_IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroLat_foot) : 0);
+                    EndPataFinalAux = result.ptofinal + _direccionPata * UtilBarras.largo_ganchoFoot_diamFoot(_diametroLat_foot);
                 }
                 else if (result.tipobarraV == TipoPataBarra.BarraVPataFinal)
                 {
                     PtoInicial = PtoInicial - _direccionBarra * (_IsExtenderLatInicio ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroEstribo_foot) : 0);
 
                     PtoFinal = result.ptofinal;
-                    EndPataFinalAux = PtoFinal + _direccionPata * (_IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroLat_foot) : 0);
+                    EndPataFinalAux = PtoFinal + _direccionPata * UtilBarras.largo_ganchoFoot_diamFoot(_diametroLat_foot) ;
                 }
                 else if (result.tipobarraV == TipoPataBarra.BarraVPataInicial)
                 {
-                    EndPataInicialAux = result.ptoini + _direccionPata * (_IsExtenderLatInicio ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroLat_foot) : 0);
+                    EndPataInicialAux = result.ptoini + _direccionPata * UtilBarras.largo_ganchoFoot_diamFoot(_diametroLat_foot);
                     PtoInicial = result.ptoini;
 
                     PtoFinal = PtoFinal + _direccionBarra * (_IsExtenderLatFin ? UtilBarras.largo_L9_DesarrolloFoot_diamFoot(_diametroEstribo_foot) : 0);

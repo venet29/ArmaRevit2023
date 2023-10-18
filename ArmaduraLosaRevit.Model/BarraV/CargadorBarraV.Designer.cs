@@ -35,6 +35,7 @@
             this.button_rebarInclinadoEspecial = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button50 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
             this.button_Fundaciones = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -106,7 +107,7 @@
             this.button46 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
             this.button_cambiarGrid = new System.Windows.Forms.Button();
-            this.button50 = new System.Windows.Forms.Button();
+            this.button51 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -180,6 +181,16 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fundaciones";
+            // 
+            // button50
+            // 
+            this.button50.Location = new System.Drawing.Point(6, 79);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(86, 23);
+            this.button50.TabIndex = 19;
+            this.button50.Text = "Refuerzo Fund";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
             // 
             // button33
             // 
@@ -923,21 +934,22 @@
             this.button_cambiarGrid.UseVisualStyleBackColor = true;
             this.button_cambiarGrid.Click += new System.EventHandler(this.button_cambiarGrid_Click);
             // 
-            // button50
+            // button51
             // 
-            this.button50.Location = new System.Drawing.Point(6, 79);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(86, 23);
-            this.button50.TabIndex = 19;
-            this.button50.Text = "Refuerzo Fund";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
+            this.button51.Location = new System.Drawing.Point(574, 418);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(105, 23);
+            this.button51.TabIndex = 30;
+            this.button51.Text = "Crear Sheet";
+            this.button51.UseVisualStyleBackColor = true;
+            this.button51.Click += new System.EventHandler(this.button51_Click);
             // 
             // CargadorBarraV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 623);
+            this.Controls.Add(this.button51);
             this.Controls.Add(this.button_cambiarGrid);
             this.Controls.Add(this.button47);
             this.Controls.Add(this.button46);
@@ -1062,5 +1074,6 @@
         private System.Windows.Forms.Button button49;
         private System.Windows.Forms.Button button_cambiarGrid;
         private System.Windows.Forms.Button button50;
+        private System.Windows.Forms.Button button51;
     }
 }

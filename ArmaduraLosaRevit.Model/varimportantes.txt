@@ -51,3 +51,14 @@ double a = 14.48;
      MessageBox.Show("Se aproxima hacia abajo:" + Math.Round(a).ToString());
   else if(b >= 0.5)
      MessageBox.Show("Se aproxima hacia arriba:" + Math.Ceiling(a).ToString());
+
+
+     /// usar data context
+             private void VisulizarGeo(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            // Usamos el DataContext del botón para obtener el objeto de la lista
+            var miObjeto = button.DataContext as ViewDTO;
+
+        }

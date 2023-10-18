@@ -121,7 +121,7 @@
                             <Label Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">EΦ</Label>
                             <ComboBox Name="diam_lat" Grid.Row="2" Text="8" Grid.Column="5" Width="36" Height="25" IsEditable="True" ItemsSource="{Binding  Path=ListaDiam}" ></ComboBox>
 
-                            <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <StackPanel Visibility="Hidden" Orientation="Horizontal"  Grid.Row="2" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Left">
                                 <TextBlock Text="E.I." ToolTip="Extener lado izquierdo de lateral" />
                                 <CheckBox Name="chbox_extenIni" ToolTip="Extener lado izquierdo de lateral"  IsChecked="false" />
                                 <TextBlock Text="E.D" ToolTip="Extener lado derecho de lateral"/>

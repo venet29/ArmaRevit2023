@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApiRevit.FILTROS;
 using ArmaduraLosaRevit.ConfigurarParametro.EditarVisibilidad;
-using ArmaduraLosaRevit.Model.BarraV.UpDate;
 
 using Autodesk.Revit.UI;
 using OfficeOpenXml;
@@ -479,6 +471,12 @@ namespace ArmaduraLosaRevit.Model.BarraV
         private void button50_Click(object sender, EventArgs e)
         {
             tipodeCaso = "refuerzoFUndaciones";
+            this.Close();
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            tipodeCaso = "CrearSheet";
             this.Close();
         }
     }

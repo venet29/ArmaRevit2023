@@ -34,6 +34,18 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
 
         private UIApplication _uiapp;
         private readonly List<ViewSheetNH> listaSheet;
+
+        //***1) estructura
+        public ObservableCollection<ViewSheetNH> _listaSheetEstructura;
+        public ObservableCollection<ViewSheetNH> ListaSheetEstructura
+        {
+            get { return _listaSheetEstructura; }
+            set
+            {
+                _listaSheetEstructura = value;
+                RaisePropertyChanged("ListaSheetEstructura");
+            }
+        }
         public ObservableCollection<ViewDTO> _listaEstructura;
         public ObservableCollection<ViewDTO> ListaEstructura
         {
@@ -45,7 +57,17 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
             }
         }
 
-
+        // 2) caso losa
+        public ObservableCollection<ViewSheetNH> _listaSheetLosa;
+        public ObservableCollection<ViewSheetNH> ListaSheetLosa
+        {
+            get { return _listaSheetLosa; }
+            set
+            {
+                _listaSheetLosa = value;
+                RaisePropertyChanged("ListaSheetEstructura");
+            }
+        }
         public ObservableCollection<ViewDTO> _listalosa;
         public ObservableCollection<ViewDTO> ListaLosa
         {
@@ -56,7 +78,18 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                 RaisePropertyChanged("ListaLosa");
             }
         }
-
+       
+        //3) elevaciones 
+        public ObservableCollection<ViewSheetNH> _listaSheetElevacion;
+        public ObservableCollection<ViewSheetNH> ListaSheetElevacion
+        {
+            get { return _listaSheetElevacion; }
+            set
+            {
+                _listaSheetElevacion = value;
+                RaisePropertyChanged("ListaSheetElevacion");
+            }
+        }
         public ObservableCollection<ViewDTO> _listaElev;
         public ObservableCollection<ViewDTO> ListaElev
         {
@@ -67,8 +100,6 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                 RaisePropertyChanged("ListaElev");
             }
         }
-
-
 
         private string paraElevacion;
         public string ParaElevacion
@@ -114,7 +145,6 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                 }
             }
         }
-
 
         //private readonly UIApplication _uiApp;
         //private readonly Autodesk.Revit.ApplicationServices.Application _app;
@@ -182,6 +212,8 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
 
             ListaEstructura.ForEach(r => r.BuscarSiVIewInSheet());
 
+            ListaSheetEstructura = new ObservableCollection<ViewSheetNH>(ListaParaParaEstructura);
+
             //losa
             var ListaSheetNumeroLOSA = ObtenerLIstaBAse("EST-2", 0, 18);
             var ListaSheetNombreLOSA = ListaParaParaLosa.Where(c => !c._view.IsTemplate && c.ValorZ != null).OrderBy(r => r.ValorZ.valorz).Where(c => c.Sheetnombre != "Sheet").Select(c => c.Sheetnombre).ToList();
@@ -194,6 +226,7 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                                                                                     .Select(c => new ViewDTO(c, ListaParaParaLosa, ListaSheetNombreLOSA, ListaSheetNumeroLOSA))
                                                                                     .OrderBy(c => c.ValorZ.valorz));
             ListaLosa.ForEach(r => r.BuscarSiVIewInSheet());
+            ListaSheetLosa = new ObservableCollection<ViewSheetNH>(ListaParaParaLosa);
 
             //elevaciones
             var ListaSheetNumeroELEVACION = ObtenerLIstaBAse("EST-3", 0, 18);
@@ -207,6 +240,8 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH.WPF
                                                                                     .Select(c => new ViewDTO(c, ListaParaElevacion, ListaSheetNombreELEVACION, ListaSheetNumeroELEVACION))
                                                                                     .OrderBy(c => c.Nombre));
             ListaElev.ForEach(r => r.BuscarSiVIewInSheet());
+            ListaSheetElevacion= new ObservableCollection<ViewSheetNH>(ListaParaElevacion);
+
         }
 
         public List<string> ObtenerLIstaBAse(string ValorBase, int Inicial, int cantidodad)

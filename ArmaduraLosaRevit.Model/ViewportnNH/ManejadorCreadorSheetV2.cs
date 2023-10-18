@@ -82,6 +82,9 @@ namespace ArmaduraLosaRevit.Model.ViewportnNH
 
                     viewSheet = OBtenerSheet_Y_BorrarViewPOrt_SiTiene();
 
+                    if(_elementTItutlo.IsValidObject==false)
+                        _elementTItutlo = TiposViewportType.ObtenerTiposView("TITULO VENTANA (SIN NIVEL)", _doc);
+
                     if (viewSheet == null)
                     {
                         // Create a sheet view
